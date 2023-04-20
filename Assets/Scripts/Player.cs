@@ -16,12 +16,19 @@ public class Player : GeneralFunctions
     private Animator anim;
     [Header("Dash")]
     public float immunityDuration = 0.3f;
+    private float activeMoveSpeed;
+    public float dashSpeed;
+    public float dashLength = .5f, dashCooldown = 1f;
+    public float dashCounter;
+    public float dashCoolCounter;
 
     void Start() {
         hitpoints = maxhitpoints;
         originalColor = sr.color;
         audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
+
+        activeMoveSpeed = moveSpeed;
     }
     // Update is called once per frame
     void Update()
@@ -54,6 +61,28 @@ public class Player : GeneralFunctions
         if (hitpoints <= 0) {
             StartCoroutine(Death());
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (dashCoolCounter <=0 && dashCounter <= 0)
+            {
+                activeMoveSpeed = dashSpeed;
+                dashCounter = dashLength;
+            }
+            if (dashCounter > 0)
+            {
+                dashCounter -= Time.deltaTime;
+
+                if (dashCounter <= 0)
+                {
+                    activeMoveSpeed = moveSpeed;
+                    dashCoolCounter = dashCooldown;
+                }
+            }
+            if (dashCoolCounter > 0)
+            {
+                dashCoolCounter = Time.deltaTime;
+            }
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.GetComponent<Enemy>()) {
@@ -83,7 +112,7 @@ public class Player : GeneralFunctions
     }
 
     private void FixedUpdate() {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * activeMoveSpeed * Time.fixedDeltaTime);
     }
     public IEnumerator Death() {
         rb.velocity = Vector2.zero;
