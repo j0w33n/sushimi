@@ -12,7 +12,11 @@ public class ProjectileScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
     }
-
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.GetComponent<Enemy>()) {
+            Destroy(gameObject);
+        }
+    }
     // Update is called once per frame
     void Update()
     {

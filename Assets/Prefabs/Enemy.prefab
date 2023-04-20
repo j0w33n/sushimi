@@ -144,4 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f95faa320667443938dd0e6aa652c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitpoints: 0
+  maxhitpoints: 3
+  healthbar: {fileID: 0}
+  Low: {r: 0, g: 0, b: 0, a: 0}
+  High: {r: 0, g: 0, b: 0, a: 0}
+  damageFeedbackColor: {r: 1, g: 0, b: 0, a: 1}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  sr: {fileID: 0}
   movespeed: 3
