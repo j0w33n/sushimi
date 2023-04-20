@@ -17,9 +17,6 @@ public class Enemy : GeneralFunctions
         hitpoints = maxhitpoints;
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
-        //health = GetComponent<EnemyBehaviour>();
-        //currentHealth = maxHealth;
-
     }
 
     // Update is called once per frame
@@ -44,23 +41,4 @@ public class Enemy : GeneralFunctions
         yield return new WaitForSeconds(.25f);
        gameObject.SetActive(false);
     }
-    /*public void TakeDamage(int damage)
-   {
-
-       currentHealth -= damage;
-       if (currentHealth <= 0)
-       {
-           if (gameObject.tag == "Enemy")
-           {
-               health.TakeHit(damage);
-           }
-           else
-           {
-               //Instantiate(deathSplosion, gameObject.transform.position, Quaternion.identity); ; // Create object
-               Destroy(gameObject);
-           }
-       }
-
-
-   }*/
 }

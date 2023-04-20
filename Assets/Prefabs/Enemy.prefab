@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8287565039749020180}
   - component: {fileID: 8287565039749020185}
   - component: {fileID: 8287565039749020184}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -147,9 +147,11 @@ MonoBehaviour:
   hitpoints: 0
   maxhitpoints: 3
   healthbar: {fileID: 0}
-  Low: {r: 0, g: 0, b: 0, a: 0}
-  High: {r: 0, g: 0, b: 0, a: 0}
+  lowhealth: {r: 0, g: 0, b: 0, a: 0}
+  highhealth: {r: 0, g: 0, b: 0, a: 0}
   damageFeedbackColor: {r: 1, g: 0, b: 0, a: 1}
   originalColor: {r: 0, g: 0, b: 0, a: 0}
   sr: {fileID: 0}
+  instprefab: {fileID: 0}
+  instrate: 0
   movespeed: 3
