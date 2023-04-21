@@ -178,8 +178,8 @@ MonoBehaviour:
   hitpoints: 0
   maxhitpoints: 5
   healthbar: {fileID: 0}
-  lowhealth: {r: 0, g: 0.4339623, b: 0.06285251, a: 1}
-  highhealth: {r: 0, g: 1, b: 0, a: 0}
+  lowhealth: {r: 1, g: 0, b: 0, a: 0.6862745}
+  highhealth: {r: 0, g: 0.8962264, b: 0.00010854793, a: 0}
   damageFeedbackColor: {r: 1, g: 0, b: 0, a: 0}
   originalColor: {r: 1, g: 1, b: 1, a: 0}
   sr: {fileID: 2180945518612510623}
@@ -190,8 +190,6 @@ MonoBehaviour:
   knockbackforce: 4
   knockbackLength: 0.15
   knockFromRight: 0
-  _dashingVelocity: 2
-  _dashingTime: 1
   immunityDuration: 0.5
 --- !u!95 &2055233126
 Animator:
