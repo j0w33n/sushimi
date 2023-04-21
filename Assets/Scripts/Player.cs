@@ -15,12 +15,18 @@ public class Player : GeneralFunctions
     private AudioSource audio;
     private Animator anim;
     [Header("Dash")]
+    [SerializeField] private float _dashingVelocity = 20f; //dash speed
+    [SerializeField] private float _dashingTime = 1f; //dash time
+    private Vector2 _dashingDir; //dash direction
+    private bool _isDashing;
+    private bool _canDash = true;
+    private float nextdashtime;
     public float immunityDuration = 0.3f;
-    private float activeMoveSpeed;
+    /*public float activeMoveSpeed;
     public float dashSpeed;
     public float dashLength = .5f, dashCooldown = 1f;
     public float dashCounter;
-    public float dashCoolCounter;
+    public float dashCoolCounter;*/
 
     void Start() {
         hitpoints = maxhitpoints;
@@ -28,7 +34,7 @@ public class Player : GeneralFunctions
         audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
 
-        activeMoveSpeed = moveSpeed;
+       // activeMoveSpeed = moveSpeed;
     }
     // Update is called once per frame
     void Update()
@@ -36,6 +42,8 @@ public class Player : GeneralFunctions
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         anim.SetFloat("Horizontal", movement.x);
+        anim.SetFloat("Vertical", movement.y);
+        //anim.SetBool("IsDashing", _isDashing);
         SetHealth(hitpoints, maxhitpoints);
         /*if (knockbackCounter > 0)
         {
@@ -61,27 +69,22 @@ public class Player : GeneralFunctions
         if (hitpoints <= 0) {
             StartCoroutine(Death());
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetButtonDown("Dash") && _canDash)
         {
-            if (dashCoolCounter <=0 && dashCounter <= 0)
-            {
-                activeMoveSpeed = dashSpeed;
-                dashCounter = dashLength;
-            }
-            if (dashCounter > 0)
-            {
-                dashCounter -= Time.deltaTime;
+            _isDashing = true;
+            //audio.PlayOneShot(dashSound);
+            _canDash = false;
+            _dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
+        }
+        if (_isDashing) {
+            movement = _dashingDir.normalized * _dashingVelocity;
+            StartCoroutine(Invulnerability());
+            return;
+        }
 
-                if (dashCounter <= 0)
-                {
-                    activeMoveSpeed = moveSpeed;
-                    dashCoolCounter = dashCooldown;
-                }
-            }
-            if (dashCoolCounter > 0)
-            {
-                dashCoolCounter = Time.deltaTime;
-            }
+        if (Mathf.Abs(movement.magnitude) > 0 && Time.time >= nextdashtime) { // checks if player is moving
+            _canDash = true;
+            nextdashtime = Time.time + _dashingTime;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -109,10 +112,11 @@ public class Player : GeneralFunctions
         Physics2D.IgnoreLayerCollision(6, 7, true);
         yield return new WaitForSeconds(immunityDuration);
         Physics2D.IgnoreLayerCollision(6, 7, false);
+        if (_isDashing) _isDashing = false;
     }
 
     private void FixedUpdate() {
-        rb.MovePosition(rb.position + movement * activeMoveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
     public IEnumerator Death() {
         rb.velocity = Vector2.zero;
