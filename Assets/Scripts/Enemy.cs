@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : GeneralFunctions
 {
+    public GameObject floatingTextPrefab;
     public float movespeed;
     private Player player;
     private Rigidbody2D rb;
@@ -32,9 +33,17 @@ public class Enemy : GeneralFunctions
             //Destroy(collision.gameObject);
             TakeHit(1);
             StartCoroutine(DamageFeedback());
+            if (floatingTextPrefab && currentHealth > 0)
+            {
+                ShowFloatingText();
+            }
         }
     }
-   
+   void ShowFloatingText()
+    {
+        var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+        go.GetComponent<TextMesh>().text = currentHealth.ToString();
+    }
     public IEnumerator Death()
     {
         rb.velocity = Vector2.zero;
