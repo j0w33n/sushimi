@@ -706,34 +706,6 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 375630794}
-    - target: {fileID: 2180945518612510691, guid: fe4cfe5b510f22a4095d02744ab07781, type: 3}
-      propertyPath: lowhealth.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2180945518612510691, guid: fe4cfe5b510f22a4095d02744ab07781, type: 3}
-      propertyPath: lowhealth.b
-      value: 0.06285251
-      objectReference: {fileID: 0}
-    - target: {fileID: 2180945518612510691, guid: fe4cfe5b510f22a4095d02744ab07781, type: 3}
-      propertyPath: lowhealth.g
-      value: 0.4339623
-      objectReference: {fileID: 0}
-    - target: {fileID: 2180945518612510691, guid: fe4cfe5b510f22a4095d02744ab07781, type: 3}
-      propertyPath: lowhealth.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2180945518612510691, guid: fe4cfe5b510f22a4095d02744ab07781, type: 3}
-      propertyPath: highhealth.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2180945518612510691, guid: fe4cfe5b510f22a4095d02744ab07781, type: 3}
-      propertyPath: highhealth.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2180945518612510691, guid: fe4cfe5b510f22a4095d02744ab07781, type: 3}
-      propertyPath: highhealth.r
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe4cfe5b510f22a4095d02744ab07781, type: 3}
 --- !u!1001 &6970421037141324307
