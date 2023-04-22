@@ -154,4 +154,5 @@ MonoBehaviour:
   sr: {fileID: 0}
   instprefab: {fileID: 0}
   instrate: 0
+  floatingTextPrefab: {fileID: 1210272696370798234, guid: fdf23a94d32536844a912658ea6b4936, type: 3}
   movespeed: 3

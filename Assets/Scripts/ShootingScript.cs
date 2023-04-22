@@ -5,11 +5,10 @@ using UnityEngine;
 public class ShootingScript : GeneralFunctions
 {
     public Transform firept;
-    
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

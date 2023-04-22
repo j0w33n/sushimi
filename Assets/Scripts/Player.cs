@@ -41,10 +41,12 @@ public class Player : GeneralFunctions
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        anim.SetFloat("Horizontal", movement.x);
-        anim.SetFloat("Vertical", movement.y);
+        anim.SetFloat("Direction", rb.rotation);
+        anim.SetFloat("Speed", movement.magnitude);
         //anim.SetBool("IsDashing", _isDashing);
         SetHealth(hitpoints, maxhitpoints);
+        float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+        rb.rotation = angle;
         /*if (knockbackCounter > 0)
         {
             StartCoroutine(Invulnerability());
@@ -87,6 +89,9 @@ public class Player : GeneralFunctions
             nextdashtime = Time.time + _dashingTime;
         }
     }
+    private void FixedUpdate() {
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.GetComponent<Enemy>()) {
             TakeHit(1);
@@ -113,10 +118,6 @@ public class Player : GeneralFunctions
         yield return new WaitForSeconds(immunityDuration);
         Physics2D.IgnoreLayerCollision(6, 7, false);
         if (_isDashing) _isDashing = false;
-    }
-
-    private void FixedUpdate() {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
     public IEnumerator Death() {
         rb.velocity = Vector2.zero;

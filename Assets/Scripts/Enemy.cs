@@ -8,13 +8,12 @@ public class Enemy : GeneralFunctions
     public float movespeed;
     private Player player;
     private Rigidbody2D rb;
-    
+    private Vector2 movement;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<Player>();
-        rb.velocity = new Vector2(movespeed, rb.velocity.y) * (player.transform.position - transform.position).normalized;
         hitpoints = maxhitpoints;
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
@@ -27,13 +26,24 @@ public class Enemy : GeneralFunctions
         if (hitpoints <= 0) {
             StartCoroutine(Death());
         }
+        Vector3 direction = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        rb.rotation = angle;
+        direction.Normalize();
+        movement = direction;
+    }
+    private void FixedUpdate() {
+        Move(movement);
+    }
+    private void Move(Vector2 direction) {
+        rb.MovePosition((Vector2)transform.position + (direction * movespeed * Time.deltaTime));
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<ProjectileScript>() ) {
             //Destroy(collision.gameObject);
-            TakeHit(1);
+            TakeHit(collision.GetComponent<ProjectileScript>().damage);
             StartCoroutine(DamageFeedback());
-            if (floatingTextPrefab && currentHealth > 0)
+            if (floatingTextPrefab && hitpoints > 0)
             {
                 ShowFloatingText();
             }
@@ -42,7 +52,7 @@ public class Enemy : GeneralFunctions
    void ShowFloatingText()
     {
         var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
-        go.GetComponent<TextMesh>().text = currentHealth.ToString();
+        go.GetComponent<TextMesh>().text = hitpoints.ToString();
     }
     public IEnumerator Death()
     {
