@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2180945518041862329}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49, y: 0, z: 0}
+  m_LocalPosition: {x: 0.24, y: -0.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2180945518612510688}
@@ -131,7 +131,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 10ba44d8120e26d4386fe5447ac9edb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 620a84d3b6de2d24d8b89b5658e60ba6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -178,8 +178,8 @@ MonoBehaviour:
   hitpoints: 0
   maxhitpoints: 5
   healthbar: {fileID: 0}
-  lowhealth: {r: 0, g: 0.4339623, b: 0.06285251, a: 1}
-  highhealth: {r: 0, g: 1, b: 0, a: 0}
+  lowhealth: {r: 0.43529412, g: 0, b: 0.008629075, a: 1}
+  highhealth: {r: 1, g: 0, b: 0.020244122, a: 1}
   damageFeedbackColor: {r: 1, g: 0, b: 0, a: 0}
   originalColor: {r: 1, g: 1, b: 1, a: 0}
   sr: {fileID: 2180945518612510623}

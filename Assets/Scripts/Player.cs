@@ -41,7 +41,7 @@ public class Player : GeneralFunctions
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        anim.SetFloat("Direction", rb.rotation);
+        anim.SetFloat("Direction",rb.rotation);
         anim.SetFloat("Speed", movement.magnitude);
         //anim.SetBool("IsDashing", _isDashing);
         SetHealth(hitpoints, maxhitpoints);

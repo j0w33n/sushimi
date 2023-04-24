@@ -17,12 +17,12 @@ public class Enemy : GeneralFunctions
         hitpoints = maxhitpoints;
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
+        gameObject.GetComponentInChildren<Canvas>().worldCamera = FindObjectOfType<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       // SetHealth(hitpoints, maxhitpoints);
         if (hitpoints <= 0) {
             StartCoroutine(Death());
         }
@@ -31,6 +31,7 @@ public class Enemy : GeneralFunctions
         rb.rotation = angle;
         direction.Normalize();
         movement = direction;
+        SetHealth(hitpoints, maxhitpoints);
     }
     private void FixedUpdate() {
         Move(movement);
@@ -43,16 +44,12 @@ public class Enemy : GeneralFunctions
             //Destroy(collision.gameObject);
             TakeHit(collision.GetComponent<ProjectileScript>().damage);
             StartCoroutine(DamageFeedback());
-            if (floatingTextPrefab && hitpoints > 0)
+            if (floatingTextPrefab)
             {
-                ShowFloatingText();
+                var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+                go.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
             }
         }
-    }
-   void ShowFloatingText()
-    {
-        var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
-        go.GetComponent<TextMesh>().text = hitpoints.ToString();
     }
     public IEnumerator Death()
     {
