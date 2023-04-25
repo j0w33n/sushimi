@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : GeneralFunctions
+public class Player : Unit
 {
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
-    Vector2 movement;
+    private Vector2 movement;
     [Header("Knockback")]
     public float knockbackforce;
     public float knockbackLength; // Amount of time the player being knocked back
     private float knockbackcounter; // Count down of time for players being knocked back
     public bool knockFromRight;
     private AudioSource audio;
-    private Animator anim;
+    public Animator anim;
     [Header("Dash")]
     [SerializeField] private float _dashingVelocity = 20f; //dash speed
     [SerializeField] private float _dashingTime = 1f; //dash time
@@ -41,12 +41,13 @@ public class Player : GeneralFunctions
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        anim.SetFloat("Direction",rb.rotation);
+        anim.SetFloat("Horizontal",movement.x);
+        anim.SetFloat("Vertical", movement.y);
         anim.SetFloat("Speed", movement.magnitude);
         //anim.SetBool("IsDashing", _isDashing);
         SetHealth(hitpoints, maxhitpoints);
-        float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
+        //float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+        //rb.rotation = angle;
         /*if (knockbackCounter > 0)
         {
             StartCoroutine(Invulnerability());
@@ -84,7 +85,7 @@ public class Player : GeneralFunctions
             return;
         }
 
-        if (Mathf.Abs(movement.magnitude) > 0 && Time.time >= nextdashtime) { // checks if player is moving
+        if (/*Mathf.Abs(movement.magnitude) > 0 &&*/ Time.time >= nextdashtime) { // checks if player is moving
             _canDash = true;
             nextdashtime = Time.time + _dashingTime;
         }

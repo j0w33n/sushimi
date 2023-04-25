@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : GeneralFunctions {
+public class EnemySpawner : MonoBehaviour {
 
-   // int enemiesspawned;
+    // int enemiesspawned;
     //public int enemiestospawn;
     // Start is called before the first frame update
+    public GameObject instprefab;
+    private float nextinsttime;
+    public float instrate;
     void Start()
     {
 
@@ -17,6 +20,11 @@ public class EnemySpawner : GeneralFunctions {
     {
         Generate();
         //Spawn();
+    }
+    public void Generate() {
+        if (Time.time < nextinsttime) return;
+        Instantiate(instprefab, transform.position, transform.rotation);
+        nextinsttime = Time.time + instrate;
     }
     /*void Spawn() {
         if (enemiesspawned < enemiestospawn) {

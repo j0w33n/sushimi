@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : GeneralFunctions
+public class Enemy : Unit
 {
     public GameObject floatingTextPrefab;
     public float movespeed;
@@ -46,8 +46,8 @@ public class Enemy : GeneralFunctions
             StartCoroutine(DamageFeedback());
             if (floatingTextPrefab)
             {
-                var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
-                go.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
+                var floatingtext = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+                floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
             }
         }
     }
