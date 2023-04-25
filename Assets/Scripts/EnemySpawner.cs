@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : GeneralFunctions
-{
+public class EnemySpawner : GeneralFunctions {
+
+   // int enemiesspawned;
+    //public int enemiestospawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,13 @@ public class EnemySpawner : GeneralFunctions
     // Update is called once per frame
     void Update()
     {
-        Instantiate();
+        Generate();
+        //Spawn();
     }
+    /*void Spawn() {
+        if (enemiesspawned < enemiestospawn) {
+            Generate();
+            enemiesspawned += 1;
+        } else return;
+    }*/
 }
