@@ -44,9 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firept: {fileID: 2180945518041862330}
-  rotation: {x: 0, y: 0}
   instprefab: {fileID: 7918848339342511285, guid: 6972f89894006394d882392fc704c0a2, type: 3}
-  instrate: 0.6
+  instrate: 0.2
 --- !u!1 &2180945518612510622
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +177,6 @@ MonoBehaviour:
   sr: {fileID: 2180945518612510623}
   moveSpeed: 5
   rb: {fileID: 2180945518612510690}
-  movement: {x: 0, y: 0}
   knockbackforce: 4
   knockbackLength: 0.15
   knockFromRight: 0
@@ -186,6 +184,8 @@ MonoBehaviour:
   _dashingVelocity: 2
   _dashingTime: 1
   immunityDuration: 0.5
+  respawnpoint: {x: 0, y: 0, z: 0}
+  dead: 0
 --- !u!95 &2055233126
 Animator:
   serializedVersion: 3

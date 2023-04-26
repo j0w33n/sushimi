@@ -9,11 +9,13 @@ public class Enemy : Unit
     private Player player;
     private Rigidbody2D rb;
     private Vector2 movement;
+    LevelManager levelManager;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<Player>();
+        levelManager = FindObjectOfType<LevelManager>();
         hitpoints = maxhitpoints;
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
@@ -32,6 +34,7 @@ public class Enemy : Unit
         direction.Normalize();
         movement = direction;
         SetHealth(hitpoints, maxhitpoints);
+        if (player.dead) Destroy(gameObject);
     }
     private void FixedUpdate() {
         Move(movement);
@@ -55,6 +58,7 @@ public class Enemy : Unit
     {
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(.25f);
-       gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        levelManager.enemieskilled += 1;
     }
 }

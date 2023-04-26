@@ -22,6 +22,9 @@ public class Player : Unit
     private bool _canDash = true;
     private float nextdashtime;
     public float immunityDuration = 0.3f;
+    private LevelManager levelManager;
+    public Vector3 respawnpoint;
+    public bool dead;
     /*public float activeMoveSpeed;
     public float dashSpeed;
     public float dashLength = .5f, dashCooldown = 1f;
@@ -33,8 +36,9 @@ public class Player : Unit
         originalColor = sr.color;
         audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
-
-       // activeMoveSpeed = moveSpeed;
+        levelManager = FindObjectOfType<LevelManager>();
+        // activeMoveSpeed = moveSpeed;
+        respawnpoint = transform.position;
     }
     // Update is called once per frame
     void Update()
@@ -70,14 +74,17 @@ public class Player : Unit
             }
         }
         if (hitpoints <= 0) {
-            StartCoroutine(Death());
+            dead = true;
+            Death();
+            levelManager.Respawn();
+            hitpoints = maxhitpoints;
         }
         if (Input.GetButtonDown("Dash") && _canDash)
         {
             _isDashing = true;
             //audio.PlayOneShot(dashSound);
             _canDash = false;
-            _dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
+            _dashingDir = movement.normalized;
         }
         if (_isDashing) {
             movement = _dashingDir.normalized * _dashingVelocity;
@@ -94,11 +101,11 @@ public class Player : Unit
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.GetComponent<Enemy>()) {
+        if (collision.gameObject.GetComponent<Enemy>() && !dead) {
             TakeHit(1);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
-            //Knockback();
+            Knockback();
         }
         if((transform.position - collision.transform.position).magnitude < 0) {
             knockFromRight = true;
@@ -120,9 +127,7 @@ public class Player : Unit
         Physics2D.IgnoreLayerCollision(6, 7, false);
         if (_isDashing) _isDashing = false;
     }
-    public IEnumerator Death() {
+    public void Death() {
         rb.velocity = Vector2.zero;
-        yield return new WaitForSeconds(.25f);
-        gameObject.SetActive(false);
     }
 }

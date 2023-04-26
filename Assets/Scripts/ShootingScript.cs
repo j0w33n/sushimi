@@ -45,6 +45,9 @@ public class ShootingScript : MonoBehaviour
         } 
         else if (player.anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerWalkBottomLeft")) {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
+        } 
+        else {
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
     public void Generate() {
