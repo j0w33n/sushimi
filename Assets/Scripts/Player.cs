@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Unit
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 5f,rotationspeed = 999f;
     public Rigidbody2D rb;
     private Vector2 movement;
     [Header("Knockback")]
@@ -30,7 +30,6 @@ public class Player : Unit
     public float dashLength = .5f, dashCooldown = 1f;
     public float dashCounter;
     public float dashCoolCounter;*/
-
     void Start() {
         hitpoints = maxhitpoints;
         originalColor = sr.color;
@@ -45,14 +44,45 @@ public class Player : Unit
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        anim.SetFloat("Horizontal",movement.x);
-        anim.SetFloat("Vertical", movement.y);
+        anim.SetFloat("Rotation", transform.localRotation.z);
+        anim.SetBool("Horizontal", transform.localRotation.y == 0 || transform.localRotation.y == 180);
         anim.SetFloat("Speed", movement.magnitude);
 
         //anim.SetBool("IsDashing", _isDashing);
         SetHealth(hitpoints, maxhitpoints);
-        //float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-        //rb.rotation = angle;
+        if(movement.magnitude != 0) {
+            if (movement.y == 0) {
+                if (movement.x > 0) {
+                    transform.localRotation = Quaternion.Euler(0, 0, 0);
+                } else {
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
+            }
+            if (movement.x == 0) {
+                if(movement.y > 0) {
+                    transform.localRotation = Quaternion.Euler(0, 0, 90);
+                } else {
+                    transform.localRotation = Quaternion.Euler(0, 0, -90);
+                }
+            }
+            if(movement.x > 0) {
+                if (movement.y > 0) {
+                    transform.localRotation = Quaternion.Euler(0, 0, 45);
+                } else if (movement.y < 0){
+                    transform.localRotation = Quaternion.Euler(0, 0, -45);
+                }
+            }
+            if (movement.x < 0) {
+                if (movement.y > 0) {
+                    transform.localRotation = Quaternion.Euler(0, 0, 135);
+                } else if (movement.y < 0) {
+                    transform.localRotation = Quaternion.Euler(0, 0, -135);
+                }
+            }
+        } 
+        else {
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
         /*if (knockbackCounter > 0)
         {
             StartCoroutine(Invulnerability());
@@ -66,28 +96,28 @@ public class Player : Unit
                 rb.velocity = new Vector3(knockbackForce, 0.5f, 0.0f); // The force to push the player back
             }
         }*/
-        if (knockbackcounter > 0) {
+        //transform.Rotate(0, movement.magnitude * moveSpeed * Time.deltaTime, 0);
+        /*if (knockbackcounter > 0) {
             knockbackcounter -= Time.deltaTime; // count down time
-            if (transform.localRotation.y == 0) {
-                rb.velocity = new Vector3(-knockbackforce, knockbackforce, 0.0f); // push player back
-            } else {
-                rb.velocity = new Vector3(knockbackforce, knockbackforce, 0.0f);
+            if(transform.localRotation.y == 0) {
+                rb.velocity = new Vector3(-knockbackforce, 0, knockbackforce);
             }
-        }
+        }*/
         if (hitpoints <= 0) {
             dead = true;
             Death();
             levelManager.Respawn();
             hitpoints = maxhitpoints;
         }
-        if (Input.GetButtonDown("Dash") && _canDash)
-        {
+        if (Input.GetButtonDown("Dash") && _canDash) {
             _isDashing = true;
             //audio.PlayOneShot(dashSound);
             _canDash = false;
             _dashingDir = movement.normalized;
         }
         if (_isDashing) {
+            //Vector3 dashPosition = transform.position + (Vector3)_dashingDir * _dashingVelocity;
+            //rb.MovePosition(transform.position + (Vector3)movement.normalized * _dashingVelocity);
             movement = _dashingDir.normalized * _dashingVelocity;
             StartCoroutine(Invulnerability());
             return;
@@ -100,6 +130,7 @@ public class Player : Unit
     }
     private void FixedUpdate() {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        //rb.velocity = movement.normalized * moveSpeed;
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.GetComponent<Enemy>() && !dead) {
@@ -108,12 +139,12 @@ public class Player : Unit
             StartCoroutine(Invulnerability());
             Knockback();
         }
-        if((transform.position - collision.transform.position).magnitude < 0) {
+        /*if((transform.position - collision.transform.position).magnitude < 0) {
             knockFromRight = true;
         } 
         else {
             knockFromRight = false;
-        }
+        }*/
     }
     public void Knockback()
     {

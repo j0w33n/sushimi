@@ -176,14 +176,15 @@ MonoBehaviour:
   originalColor: {r: 1, g: 1, b: 1, a: 0}
   sr: {fileID: 2180945518612510623}
   moveSpeed: 5
+  rotationspeed: 999
   rb: {fileID: 2180945518612510690}
-  knockbackforce: 4
+  knockbackforce: 100
   knockbackLength: 0.15
   knockFromRight: 0
   anim: {fileID: 0}
   _dashingVelocity: 2
   _dashingTime: 1
-  immunityDuration: 0.5
+  immunityDuration: 0.75
   respawnpoint: {x: 0, y: 0, z: 0}
   dead: 0
 --- !u!95 &2055233126
