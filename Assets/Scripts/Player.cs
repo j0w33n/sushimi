@@ -55,8 +55,8 @@ public class Player : Unit
     // Update is called once per frame
     void Update()
     {
-        float moveX = 0f;
-        float moveY = 0f;
+        //float moveX = 0f;
+        //float moveY = 0f;
         if (Input.GetKey(KeyCode.W))
         {
             moveY = +1f;
@@ -73,7 +73,8 @@ public class Player : Unit
         {
             moveX = +1f;
         }
-        moveDir = new Vector3(MoveX, MoveY).normalized;
+        //moveDir = new Vector3(MoveX, MoveY).normalized;
+
         //movement.x = Input.GetAxisRaw("Horizontal");
         //movement.y = Input.GetAxisRaw("Vertical");
         //anim.SetFloat("Horizontal",movement.x);
