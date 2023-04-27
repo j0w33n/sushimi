@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class Player : Unit
 {
-    //public float moveSpeed = 5f;
+    public float moveSpeed = 5f;
     public Rigidbody2D rb;
-    //private Vector2 movement;
-
-    private Vector3 moveDir;
-    private const float moveSpeed = 60f;
-    float moveX = 0f;
-    float moveY = 0f;
+    private Vector2 movement;
     [Header("Knockback")]
     public float knockbackforce;
     public float knockbackLength; // Amount of time the player being knocked back
@@ -19,13 +14,13 @@ public class Player : Unit
     public bool knockFromRight;
     private AudioSource audio;
     public Animator anim;
-    //[Header("Dash")]
-    //[SerializeField] private float _dashingVelocity = 20f; //dash speed
-    //[SerializeField] private float _dashingTime = 1f; //dash time
-    //private Vector2 _dashingDir; //dash direction
-    //private bool _isDashing;
-    //private bool _canDash = true;
-    //private float nextdashtime;
+    [Header("Dash")]
+    [SerializeField] private float _dashingVelocity = 20f; //dash speed
+    [SerializeField] private float _dashingTime = 1f; //dash time
+    private Vector2 _dashingDir; //dash direction
+    private bool _isDashing;
+    private bool _canDash = true;
+    private float nextdashtime;
     public float immunityDuration = 0.3f;
     private LevelManager levelManager;
     public Vector3 respawnpoint;
@@ -35,8 +30,6 @@ public class Player : Unit
     public float dashLength = .5f, dashCooldown = 1f;
     public float dashCounter;
     public float dashCoolCounter;*/
-    public bool isDashButtonDown;
-    [SerializeField] private LayerMask dashLayerMask;
 
     void Start() {
         hitpoints = maxhitpoints;
@@ -47,39 +40,14 @@ public class Player : Unit
         // activeMoveSpeed = moveSpeed;
         respawnpoint = transform.position;
     }
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
     // Update is called once per frame
     void Update()
     {
-        float moveX = 0f;
-        float moveY = 0f;
-        if (Input.GetKey(KeyCode.W))
-        {
-            moveY = +1f;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            moveY = -1f;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveX = -1f;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveX = +1f;
-        }
-        moveDir = new Vector3(MoveX, MoveY).normalized;
-        //movement.x = Input.GetAxisRaw("Horizontal");
-        //movement.y = Input.GetAxisRaw("Vertical");
-        //anim.SetFloat("Horizontal",movement.x);
-        //anim.SetFloat("Vertical", movement.y);
-        //anim.SetFloat("Speed", movement.magnitude);
-
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        anim.SetFloat("Horizontal",movement.x);
+        anim.SetFloat("Vertical", movement.y);
+        anim.SetFloat("Speed", movement.magnitude);
         //anim.SetBool("IsDashing", _isDashing);
         SetHealth(hitpoints, maxhitpoints);
         //float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
@@ -111,43 +79,26 @@ public class Player : Unit
             levelManager.Respawn();
             hitpoints = maxhitpoints;
         }
-        //if (Input.GetButtonDown("Dash") && _canDash)
-        //{
-        //    _isDashing = true;
-        //    //audio.PlayOneShot(dashSound);
-        //    _canDash = false;
-        //    _dashingDir = movement.normalized;
-        //}
-        //if (_isDashing) {
-        //    movement = _dashingDir.normalized * _dashingVelocity;
-        //    StartCoroutine(Invulnerability());
-        //    return;
-        //}
+        if (Input.GetButtonDown("Dash") && _canDash)
+        {
+            _isDashing = true;
+            //audio.PlayOneShot(dashSound);
+            _canDash = false;
+            _dashingDir = movement.normalized;
+        }
+        if (_isDashing) {
+            movement = _dashingDir.normalized * _dashingVelocity;
+            StartCoroutine(Invulnerability());
+            return;
+        }
 
-        //if (/*Mathf.Abs(movement.magnitude) > 0 &&*/ Time.time >= nextdashtime) { // checks if player is moving
-        //    _canDash = true;
-        //    nextdashtime = Time.time + _dashingTime;
-        //}
-        //if (Input.GetButtonDown("Dash"))
-        //{
-        //    isDashButtonDown = true;
-        //}
+        if (/*Mathf.Abs(movement.magnitude) > 0 &&*/ Time.time >= nextdashtime) { // checks if player is moving
+            _canDash = true;
+            nextdashtime = Time.time + _dashingTime;
+        }
     }
     private void FixedUpdate() {
-        rb.velocity = moveDir * moveSpeed;
-        //rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        if(isDashButtonDown)
-        {
-            float dashAmount = 50f;
-            Vector3 dashPosition = transform.position + moveDir * dashAmount;
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, moveDir, dashAmount, dashLayerMask); //dashLayerMask so cant dash through walls
-            if(raycastHit2D.collider != null)
-            {
-                dashPosition = raycastHit2D.point;
-            }
-            rb.MovePosition(transform.position + moveDir * dashAmount);
-            isDashButtonDown = false;
-        }
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.GetComponent<Enemy>() && !dead) {
@@ -167,13 +118,14 @@ public class Player : Unit
     {
         knockbackcounter = knockbackLength;
     }
+
     // For player's immunity
     public IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(6, 7, true);
         yield return new WaitForSeconds(immunityDuration);
         Physics2D.IgnoreLayerCollision(6, 7, false);
-        //if (_isDashing) _isDashing = false;
+        if (_isDashing) _isDashing = false;
     }
     public void Death() {
         rb.velocity = Vector2.zero;
