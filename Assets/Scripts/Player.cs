@@ -48,6 +48,7 @@ public class Player : Unit
         anim.SetFloat("Horizontal",movement.x);
         anim.SetFloat("Vertical", movement.y);
         anim.SetFloat("Speed", movement.magnitude);
+
         //anim.SetBool("IsDashing", _isDashing);
         SetHealth(hitpoints, maxhitpoints);
         //float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
