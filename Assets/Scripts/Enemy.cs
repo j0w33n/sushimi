@@ -12,6 +12,9 @@ public class Enemy : Unit
     private Vector2 movement;
     LevelManager levelManager;
     public Transform spawner;
+
+    [SerializeField] private float thrust;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,8 +52,10 @@ public class Enemy : Unit
     private void Move(Vector2 direction) {
         rb.MovePosition((Vector2)transform.position + (direction * movespeed * Time.deltaTime));
     }
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<ProjectileScript>() ) {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<ProjectileScript>())
+        {
             //Destroy(collision.gameObject);
             TakeHit(collision.GetComponent<ProjectileScript>().damage);
             StartCoroutine(DamageFeedback());
@@ -60,6 +65,24 @@ public class Enemy : Unit
                 floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
             }
         }
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();
+            if (enemy != null)
+            {
+                StartCoroutine(KnockCoroutine(enemy));
+            }
+        }
+    }
+    private IEnumerator KnockCoroutine(Rigidbody2D enemy)
+    {
+        Vector2 forceDirection = enemy.transform.position - transform.position;
+        Vector2 force = forceDirection.normalized * thrust;
+
+        enemy.velocity = force;
+        yield return new WaitForSeconds(.3f);
+
+        enemy.velocity = new Vector2();
     }
     public IEnumerator Death()
     {
