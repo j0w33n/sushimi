@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Player : Unit
 {
-    public float moveSpeed = 5f,rotationspeed = 999f;
+    public float moveSpeed = 5f;
     public Rigidbody2D rb;
     private Vector2 movement;
     [Header("Knockback")]
-    public float knockbackforce;
-    public float knockbackLength; // Amount of time the player being knocked back
-    private float knockbackcounter; // Count down of time for players being knocked back
-    public bool knockFromRight;
+    //public float knockbackforce;
+    //public float knockbackLength; // Amount of time the player being knocked back
+    //private float knockbackcounter; // Count down of time for players being knocked back
     private AudioSource audio;
     public Animator anim;
     [Header("Dash")]
@@ -80,26 +79,6 @@ public class Player : Unit
                 }
             }
         } 
-        /*if (knockbackCounter > 0)
-        {
-            StartCoroutine(Invulnerability());
-            knockbackCounter -= Time.deltaTime;
-            if (knockFromRight == true)
-            { // Kockback based on where the player is hit from.
-                rb.velocity = new Vector3(-knockbackForce, 0.5f, 0.0f); //The force to push the player back
-            }
-            if (knockFromRight == false)
-            {
-                rb.velocity = new Vector3(knockbackForce, 0.5f, 0.0f); // The force to push the player back
-            }
-        }*/
-        //transform.Rotate(0, movement.magnitude * moveSpeed * Time.deltaTime, 0);
-        /*if (knockbackcounter > 0) {
-            knockbackcounter -= Time.deltaTime; // count down time
-            if(transform.localRotation.y == 0) {
-                rb.velocity = new Vector3(-knockbackforce, 0, knockbackforce);
-            }
-        }*/
         if (hitpoints <= 0) {
             dead = true;
             Death();
@@ -114,7 +93,8 @@ public class Player : Unit
             //_dashingDir = movement.normalized;
             if (transform.localRotation == Quaternion.identity) {
                 _dashingDir = new Vector2(1, transform.localRotation.z).normalized;
-            } else {
+            }
+            else {
                 _dashingDir = new Vector2(transform.localRotation.y, transform.localRotation.z).normalized;
             }
             
@@ -139,23 +119,11 @@ public class Player : Unit
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.GetComponent<Enemy>() && !dead) {
-            TakeHit(1);
+            TakeHit(collision.gameObject.GetComponent<Enemy>().damage);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
-            Knockback();
         }
-        /*if((transform.position - collision.transform.position).magnitude < 0) {
-            knockFromRight = true;
-        } 
-        else {
-            knockFromRight = false;
-        }*/
     }
-    public void Knockback()
-    {
-        knockbackcounter = knockbackLength;
-    }
-
     // For player's immunity
     public IEnumerator Invulnerability()
     {

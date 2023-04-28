@@ -28,6 +28,7 @@ public class EnemySpawner : MonoBehaviour {
         if (enemiesspawned <= enemiestospawn - 1 && !player.dead) {
             if (Time.time < nextinsttime) return;
             Instantiate(instprefab, transform.position, transform.rotation);
+            instprefab.GetComponent<Enemy>().spawner = transform;
             nextinsttime = Time.time + instrate;
             enemiesspawned++;
         }

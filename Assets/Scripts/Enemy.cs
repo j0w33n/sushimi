@@ -6,10 +6,12 @@ public class Enemy : Unit
 {
     public GameObject floatingTextPrefab;
     public float movespeed;
+    public float damage = 1;
     private Player player;
     private Rigidbody2D rb;
     private Vector2 movement;
     LevelManager levelManager;
+    public Transform spawner;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class Enemy : Unit
         rb.rotation = angle;
         direction.Normalize();
         if (!player.gameObject.activeSelf) {
-            return;
+            transform.position = spawner.position;
         } 
         else {
             movement = direction;
