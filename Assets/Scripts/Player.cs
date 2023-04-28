@@ -45,7 +45,7 @@ public class Player : Unit
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         anim.SetFloat("Rotation", transform.localRotation.z);
-        anim.SetBool("Horizontal", transform.localRotation.y == 0 || transform.localRotation.y == 180);
+        anim.SetBool("Horizontal", transform.localRotation.y == 0 || Mathf.Abs(transform.localRotation.y) == 180);
         anim.SetFloat("Speed", movement.magnitude);
 
         //anim.SetBool("IsDashing", _isDashing);
@@ -80,9 +80,6 @@ public class Player : Unit
                 }
             }
         } 
-        else {
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
         /*if (knockbackCounter > 0)
         {
             StartCoroutine(Invulnerability());
@@ -108,17 +105,25 @@ public class Player : Unit
             Death();
             levelManager.Respawn();
             hitpoints = maxhitpoints;
+            transform.localRotation = Quaternion.identity;
         }
         if (Input.GetButtonDown("Dash") && _canDash) {
             _isDashing = true;
             //audio.PlayOneShot(dashSound);
             _canDash = false;
-            _dashingDir = movement.normalized;
+            //_dashingDir = movement.normalized;
+            if (transform.localRotation == Quaternion.identity) {
+                _dashingDir = new Vector2(1, transform.localRotation.z).normalized;
+            } else {
+                _dashingDir = new Vector2(transform.localRotation.y, transform.localRotation.z).normalized;
+            }
+            
         }
         if (_isDashing) {
             //Vector3 dashPosition = transform.position + (Vector3)_dashingDir * _dashingVelocity;
             //rb.MovePosition(transform.position + (Vector3)movement.normalized * _dashingVelocity);
-            movement = _dashingDir.normalized * _dashingVelocity;
+            //movement = _dashingDir.normalized * _dashingVelocity;
+            movement = _dashingDir * _dashingVelocity;
             StartCoroutine(Invulnerability());
             return;
         }
