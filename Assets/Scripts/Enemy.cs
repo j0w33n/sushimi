@@ -13,7 +13,7 @@ public class Enemy : Unit
     LevelManager levelManager;
     public Transform spawner;
 
-    [SerializeField] private float thrust;
+    //[SerializeField] private float thrust;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +44,6 @@ public class Enemy : Unit
             movement = direction;
         }
         SetHealth(hitpoints, maxhitpoints);
-        //if (player.dead) Destroy(gameObject);
     }
     private void FixedUpdate() {
         Move(movement);
@@ -65,16 +64,16 @@ public class Enemy : Unit
                 floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
             }
         }
-        else if (collision.gameObject.CompareTag("Enemy"))
+        /*else if (collision.gameObject.CompareTag("Enemy"))
         {
             Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();
             if (enemy != null)
             {
                 StartCoroutine(KnockCoroutine(enemy));
             }
-        }
+        }*/
     }
-    private IEnumerator KnockCoroutine(Rigidbody2D enemy)
+    /*private IEnumerator KnockCoroutine(Rigidbody2D enemy)
     {
         Vector2 forceDirection = enemy.transform.position - transform.position;
         Vector2 force = forceDirection.normalized * thrust;
@@ -83,7 +82,7 @@ public class Enemy : Unit
         yield return new WaitForSeconds(.3f);
 
         enemy.velocity = new Vector2();
-    }
+    }*/
     public IEnumerator Death()
     {
         rb.velocity = Vector2.zero;
