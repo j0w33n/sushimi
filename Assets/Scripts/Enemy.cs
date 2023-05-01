@@ -12,7 +12,8 @@ public class Enemy : Unit
     private Vector2 movement;
     LevelManager levelManager;
     public Transform spawner;
-
+    public bool canMove;
+    public bool spawned;
     //[SerializeField] private float thrust;
 
     // Start is called before the first frame update
@@ -37,7 +38,7 @@ public class Enemy : Unit
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
         direction.Normalize();
-        if (!player.gameObject.activeSelf) {
+        if (!player.gameObject.activeSelf && spawned) {
             transform.position = spawner.position;
         } 
         else {
@@ -46,7 +47,7 @@ public class Enemy : Unit
         SetHealth(hitpoints, maxhitpoints);
     }
     private void FixedUpdate() {
-        Move(movement);
+        if (canMove) Move(movement);
     }
     private void Move(Vector2 direction) {
         rb.MovePosition((Vector2)transform.position + (direction * movespeed * Time.deltaTime));
@@ -88,6 +89,6 @@ public class Enemy : Unit
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(.25f);
         gameObject.SetActive(false);
-        levelManager.enemieskilled += 1;
+        if(spawned) levelManager.enemieskilled += 1;
     }
 }

@@ -141,12 +141,21 @@ public class Player : Unit
             StartCoroutine(Invulnerability());
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.GetComponent<Trap>()) {
+            TakeHit(collision.GetComponent<Trap>().damage);
+            StartCoroutine(DamageFeedback());
+            StartCoroutine(Invulnerability());
+        }
+    }
     // For player's immunity
     public IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(6, 7, true);
+        Physics2D.IgnoreLayerCollision(6, 8, true);
         yield return new WaitForSeconds(immunityDuration);
         Physics2D.IgnoreLayerCollision(6, 7, false);
+        Physics2D.IgnoreLayerCollision(6, 8, false);
         if (_isDashing) _isDashing = false;
     }
     public void Death() {

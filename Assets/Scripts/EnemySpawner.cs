@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour {
     LevelManager levelManager;
     Player player;
     float nextinsttime;
+    public bool canSpawn;
     void Start()
     {
        levelManager = FindObjectOfType<LevelManager>();
@@ -22,7 +23,11 @@ public class EnemySpawner : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-       Spawn();
+       if (canSpawn) {
+          Spawn();
+          instprefab.GetComponent<Enemy>().canMove = true;
+          instprefab.GetComponent<Enemy>().spawned = true;
+        }
     }
    void Spawn() {
         if (enemiesspawned <= enemiestospawn - 1 && !player.dead) {
