@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Terresquall;
 
 public class Player : Unit
 {
@@ -41,15 +42,15 @@ public class Player : Unit
     // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        anim.SetFloat("Rotation", transform.localRotation.z);
-        anim.SetBool("Horizontal", transform.localRotation.y == 0 || Mathf.Abs(transform.localRotation.y) == 180);
+        movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+        movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+        anim.SetFloat("Horizontal",movement.x);
+        anim.SetFloat("Vertical",movement.y);
         anim.SetFloat("Speed", movement.magnitude);
 
         //anim.SetBool("IsDashing", _isDashing);
         SetHealth(hitpoints, maxhitpoints);
-        if(movement.magnitude != 0) {
+        /*if(movement.magnitude != 0) {
             if (movement.y == 0) {
                 if (movement.x > 0) {
                     transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -78,7 +79,7 @@ public class Player : Unit
                     transform.localRotation = Quaternion.Euler(0, 0, -135);
                 }
             }
-        } 
+        } */
         if (hitpoints <= 0) {
             dead = true;
             Death();
