@@ -22,7 +22,7 @@ public class NPC : MonoBehaviour
     }
 
     void Update()
-    { if(Input.GetKeyDown(KeyCode.F) && player) { // placeholder F key instead of touch controls
+    { if(Input.GetKeyDown(KeyCode.F) && player) { // placeholder F key instead of touch controls for now
             if (dialoguePanel.activeInHierarchy) {
                 text0();
             }
