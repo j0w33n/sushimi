@@ -28,7 +28,7 @@ public class NPC : MonoBehaviour
             }
             else {
                 dialoguePanel.SetActive(true);
-                StartCorountine(Typing());
+                StartCoroutine(Typing());
             }
         }
         
@@ -47,10 +47,10 @@ public class NPC : MonoBehaviour
     }
 
     public void NextLine() {
-        if(index < dialogue.length - 1) {
+        if(index < dialogue.Length - 1) {
             index++;
             dialogueText.text = "";
-            StartCorountine(Typing());
+            StartCoroutine(Typing());
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
