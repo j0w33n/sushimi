@@ -5,19 +5,64 @@ using UnityEngine.UI;
 
 public class NPC : MonoBehaviour
 {
-    // Start is called before the first frame update
 
-    public GameObject dialogue;
+    public GameObject dialoguePanel;
+    public Text dialogueText;
+    public string[] dialogue;
+    private int index;
+
+    public float wordSpeed = 0.06f;
+    public bool player;
+
+    public GameObject button;
+
 
     void Start() {
-        dialogue.SetActive(false);
+        dialogueText.text = "";
     }
-    void OnTriggerEnter2D(BoxCollider2D NPC) {
-        dialogue.SetActive(true);
-    }
-    // Update is called once per frame
+
     void Update()
-    {
+    { if(Input.GetKeyDown(KeyCode.F) && player) { // placeholder F key instead of touch controls
+            if (dialoguePanel.activeInHierarchy) {
+                text0();
+            }
+            else {
+                dialoguePanel.SetActive(true);
+                StartCorountine(Typing());
+            }
+        }
         
+    }
+    public void text0() {
+        dialogueText.text = "";
+        index = 0;
+        dialoguePanel.SetActive(false);
+    }
+
+    IEnumerator Typing() {
+        foreach(char letter in dialogue[index].ToCharArray()) {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(wordSpeed);
+        }
+    }
+
+    public void NextLine() {
+        if(index < dialogue.length - 1) {
+            index++;
+            dialogueText.text = "";
+            StartCorountine(Typing());
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Player")) {
+            player = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("Player")) {
+            player = false;
+            text0();
+        }
     }
 }
