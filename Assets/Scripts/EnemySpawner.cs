@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-    int enemiesspawned;
-    public int enemiestospawn;
+    public int enemiesspawned;
+    public int[] enemiestospawn;
     // Start is called before the first frame update
     public GameObject instprefab;
     public float instrate;
@@ -13,24 +13,27 @@ public class EnemySpawner : MonoBehaviour {
     Player player;
     float nextinsttime;
     public bool canSpawn;
+    public int currentwave;
     void Start()
     {
        levelManager = FindObjectOfType<LevelManager>();
        player = FindObjectOfType<Player>();
-       
+       currentwave = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (canSpawn) {
-          Spawn();
-          instprefab.GetComponent<Enemy>().canMove = true;
-          instprefab.GetComponent<Enemy>().spawned = true;
+        
+        if (canSpawn) {
+            Spawn();
+            instprefab.GetComponent<Enemy>().canMove = true;
+            instprefab.GetComponent<Enemy>().spawned = true;
         }
+        
     }
    void Spawn() {
-        if (enemiesspawned <= enemiestospawn - 1 && !player.dead) {
+        if (enemiesspawned <= enemiestospawn[currentwave] - 1 && !player.dead) {
             if (Time.time < nextinsttime) return;
             Instantiate(instprefab, transform.position, transform.rotation);
             instprefab.GetComponent<Enemy>().spawner = transform;

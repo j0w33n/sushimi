@@ -10,26 +10,35 @@ public class LevelManager : MonoBehaviour
     public bool wavecomplete;
     public int waves;
     public int enemieskilled;
-    int totalenemies = 0;
+    [SerializeField]int totalenemies = 0;
     public GameObject chest;
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
         enemyspawns = FindObjectsOfType<EnemySpawner>();
-        foreach(var i in enemyspawns) {
-            totalenemies += i.enemiestospawn;
+        foreach (var i in enemyspawns) {
+            totalenemies += i.enemiestospawn[i.currentwave];
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemieskilled == totalenemies) {
+        
+        if (enemieskilled == totalenemies && waves > 0) {
             wavecomplete = true;
-            //waves -= 1;
-            chest.SetActive(true);
+            waves -= 1;
             enemieskilled = 0;
+            totalenemies = 0;
+            foreach (var i in enemyspawns) {
+                i.currentwave += 1;
+                totalenemies += i.enemiestospawn[i.currentwave];
+                i.enemiesspawned = 0;
+            }
+        }
+        if(waves == 0) {
+            chest.SetActive(true);
         }
     }
     public void Respawn() {

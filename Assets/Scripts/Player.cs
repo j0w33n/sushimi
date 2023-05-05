@@ -21,6 +21,7 @@ public class Player : Unit
     private LevelManager levelManager;
     public Vector3 respawnpoint;
     public bool dead;
+    public bool canMove;
     void Start() {
         hitpoints = maxhitpoints;
         originalColor = sr.color;
@@ -32,10 +33,14 @@ public class Player : Unit
     // Update is called once per frame
     void Update()
     {
-        movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
-        movement.y = VirtualJoystick.GetAxis("Vertical", 0);
-        anim.SetFloat("Horizontal",movement.x);
-        anim.SetFloat("Vertical",movement.y);
+        if (canMove) {
+            //movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+            //movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+        }
+        anim.SetFloat("Horizontal",Mathf.Sign(movement.x));
+        anim.SetFloat("Vertical",Mathf.Sign(movement.y));
         anim.SetFloat("Speed", movement.magnitude);
 
         //anim.SetBool("IsDashing", _isDashing);
@@ -47,7 +52,7 @@ public class Player : Unit
             hitpoints = maxhitpoints;
             transform.localRotation = Quaternion.identity;
         }
-        
+        Dash();
     }
     private void FixedUpdate() {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -80,7 +85,7 @@ public class Player : Unit
         rb.velocity = Vector2.zero;
     }
     public void Dash() {
-        if (_canDash) {
+        if (Input.GetButtonDown("Dash") &&_canDash) {
             _isDashing = true;
             //audio.PlayOneShot(dashSound);
             _canDash = false;

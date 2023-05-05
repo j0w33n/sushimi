@@ -6,7 +6,7 @@ using Terresquall;
 public class ShootingScript : MonoBehaviour
 {
     public Transform firept;
-    Player player;
+    LevelManager levelManager;
     public GameObject instprefab;
     private float nextinsttime;
     public float instrate;
@@ -14,15 +14,15 @@ public class ShootingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponentInParent<Player>();
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire1")) {
             Generate();
-        }*/
+        }
         transform.Rotate(0, 0, rotationspeed * VirtualJoystick.GetAxis("Horizontal", 1) * Time.deltaTime);
     }
     public void Generate() {
