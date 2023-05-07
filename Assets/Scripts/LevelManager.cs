@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public int enemieskilled;
     [SerializeField]int totalenemies = 0;
     public GameObject chest;
+    public int parts;
     // Start is called before the first frame update
     void Start()
     {

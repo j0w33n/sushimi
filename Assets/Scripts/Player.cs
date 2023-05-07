@@ -29,6 +29,7 @@ public class Player : Unit
         anim = GetComponent<Animator>();
         levelManager = FindObjectOfType<LevelManager>();
         respawnpoint = transform.position;
+        canMove = true;
     }
     // Update is called once per frame
     void Update()
@@ -69,6 +70,14 @@ public class Player : Unit
             TakeHit(collision.GetComponent<Trap>().damage);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
+        }
+        if(collision.GetComponent<Part>()) {
+            levelManager.parts += collision.GetComponent<Part>().partvalue;
+            Destroy(collision.gameObject);
+        }
+        if(collision.tag == "Health" && hitpoints != maxhitpoints) {
+            hitpoints += 1;
+            Destroy(collision.gameObject);
         }
     }
     // For player's immunity

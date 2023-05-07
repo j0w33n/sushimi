@@ -37,7 +37,7 @@ public class PauseScreen : MonoBehaviour {
     }
     public void BackToMainMenu() {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("MainMenu");
         //GameObject.FindGameObjectWithTag("Music")?.GetComponent<menumusic>().PlayMusic();
     }
 }

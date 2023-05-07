@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DestructibleObject : Unit
 {
+    public GameObject[] itemdrops;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class DestructibleObject : Unit
     {
         if (hitpoints <= 0) {
             Destroy(gameObject);
+            Instantiate(itemdrops[Random.Range(0, itemdrops.Length)], transform.position, transform.rotation);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {

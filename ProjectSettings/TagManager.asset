@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Projectile
   - Trigger
+  - Health
   layers:
   - Default
   - TransparentFX
