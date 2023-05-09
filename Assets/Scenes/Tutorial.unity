@@ -1111,7 +1111,7 @@ Transform:
   m_LocalScale: {x: 61.927696, y: 61.927696, z: 61.927696}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1119531954
 GameObject:
@@ -1322,7 +1322,7 @@ Transform:
   m_LocalScale: {x: 1, y: 19.638882, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &1228315892
 BoxCollider2D:
@@ -1625,7 +1625,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6970421036898187108, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187108, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2175,6 +2175,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 162d2ad8c8f85534d841bd31f2b613fd, type: 3}
+--- !u!1 &2039217589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7521543886796448974, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
+  m_PrefabInstance: {fileID: 7685911967694541654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2041760494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,7 +2570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728081172701195318, guid: 46d8c213d9f1eb54f97463d0abcc1722, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3728081172701195318, guid: 46d8c213d9f1eb54f97463d0abcc1722, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2615,6 +2620,10 @@ PrefabInstance:
       propertyPath: waves
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3728081172701195319, guid: 46d8c213d9f1eb54f97463d0abcc1722, type: 3}
+      propertyPath: partcount
+      value: 
+      objectReference: {fileID: 2039217589}
     - target: {fileID: 3728081172701195319, guid: 46d8c213d9f1eb54f97463d0abcc1722, type: 3}
       propertyPath: mobileui.Array.size
       value: 3
@@ -2864,12 +2873,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 730953093840313572, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 730953093840313572, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 730953093840313572, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2054183489}
     - target: {fileID: 730953093840313572, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 730953093840313572, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Dash
+      objectReference: {fileID: 0}
+    - target: {fileID: 730953093840313572, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Player, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 730953093840313572, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7685911968348117412, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_AnchorMax.y

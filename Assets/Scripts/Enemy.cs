@@ -73,7 +73,7 @@ public class Enemy : Unit
         gameObject.SetActive(false);
         if(spawned) levelManager.enemieskilled += 1;
         for(int i = 0; i < Random.Range(1, dropamt + 1); i++) {
-            Instantiate(itemdrops[Random.Range(0, itemdrops.Length)],transform.localPosition += new Vector3(Random.Range(-transform.position.x,transform.position.x),0,0),transform.rotation);
+            Instantiate(itemdrops[Random.Range(0, itemdrops.Length)],transform.position,transform.rotation);
         }
     }
 }

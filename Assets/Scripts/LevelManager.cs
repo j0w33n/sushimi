@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class LevelManager : MonoBehaviour
     public int waves;
     public int enemieskilled;
     [SerializeField]int totalenemies = 0;
-    public GameObject chest;
+    public GameObject chest, partcount;
     public int parts;
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        partcount.GetComponent<Text>().text = ":" + parts.ToString();
         if (enemieskilled == totalenemies && waves > 0) {
             wavecomplete = true;
             waves -= 1;

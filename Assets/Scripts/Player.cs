@@ -35,10 +35,10 @@ public class Player : Unit
     void Update()
     {
         if (canMove) {
-            movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
-            movement.y = VirtualJoystick.GetAxis("Vertical", 0);
-            //movement.x = Input.GetAxisRaw("Horizontal");
-            //movement.y = Input.GetAxisRaw("Vertical");
+            //movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+            //movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
         }
         anim.SetFloat("Horizontal",Mathf.Sign(movement.x));
         anim.SetFloat("Vertical",Mathf.Sign(movement.y));
@@ -53,7 +53,6 @@ public class Player : Unit
             hitpoints = maxhitpoints;
             transform.localRotation = Quaternion.identity;
         }
-        Dash();
     }
     private void FixedUpdate() {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -94,7 +93,7 @@ public class Player : Unit
         rb.velocity = Vector2.zero;
     }
     public void Dash() {
-        if (/*Input.GetButtonDown("Dash") &&*/_canDash) {
+        if (_canDash) {
             _isDashing = true;
             //audio.PlayOneShot(dashSound);
             _canDash = false;
