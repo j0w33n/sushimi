@@ -386,8 +386,8 @@ MonoBehaviour:
   spawned: 0
   itemdrops:
   - {fileID: 3587237261951397024, guid: 4fbd5160a237eef4d8630fbb4b41403f, type: 3}
-  - {fileID: 3707441357454998247, guid: 82aa1160c94a1d94896a8710e6746419, type: 3}
   - {fileID: 3587237261951397024, guid: 4fbd5160a237eef4d8630fbb4b41403f, type: 3}
+  dropamt: 3
 --- !u!1 &8734887222550861151
 GameObject:
   m_ObjectHideFlags: 0

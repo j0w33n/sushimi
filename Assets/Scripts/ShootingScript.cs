@@ -11,6 +11,7 @@ public class ShootingScript : MonoBehaviour
     private float nextinsttime;
     public float instrate;
     public float rotationspeed = 180;
+    public Vector2 joystickposition;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,14 +21,16 @@ public class ShootingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) {
+        joystickposition = new Vector2(VirtualJoystick.GetAxis("Horizontal", 1), VirtualJoystick.GetAxis("Vertical", 1));
+        if (joystickposition.magnitude > 0.1f) {
             Generate();
         }
-        transform.Rotate(0, 0, rotationspeed * VirtualJoystick.GetAxis("Horizontal", 1) * Time.deltaTime);
+        // we want to rotate around the z-axis according to the right joystick's position
+        //transform.Rotate(0, 0, joystickposition.);
     }
     public void Generate() {
         if (Time.time < nextinsttime) return;
-        Instantiate(instprefab, transform.position, transform.rotation);
+        Instantiate(instprefab, transform.position, Quaternion.identity);
         nextinsttime = Time.time + instrate;
     }
 }

@@ -8,13 +8,15 @@ public class ProjectileScript : MonoBehaviour
     public float speed;
     public float damage = 1;
     public float projectilelife;
+    private ShootingScript shootingScript;
     //public float splashRange = 1; //we gonna add aoe as buff after clearing some stages
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right * speed;
+        shootingScript = FindObjectOfType<ShootingScript>();
+        rb.velocity = shootingScript.joystickposition.normalized * speed;
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         /*if(splashRange > 0)  //use gizmos?

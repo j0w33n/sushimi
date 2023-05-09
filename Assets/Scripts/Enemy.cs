@@ -15,8 +15,7 @@ public class Enemy : Unit
     public bool canMove;
     public bool spawned;
     public GameObject[] itemdrops;
-    //[SerializeField] private float thrust;
-
+    public int dropamt;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +72,8 @@ public class Enemy : Unit
         yield return new WaitForSeconds(.25f);
         gameObject.SetActive(false);
         if(spawned) levelManager.enemieskilled += 1;
-        Instantiate(itemdrops[Random.Range(0, itemdrops.Length)],transform.position,transform.rotation);
+        for(int i = 0; i < Random.Range(1, dropamt + 1); i++) {
+            Instantiate(itemdrops[Random.Range(0, itemdrops.Length)],transform.localPosition += new Vector3(Random.Range(-transform.position.x,transform.position.x),0,0),transform.rotation);
+        }
     }
 }
