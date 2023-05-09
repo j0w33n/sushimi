@@ -70,11 +70,12 @@ public class Player : Unit
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
-        if(collision.GetComponent<Part>()) {
+        if (collision.GetComponent<Part>())
+        {
             levelManager.parts += collision.GetComponent<Part>().partvalue;
             Destroy(collision.gameObject);
         }
-        if(collision.tag == "Health" && hitpoints != maxhitpoints) {
+        if (collision.tag == "Health" && hitpoints != maxhitpoints) {
             hitpoints += 1;
             Destroy(collision.gameObject);
         }
