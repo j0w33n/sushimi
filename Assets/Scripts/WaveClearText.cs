@@ -16,6 +16,7 @@ public class WaveClearText : MonoBehaviour
         levelManager = FindObjectOfType<LevelManager>();
         anim = GetComponent<Animator>();
         activetime = ogactivetime;
+        gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -23,14 +24,15 @@ public class WaveClearText : MonoBehaviour
     {
         anim.SetBool("Wave", wave);
         anim.SetFloat("Active", activetime);
-        if (levelManager.wavecomplete) {
+        //if (!levelManager.currentroom.GetComponent<Room>().roomstart) return;
+        if (levelManager.wavecomplete && levelManager.waves != 0) {
             wave = true;
             activetime -= Time.deltaTime;
             if (activetime <= 0) {
                 StartCoroutine(WaitForAnim());
             }
         }
-        else if(levelManager.waves == 0) {
+        else if(!levelManager.currentroom.GetComponent<Room>().roomstart && levelManager.wavecomplete) {
             gameObject.GetComponent<Text>().text = "ROOM CLEAR";
             wave = true;
             activetime -= Time.deltaTime;
@@ -48,6 +50,7 @@ public class WaveClearText : MonoBehaviour
     IEnumerator RoomClear() {
         wave = false;
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        levelManager.wavecomplete = false;
         gameObject.SetActive(false);
     }
 }

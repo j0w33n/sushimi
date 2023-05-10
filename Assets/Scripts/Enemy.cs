@@ -71,7 +71,7 @@ public class Enemy : Unit
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(.25f);
         gameObject.SetActive(false);
-        if(spawned) levelManager.enemieskilled += 1;
+        if(spawned) levelManager.enemieskilled += 1; levelManager.totalenemieskilled += 1;
         for(int i = 0; i < Random.Range(1, dropamt + 1); i++) {
             Instantiate(itemdrops[Random.Range(0, itemdrops.Length)],transform.position,transform.rotation);
         }

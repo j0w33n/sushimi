@@ -14,7 +14,9 @@ public class UpgradePanel : MonoBehaviour
         upgrade2 = upgradepool[Random.Range(0, upgradepool.Count)];
         upgrade3 = upgradepool[Random.Range(0, upgradepool.Count)];
     }
-
+    public void ClosePanel() {
+        gameObject.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {
