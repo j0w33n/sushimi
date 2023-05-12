@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseScreen : MonoBehaviour {
     public Player player;
     public LevelManager levelManager;
-    public GameObject pausescreen;
+    public GameObject pausescreen,settingsscreen;
     // Start is called before the first frame update
     void Start() {
         player = FindObjectOfType<Player>();
@@ -15,13 +15,7 @@ public class PauseScreen : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        /*if (Input.GetButtonDown("Cancel")) {
-            if (Time.timeScale == 0) {
-                ResumeGame();
-            } else {
-                PauseGame();
-            }
-        }*/
+        
     }
     public void PauseGame() {
         //levelManager.levelmusic.Pause();
@@ -32,6 +26,7 @@ public class PauseScreen : MonoBehaviour {
     public void ResumeGame() {
         Time.timeScale = 1;
         pausescreen.SetActive(false);
+        settingsscreen.SetActive(false);
         player.canMove = true;
         //levelManager.levelmusic.UnPause();
     }
@@ -40,4 +35,16 @@ public class PauseScreen : MonoBehaviour {
         SceneManager.LoadScene("MainMenu");
         //GameObject.FindGameObjectWithTag("Music")?.GetComponent<menumusic>().PlayMusic();
     }
+    public void RestartLevel() {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void Settings() {
+        settingsscreen.SetActive(true);
+        pausescreen.SetActive(false);
+    }
+    /*public void Pause() {
+        settingsscreen.SetActive(false);
+        pausescreen.SetActive(true);
+    }*/
 }

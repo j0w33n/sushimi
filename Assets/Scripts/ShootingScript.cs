@@ -10,18 +10,20 @@ public class ShootingScript : MonoBehaviour
     public GameObject projectileprefab;
     private float nextfiretime;
     public float firerate;
-    public float rotationspeed = 180;
     [HideInInspector]public Vector2 joystickposition;
     [SerializeField]private int ammo;
     public int maxammo;
     public float reloadspeed;
     private bool isreloading = false;
+    private AudioSource audio;
+    public AudioClip shootsound;
     // Start is called before the first frame update
     void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
         ammo = maxammo;
         levelManager.ammobar.maxValue = maxammo;
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,6 +45,7 @@ public class ShootingScript : MonoBehaviour
     public void Fire() {
         if (Time.time < nextfiretime) return;
         Instantiate(projectileprefab, transform.position, Quaternion.identity);
+        audio.PlayOneShot(shootsound);
         ammo--;
         nextfiretime = Time.time + firerate;
     }

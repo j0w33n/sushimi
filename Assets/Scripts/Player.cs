@@ -35,13 +35,13 @@ public class Player : Unit
     void Update()
     {
         if (canMove) {
-            //movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
-            //movement.y = VirtualJoystick.GetAxis("Vertical", 0);
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
+            movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+            movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+            //movement.x = Input.GetAxisRaw("Horizontal");
+            //movement.y = Input.GetAxisRaw("Vertical");
         }
-        anim.SetFloat("Horizontal",Mathf.Sign(movement.x));
-        anim.SetFloat("Vertical",Mathf.Sign(movement.y));
+        anim.SetFloat("Horizontal",movement.x);
+        anim.SetFloat("Vertical",movement.y);
         anim.SetFloat("Speed", movement.magnitude);
 
         //anim.SetBool("IsDashing", _isDashing);
