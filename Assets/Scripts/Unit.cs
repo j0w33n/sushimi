@@ -13,6 +13,9 @@ public class Unit : MonoBehaviour
     public Color damageFeedbackColor;
     public Color originalColor;
     public SpriteRenderer sr;
+    public AudioClip hitsound;
+    public GameObject bloodvfx;
+    public bool canMove;
     // Start is called before the first frame update
     public void TakeHit(float damage) {
         hitpoints -= damage;

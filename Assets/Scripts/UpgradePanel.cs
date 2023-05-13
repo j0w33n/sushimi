@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class UpgradePanel : MonoBehaviour
 {
     public List<GameObject> upgradepool;
-    public GameObject upgrade1,upgrade2,upgrade3;
+    public Button[] upgrades;
     // Start is called before the first frame update
     void Start()
     {
-        upgrade1 = upgradepool[Random.Range(0, upgradepool.Count)];
-        upgrade2 = upgradepool[Random.Range(0, upgradepool.Count)];
-        upgrade3 = upgradepool[Random.Range(0, upgradepool.Count)];
+        for(int i = 0; i < 3; i++) {
+            upgrades[i] = upgradepool[Random.Range(0, upgradepool.Count)].GetComponent<Button>();
+        }
     }
     public void ClosePanel() {
         gameObject.SetActive(false);

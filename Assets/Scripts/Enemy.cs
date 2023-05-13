@@ -12,10 +12,10 @@ public class Enemy : Unit
     private Vector2 movement;
     LevelManager levelManager;
     public Transform spawner;
-    public bool canMove;
     public bool spawned;
     public GameObject[] itemdrops;
     public int dropamt;
+    private AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +25,7 @@ public class Enemy : Unit
         hitpoints = maxhitpoints;
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
+        audio = GetComponent<AudioSource>();
         gameObject.GetComponentInChildren<Canvas>().worldCamera = FindObjectOfType<Camera>();
     }
 
@@ -58,6 +59,7 @@ public class Enemy : Unit
         {
             //Destroy(collision.gameObject);
             TakeHit(collision.GetComponent<ProjectileScript>().damage);
+            audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             if (floatingTextPrefab)
             {
@@ -71,7 +73,8 @@ public class Enemy : Unit
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(.25f);
         gameObject.SetActive(false);
-        if(spawned) levelManager.enemieskilled += 1; levelManager.totalenemieskilled += 1;
+        Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
+        if (spawned) levelManager.enemieskilled += 1; levelManager.totalenemieskilled += 1;
         for(int i = 0; i < Random.Range(1, dropamt + 1); i++) {
             Instantiate(itemdrops[Random.Range(0, itemdrops.Length)],transform.position,transform.rotation);
         }

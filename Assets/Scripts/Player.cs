@@ -9,6 +9,7 @@ public class Player : Unit
     public Rigidbody2D rb;
     private Vector2 movement;
     private AudioSource audio;
+    public AudioClip dashsound;
     public Animator anim;
     [Header("Dash")]
     [SerializeField] private float _dashingVelocity = 20f; //dash speed
@@ -21,7 +22,6 @@ public class Player : Unit
     private LevelManager levelManager;
     public Vector3 respawnpoint;
     public bool dead;
-    public bool canMove;
     void Start() {
         hitpoints = maxhitpoints;
         originalColor = sr.color;
@@ -35,10 +35,10 @@ public class Player : Unit
     void Update()
     {
         if (canMove) {
-            movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
-            movement.y = VirtualJoystick.GetAxis("Vertical", 0);
-            //movement.x = Input.GetAxisRaw("Horizontal");
-            //movement.y = Input.GetAxisRaw("Vertical");
+            //movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+            //movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
         }
         anim.SetFloat("Horizontal",movement.x);
         anim.SetFloat("Vertical",movement.y);
@@ -60,6 +60,7 @@ public class Player : Unit
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.GetComponent<Enemy>() && !dead) {
             TakeHit(collision.gameObject.GetComponent<Enemy>().damage);
+            audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
@@ -67,16 +68,19 @@ public class Player : Unit
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<Trap>()) {
             TakeHit(collision.GetComponent<Trap>().damage);
+            audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
         if (collision.GetComponent<Part>())
         {
             levelManager.parts += collision.GetComponent<Part>().partvalue;
+            audio.PlayOneShot(levelManager.partsound);
             Destroy(collision.gameObject);
         }
         if (collision.tag == "Health" && hitpoints != maxhitpoints) {
             hitpoints += 1;
+            audio.PlayOneShot(levelManager.healthsound);
             Destroy(collision.gameObject);
         }
     }
@@ -91,12 +95,15 @@ public class Player : Unit
         if (_isDashing) _isDashing = false;
     }
     public void Death() {
+        dead = true;
         rb.velocity = Vector2.zero;
+        Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
+        //audio.PlayOneShot(deathsound);
     }
     public void Dash() {
         if (_canDash) {
             _isDashing = true;
-            //audio.PlayOneShot(dashSound);
+            //audio.PlayOneShot(dashsound);
             _canDash = false;
             _dashingDir = movement.normalized;
         }

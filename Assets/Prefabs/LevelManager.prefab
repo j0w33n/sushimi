@@ -43,7 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371f92b20a5243e4d806234956e184ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyspawns: []
   waitToRespawn: 1
   wavecomplete: 0
   waves: 0
   enemieskilled: 0
+  totalenemieskilled: 0
+  totalenemies: 0
+  partcount: {fileID: 0}
+  parts: 0
+  roomscleared: 0
+  ammobar: {fileID: 0}
+  panel: {fileID: 0}
+  currentroom: {fileID: 0}
+  enemykillcount: {fileID: 0}
+  partsound: {fileID: 8300000, guid: 32a0078c232d82f47916652be8eedd7f, type: 3}
+  healthsound: {fileID: 8300000, guid: 8c396088c5e4be5478bf155cb1dd4138, type: 3}

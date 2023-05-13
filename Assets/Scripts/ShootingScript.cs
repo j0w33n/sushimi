@@ -11,7 +11,7 @@ public class ShootingScript : MonoBehaviour
     private float nextfiretime;
     public float firerate;
     [HideInInspector]public Vector2 joystickposition;
-    [SerializeField]private int ammo;
+    public int ammo;
     public int maxammo;
     public float reloadspeed;
     private bool isreloading = false;
