@@ -8,10 +8,13 @@ public class Upgrade : MonoBehaviour
     Player player;
     ShootingScript shooting;
     LevelManager levelManager;
+    public bool clicked;
     public void IncreaseFireRate(float value) {
+        clicked = true;
         shooting.firerate += value;
     }
     public void IncreaseHealth(float value) {
+        clicked = true;
         player.maxhitpoints += value;
         player.hitpoints = player.maxhitpoints;
         RectTransform rect = player.healthbar.fillRect.GetComponent<RectTransform>();
@@ -22,6 +25,7 @@ public class Upgrade : MonoBehaviour
         bg.sizeDelta = new Vector2(bg.sizeDelta.x + value, bg.sizeDelta.y);
     }
     public void IncreaseMaxAmmo(int value) {
+        clicked = true;
         shooting.maxammo += value;
         shooting.ammo = shooting.maxammo;
         RectTransform rect = levelManager.ammobar.fillRect.GetComponent<RectTransform>();
@@ -30,6 +34,9 @@ public class Upgrade : MonoBehaviour
         rect.sizeDelta = new Vector2(rect.sizeDelta.x + value * 2, rect.sizeDelta.y);
         fillarea.right = new Vector3(fillarea.right.x + value, fillarea.right.y, fillarea.right.z);
         bg.sizeDelta = new Vector2(bg.sizeDelta.x + value, bg.sizeDelta.y);
+    }
+    public void NotClicked() {
+        clicked = false;
     }
     // Start is called before the first frame update
     void Start()

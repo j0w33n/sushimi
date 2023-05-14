@@ -8,7 +8,7 @@ public class Settings : MonoBehaviour
 {
 
     [SerializeField] AudioMixer audioMixer;
-    public Slider SFXSlider;
+    public Slider SFXSlider,musicSlider;
 
     private void Awake() {
         SFXSlider.onValueChanged.AddListener(SetSFXVolume);
@@ -16,8 +16,12 @@ public class Settings : MonoBehaviour
     void Start()
     {
         SFXSlider.value = PlayerPrefs.GetFloat("SFX Volume", 1f);
-        //audioMixer.SetFloat("volume", volume);
+        musicSlider.value = PlayerPrefs.GetFloat("Music Volume", 1f);
         //volumeSlider.value = volume;
+    }
+    private void OnDisable() {
+        PlayerPrefs.SetFloat("SFX Volume", SFXSlider.value);
+        PlayerPrefs.SetFloat("Music Volume", musicSlider.value);
     }
     public void SetSFXVolume(float volume)
     {
@@ -27,5 +31,8 @@ public class Settings : MonoBehaviour
         // Store the slider value in PlayerPrefs
 
     }
-
+    public void SetMusicVolume(float volume) {
+        audioMixer.SetFloat("Music Volume", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("Music Volume", musicSlider.value);
+    }
 }

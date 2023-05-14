@@ -20,7 +20,6 @@ public class LevelManager : MonoBehaviour
     public GameObject panel, currentroom;
     public Text enemykillcount;
     public AudioClip partsound, healthsound;
-    public Button dashbutton;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +30,7 @@ public class LevelManager : MonoBehaviour
         foreach (var i in enemyspawns) {
             totalenemies += i.enemiestospawn[i.currentwave];
         }
+        FindObjectOfType<AudioManager>()?.StopMusic();
     }
 
     // Update is called once per frame
@@ -58,7 +58,6 @@ public class LevelManager : MonoBehaviour
                 panel.SetActive(true);
             }
         }
-        dashbutton.onClick.AddListener(player.Dash);
     }
     public void Respawn() {
         StartCoroutine(RespawnCo());
