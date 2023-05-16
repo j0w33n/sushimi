@@ -72,12 +72,12 @@ public class Player : Unit
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
-        if (collision.GetComponent<Part>())
-        {
-            levelManager.parts += collision.GetComponent<Part>().partvalue;
-            audio.PlayOneShot(levelManager.partsound);
-            Destroy(collision.gameObject);
-        }
+        //if (collision.GetComponent<Part>())
+        //{
+        //    levelManager.parts += collision.GetComponent<Part>().partvalue;
+        //    audio.PlayOneShot(levelManager.partsound);
+        //    Destroy(collision.gameObject);
+        //}
         if (collision.tag == "Health" && hitpoints != maxhitpoints) {
             hitpoints += 1;
             audio.PlayOneShot(levelManager.healthsound);
