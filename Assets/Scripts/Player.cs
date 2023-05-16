@@ -67,7 +67,7 @@ public class Player : Unit
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<Trap>()) {
-            TakeHit(collision.GetComponent<Trap>().damage);
+            //TakeHit(collision.GetComponent<Trap>().damage);
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());

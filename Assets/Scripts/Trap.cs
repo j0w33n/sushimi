@@ -16,4 +16,19 @@ public class Trap : MonoBehaviour
     {
         
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Player p = other.GetComponent<Player>();
+        if (!p) return;
+
+        if(other is BoxCollider2D)
+        {
+            p.TakeHit(damage);
+        }
+        else if(other is CircleCollider2D)
+        {
+
+        }
+    }
 }
