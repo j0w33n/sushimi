@@ -15,16 +15,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField]int totalenemies = 0;
     public GameObject partcount;
     public int parts;
-    public int roomscleared;
-    public Slider ammobar;
+    public Slider ammobar, enemykillcount;
     public GameObject panel, currentroom;
-    public Text enemykillcount;
     public AudioClip partsound, healthsound;
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
-        foreach(GameObject i in currentroom.GetComponent<Room>().enemyspawns) {
+        foreach(GameObject i in currentroom.GetComponent<Room>().myenemyspawns) {
             enemyspawns.Add(i.GetComponent<EnemySpawner>());
         }
         foreach (var i in enemyspawns) {
@@ -37,26 +35,28 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         partcount.GetComponent<Text>().text = ":" + parts.ToString();
-        enemykillcount.text = "Enemies killed: " + totalenemieskilled;
+        enemykillcount.value = totalenemieskilled;
         if (currentroom.GetComponent<Room>().roomstart) {
-            if (enemieskilled == totalenemies && waves >= 0) {
+            if (enemieskilled == totalenemies) {
                 wavecomplete = true;
-                waves -= 1;
-                enemieskilled = 0;
-                totalenemies = 0;
-                foreach (var i in enemyspawns) {
-                    i.currentwave += 1;
-                    totalenemies += i.enemiestospawn[i.currentwave];
-                    i.enemiesspawned = 0;
+                if(waves > 0) {
+                    waves -= 1;
+                    enemieskilled = 0;
+                    totalenemies = 0;
+                    foreach (var i in enemyspawns) {
+                        i.currentwave += 1;
+                        totalenemies += i.enemiestospawn[i.currentwave];
+                        i.enemiesspawned = 0;
+                    }
                 }
             }
             if (waves == 0 && currentroom.GetComponent<Room>().roomstart) {
-                roomscleared += 1;
                 currentroom.GetComponent<Room>().roomstart = false;
             }
-            if (waves == 0 && roomscleared % 3 == 0) {
-                panel.SetActive(true);
-            }
+        }
+        if(totalenemieskilled == 1) {
+            panel.GetComponent<UpgradePanel>().active= true;
+            totalenemieskilled = 0;
         }
     }
     public void Respawn() {

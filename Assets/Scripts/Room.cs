@@ -6,7 +6,7 @@ public class Room : MonoBehaviour
 {
     public int roomwaves, roomnum;
     public bool roomstart;
-    public GameObject[] enemyspawns;
+    public GameObject[] myenemyspawns;
     public GameObject exit;
     Player player;
     LevelManager levelManager;
@@ -31,9 +31,9 @@ public class Room : MonoBehaviour
         roomstart = true;
         levelManager.waves = roomwaves;
         levelManager.currentroom = gameObject;
-        for (int i = 0; i < enemyspawns.Length; i++) {
-            enemyspawns[i].SetActive(true);
-            enemyspawns[i].GetComponent<EnemySpawner>().canSpawn = true;
+        for (int i = 0; i < myenemyspawns.Length; i++) {
+            myenemyspawns[i].SetActive(true);
+            myenemyspawns[i].GetComponent<EnemySpawner>().canSpawn = true;
         }
         player.respawnpoint = transform.position;
         exit.SetActive(true);

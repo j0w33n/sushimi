@@ -52,7 +52,7 @@ public class ShootingScript : MonoBehaviour
     public IEnumerator Reload() {
         isreloading = true;
         while(ammo < maxammo) {
-            yield return new WaitForSeconds(reloadspeed);
+            yield return new WaitForSeconds(reloadspeed / maxammo);
             ammo++;
         }
         isreloading = false;

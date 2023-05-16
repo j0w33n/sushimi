@@ -12,7 +12,7 @@ public class Part : MonoBehaviour , ICollectible
 
     bool hasTarget;
     Vector3 targetPosition;
-    float moveSpeed = 5f;
+    public float moveSpeed;
     // Start is called before the first frame update
     void Start()
     {

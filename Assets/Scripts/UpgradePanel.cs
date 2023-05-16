@@ -7,19 +7,16 @@ public class UpgradePanel : MonoBehaviour
 {
     public List<GameObject> upgradepool;
     public Button[] upgrades;
+    Animator anim;
+    public bool active;
     // Start is called before the first frame update
     void Start()
     {
         for(int i = 0; i < 3; i++) {
             upgrades[i] = upgradepool[Random.Range(0, upgradepool.Count)].GetComponent<Button>();
         }
+        anim = GetComponent<Animator>();
         SetUpgrades();
-    }
-    public void ClosePanel() {
-        gameObject.SetActive(false);
-        foreach(Button i in upgrades) {
-            i.interactable = true;
-        }
     }
     void SetUpgrades() {
         Button upgrade1 = Instantiate(upgrades[0]);
@@ -28,7 +25,6 @@ public class UpgradePanel : MonoBehaviour
         upgrade1.GetComponent<RectTransform>().anchorMax = new Vector2(0f,0.5f);
         upgrade1.GetComponent<RectTransform>().localPosition = new Vector3(150, 0, 0);
         upgrade1.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        upgrade1.interactable = true;
 
         Button upgrade2 = Instantiate(upgrades[1]);
         upgrade2.transform.SetParent(transform);
@@ -49,17 +45,6 @@ public class UpgradePanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (upgrades[0].GetComponent<Upgrade>().clicked) {
-            upgrades[1].interactable = false;
-            upgrades[2].interactable = false;
-        }
-        else if (upgrades[1].GetComponent<Upgrade>().clicked) {
-            upgrades[0].interactable = false;
-            upgrades[2].interactable = false;
-        }
-        else if (upgrades[2].GetComponent<Upgrade>().clicked) {
-            upgrades[1].interactable = false;
-            upgrades[0].interactable = false;
-        }
+        anim.SetBool("Active", active);
     }
 }
