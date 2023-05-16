@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
                 currentroom.GetComponent<Room>().roomstart = false;
             }
         }
-        if(totalenemieskilled == 1) {
+        if(totalenemieskilled == 25) {
             panel.GetComponent<UpgradePanel>().active= true;
             totalenemieskilled = 0;
         }

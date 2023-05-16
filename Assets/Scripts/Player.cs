@@ -34,7 +34,7 @@ public class Player : Unit
     // Update is called once per frame
     void Update()
     {
-        if (canMove) {
+        if (canMove && !_isDashing) {
             //movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
             //movement.y = VirtualJoystick.GetAxis("Vertical", 0);
             movement.x = Input.GetAxisRaw("Horizontal");
