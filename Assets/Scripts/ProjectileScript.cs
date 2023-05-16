@@ -41,6 +41,10 @@ public class ProjectileScript : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+            if(collision.GetComponent<Player>() && gameObject.GetComponent<BossBullet>())
+        {
+            Destroy(gameObject);
+        }
     }
     // Update is called once per frame
     void Update()
