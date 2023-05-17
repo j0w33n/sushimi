@@ -8,50 +8,31 @@ public class ProjectileScript : MonoBehaviour
     public float speed;
     public float damage = 1;
     public float projectilelife;
-    private ShootingScript shootingScript;
+    private Weapon shootingScript;
     //public float splashRange = 1; //we gonna add aoe as buff after clearing some stages
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        shootingScript = FindObjectOfType<ShootingScript>();
-        rb.velocity = shootingScript.joystickposition.normalized * speed;
+        shootingScript = FindObjectOfType<Weapon>();
+        damage = 1;
+        Move();
     }
-    private void OnTriggerEnter2D(Collider2D collision) {
-        /*if(splashRange > 0)  //use gizmos?
-        {
-            var hitColliders = Physics2D.OverlapCircleAll(transform.position, splashRange);
-            foreach (var hitCollider in hitColliders)
-            {
-                var enemy = hitCollider.GetComponent<Enemy>();
-                if (enemy)
-                {
-                    var closestPoint = hitCollider.ClosestPoint(transform.position);
-                    var distance = Vector3.Distance(closestPoint, transform.position);
-
-                    var damagePercent = Mathf.InverseLerp(splashRange, 0, distance);
-                    enemy.TakeHit(damagePercent * damage);
-                }
-            }
-        }
-        else
-        {*/
-            if (collision.GetComponent<Enemy>())
-            {
-                Destroy(gameObject);
-            }
-            if(collision.GetComponent<Player>() && gameObject.GetComponent<BossBullet>())
-        {
+    protected virtual void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.GetComponent<Enemy>()) {
             Destroy(gameObject);
         }
     }
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         Destroy(gameObject, projectilelife);
         Vector2 lookdir = shootingScript.joystickposition - rb.position;
         float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
+    }
+   public virtual void Move() {
+        rb.velocity = shootingScript.joystickposition.normalized * speed;
     }
 }

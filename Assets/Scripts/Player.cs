@@ -22,6 +22,9 @@ public class Player : Unit
     private LevelManager levelManager;
     public Vector3 respawnpoint;
     public bool dead;
+    public int currentweapon;
+    public List<Weapon> weapons;
+
     void Start() {
         hitpoints = maxhitpoints;
         originalColor = sr.color;
@@ -30,6 +33,8 @@ public class Player : Unit
         levelManager = FindObjectOfType<LevelManager>();
         respawnpoint = transform.position;
         canMove = true;
+        weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
+        SwitchWeapon(0);
     }
     // Update is called once per frame
     void Update()
@@ -103,7 +108,7 @@ public class Player : Unit
     public void Dash() {
         if (_canDash) {
             _isDashing = true;
-            //audio.PlayOneShot(dashsound);
+            audio.PlayOneShot(dashsound);
             _canDash = false;
             _dashingDir = movement.normalized;
         }
@@ -116,6 +121,13 @@ public class Player : Unit
         if (/*Mathf.Abs(movement.magnitude) > 0 &&*/ Time.time >= nextdashtime) { // checks if player is moving
             _canDash = true;
             nextdashtime = Time.time + _dashingTime;
+        }
+    }
+    public void SwitchWeapon(int weaponnum) {
+        currentweapon = weaponnum;
+        foreach(var i in weapons) {
+            i.gameObject.SetActive(false);
+            weapons[currentweapon].gameObject.SetActive(true);
         }
     }
 }

@@ -14,19 +14,17 @@ public class Part : MonoBehaviour , ICollectible
     Vector3 targetPosition;
     public float moveSpeed;
     LevelManager levelManager;
-    AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         levelManager = FindObjectOfType<LevelManager>();
-        audio = GetComponent<AudioSource>();
         partvalue = UnityEngine.Random.Range(1, 4);
     }
     public void Collect()
     {
         levelManager.parts += partvalue;
-        audio.PlayOneShot(levelManager.partsound);
+        levelManager.audio.PlayOneShot(levelManager.partsound);
         Destroy(gameObject);
         OnPartCollected?.Invoke();
     }

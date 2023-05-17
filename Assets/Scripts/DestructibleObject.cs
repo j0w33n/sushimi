@@ -24,7 +24,10 @@ public class DestructibleObject : Unit
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<ProjectileScript>()) {
+        if (collision.GetComponent<ExplodingProjectile>()) {
+            TakeHit(collision.GetComponent<ExplodingProjectile>().damage);
+        }
+        else if (collision.GetComponent<ProjectileScript>()) {
             TakeHit(collision.GetComponent<ProjectileScript>().damage);
             StartCoroutine(DamageFeedback());
         }

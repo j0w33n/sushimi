@@ -152,22 +152,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5215894420594247191}
-          m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
-          m_MethodName: NotClicked
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0.2
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &5215894420594247191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0f1d4c1dee17948a1c337bcdfcd85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
 --- !u!1 &6492735301163828792
 GameObject:
   m_ObjectHideFlags: 0

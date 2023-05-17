@@ -55,14 +55,33 @@ public class Enemy : Unit
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<ProjectileScript>())
+        if (collision.GetComponent<SlowingProjectile>())
         {
-            //Destroy(collision.gameObject);
-            TakeHit(collision.GetComponent<ProjectileScript>().damage);
+            movespeed *= collision.GetComponent<SlowingProjectile>().slowfactor;
+            TakeHit(collision.GetComponent<SlowingProjectile>().damage);
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             if (floatingTextPrefab)
             {
+                var floatingtext = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+                floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
+            }
+        }
+        else if (collision.GetComponent<ExplodingProjectile>()) {
+            TakeHit(collision.GetComponent<ExplodingProjectile>().damage);
+            audio.PlayOneShot(hitsound);
+            StartCoroutine(DamageFeedback());
+            if (floatingTextPrefab) {
+                var floatingtext = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+                floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
+            }
+        }
+        else if (collision.GetComponent<ProjectileScript>()) {
+            
+            TakeHit(collision.GetComponent<ProjectileScript>().damage);
+            audio.PlayOneShot(hitsound);
+            StartCoroutine(DamageFeedback());
+            if (floatingTextPrefab) {
                 var floatingtext = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
                 floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
             }

@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     public Slider ammobar, enemykillcount;
     public GameObject panel, currentroom;
     public AudioClip partsound, healthsound;
+    public AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class LevelManager : MonoBehaviour
             totalenemies += i.enemiestospawn[i.currentwave];
         }
         FindObjectOfType<AudioManager>()?.StopMusic();
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

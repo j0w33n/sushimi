@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8445004620843909238}
   - component: {fileID: 1348348546881219331}
   m_Layer: 5
-  m_Name: Increase Max Ammo
+  m_Name: Slowing Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,8 +154,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8445004620843909238}
           m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
-          m_MethodName: IncreaseMaxAmmo
-          m_Mode: 3
+          m_MethodName: SlowingBullets
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -242,4 +242,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Increase max ammo
+  m_Text: Bullets slow down enemies

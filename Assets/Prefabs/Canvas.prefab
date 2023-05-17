@@ -1523,6 +1523,10 @@ MonoBehaviour:
   - {fileID: 920011119867529224, guid: 3c80ef532538fbd47b6bb13da8caf58a, type: 3}
   - {fileID: 1254988628402144695, guid: 1dc8dd0b1e1b4e6458d5b89354abf314, type: 3}
   - {fileID: 3328220233158758940, guid: 875ae95be6d6c384eb016b0ca685f660, type: 3}
+  - {fileID: 3328220233158758940, guid: 1b6e63205e3b35a4a8403d68796d65bb, type: 3}
+  - {fileID: 3328220233158758940, guid: 09a2faa2c1dff7b4bb8ce8cbf6ae6f35, type: 3}
+  - {fileID: 3328220233158758940, guid: cfa73f1af578e6c428cda08450ead1c6, type: 3}
+  - {fileID: 3328220233158758940, guid: e92421c02b6882f42b566de99365e7fd, type: 3}
   upgrades:
   - {fileID: 0}
   - {fileID: 0}

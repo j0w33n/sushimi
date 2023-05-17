@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Terresquall;
 
-public class ShootingScript : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
     public Transform firept;
     LevelManager levelManager;
-    public GameObject projectileprefab;
-    private float nextfiretime;
+    public GameObject projectileprefab,slowingprojectile,explodingprojectile;
+    protected float nextfiretime;
     public float firerate;
     [HideInInspector]public Vector2 joystickposition;
     public int ammo;
     public int maxammo;
     public float reloadspeed;
     private bool isreloading = false;
-    private AudioSource audio;
-    public AudioClip shootsound;
+    protected AudioSource audio;
+    public AudioClip normalshootsound,slowshootsound,explodingshootsound;
+    public bool slow,explode;
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
         ammo = maxammo;
@@ -27,7 +28,7 @@ public class ShootingScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         levelManager.ammobar.value = ammo;
         joystickposition = new Vector2(VirtualJoystick.GetAxis("Horizontal", 1), VirtualJoystick.GetAxis("Vertical", 1));
@@ -42,13 +43,7 @@ public class ShootingScript : MonoBehaviour
             Fire();
         }
     }
-    public void Fire() {
-        if (Time.time < nextfiretime) return;
-        Instantiate(projectileprefab, transform.position,Quaternion.identity);
-        audio.PlayOneShot(shootsound);
-        ammo--;
-        nextfiretime = Time.time + firerate;
-    }
+    public abstract void Fire();
     public IEnumerator Reload() {
         isreloading = true;
         while(ammo < maxammo) {
