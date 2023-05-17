@@ -30,26 +30,6 @@ public class Player : Unit
         levelManager = FindObjectOfType<LevelManager>();
         respawnpoint = transform.position;
         canMove = true;
-        //for (int i = 1; i <= 100; i++)
-        //{
-        //    if (i % 3 == 0 && i % 5 == 0)
-        //    {
-        //        print("FizzBuzz");
-        //    }
-        //    else if (i % 3 == 0)
-        //    {
-        //        print("Fizz");
-        //    }
-        //    else if (i % 5 == 0)
-        //    {
-        //        print("Buzz");
-        //    }
-            
-        //    else
-        //    {
-        //        print(i);
-        //    }
-        //}
     }
     // Update is called once per frame
     void Update()
@@ -86,18 +66,18 @@ public class Player : Unit
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<Trap>()) {
+        if (collision.GetComponent<Trap>() && collision.IsTouching(GetComponent<BoxCollider2D>())) {
             //TakeHit(collision.GetComponent<Trap>().damage);
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
-        //if (collision.GetComponent<Part>())
-        //{
-        //    levelManager.parts += collision.GetComponent<Part>().partvalue;
-        //    audio.PlayOneShot(levelManager.partsound);
-        //    Destroy(collision.gameObject);
-        //}
+        /*if (collision.GetComponent<Part>())
+        {
+            levelManager.parts += collision.GetComponent<Part>().partvalue;
+            audio.PlayOneShot(levelManager.partsound);
+            Destroy(collision.gameObject);
+        }*/
         if (collision.tag == "Health" && hitpoints != maxhitpoints) {
             hitpoints += 1;
             audio.PlayOneShot(levelManager.healthsound);

@@ -44,7 +44,7 @@ public class ShootingScript : MonoBehaviour
     }
     public void Fire() {
         if (Time.time < nextfiretime) return;
-        Instantiate(projectileprefab, transform.position, Quaternion.identity);
+        Instantiate(projectileprefab, transform.position,Quaternion.identity);
         audio.PlayOneShot(shootsound);
         ammo--;
         nextfiretime = Time.time + firerate;

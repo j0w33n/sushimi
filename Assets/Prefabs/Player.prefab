@@ -1,5 +1,125 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &549983551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 549983552}
+  - component: {fileID: 549983553}
+  - component: {fileID: 549983554}
+  m_Layer: 0
+  m_Name: Magnet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &549983552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549983551}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2180945518612510688}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &549983553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549983551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f7f23b22fc9614da6207afcbae5527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &549983554
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549983551}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!1 &825968152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 825968153}
+  - component: {fileID: 825968154}
+  - component: {fileID: 825968155}
+  m_Layer: 0
+  m_Name: CollectorCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &825968153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825968152}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2180945518612510688}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &825968154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825968152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0a61337a84dd64b8cc06d98f60cd2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &825968155
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825968152}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.044433773, y: -0.7553754}
+  serializedVersion: 2
+  m_Radius: 0.3716358
 --- !u!1 &2180945518041862329
 GameObject:
   m_ObjectHideFlags: 0
@@ -49,8 +169,8 @@ MonoBehaviour:
   firerate: 0.6
   joystickposition: {x: 0, y: 0}
   ammo: 0
-  maxammo: 50
-  reloadspeed: 1
+  maxammo: 6
+  reloadspeed: 5
   shootsound: {fileID: 8300000, guid: 0d4eaa91cc990bd408248791e311b6cf, type: 3}
 --- !u!82 &9084037488342932570
 AudioSource:
@@ -182,6 +302,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2180945518041862330}
+  - {fileID: 825968153}
+  - {fileID: 549983552}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -278,7 +400,6 @@ MonoBehaviour:
   originalColor: {r: 1, g: 1, b: 1, a: 0}
   sr: {fileID: 2180945518612510623}
   hitsound: {fileID: 8300000, guid: 8793764baa4dbe8409eec0d747febbc5, type: 3}
-  deathsound: {fileID: 0}
   bloodvfx: {fileID: 5417647092004821054, guid: 0b8d298c8326243468a8127ebf076912, type: 3}
   canMove: 0
   moveSpeed: 5
@@ -286,7 +407,7 @@ MonoBehaviour:
   dashsound: {fileID: 8300000, guid: 2ecf86fb2eba76045a569e9525da7530, type: 3}
   anim: {fileID: 0}
   _dashingVelocity: 2
-  _dashingTime: 1
+  _dashingTime: 3
   immunityDuration: 0.75
   respawnpoint: {x: 0, y: 0, z: 0}
   dead: 0

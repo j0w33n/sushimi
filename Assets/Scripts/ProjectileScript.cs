@@ -50,5 +50,8 @@ public class ProjectileScript : MonoBehaviour
     void Update()
     {
         Destroy(gameObject, projectilelife);
+        Vector2 lookdir = shootingScript.joystickposition - rb.position;
+        float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = angle;
     }
 }
