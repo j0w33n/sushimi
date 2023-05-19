@@ -24,7 +24,7 @@ public class SceneController : MonoBehaviour {
     }
     public void MainMenu() {
         SceneManager.LoadScene("MainMenu");
-        FindObjectOfType<AudioManager>().PlayMusic();
+        FindObjectOfType<AudioManager>().PlayMusic(AudioManager.instance.menumusic);
     }
     public void Continue() {
 

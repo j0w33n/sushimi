@@ -7,7 +7,7 @@ public class Player : Unit
 {
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
-    private Vector2 movement;
+    public Vector2 movement;
     private AudioSource audio;
     public AudioClip dashsound;
     public Animator anim;
@@ -56,7 +56,6 @@ public class Player : Unit
             Death();
             levelManager.Respawn();
             hitpoints = maxhitpoints;
-            transform.localRotation = Quaternion.identity;
         }
     }
     private void FixedUpdate() {
@@ -85,7 +84,7 @@ public class Player : Unit
         }*/
         if (collision.tag == "Health" && hitpoints != maxhitpoints) {
             hitpoints += 1;
-            audio.PlayOneShot(levelManager.healthsound);
+            AudioManager.instance.PlaySFX(AudioManager.instance.healthsound);
             Destroy(collision.gameObject);
         }
     }

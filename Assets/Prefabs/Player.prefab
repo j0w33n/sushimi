@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 549983552}
   - component: {fileID: 549983553}
   - component: {fileID: 549983554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Magnet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 825968153}
   - component: {fileID: 825968154}
   - component: {fileID: 825968155}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CollectorCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,6 +411,7 @@ MonoBehaviour:
   canMove: 0
   moveSpeed: 5
   rb: {fileID: 2180945518612510690}
+  movement: {x: 0, y: 0}
   dashsound: {fileID: 8300000, guid: 2ecf86fb2eba76045a569e9525da7530, type: 3}
   anim: {fileID: 0}
   _dashingVelocity: 2

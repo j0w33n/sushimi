@@ -9,11 +9,20 @@ public class FadeIn : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         blackscreen = GetComponent<Image>();
-        blackscreen.CrossFadeAlpha(0f, fadetime, false);
-        Destroy(gameObject, fadetime);
+        StartCoroutine(Disappear());
     }
 
     // Update is called once per frame
     void Update() {
+    }
+    IEnumerator Disappear() {
+        blackscreen.CrossFadeAlpha(0f, fadetime, false);
+        yield return new WaitForSeconds(fadetime);
+        gameObject.SetActive(false);
+    }
+    public IEnumerator Appear() {
+        gameObject.SetActive(true);
+        yield return new WaitForSeconds(2);
+        blackscreen.CrossFadeAlpha(1f, 3, false);
     }
 }

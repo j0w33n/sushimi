@@ -7,7 +7,7 @@ public class Room : MonoBehaviour
     public int roomwaves, roomnum;
     public bool roomstart;
     public GameObject[] myenemyspawns;
-    public GameObject exit;
+    public GameObject exit,entrance;
     Player player;
     LevelManager levelManager;
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<Player>()) {
@@ -36,6 +36,7 @@ public class Room : MonoBehaviour
             myenemyspawns[i].GetComponent<EnemySpawner>().canSpawn = true;
         }
         player.respawnpoint = transform.position;
+        AudioManager.instance.PlaySFX(AudioManager.instance.exitsound);
         exit.SetActive(true);
         gameObject.SetActive(false);
     }  

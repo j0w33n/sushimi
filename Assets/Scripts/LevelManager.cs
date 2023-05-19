@@ -17,8 +17,8 @@ public class LevelManager : MonoBehaviour
     public int parts;
     public Slider ammobar, enemykillcount;
     public GameObject panel, currentroom;
-    public AudioClip partsound, healthsound;
-    public AudioSource audio;
+    public AudioClip levelmusic;
+    public string leveltoload;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +29,8 @@ public class LevelManager : MonoBehaviour
         foreach (var i in enemyspawns) {
             totalenemies += i.enemiestospawn[i.currentwave];
         }
+        AudioManager.instance.PlayMusic(levelmusic);
         FindObjectOfType<AudioManager>()?.StopMusic();
-        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,6 +54,8 @@ public class LevelManager : MonoBehaviour
             }
             if (waves == 0 && currentroom.GetComponent<Room>().roomstart) {
                 currentroom.GetComponent<Room>().roomstart = false;
+                currentroom.GetComponent<Room>().entrance.SetActive(false);
+                AudioManager.instance.PlaySFX(AudioManager.instance.entrancesound);
             }
         }
         if(totalenemieskilled == 25) {
