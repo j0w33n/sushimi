@@ -84,7 +84,7 @@ public class Player : Unit
         }*/
         if (collision.tag == "Health" && hitpoints != maxhitpoints) {
             hitpoints += 1;
-            AudioManager.instance.PlaySFX(AudioManager.instance.healthsound);
+            AudioManager.instance.PlaySFX(AudioManager.instance.healthSound);
             Destroy(collision.gameObject);
         }
     }

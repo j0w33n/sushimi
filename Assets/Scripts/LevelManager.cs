@@ -29,8 +29,7 @@ public class LevelManager : MonoBehaviour
         foreach (var i in enemyspawns) {
             totalenemies += i.enemiestospawn[i.currentwave];
         }
-        AudioManager.instance.PlayMusic(levelmusic);
-        FindObjectOfType<AudioManager>()?.StopMusic();
+        StartCoroutine(SwitchMusic(levelmusic));
     }
 
     // Update is called once per frame
@@ -55,7 +54,7 @@ public class LevelManager : MonoBehaviour
             if (waves == 0 && currentroom.GetComponent<Room>().roomstart) {
                 currentroom.GetComponent<Room>().roomstart = false;
                 currentroom.GetComponent<Room>().entrance.SetActive(false);
-                AudioManager.instance.PlaySFX(AudioManager.instance.entrancesound);
+                AudioManager.instance.PlaySFX(AudioManager.instance.entranceSound);
             }
         }
         if(totalenemieskilled == 25) {
@@ -74,5 +73,11 @@ public class LevelManager : MonoBehaviour
         player.gameObject.SetActive(true); // reactivates player
         player.transform.position = player.respawnpoint; // moves player to respawn point
         player.dead = false;
+    }
+   public static IEnumerator SwitchMusic(AudioClip music) {
+        AudioManager.instance.StopMusic();
+        yield return new WaitForEndOfFrame();
+        AudioManager.instance.BGMusic = music;
+        AudioManager.instance.PlayMusic(AudioManager.instance.BGMusic);
     }
 }

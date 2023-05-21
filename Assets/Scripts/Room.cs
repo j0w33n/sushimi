@@ -36,7 +36,7 @@ public class Room : MonoBehaviour
             myenemyspawns[i].GetComponent<EnemySpawner>().canSpawn = true;
         }
         player.respawnpoint = transform.position;
-        AudioManager.instance.PlaySFX(AudioManager.instance.exitsound);
+        AudioManager.instance.PlaySFX(AudioManager.instance.exitSound);
         exit.SetActive(true);
         gameObject.SetActive(false);
     }  

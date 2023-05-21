@@ -33,11 +33,12 @@ public class PauseScreen : MonoBehaviour {
     public void BackToMainMenu() {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
-        FindObjectOfType<AudioManager>().PlayMusic(AudioManager.instance.menumusic);
     }
     public void RestartLevel() {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //AudioManager.instance.PlayMusic(levelManager.levelmusic);
+        //levelManager.StartCoroutine(LevelManager.SwitchMusic(levelManager.levelmusic));
     }
     public void Settings() {
         settingsscreen.SetActive(true);

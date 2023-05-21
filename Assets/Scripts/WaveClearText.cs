@@ -54,7 +54,7 @@ public class WaveClearText : MonoBehaviour
         gameObject.SetActive(false);
     }
     void PlaySound() {
-        AudioManager.instance.PlaySFX(AudioManager.instance.waveclearsound);
+        AudioManager.instance.PlaySFX(AudioManager.instance.waveClearSound);
     }
    
 }

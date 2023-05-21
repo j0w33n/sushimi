@@ -43,6 +43,7 @@ public class EventTrigger : MonoBehaviour
         player.movement = Vector2.zero;
         yield return new WaitForSeconds(1);
         player.movement = new Vector2(1, player.movement.y) * player.rb.position.normalized;
+        //AudioManager.instance.PlayMusic(AudioManager.instance.winSound);
         yield return new WaitForSeconds(2);
         StartCoroutine(fade.Appear());
         yield return new WaitForSeconds(3);

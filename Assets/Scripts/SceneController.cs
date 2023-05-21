@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
+    public AudioClip menumusic;
     // Start is called before the first frame update
     void Start() {
-
+        StartCoroutine(LevelManager.SwitchMusic(menumusic));
     }
 
     // Update is called once per frame
@@ -24,7 +25,7 @@ public class SceneController : MonoBehaviour {
     }
     public void MainMenu() {
         SceneManager.LoadScene("MainMenu");
-        FindObjectOfType<AudioManager>().PlayMusic(AudioManager.instance.menumusic);
+        StartCoroutine(LevelManager.SwitchMusic(menumusic));
     }
     public void Continue() {
 

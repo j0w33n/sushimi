@@ -43,8 +43,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 2288907639506285920, guid: a24180d1ea82aca45b8742574dc9da4e, type: 2}
-  m_audioClip: {fileID: 8300000, guid: a60ca1f093386314d83f8c15e64b2192, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -142,14 +142,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: a24180d1ea82aca45b8742574dc9da4e, type: 2}
+  audio: {fileID: 2728961614589469277}
   sfxaudio: {fileID: 4627601206463890669}
-  partsound: {fileID: 8300000, guid: 32a0078c232d82f47916652be8eedd7f, type: 3}
-  healthsound: {fileID: 8300000, guid: 8c396088c5e4be5478bf155cb1dd4138, type: 3}
-  menumusic: {fileID: 8300000, guid: a60ca1f093386314d83f8c15e64b2192, type: 3}
-  waveclearsound: {fileID: 8300000, guid: 1dcea0c9d0dca3a468dd6f367e2f5083, type: 3}
-  reloadsound: {fileID: 8300000, guid: 8a46a35669e5e2f4c974557f89d34e8a, type: 3}
-  exitsound: {fileID: 8300000, guid: 75b075e9712a1a24cb8549536a6c6021, type: 3}
-  entrancesound: {fileID: 8300000, guid: 1675c7122a7f1534494b069b3b3affc0, type: 3}
+  partSound: {fileID: 8300000, guid: 32a0078c232d82f47916652be8eedd7f, type: 3}
+  healthSound: {fileID: 8300000, guid: 8c396088c5e4be5478bf155cb1dd4138, type: 3}
+  BGMusic: {fileID: 0}
+  waveClearSound: {fileID: 8300000, guid: 1dcea0c9d0dca3a468dd6f367e2f5083, type: 3}
+  reloadSound: {fileID: 8300000, guid: 8a46a35669e5e2f4c974557f89d34e8a, type: 3}
+  exitSound: {fileID: 8300000, guid: 75b075e9712a1a24cb8549536a6c6021, type: 3}
+  entranceSound: {fileID: 8300000, guid: 1675c7122a7f1534494b069b3b3affc0, type: 3}
+  impactSound: {fileID: 8300000, guid: bfe293d6430f08041aa7b391db6afe11, type: 3}
 --- !u!1 &7315256001631186733
 GameObject:
   m_ObjectHideFlags: 0

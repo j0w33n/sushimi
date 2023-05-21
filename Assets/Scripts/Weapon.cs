@@ -49,7 +49,7 @@ public abstract class Weapon : MonoBehaviour
         while(ammo < maxammo) {
             yield return new WaitForSeconds(reloadspeed / maxammo);
             ammo++;
-            AudioManager.instance.PlaySFX(AudioManager.instance.reloadsound);
+            AudioManager.instance.PlaySFX(AudioManager.instance.reloadSound);
         }
         isreloading = false;
     }

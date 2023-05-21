@@ -7,12 +7,11 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
     [SerializeField] AudioMixer mixer;
-    AudioSource audio;
+    [SerializeField]AudioSource audio;
     [SerializeField]AudioSource sfxaudio;
-    public AudioClip partsound, healthsound,menumusic,waveclearsound,reloadsound,exitsound,entrancesound;
+    public AudioClip partSound, healthSound,BGMusic,waveClearSound,reloadSound,exitSound,entranceSound,impactSound,winSound;
     private void Start() {
-        audio = GetComponent<AudioSource>();
-        PlayMusic(menumusic);
+        //PlayMusic(bgmusic);
     }
     private void Awake() {
         if(instance == null) {

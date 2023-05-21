@@ -24,7 +24,7 @@ public class Part : MonoBehaviour , ICollectible
     public void Collect()
     {
         levelManager.parts += partvalue;
-        AudioManager.instance.PlaySFX(AudioManager.instance.partsound);
+        AudioManager.instance.PlaySFX(AudioManager.instance.partSound);
         Destroy(gameObject);
         OnPartCollected?.Invoke();
     }
