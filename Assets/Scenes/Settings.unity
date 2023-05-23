@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6156984088727552104, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6314751474583748526, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -333,6 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720ad0cb8d496b447b2e1e036701e475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menumusic: {fileID: 8300000, guid: a60ca1f093386314d83f8c15e64b2192, type: 3}
 --- !u!1 &910263766
 GameObject:
   m_ObjectHideFlags: 0

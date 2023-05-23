@@ -461,4 +461,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83053f73d6958f44c9ebe895d0a4b6a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menumusic: {fileID: 8300000, guid: a60ca1f093386314d83f8c15e64b2192, type: 3}
   waittime: 26

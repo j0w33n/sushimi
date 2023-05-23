@@ -41,4 +41,10 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip) {
         sfxaudio.PlayOneShot(clip);
     }
+    public void ResumeMusic() {
+        audio.UnPause();
+    }
+    public void PauseMusic() {
+        audio.Pause();
+    }
 }
