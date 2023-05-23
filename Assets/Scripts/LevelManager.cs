@@ -22,6 +22,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        parts = PlayerPrefs.GetInt("Parts", 0);
+        totalenemieskilled = PlayerPrefs.GetInt("Total Enemies Killed", 0);
         StartCoroutine(SwitchMusic(levelmusic));
         player = FindObjectOfType<Player>();
         foreach(GameObject i in currentroom.GetComponent<Room>().myenemyspawns) {
@@ -53,7 +55,9 @@ public class LevelManager : MonoBehaviour
             }
             if (waves == 0 && currentroom.GetComponent<Room>().roomstart) {
                 currentroom.GetComponent<Room>().roomstart = false;
-                currentroom.GetComponent<Room>().entrance.SetActive(false);
+                foreach(var i in currentroom.GetComponent<Room>().entrance) {
+                    i.SetActive(false);
+                }
                 AudioManager.instance.PlaySFX(AudioManager.instance.entranceSound);
             }
         }
@@ -61,6 +65,8 @@ public class LevelManager : MonoBehaviour
             panel.GetComponent<UpgradePanel>().active= true;
             totalenemieskilled = 0;
         }
+        PlayerPrefs.SetInt("Parts", parts);
+        PlayerPrefs.SetInt("Total Enemies Killed", totalenemieskilled);
     }
     public void Respawn() {
         StartCoroutine(RespawnCo());

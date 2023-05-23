@@ -2201,6 +2201,14 @@ PrefabInstance:
       propertyPath: spawned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8287565039749020184, guid: 162d2ad8c8f85534d841bd31f2b613fd, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8287565039749020184, guid: 162d2ad8c8f85534d841bd31f2b613fd, type: 3}
+      propertyPath: movespeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8287565039749020186, guid: 162d2ad8c8f85534d841bd31f2b613fd, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2704,6 +2712,18 @@ PrefabInstance:
       propertyPath: roomwaves
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7368812090367344281, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
+      propertyPath: exit.Array.data[0]
+      value: 
+      objectReference: {fileID: 716473721}
+    - target: {fileID: 7368812090367344281, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
+      propertyPath: entrance.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368812090367344281, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
+      propertyPath: entrance.Array.data[0]
+      value: 
+      objectReference: {fileID: 944677960}
     - target: {fileID: 7368812090367344281, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: myenemyspawns.Array.size
       value: 2
