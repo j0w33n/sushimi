@@ -18,7 +18,7 @@ public class PauseScreen : MonoBehaviour {
         
     }
     public void PauseGame() {
-        //levelManager.levelmusic.Pause();
+        AudioManager.instance.PauseMusic();
         Time.timeScale = 0; // freeze game
         pausescreen.SetActive(true);
         player.canMove = false;
@@ -28,7 +28,7 @@ public class PauseScreen : MonoBehaviour {
         pausescreen.SetActive(false);
         settingsscreen.SetActive(false);
         player.canMove = true;
-        //levelManager.levelmusic.UnPause();
+        AudioManager.instance.ResumeMusic();
     }
     public void BackToMainMenu() {
         Time.timeScale = 1;
@@ -38,7 +38,7 @@ public class PauseScreen : MonoBehaviour {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //AudioManager.instance.PlayMusic(levelManager.levelmusic);
-        //levelManager.StartCoroutine(LevelManager.SwitchMusic(levelManager.levelmusic));
+        StartCoroutine(LevelManager.SwitchMusic(levelManager.levelmusic));
     }
     public void Settings() {
         settingsscreen.SetActive(true);

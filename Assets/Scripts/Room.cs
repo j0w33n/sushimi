@@ -7,7 +7,7 @@ public class Room : MonoBehaviour
     public int roomwaves, roomnum;
     public bool roomstart;
     public GameObject[] myenemyspawns;
-    public GameObject exit,entrance;
+    public GameObject[] exit,entrance;
     Player player;
     LevelManager levelManager;
     // Start is called before the first frame update
@@ -37,7 +37,9 @@ public class Room : MonoBehaviour
         }
         player.respawnpoint = transform.position;
         AudioManager.instance.PlaySFX(AudioManager.instance.exitSound);
-        exit.SetActive(true);
+        foreach(var i in exit) {
+            i.SetActive(true);
+        }
         gameObject.SetActive(false);
     }  
 }

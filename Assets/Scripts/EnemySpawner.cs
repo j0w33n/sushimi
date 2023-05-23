@@ -27,7 +27,6 @@ public class EnemySpawner : MonoBehaviour {
         
         if (canSpawn) {
             Spawn();
-            instprefab.GetComponent<Enemy>().canMove = true;
         }
         
     }
@@ -36,6 +35,7 @@ public class EnemySpawner : MonoBehaviour {
             if (Time.time < nextinsttime) return;
             Instantiate(instprefab, transform.position, transform.rotation);
             instprefab.GetComponent<Enemy>().spawned = true;
+            instprefab.GetComponent<Enemy>().canMove = true;
             instprefab.GetComponent<Enemy>().spawner = transform;
             nextinsttime = Time.time + instrate;
             enemiesspawned++;
