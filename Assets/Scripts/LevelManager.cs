@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(SwitchMusic(levelmusic));
         player = FindObjectOfType<Player>();
         foreach(GameObject i in currentroom.GetComponent<Room>().myenemyspawns) {
             enemyspawns.Add(i.GetComponent<EnemySpawner>());
@@ -29,7 +30,6 @@ public class LevelManager : MonoBehaviour
         foreach (var i in enemyspawns) {
             totalenemies += i.enemiestospawn[i.currentwave];
         }
-        StartCoroutine(SwitchMusic(levelmusic));
     }
 
     // Update is called once per frame

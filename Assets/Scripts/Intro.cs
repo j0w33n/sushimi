@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Intro : MonoBehaviour
 {
+    public AudioClip menumusic;
     public float waittime;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class Intro : MonoBehaviour
     }
     IEnumerator LoadScene() {
         yield return new WaitForSeconds(waittime);
+        StartCoroutine(LevelManager.SwitchMusic(menumusic));
         SceneManager.LoadScene("MainMenu");
     }
 }
