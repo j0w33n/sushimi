@@ -6079,6 +6079,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5015104739275126644, guid: a31487f65e7634a4e854c58e40118847, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.52489
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015104739275126644, guid: a31487f65e7634a4e854c58e40118847, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.1682
       objectReference: {fileID: 0}
@@ -6283,6 +6287,10 @@ PrefabInstance:
     - target: {fileID: 2438027404557208117, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: m_Name
       value: Level Starter Pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691976553146094009, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
+      propertyPath: _dashingVelocity
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5691976553529485324, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: currentroom
