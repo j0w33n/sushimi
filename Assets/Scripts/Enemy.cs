@@ -26,7 +26,7 @@ public class Enemy : Unit
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
         audio = GetComponent<AudioSource>();
-        gameObject.GetComponentInChildren<Canvas>().worldCamera = FindObjectOfType<Camera>();
+        transform.parent.GetComponentInChildren<Canvas>().worldCamera = FindObjectOfType<Camera>();
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class Enemy : Unit
         SetHealth(hitpoints, maxhitpoints);
     }
     private void FixedUpdate() {
-        if (canMove) Move(movement);
+        if (canMove) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 1, 0);
     }
     private void Move(Vector2 direction) {
         rb.MovePosition((Vector2)transform.position + (direction * movespeed * Time.deltaTime));
@@ -92,6 +92,7 @@ public class Enemy : Unit
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(.25f);
         gameObject.SetActive(false);
+        healthbar.gameObject.SetActive(false);
         Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
         if (spawned) levelManager.enemieskilled += 1; levelManager.totalenemieskilled += 1;
         for(int i = 0; i < Random.Range(1, dropamt + 1); i++) {

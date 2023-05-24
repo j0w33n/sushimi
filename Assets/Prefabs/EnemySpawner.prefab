@@ -43,13 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9f8181c4322fe48af258a697b0bceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: 0
-  maxhitpoints: 0
-  healthbar: {fileID: 0}
-  lowhealth: {r: 0, g: 0, b: 0, a: 0}
-  highhealth: {r: 0, g: 0, b: 0, a: 0}
-  damageFeedbackColor: {r: 0, g: 0, b: 0, a: 0}
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
-  sr: {fileID: 0}
-  instprefab: {fileID: 8287565039749020181, guid: 162d2ad8c8f85534d841bd31f2b613fd, type: 3}
+  enemiesspawned: 0
+  enemiestospawn: 
+  instprefab: {fileID: 2179498244207394342, guid: 3fbd3b369145add4a8edc6c7f58085d8, type: 3}
   instrate: 3
+  canSpawn: 0
+  currentwave: 0
