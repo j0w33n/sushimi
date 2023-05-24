@@ -16,16 +16,16 @@ public class DashMeter : MonoBehaviour
 
     void Update() {
 
-        /*float fillAmount = 1 - player.GetCurrentDashingCooldown() / player._dashingTime;
+       // dashBar.fillAmount = 1 - player.GetCurrentDashingCooldown() / player._dashingTime;
 
-        DashMeterFiller(fillAmount);
-        ColorChanger(fillAmount);*/
+        //DashMeterFiller(fillAmount);
+        //ColorChanger(fillAmount);
     }
-    void DashMeterFiller(float fillAmount) {
+    /*void DashMeterFiller(float fillAmount) {
 
         dashBar.fillAmount = fillAmount;
 
-    }
+    }*/
 
     void ColorChanger(float fillAmount) {
 

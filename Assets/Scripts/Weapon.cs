@@ -35,7 +35,7 @@ public abstract class Weapon : MonoBehaviour
         if (isreloading) {
             return;
         }
-        if (ammo <= 0) {
+        if (ammo < maxammo && joystickposition.magnitude < 0.1f) {
             StartCoroutine(Reload());
             return;
         }
