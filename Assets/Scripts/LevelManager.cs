@@ -73,6 +73,7 @@ public class LevelManager : MonoBehaviour
     }
     IEnumerator RespawnCo() {
         Physics2D.IgnoreLayerCollision(6, 7, false);
+        Physics2D.IgnoreLayerCollision(6, 8, false);
         yield return new WaitForSeconds(0.25f);
         player.gameObject.SetActive(false); // deactivates player
         yield return new WaitForSeconds(waitToRespawn); // how long to wait before respawning player

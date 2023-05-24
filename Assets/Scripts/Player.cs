@@ -70,7 +70,7 @@ public class Player : Unit
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<Trap>() && collision.IsTouching(GetComponent<BoxCollider2D>())) {
+        if (collision.GetComponent<Trap>() && collision.IsTouching(GetComponent<BoxCollider2D>()) && !dead) {
             //TakeHit(collision.GetComponent<Trap>().damage);
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
@@ -93,9 +93,11 @@ public class Player : Unit
     {
         Physics2D.IgnoreLayerCollision(6, 7, true);
         Physics2D.IgnoreLayerCollision(6, 8, true);
+        Physics2D.IgnoreLayerCollision(6, 10, true);
         yield return new WaitForSeconds(immunityDuration);
         Physics2D.IgnoreLayerCollision(6, 7, false);
         Physics2D.IgnoreLayerCollision(6, 8, false);
+        Physics2D.IgnoreLayerCollision(6, 10, false);
         if (_isDashing) _isDashing = false;
     }
     public void Death() {
