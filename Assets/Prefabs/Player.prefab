@@ -305,7 +305,7 @@ Transform:
   m_GameObject: {fileID: 2180945518612510622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 2180945518041862330}
   - {fileID: 5727161923347076897}
@@ -352,7 +352,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 745862771
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 620a84d3b6de2d24d8b89b5658e60ba6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -414,9 +414,9 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   dashsound: {fileID: 8300000, guid: 2ecf86fb2eba76045a569e9525da7530, type: 3}
   anim: {fileID: 0}
-  _dashingVelocity: 2
-  _dashingTime: 3
-  immunityDuration: 0.75
+  _dashingVelocity: 3
+  _dashingTime: 1
+  immunityDuration: 0.2
   respawnpoint: {x: 0, y: 0, z: 0}
   dead: 0
   currentweapon: 0
