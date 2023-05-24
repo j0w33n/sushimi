@@ -416,7 +416,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   _dashingVelocity: 3
   _dashingTime: 1
-  immunityDuration: 0.2
+  immunityDuration: 0.5
   respawnpoint: {x: 0, y: 0, z: 0}
   dead: 0
   currentweapon: 0
