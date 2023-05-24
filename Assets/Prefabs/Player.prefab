@@ -414,9 +414,9 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   dashsound: {fileID: 8300000, guid: 2ecf86fb2eba76045a569e9525da7530, type: 3}
   anim: {fileID: 0}
-  _dashingVelocity: 3
+  _dashingVelocity: 4
   _dashingTime: 1
-  immunityDuration: 0.5
+  immunityDuration: 0.2
   respawnpoint: {x: 0, y: 0, z: 0}
   dead: 0
   currentweapon: 0
