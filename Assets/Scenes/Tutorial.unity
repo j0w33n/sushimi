@@ -6166,6 +6166,10 @@ PrefabInstance:
       value: Level Starter Pack
       objectReference: {fileID: 0}
     - target: {fileID: 5691976553146094009, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
+      propertyPath: mobileControls
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691976553146094009, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: _dashingVelocity
       value: 5
       objectReference: {fileID: 0}

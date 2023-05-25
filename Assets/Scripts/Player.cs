@@ -5,6 +5,8 @@ using Terresquall;
 
 public class Player : Unit
 {
+    public bool mobileControls;
+
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Vector2 movement;
@@ -40,10 +42,14 @@ public class Player : Unit
     void Update()
     {
         if (canMove && !_isDashing) {
-            //movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
-            //movement.y = VirtualJoystick.GetAxis("Vertical", 0);
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
+            if (mobileControls) {
+                movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+                movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+            } else {
+                movement.x = Input.GetAxisRaw("Horizontal");
+                movement.y = Input.GetAxisRaw("Vertical");
+            }
+            
         }
         anim.SetFloat("Horizontal",movement.x);
         anim.SetFloat("Vertical",movement.y);
