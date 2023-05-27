@@ -33,10 +33,10 @@ public class EnemySpawner : MonoBehaviour {
    void Spawn() {
         if (enemiesspawned <= enemiestospawn[currentwave] - 1 && !player.dead) { // remember that length of enemiestospawn has to be 1 more than the number of waves
             if (Time.time < nextinsttime) return;
-            Instantiate(instprefab, transform.position, transform.rotation);
-            instprefab.GetComponentInChildren<Enemy>().spawned = true;
-            instprefab.GetComponentInChildren<Enemy>().canMove = true;
-            instprefab.GetComponentInChildren<Enemy>().spawner = transform;
+            GameObject go = Instantiate(instprefab, transform.position, transform.rotation);
+            go.GetComponentInChildren<Enemy>().spawned = true;
+            go.GetComponentInChildren<Enemy>().canMove = true;
+            go.GetComponentInChildren<Enemy>().spawner = transform;
             nextinsttime = Time.time + instrate;
             enemiesspawned++;
         }

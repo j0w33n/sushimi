@@ -28,6 +28,9 @@ public abstract class Weapon : MonoBehaviour
     }
 
     // Update is called once per frame
+    protected void OnEnable() {
+        isreloading = false;
+    }
     protected void Update()
     {
         levelManager.ammobar.value = ammo;
@@ -35,7 +38,7 @@ public abstract class Weapon : MonoBehaviour
         if (isreloading) {
             return;
         }
-        if (ammo < maxammo && joystickposition.magnitude < 0.1f) {
+        if ((ammo < maxammo && joystickposition.magnitude < 0.1f) || ammo <= 0) {
             StartCoroutine(Reload());
             return;
         }

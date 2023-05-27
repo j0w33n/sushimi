@@ -59,6 +59,8 @@ public class LevelManager : MonoBehaviour
                     i.SetActive(false);
                 }
                 AudioManager.instance.PlaySFX(AudioManager.instance.entranceSound);
+                StopCoroutine(player.GetComponentInChildren<Weapon>().Reload());
+                player.GetComponentInChildren<Weapon>().ammo = player.GetComponentInChildren<Weapon>().maxammo;
             }
         }
         if(totalenemieskilled == 25) {

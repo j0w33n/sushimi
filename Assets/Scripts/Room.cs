@@ -32,7 +32,7 @@ public class Room : MonoBehaviour
         levelManager.waves = roomwaves;
         levelManager.currentroom = gameObject;
         for (int i = 0; i < myenemyspawns.Length; i++) {
-            myenemyspawns[i].SetActive(true);
+            //myenemyspawns[i].SetActive(true);
             myenemyspawns[i].GetComponent<EnemySpawner>().canSpawn = true;
         }
         player.respawnpoint = transform.position;
