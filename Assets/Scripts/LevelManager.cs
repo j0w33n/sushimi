@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     Player player;
-    [SerializeField]List<EnemySpawner> enemyspawns;
+    public List<EnemySpawner> enemyspawns;
     public float waitToRespawn;
     public bool wavecomplete;
     public int waves;
     public int enemieskilled;
     public int totalenemieskilled;
-    [SerializeField]int totalenemies = 0;
+    public int totalenemies = 0;
     public GameObject partcount;
     public int parts;
     public Slider ammobar, enemykillcount;
@@ -26,12 +26,6 @@ public class LevelManager : MonoBehaviour
         totalenemieskilled = PlayerPrefs.GetInt("Total Enemies Killed", 0);
         StartCoroutine(SwitchMusic(levelmusic));
         player = FindObjectOfType<Player>();
-        foreach(GameObject i in currentroom.GetComponent<Room>().myenemyspawns) {
-            enemyspawns.Add(i.GetComponent<EnemySpawner>());
-        }
-        foreach (var i in enemyspawns) {
-            totalenemies += i.enemiestospawn[i.currentwave];
-        }
     }
 
     // Update is called once per frame
@@ -63,7 +57,7 @@ public class LevelManager : MonoBehaviour
                 player.GetComponentInChildren<Weapon>().ammo = player.GetComponentInChildren<Weapon>().maxammo;
             }
         }
-        if(totalenemieskilled == 25) {
+        if(totalenemieskilled >= 25 && !currentroom.GetComponent<Room>().roomstart) {
             panel.GetComponent<UpgradePanel>().active= true;
             totalenemieskilled = 0;
         }

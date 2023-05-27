@@ -3870,6 +3870,10 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1359320983654188251, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
+      propertyPath: wave
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1460838448515769588, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: m_RootOrder
       value: 1

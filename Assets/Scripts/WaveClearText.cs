@@ -51,6 +51,7 @@ public class WaveClearText : MonoBehaviour
         wave = false;
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
         levelManager.wavecomplete = false;
+        activetime = ogactivetime;
         gameObject.SetActive(false);
     }
     void PlaySound() {
