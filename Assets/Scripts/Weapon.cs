@@ -50,8 +50,10 @@ public abstract class Weapon : MonoBehaviour
     public IEnumerator Reload() {
         isreloading = true;
         while(ammo < maxammo) {
+            //if (joystickposition.magnitude > .1f && !isreloading) yield break;
             yield return new WaitForSeconds(reloadspeed / maxammo);
             ammo++;
+            if (ammo > maxammo) ammo = maxammo;
             AudioManager.instance.PlaySFX(AudioManager.instance.reloadSound);
         }
         isreloading = false;

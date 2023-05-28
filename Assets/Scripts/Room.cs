@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class Room : MonoBehaviour
 {
-    public int roomwaves, roomnum;
+    public int roomwaves;
     public bool roomstart;
     public GameObject[] myenemyspawns;
     public GameObject[] exit,entrance;
     Player player;
     LevelManager levelManager;
     WaveClearText clearText;
+    [SerializeField] GameObject[] triggers;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,7 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<Player>()) {
@@ -53,6 +54,13 @@ public class Room : MonoBehaviour
         foreach(var i in exit) {
             i.SetActive(true);
         }
-        gameObject.SetActive(false);
+        if(triggers.Length > 0) {
+            foreach (var i in triggers) {
+                i.SetActive(false);
+            }
+        } 
+        else {
+            gameObject.SetActive(false);
+        }
     }  
 }

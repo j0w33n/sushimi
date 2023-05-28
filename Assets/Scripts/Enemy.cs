@@ -12,14 +12,16 @@ public class Enemy : Unit
     private Vector2 movement;
     LevelManager levelManager;
     public Transform spawner;
-    public bool spawned;
+    public bool spawned,dead;
     public GameObject[] itemdrops;
     public int dropamt;
     private AudioSource audio;
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         player = FindObjectOfType<Player>();
         levelManager = FindObjectOfType<LevelManager>();
         hitpoints = maxhitpoints;
@@ -27,17 +29,19 @@ public class Enemy : Unit
         originalColor = sr.color;
         audio = GetComponent<AudioSource>();
         transform.parent.GetComponentInChildren<Canvas>().worldCamera = FindObjectOfType<Camera>();
+        dead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        anim.SetBool("Death", dead);
         if (hitpoints <= 0) {
             StartCoroutine(Death());
         }
         Vector3 direction = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //rb.rotation = angle;
         direction.Normalize();
         if (!player.gameObject.activeSelf && spawned) {
             transform.position = spawner.position;
@@ -55,7 +59,7 @@ public class Enemy : Unit
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<SlowingProjectile>())
+        if (collision.GetComponent<SlowingProjectile>() && !dead)
         {
             movespeed *= collision.GetComponent<SlowingProjectile>().slowfactor;
             TakeHit(collision.GetComponent<SlowingProjectile>().damage);
@@ -67,7 +71,7 @@ public class Enemy : Unit
                 floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
             }
         }
-        else if (collision.GetComponent<ExplodingProjectile>()) {
+        else if (collision.GetComponent<ExplodingProjectile>() && !dead) {
             TakeHit(collision.GetComponent<ExplodingProjectile>().damage);
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
@@ -76,7 +80,7 @@ public class Enemy : Unit
                 floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
             }
         }
-        else if (collision.GetComponent<ProjectileScript>()) {
+        else if (collision.GetComponent<ProjectileScript>() && !dead) {
             
             TakeHit(collision.GetComponent<ProjectileScript>().damage);
             audio.PlayOneShot(hitsound);
@@ -90,7 +94,8 @@ public class Enemy : Unit
     public IEnumerator Death()
     {
         rb.velocity = Vector2.zero;
-        yield return new WaitForSeconds(.25f);
+        dead = true;
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
         gameObject.SetActive(false);
         healthbar.gameObject.SetActive(false);
         Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);

@@ -18,6 +18,8 @@ public class SceneController : MonoBehaviour {
     }
     public void NewGame() {
         SceneManager.LoadScene("Tutorial");
+        PlayerPrefs.SetInt("Parts", 0);
+        PlayerPrefs.SetInt("Total Enemies Killed", 0);
     }
     public void Credits() {
        SceneManager.LoadScene("Credits");
@@ -30,7 +32,7 @@ public class SceneController : MonoBehaviour {
         //StartCoroutine(LevelManager.SwitchMusic(menumusic));
     }
     public void Continue() {
-
+        SceneManager.LoadScene(PlayerPrefs.GetString("Current Level", "Tutorial"));
     }
     public void Settings() {
         SceneManager.LoadScene("Settings");

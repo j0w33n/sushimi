@@ -127,7 +127,7 @@ namespace Terresquall {
             originalColor = control.color;
 
             // Add this instance to the List.
-            instances.Insert(0, this);
+            //instances.Insert(0, this);
         }
 
         void Update() {

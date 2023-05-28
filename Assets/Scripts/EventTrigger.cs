@@ -48,5 +48,7 @@ public class EventTrigger : MonoBehaviour
         StartCoroutine(fade.Appear());
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(levelManager.leveltoload);
+        PlayerPrefs.SetInt("Parts", levelManager.parts);
+        PlayerPrefs.SetInt("Total Enemies Killed",levelManager.totalenemieskilled);
     }
 }
