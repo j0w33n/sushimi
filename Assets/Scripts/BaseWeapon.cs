@@ -6,6 +6,7 @@ public class BaseWeapon : Weapon
 {
     public override void Fire() {
         if (Time.time < nextfiretime) return;
+        gunTransform.rotation = gunTransform.rotation;
         if (slow) {
             Instantiate(slowingprojectile, firept.position, firept.rotation);
             audio.PlayOneShot(slowshootsound);
