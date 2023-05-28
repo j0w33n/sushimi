@@ -45,6 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: gun
+    uniqueID: 966202327
+    locked: 0
   - name: Player
     uniqueID: 745862771
     locked: 0
@@ -59,4 +62,7 @@ TagManager:
     locked: 0
   - name: interactables
     uniqueID: 733815549
+    locked: 0
+  - name: particle glow
+    uniqueID: 1282311355
     locked: 0

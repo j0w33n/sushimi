@@ -16,6 +16,7 @@ public class SceneController : MonoBehaviour {
     void Update() {
 
     }
+
     public void NewGame() {
         SceneManager.LoadScene("Tutorial");
         PlayerPrefs.SetInt("Parts", 0);

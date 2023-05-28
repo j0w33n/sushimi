@@ -33,24 +33,36 @@ public class Enemy : Unit
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         anim.SetBool("Death", dead);
         if (hitpoints <= 0) {
             StartCoroutine(Death());
         }
-        Vector3 direction = player.transform.position - transform.position;
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //rb.rotation = angle;
-        direction.Normalize();
-        if (!player.gameObject.activeSelf && spawned) {
-            transform.position = spawner.position;
-        } 
-        else {
-            movement = direction;
+
+        if (dead) // Stop movement if the enemy is dead
+        {
+            movement = Vector2.zero;
+        } else {
+            Vector3 direction = player.transform.position - transform.position;
+            direction.Normalize();
+            if (!player.gameObject.activeSelf && spawned) {
+                transform.position = spawner.position;
+            } else {
+                movement = direction;
+            }
+            SetHealth(hitpoints, maxhitpoints);
+
+            // Flip the enemy sprite based on the movement direction
+            if (movement.x < 0) // If moving left
+            {
+                transform.localScale = new Vector3(-1, 1, 1); // Flip the sprite
+            } else if (movement.x > 0) // If moving right
+              {
+                transform.localScale = new Vector3(1, 1, 1); // Reset the sprite scale
+            }
         }
-        SetHealth(hitpoints, maxhitpoints);
     }
+
     private void FixedUpdate() {
         if (canMove) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 1, 0);
     }
@@ -95,9 +107,9 @@ public class Enemy : Unit
     {
         rb.velocity = Vector2.zero;
         dead = true;
+        healthbar.gameObject.SetActive(false);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
         gameObject.SetActive(false);
-        healthbar.gameObject.SetActive(false);
         Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
         if (spawned) levelManager.enemieskilled += 1; levelManager.totalenemieskilled += 1;
         for(int i = 0; i < Random.Range(1, dropamt + 1); i++) {
