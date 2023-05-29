@@ -22,6 +22,7 @@ public class SceneController : MonoBehaviour {
         SceneManager.LoadScene("Tutorial");
         PlayerPrefs.SetInt("Parts", 0);
         PlayerPrefs.SetInt("Total Enemies Killed", 0);
+        PlayerPrefs.SetInt("Current Room", 0);
     }
     public void Credits() {
        SceneManager.LoadScene("Credits");
