@@ -106,11 +106,14 @@ public class Enemy : Unit
     public IEnumerator Death()
     {
         rb.velocity = Vector2.zero;
-        dead = true;
+        if (!dead) {
+            Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
+            dead = true;
+        }
         healthbar.gameObject.SetActive(false);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        Destroy(Instantiate(maskvfx, transform.position, transform.rotation), 1);
         gameObject.SetActive(false);
-        Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
         if (spawned) levelManager.enemieskilled += 1; levelManager.totalenemieskilled += 1;
         for(int i = 0; i < Random.Range(1, dropamt + 1); i++) {
             Instantiate(itemdrops[Random.Range(0, itemdrops.Length)],transform.position,transform.rotation);

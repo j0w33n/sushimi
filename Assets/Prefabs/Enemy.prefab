@@ -156,6 +156,7 @@ MonoBehaviour:
   sr: {fileID: 0}
   hitsound: {fileID: 8300000, guid: 88437b80790d08e4d85bb1c202145f55, type: 3}
   bloodvfx: {fileID: 5417647092004821054, guid: 0b8d298c8326243468a8127ebf076912, type: 3}
+  maskvfx: {fileID: 5178278417980185461, guid: ea2791ea045e5dd4eb9ef0ea61eb053d, type: 3}
   canMove: 0
   floatingTextPrefab: {fileID: 1210272696370798234, guid: fdf23a94d32536844a912658ea6b4936, type: 3}
   movespeed: 3
