@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour
     public SpriteRenderer sr;
     public AudioClip hitsound;
     public GameObject bloodvfx;
+    public GameObject maskvfx;
     public bool canMove;
     // Start is called before the first frame update
     public void TakeHit(float damage) {
