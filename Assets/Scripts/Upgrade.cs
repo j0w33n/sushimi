@@ -11,7 +11,7 @@ public class Upgrade : MonoBehaviour
     UpgradePanel upgradePanel;
     public void IncreaseFireRate(float value) {
         foreach(var i in shooting) {
-            i.firerate += value;
+            i.firerate -= value;
             i.reloadspeed += value;
             upgradePanel.active = false;
         }
@@ -79,12 +79,10 @@ public class Upgrade : MonoBehaviour
         if (!upgradePanel.active) {
             GetComponent<Button>().interactable = false;
             GetComponent<Button>().GetComponent<Image>().color = new Color(255, 255, 255, 0);
-            GetComponent<Button>().GetComponentInChildren<Text>().color = new Color(50, 50, 50, 0);
 
         } else {
             GetComponent<Button>().interactable = true;
             GetComponent<Button>().GetComponent<Image>().color = new Color(255, 255, 255, 255);
-            GetComponent<Button>().GetComponentInChildren<Text>().color = Color.black;
         }
     }
 }
