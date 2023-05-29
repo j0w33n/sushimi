@@ -22,7 +22,7 @@ public class Intro : MonoBehaviour
     private void Awake() {
         //PlayerPrefs.SetInt("HasPlayedBefore", 1);
         // calibration: comment out line 19 then build, play to level 1. Exit game and reopen, press continue to check if playerprefs are kept. then uncomment lines 26-28 and build again before showing terence and jiayan.
-        // reset the damage of all projectiles to 1 as well.
+        // reset the damage of all projectiles to 1 as well as turn mobile control back on.
         if (!Application.isEditor && PlayerPrefs.GetInt("HasPlayedBefore") == 1) { 
             PlayerPrefs.SetInt("HasPlayedBefore", 0);
         }
