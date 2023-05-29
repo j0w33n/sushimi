@@ -40,6 +40,7 @@ public class PauseScreen : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //AudioManager.instance.PlayMusic(levelManager.levelmusic);
         StartCoroutine(LevelManager.SwitchMusic(levelManager.levelmusic));
+        PlayerPrefs.SetInt("Current Room", 0);
     }
     public void Settings() {
         settingsscreen.SetActive(true);

@@ -16,7 +16,7 @@ public class Intro : MonoBehaviour
             PlayerPrefs.SetFloat("Music Volume", 1f);
             PlayerPrefs.SetString("Current Level", "");
             PlayerPrefs.SetInt("Current Room", 0);
-            //PlayerPrefs.SetInt("HasPlayedBefore", 1);
+            PlayerPrefs.SetInt("HasPlayedBefore", 1);
         }
     }
     private void Awake() {
