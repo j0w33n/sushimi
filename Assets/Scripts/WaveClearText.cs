@@ -56,6 +56,7 @@ public class WaveClearText : MonoBehaviour
         gameObject.SetActive(false);
     }
     public IEnumerator SafeRoom() {
+        gameObject.SetActive(true);
         gameObject.GetComponent<Text>().text = "SAFE ROOM";
         wave = true;
         yield return new WaitForSeconds(ogactivetime);

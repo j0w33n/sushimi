@@ -152,6 +152,7 @@ MonoBehaviour:
   exitSound: {fileID: 8300000, guid: 75b075e9712a1a24cb8549536a6c6021, type: 3}
   entranceSound: {fileID: 8300000, guid: 1675c7122a7f1534494b069b3b3affc0, type: 3}
   impactSound: {fileID: 8300000, guid: bfe293d6430f08041aa7b391db6afe11, type: 3}
+  winSound: {fileID: 8300000, guid: 293f84da2ad7d8f479dcbd88a7eb03e9, type: 3}
 --- !u!1 &7315256001631186733
 GameObject:
   m_ObjectHideFlags: 0

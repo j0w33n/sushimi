@@ -125,7 +125,7 @@ public class Player : Unit
             return;
         }
 
-        if (/*Mathf.Abs(movement.magnitude) > 0 &&*/ Time.time >= nextdashtime) { // checks if player is moving
+        if (!dead && Time.time >= nextdashtime) { // checks if player is moving
             _canDash = true;
             nextdashtime = Time.time + _dashingTime;
         }

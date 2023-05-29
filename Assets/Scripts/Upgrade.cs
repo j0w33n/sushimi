@@ -43,6 +43,8 @@ public class Upgrade : MonoBehaviour
     public void IncreaseDamage(int value) {
         foreach(var i in shooting) {
             i.projectileprefab.GetComponent<ProjectileScript>().damage += value;
+            i.explodingprojectile.GetComponent<ProjectileScript>().damage += value;
+            i.slowingprojectile.GetComponent<ProjectileScript>().damage += value;
         }
         upgradePanel.active = false;
     }

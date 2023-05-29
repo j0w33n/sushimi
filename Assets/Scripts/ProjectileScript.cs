@@ -16,7 +16,7 @@ public class ProjectileScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         shootingScript = FindObjectOfType<Weapon>();
-        damage = 1;
+        //damage = 1;
         Move();
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision) {

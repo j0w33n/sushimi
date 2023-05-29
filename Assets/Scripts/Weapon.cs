@@ -27,7 +27,6 @@ public abstract class Weapon : MonoBehaviour
     {
         levelManager = FindObjectOfType<LevelManager>();
         ammo = maxammo;
-        levelManager.ammobar.maxValue = maxammo;
         audio = GetComponent<AudioSource>();
     }
 
@@ -38,6 +37,7 @@ public abstract class Weapon : MonoBehaviour
     protected void Update() {
         gunTransform.rotation = gunTransform.rotation;
         levelManager.ammobar.value = ammo;
+        levelManager.ammobar.maxValue = maxammo;
         joystickposition = new Vector2(VirtualJoystick.GetAxis("Horizontal", 1), VirtualJoystick.GetAxis("Vertical", 1));
         /*if (isreloading) {
             return;
