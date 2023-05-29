@@ -10,6 +10,8 @@ public class Intro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetInt("HasPlayedBefore", 0);
+
         StartCoroutine(LoadScene());
         if (PlayerPrefs.GetInt("HasPlayedBefore", 0) == 0) {
             PlayerPrefs.SetFloat("SFX Volume", 1f);
