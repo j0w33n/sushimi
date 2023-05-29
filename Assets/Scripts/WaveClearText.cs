@@ -55,6 +55,15 @@ public class WaveClearText : MonoBehaviour
         activetime = ogactivetime;
         gameObject.SetActive(false);
     }
+    public IEnumerator SafeRoom() {
+        gameObject.GetComponent<Text>().text = "SAFE ROOM";
+        wave = true;
+        yield return new WaitForSeconds(ogactivetime);
+        activetime = .05f;
+        wave = false;
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        activetime = ogactivetime;
+    }
     void PlaySound() {
         AudioManager.instance.PlaySFX(AudioManager.instance.waveClearSound);
     }

@@ -39,6 +39,8 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //print(PlayerPrefs.GetString("Current Level"));
+        //print(PlayerPrefs.GetInt("Current Room"));
         partcount.GetComponent<Text>().text = "x " + parts.ToString();
         enemykillcount.value = totalenemieskilled;
         if (currentroom.GetComponent<Room>().roomstart) {

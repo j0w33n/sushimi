@@ -19,7 +19,7 @@ public class Player : Unit
     private Vector2 _dashingDir; //dash direction
     private bool _isDashing;
     private bool _canDash = true;
-    private float nextdashtime;
+    public float nextdashtime;
     public float immunityDuration = 0.3f;
     private LevelManager levelManager;
     public Vector3 respawnpoint;

@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
-    
+
+    public AudioClip menumusic;
     // Start is called before the first frame update
     void Start() {
        // var var = FindObjectOfType<AudioManager>();
@@ -30,13 +31,17 @@ public class SceneController : MonoBehaviour {
     }
     public void MainMenu() {
         SceneManager.LoadScene("MainMenu");
-        //StartCoroutine(LevelManager.SwitchMusic(menumusic));
+        StartCoroutine(LevelManager.SwitchMusic(menumusic));
     }
     public void Continue() {
         SceneManager.LoadScene(PlayerPrefs.GetString("Current Level", "Tutorial"));
     }
     public void Settings() {
         SceneManager.LoadScene("Settings");
+        //StartCoroutine(LevelManager.SwitchMusic(menumusic));
+    }
+    public void BackToMainMenu() {
+        SceneManager.LoadScene("MainMenu");
         //StartCoroutine(LevelManager.SwitchMusic(menumusic));
     }
 }

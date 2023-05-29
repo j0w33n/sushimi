@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 629571614}
     - target: {fileID: 4256068402321301902, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MainMenu
+      value: BackToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 4256068402321301902, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -389,6 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720ad0cb8d496b447b2e1e036701e475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menumusic: {fileID: 0}
 --- !u!1 &910263766
 GameObject:
   m_ObjectHideFlags: 0

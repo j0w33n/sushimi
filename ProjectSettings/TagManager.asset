@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Trigger
   - Health
+  - Safe
   layers:
   - Default
   - TransparentFX

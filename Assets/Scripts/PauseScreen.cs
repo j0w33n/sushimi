@@ -33,6 +33,7 @@ public class PauseScreen : MonoBehaviour {
     public void BackToMainMenu() {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+        StartCoroutine(LevelManager.SwitchMusic(FindObjectOfType<SceneController>().menumusic));
     }
     public void RestartLevel() {
         Time.timeScale = 1;

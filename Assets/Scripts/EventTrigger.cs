@@ -50,5 +50,6 @@ public class EventTrigger : MonoBehaviour
         SceneManager.LoadScene(levelManager.leveltoload);
         PlayerPrefs.SetInt("Parts", levelManager.parts);
         PlayerPrefs.SetInt("Total Enemies Killed",levelManager.totalenemieskilled);
+        PlayerPrefs.SetInt("Current Room", 0);
     }
 }

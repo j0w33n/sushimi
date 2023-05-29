@@ -71,9 +71,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomwaves: 0
-  roomnum: 0
   roomstart: 0
-  enemyspawns:
+  myenemyspawns: []
+  exit:
   - {fileID: 0}
-  - {fileID: 0}
-  exit: {fileID: 0}
+  entrance: []
+  triggers: []
