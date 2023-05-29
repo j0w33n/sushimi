@@ -19,7 +19,7 @@ public class SceneController : MonoBehaviour {
     }
 
     public void NewGame() {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("Pre-Story");
         PlayerPrefs.SetInt("Parts", 0);
         PlayerPrefs.SetInt("Total Enemies Killed", 0);
         PlayerPrefs.SetInt("Current Room", 0);
@@ -44,5 +44,9 @@ public class SceneController : MonoBehaviour {
     public void BackToMainMenu() {
         SceneManager.LoadScene("MainMenu");
         //StartCoroutine(LevelManager.SwitchMusic(menumusic));
+    }
+
+    public void skipToTutorial() {
+        SceneManager.LoadScene("Tutorial");
     }
 }
