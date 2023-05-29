@@ -23,11 +23,11 @@ public class Intro : MonoBehaviour
     }
     private void Awake() {
         //PlayerPrefs.SetInt("HasPlayedBefore", 1);
-        // calibration: comment out line 19 then build, play to level 1. Exit game and reopen, press continue to check if playerprefs are kept. then uncomment lines 26-28 and build again before showing terence and jiayan.
+        // calibration: after testing, comment out line 19 and uncomment out lines 26-28,comment out !Application.isEditor && to verify value of hasplayedbefore and run. after verifying hasplayedbefore == 0, uncomment line 19 and comment out lines 26-28 and build.
         // reset the damage of all projectiles to 1 as well as turn mobile control back on.
-        if (!Application.isEditor && PlayerPrefs.GetInt("HasPlayedBefore") == 1) { 
+        /*if (!Application.isEditor && PlayerPrefs.GetInt("HasPlayedBefore") == 1) { 
             PlayerPrefs.SetInt("HasPlayedBefore", 0);
-        }
+        }*/
     }
     // Update is called once per frame
     void Update()
