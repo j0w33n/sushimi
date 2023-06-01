@@ -17,6 +17,7 @@ public class Enemy : Unit
     public int dropamt;
     private AudioSource audio;
     Animator anim;
+    public GameObject maskvfx;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +48,8 @@ public class Enemy : Unit
             direction.Normalize();
             if (!player.gameObject.activeSelf && spawned) {
                 transform.position = spawner.position;
-            } else {
+            } 
+            else {
                 movement = direction;
             }
             SetHealth(hitpoints, maxhitpoints);
@@ -56,10 +58,16 @@ public class Enemy : Unit
             if (movement.x < 0) // If moving left
             {
                 transform.localScale = new Vector3(-1, 1, 1); // Flip the sprite
-            } else if (movement.x > 0) // If moving right
+            } 
+            else if (movement.x > 0) // If moving right
               {
                 transform.localScale = new Vector3(1, 1, 1); // Reset the sprite scale
             }
+        }
+        if(knockbackcounter > 0) {
+            knockbackcounter -= Time.deltaTime;
+            movement = knockbackdir;
+            movespeed = knockbackforce;
         }
     }
 
@@ -75,6 +83,7 @@ public class Enemy : Unit
         {
             movespeed *= collision.GetComponent<SlowingProjectile>().slowfactor;
             TakeHit(collision.GetComponent<SlowingProjectile>().damage);
+            Knockback();
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             if (floatingTextPrefab)
@@ -85,6 +94,7 @@ public class Enemy : Unit
         }
         else if (collision.GetComponent<ExplodingProjectile>() && !dead) {
             TakeHit(collision.GetComponent<ExplodingProjectile>().damage);
+            Knockback();
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             if (floatingTextPrefab) {
@@ -95,6 +105,7 @@ public class Enemy : Unit
         else if (collision.GetComponent<ProjectileScript>() && !dead) {
             
             TakeHit(collision.GetComponent<ProjectileScript>().damage);
+            Knockback();
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             if (floatingTextPrefab) {
@@ -118,5 +129,8 @@ public class Enemy : Unit
         for(int i = 0; i < Random.Range(1, dropamt + 1); i++) {
             Instantiate(itemdrops[Random.Range(0, itemdrops.Length)],transform.position,transform.rotation);
         }
+    }
+    void Knockback() {
+        knockbackcounter = knockbacklength;
     }
 }

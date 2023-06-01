@@ -46,15 +46,15 @@ public abstract class Weapon : MonoBehaviour
             StartCoroutine(Reload());
             //return;
         }
-        if (joystickposition.magnitude > 0.1f) {
-           if(isreloading || ammo > 0) {
+        if (joystickposition.magnitude > 0.5f) {
+           if((isreloading && ammo > 0) || ammo > 0) {
                 Fire();
-            }
+           }
         }
 
         Vector2 joystickPosition = new Vector2(VirtualJoystick.GetAxis("Horizontal", 1), VirtualJoystick.GetAxis("Vertical", 1));
 
-        if (joystickPosition.magnitude > 0.1f) {
+        if (joystickPosition.magnitude > 0.5f) {
             float targetAngle = Mathf.Atan2(joystickPosition.y, joystickPosition.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(0f, 0f, targetAngle);
             gunTransform.rotation = Quaternion.Slerp(gunTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
@@ -77,7 +77,7 @@ public abstract class Weapon : MonoBehaviour
         gunTransform.rotation = gunTransform.rotation;
         isreloading = true;
         while(ammo < maxammo) {
-            if (joystickposition.magnitude > .1f && !isreloading) yield break;
+            //if (joystickposition.magnitude > .1f && !isreloading) yield break;
             yield return new WaitForSeconds(reloadspeed / maxammo);
             ammo++;
             if (ammo > maxammo) ammo = maxammo;

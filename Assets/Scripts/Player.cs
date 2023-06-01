@@ -26,7 +26,8 @@ public class Player : Unit
     public bool dead;
     public int currentweapon;
     public List<Weapon> weapons;
-
+    public Transform arrow;
+    public float rotationSpeed = 30f;
     void Start() {
         hitpoints = maxhitpoints;
         originalColor = sr.color;
@@ -63,6 +64,13 @@ public class Player : Unit
             levelManager.Respawn();
             hitpoints = maxhitpoints;
         }
+        if (knockbackcounter > 0) {
+            knockbackcounter -= Time.deltaTime;
+            movement = knockbackdir.normalized * knockbackforce;
+        }
+        float targetAngle = Mathf.Atan2(levelManager.currentroom.transform.position.y,movement.x) * Mathf.Rad2Deg + Mathf.Atan2(levelManager.currentroom.transform.position.y, movement.y) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, targetAngle);
+        arrow.rotation = Quaternion.Slerp(arrow.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
     private void FixedUpdate() {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -70,6 +78,8 @@ public class Player : Unit
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.GetComponent<Enemy>() && !dead && !collision.gameObject.GetComponent<Enemy>().dead) {
             TakeHit(collision.gameObject.GetComponent<Enemy>().damage);
+            knockbackdir = transform.position - collision.transform.position;
+            Knockback();
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
@@ -78,16 +88,12 @@ public class Player : Unit
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<Trap>() && collision.IsTouching(GetComponent<BoxCollider2D>()) && !dead) {
             //TakeHit(collision.GetComponent<Trap>().damage);
+            knockbackdir = transform.position - collision.transform.position;
+            Knockback();
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
-        /*if (collision.GetComponent<Part>())
-        {
-            levelManager.parts += collision.GetComponent<Part>().partvalue;
-            audio.PlayOneShot(levelManager.partsound);
-            Destroy(collision.gameObject);
-        }*/
         if (collision.tag == "Health" && hitpoints != maxhitpoints) {
             hitpoints += 1;
             AudioManager.instance.PlaySFX(AudioManager.instance.healthSound);
@@ -136,5 +142,8 @@ public class Player : Unit
             i.gameObject.SetActive(false);
             weapons[currentweapon].gameObject.SetActive(true);
         }
+    }
+    void Knockback() {
+        knockbackcounter = knockbacklength;
     }
 }

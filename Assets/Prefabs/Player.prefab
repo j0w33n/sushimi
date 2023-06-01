@@ -404,6 +404,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 0
   maxhitpoints: 5
+  knockbackforce: 3
+  knockbacklength: 0.2
+  knockbackdir: {x: 0, y: 0}
   healthbar: {fileID: 0}
   lowhealth: {r: 0.43529412, g: 0, b: 0.008629075, a: 1}
   highhealth: {r: 0, g: 1, b: 0.15434837, a: 1}

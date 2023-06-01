@@ -148,6 +148,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 0
   maxhitpoints: 3
+  knockbackforce: 3
+  knockbacklength: 0.2
+  knockbackcounter: 0
+  knockbackdir: {x: 0, y: 0}
   healthbar: {fileID: 0}
   lowhealth: {r: 1, g: 0.043137252, b: 0.071006544, a: 1}
   highhealth: {r: 0, g: 1, b: 0.04290104, a: 1}
@@ -156,7 +160,6 @@ MonoBehaviour:
   sr: {fileID: 0}
   hitsound: {fileID: 8300000, guid: 88437b80790d08e4d85bb1c202145f55, type: 3}
   bloodvfx: {fileID: 5417647092004821054, guid: 0b8d298c8326243468a8127ebf076912, type: 3}
-  maskvfx: {fileID: 5178278417980185461, guid: ea2791ea045e5dd4eb9ef0ea61eb053d, type: 3}
   canMove: 0
   floatingTextPrefab: {fileID: 1210272696370798234, guid: fdf23a94d32536844a912658ea6b4936, type: 3}
   movespeed: 3
@@ -168,6 +171,7 @@ MonoBehaviour:
   - {fileID: 3587237261951397024, guid: 4fbd5160a237eef4d8630fbb4b41403f, type: 3}
   - {fileID: 3587237261951397024, guid: 4fbd5160a237eef4d8630fbb4b41403f, type: 3}
   dropamt: 3
+  maskvfx: {fileID: 5178278417980185461, guid: ea2791ea045e5dd4eb9ef0ea61eb053d, type: 3}
 --- !u!82 &1634378599377574288
 AudioSource:
   m_ObjectHideFlags: 0

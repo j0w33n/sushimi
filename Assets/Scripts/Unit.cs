@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Unit : MonoBehaviour
+public abstract class Unit : MonoBehaviour
 {
     public float hitpoints;
     public float maxhitpoints;
+    public float knockbackforce;
+    public float knockbacklength;
+    public float knockbackcounter;
+    public Vector2 knockbackdir;
     public Slider healthbar;
     public Color lowhealth;
     public Color highhealth;
@@ -15,7 +19,6 @@ public class Unit : MonoBehaviour
     public SpriteRenderer sr;
     public AudioClip hitsound;
     public GameObject bloodvfx;
-    public GameObject maskvfx;
     public bool canMove;
     // Start is called before the first frame update
     public void TakeHit(float damage) {
