@@ -6,7 +6,6 @@ using Terresquall;
 public class Player : Unit
 {
     public bool mobileControls;
-
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Vector2 movement;
@@ -26,7 +25,7 @@ public class Player : Unit
     public bool dead;
     public int currentweapon;
     public List<Weapon> weapons;
-    public Transform arrow;
+    public Transform arrow,target;
     public float rotationSpeed = 30f;
     void Start() {
         hitpoints = maxhitpoints;
@@ -68,9 +67,9 @@ public class Player : Unit
             knockbackcounter -= Time.deltaTime;
             movement = knockbackdir.normalized * knockbackforce;
         }
-        float targetAngle = Mathf.Atan2(levelManager.currentroom.transform.position.y,movement.x) * Mathf.Rad2Deg + Mathf.Atan2(levelManager.currentroom.transform.position.y, movement.y) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(0f, 0f, targetAngle);
-        arrow.rotation = Quaternion.Slerp(arrow.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        var dir = target.position - transform.position;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        arrow.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
     private void FixedUpdate() {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -94,8 +93,13 @@ public class Player : Unit
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
-        if (collision.tag == "Health" && hitpoints != maxhitpoints) {
-            hitpoints += 1;
+        if (collision.GetComponent<Collectible>()) {
+            levelManager.parts += collision.GetComponent<Collectible>().partvalue;
+            AudioManager.instance.PlaySFX(AudioManager.instance.partSound);
+            Destroy(collision.gameObject);
+        }
+        if (collision.GetComponent<Collectible>() && collision.tag == "Health" && hitpoints != maxhitpoints) {
+            hitpoints += collision.GetComponent<Collectible>().healthvalue;
             AudioManager.instance.PlaySFX(AudioManager.instance.healthSound);
             Destroy(collision.gameObject);
         }

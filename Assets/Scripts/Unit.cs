@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Unit : MonoBehaviour
+public class Unit : MonoBehaviour
 {
     public float hitpoints;
     public float maxhitpoints;
