@@ -12291,7 +12291,7 @@ PrefabInstance:
     - target: {fileID: 5691976553146094009, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 5691976553016640766}
+      objectReference: {fileID: 0}
     - target: {fileID: 5691976553146094009, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: rotationSpeed
       value: 360
@@ -12414,11 +12414,6 @@ GameObject:
 --- !u!1 &5691976553016640764 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3398194196843193176, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
-  m_PrefabInstance: {fileID: 5691976553016640762}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5691976553016640766 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3398194196843193157, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
   m_PrefabInstance: {fileID: 5691976553016640762}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6692741345656346359

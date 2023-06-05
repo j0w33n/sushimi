@@ -16,7 +16,7 @@ public class Player : Unit
     [SerializeField] private float _dashingVelocity = 20f; //dash speed
     public float _dashingTime = 1f; //dash time
     private Vector2 _dashingDir; //dash direction
-    private bool _isDashing;
+    public bool _isDashing;
     private bool _canDash = true;
     public float nextdashtime;
     public float immunityDuration = 0.3f;
@@ -25,8 +25,9 @@ public class Player : Unit
     public bool dead;
     public int currentweapon;
     public List<Weapon> weapons;
-    public Transform arrow,target;
-    public float rotationSpeed = 30f;
+    public Transform arrow;
+    Room[] rooms;
+    [SerializeField]Transform target;
     void Start() {
         hitpoints = maxhitpoints;
         originalColor = sr.color;
@@ -37,6 +38,8 @@ public class Player : Unit
         canMove = true;
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         SwitchWeapon(0);
+        rooms = FindObjectsOfType<Room>();
+        arrow.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -45,7 +48,8 @@ public class Player : Unit
             if (mobileControls) {
                 movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
                 movement.y = VirtualJoystick.GetAxis("Vertical", 0);
-            } else {
+            } 
+            else {
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = Input.GetAxisRaw("Vertical");
             }
@@ -67,6 +71,7 @@ public class Player : Unit
             knockbackcounter -= Time.deltaTime;
             movement = knockbackdir.normalized * knockbackforce;
         }
+        FindClosestRoom();
         var dir = target.position - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         arrow.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -93,14 +98,14 @@ public class Player : Unit
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
-        if (collision.GetComponent<Collectible>()) {
-            levelManager.parts += collision.GetComponent<Collectible>().partvalue;
-            AudioManager.instance.PlaySFX(AudioManager.instance.partSound);
-            Destroy(collision.gameObject);
-        }
         if (collision.GetComponent<Collectible>() && collision.tag == "Health" && hitpoints != maxhitpoints) {
             hitpoints += collision.GetComponent<Collectible>().healthvalue;
             AudioManager.instance.PlaySFX(AudioManager.instance.healthSound);
+            Destroy(collision.gameObject);
+        }
+        else if (collision.GetComponent<Collectible>() && collision.tag != "Health") {
+            levelManager.parts += collision.GetComponent<Collectible>().partvalue;
+            AudioManager.instance.PlaySFX(AudioManager.instance.partSound);
             Destroy(collision.gameObject);
         }
     }
@@ -149,5 +154,17 @@ public class Player : Unit
     }
     void Knockback() {
         knockbackcounter = knockbacklength;
+    }
+    void FindClosestRoom() {
+        float closest = 999;
+        foreach(var i in rooms) {
+            var dist = (i.transform.position - transform.position).magnitude;
+            if(dist < closest) {
+                closest = dist;
+            }
+            if ((i.transform.position - transform.position).magnitude == closest) {
+                target = i.transform;
+            }
+        }
     }
 }

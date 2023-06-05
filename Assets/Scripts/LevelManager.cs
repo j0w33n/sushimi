@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour
         enemykillcount.value = totalenemieskilled;
         if (currentroom.GetComponent<Room>().roomstart) {
             PlayerPrefs.SetInt("Current Room", rooms.IndexOf(currentroom));
+            player.arrow.gameObject.SetActive(false);
             if (enemieskilled == totalenemies) {
                 wavecomplete = true;
                 StartCoroutine(EndOfWave());
@@ -57,6 +58,7 @@ public class LevelManager : MonoBehaviour
                 AudioManager.instance.PlaySFX(AudioManager.instance.entranceSound);
                 //StopCoroutine(player.GetComponentInChildren<Weapon>().Reload());
                 player.GetComponentInChildren<Weapon>().ammo = player.GetComponentInChildren<Weapon>().maxammo;
+                player.arrow.gameObject.SetActive(true);
             }
         }
         if(totalenemieskilled >= 25 && !currentroom.GetComponent<Room>().roomstart) {
