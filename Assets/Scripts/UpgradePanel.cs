@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UpgradePanel : MonoBehaviour
 {
     public List<GameObject> upgradepool;
-    public Button[] upgrades;
+    public List<Button> upgrades;
     Animator anim;
     public bool active;
     // Start is called before the first frame update

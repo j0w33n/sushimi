@@ -5,6 +5,10 @@ using UnityEngine;
 public class DoubleBarrelGun : Weapon
 {
     // Start is called before the first frame update
+    protected override void Start() {
+        ammo = PlayerPrefs.GetInt("Max Ammo (Double)", 12);
+        base.Start();
+    }
     public override void Fire() {
         if (Time.time < nextfiretime) return;
         if (slow) {

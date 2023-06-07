@@ -9,6 +9,7 @@ public class ProjectileScript : MonoBehaviour
     public float damage = 1;
     public float projectilelife;
     private Weapon shootingScript;
+    public bool upgraded;
     //public float splashRange = 1; //we gonna add aoe as buff after clearing some stages
 
     // Start is called before the first frame update
@@ -16,7 +17,6 @@ public class ProjectileScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         shootingScript = FindObjectOfType<Weapon>();
-        //damage = 1;
         Move();
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision) {
@@ -27,6 +27,7 @@ public class ProjectileScript : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (!upgraded) damage = 1;
         Destroy(gameObject, projectilelife);
         Vector2 joystickPosition = shootingScript.joystickposition.normalized;
         if (joystickPosition != Vector2.zero) {

@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
     public string leveltoload;
     [SerializeField] VirtualJoystick[] joysticks;
     public List<GameObject> rooms = new List<GameObject>();
+    Weapon[] weapons;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,15 @@ public class LevelManager : MonoBehaviour
         VirtualJoystick.instances.Insert(1,joysticks[1]);
         PlayerPrefs.SetString("Current Level", SceneManager.GetActiveScene().name);
         player.transform.position = rooms[PlayerPrefs.GetInt("Current Room")].transform.position;
+        weapons = FindObjectsOfType<Weapon>();
+        foreach(Weapon w in weapons) {
+            w.projectileprefab.GetComponent<ProjectileScript>().upgraded = false;
+            w.explodingprojectile.GetComponent<ProjectileScript>().upgraded = false;
+            w.slowingprojectile.GetComponent<ProjectileScript>().upgraded = false;
+            w.projectileprefab.GetComponent<ProjectileScript>().damage = 1;
+            w.explodingprojectile.GetComponent<ProjectileScript>().damage = 1;
+            w.slowingprojectile.GetComponent<ProjectileScript>().damage = 1;
+        }
     }
 
     // Update is called once per frame
@@ -61,7 +71,7 @@ public class LevelManager : MonoBehaviour
                 player.arrow.gameObject.SetActive(true);
             }
         }
-        if(totalenemieskilled >= 25 && !currentroom.GetComponent<Room>().roomstart) {
+        if(totalenemieskilled >= 1 && !currentroom.GetComponent<Room>().roomstart) {
             panel.GetComponent<UpgradePanel>().active= true;
             totalenemieskilled = 0;
         }

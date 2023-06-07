@@ -23,10 +23,9 @@ public abstract class Weapon : MonoBehaviour
     public VirtualJoystick joystick;
     public float rotationSpeed = 30f;
 
-    protected void Start()
+    protected virtual void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
-        ammo = maxammo;
         audio = GetComponent<AudioSource>();
     }
 

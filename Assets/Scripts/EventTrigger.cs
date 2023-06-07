@@ -50,6 +50,9 @@ public class EventTrigger : MonoBehaviour
         SceneManager.LoadScene(levelManager.leveltoload);
         PlayerPrefs.SetInt("Parts", levelManager.parts);
         PlayerPrefs.SetInt("Total Enemies Killed",levelManager.totalenemieskilled);
+        PlayerPrefs.SetFloat("Max Health", player.maxhitpoints);
+        PlayerPrefs.SetInt("Max Ammo (Base)", player.GetComponentsInChildren<Weapon>(true)[0].maxammo);
+        PlayerPrefs.SetInt("Max Ammo (Double)", player.GetComponentsInChildren<Weapon>(true)[1].maxammo);
         PlayerPrefs.SetInt("Current Room", 0);
     }
 }

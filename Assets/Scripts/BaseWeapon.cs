@@ -6,6 +6,10 @@ using Terresquall;
 public class BaseWeapon : Weapon
 {
 
+    protected override void Start() {
+        ammo = PlayerPrefs.GetInt("Max Ammo (Base)", 6);
+        base.Start();
+    }
     public override void Fire() {
 
         if (Time.time < nextfiretime) return;

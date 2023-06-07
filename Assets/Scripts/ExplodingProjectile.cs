@@ -14,12 +14,18 @@ public class ExplodingProjectile : ProjectileScript
 
             // Checks if the target we are checking is a valid enemy.
             Enemy e = t.GetComponent<Enemy>();
+            DestructibleObject d = t.GetComponent<DestructibleObject>();
             if (e) {
                 // Vary the damage based on distance.
                 Vector2 diff = e.transform.position - transform.position;
                 damage = 10 * (1 - diff.magnitude / blastradius);
             }
+            else if (d) {
+                Vector2 diff2 = d.transform.position - transform.position;
+                damage = 10 * (1 - diff2.magnitude / blastradius);
+            }
         }
+        print(damage);
         base.Update();
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {

@@ -175,6 +175,7 @@ MonoBehaviour:
   speed: 40
   damage: 1
   projectilelife: 1
+  upgraded: 1
   blastradius: 5
   explosionvfx: {fileID: 5417647092004821054, guid: ef10809ae00e53142aef234635bfdca6, type: 3}
 --- !u!50 &102993562914715505

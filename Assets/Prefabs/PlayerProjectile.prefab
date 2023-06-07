@@ -176,6 +176,7 @@ MonoBehaviour:
   speed: 40
   damage: 1
   projectilelife: 1
+  upgraded: 1
 --- !u!50 &102993562914715505
 Rigidbody2D:
   serializedVersion: 4

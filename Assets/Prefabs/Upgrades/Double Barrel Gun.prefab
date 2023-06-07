@@ -134,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0f1d4c1dee17948a1c337bcdfcd85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activebuff: {fileID: 0}
+  upgrades: []
 --- !u!114 &1348348546881219331
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,9 @@ public class Intro : MonoBehaviour
             PlayerPrefs.SetFloat("Music Volume", 1f);
             PlayerPrefs.SetString("Current Level", "");
             PlayerPrefs.SetInt("Current Room", 0);
+            PlayerPrefs.SetFloat("Max Health", 5);
+            PlayerPrefs.SetInt("Max Ammo (Base)", 6);
+            PlayerPrefs.SetInt("Max Ammo (Double)", 12);
             PlayerPrefs.SetInt("HasPlayedBefore", 1);
         }
     }
@@ -36,6 +39,9 @@ public class Intro : MonoBehaviour
         print("Music:" + PlayerPrefs.GetFloat("Music Volume", 1f));
         print("Room:" + PlayerPrefs.GetInt("Current Room", 0));
         print("Level:" + PlayerPrefs.GetString("Current Level", ""));
+        print("Max Health:" + PlayerPrefs.GetFloat("Max Health", 5));
+        print("Max Ammo (Base):" + PlayerPrefs.GetInt("Max Ammo (Base)", 6));
+        print("Max Ammo (Double):" + PlayerPrefs.GetInt("Max Ammo (Double)", 12));
     }
     IEnumerator LoadScene() {
         yield return new WaitForSeconds(waittime);

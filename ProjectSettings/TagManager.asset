@@ -7,8 +7,8 @@ TagManager:
   - Enemy
   - Projectile
   - Trigger
-  - Health
   - Safe
+  - Buff
   layers:
   - Default
   - TransparentFX

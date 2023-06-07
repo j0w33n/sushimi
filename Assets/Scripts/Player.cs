@@ -29,7 +29,7 @@ public class Player : Unit
     Room[] rooms;
     [SerializeField]Transform target;
     void Start() {
-        hitpoints = maxhitpoints;
+        hitpoints = PlayerPrefs.GetFloat("Max Health", 5);
         originalColor = sr.color;
         audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
@@ -98,13 +98,14 @@ public class Player : Unit
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
-        if (collision.GetComponent<Collectible>() && collision.tag == "Health" && hitpoints != maxhitpoints) {
-            hitpoints += collision.GetComponent<Collectible>().healthvalue;
+        if (collision.GetComponent<HealthCollectible>() && hitpoints != maxhitpoints) {
+            hitpoints += collision.GetComponent<HealthCollectible>().value;
             AudioManager.instance.PlaySFX(AudioManager.instance.healthSound);
             Destroy(collision.gameObject);
+            //collision.GetComponent<Collectible>().hasTarget = false;
         }
-        else if (collision.GetComponent<Collectible>() && collision.tag != "Health") {
-            levelManager.parts += collision.GetComponent<Collectible>().partvalue;
+        else if (collision.GetComponent<Part>()) {
+            levelManager.parts += collision.GetComponent<Part>().value;
             AudioManager.instance.PlaySFX(AudioManager.instance.partSound);
             Destroy(collision.gameObject);
         }
