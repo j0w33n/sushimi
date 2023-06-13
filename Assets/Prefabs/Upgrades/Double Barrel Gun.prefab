@@ -135,7 +135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activebuff: {fileID: 0}
-  upgrades: []
 --- !u!114 &1348348546881219331
 MonoBehaviour:
   m_ObjectHideFlags: 0

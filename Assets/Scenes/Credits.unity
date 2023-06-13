@@ -480,7 +480,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The tryhard coder that mashes keys.
+  m_Text: SERIAL TRYHARD
 --- !u!222 &302243403
 CanvasRenderer:
   m_ObjectHideFlags: 0
