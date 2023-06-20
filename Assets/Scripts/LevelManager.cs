@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
     public int enemieskilled;
     public int totalenemieskilled;
     public int totalenemies = 0;
-    public GameObject partcount;
+    public GameObject partcount,timer;
     public int parts;
     public Slider ammobar, enemykillcount;
     public GameObject panel, currentroom;
@@ -51,6 +51,7 @@ public class LevelManager : MonoBehaviour
     {
         //print(PlayerPrefs.GetString("Current Level"));
         //print(PlayerPrefs.GetInt("Current Room"));
+        ShowTime();
         partcount.GetComponent<Text>().text = "x " + parts.ToString();
         enemykillcount.value = totalenemieskilled;
         if (currentroom.GetComponent<Room>().roomstart) {
@@ -111,5 +112,12 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         AudioManager.instance.BGMusic = music;
         AudioManager.instance.PlayMusic(AudioManager.instance.BGMusic);
+    }
+    void ShowTime() {
+        int seconds,minutes;
+        minutes = (int)Time.timeSinceLevelLoad / 60;
+        seconds = (int)Time.timeSinceLevelLoad % 60;
+
+        timer.GetComponent<Text>().text = "Time taken: " + minutes + ":" + seconds;
     }
 }

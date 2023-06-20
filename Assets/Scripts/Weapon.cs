@@ -30,9 +30,9 @@ public abstract class Weapon : MonoBehaviour
     }
 
     // Update is called once per frame
-    /*protected void OnEnable() {
+    protected void OnEnable() {
         isreloading = false;
-    }*/
+    }
     protected void Update() {
         gunTransform.rotation = gunTransform.rotation;
         levelManager.ammobar.value = ammo;
