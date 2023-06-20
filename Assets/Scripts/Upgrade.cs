@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Upgrade : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class Upgrade : MonoBehaviour
         foreach(var i in shooting) {
             i.firerate -= value;
             i.reloadspeed += value;
-            upgradePanel.active = false;
+            upgradePanel.isactive = false;
             activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
             activebuff.sprite = GetComponent<Image>().sprite;
         }
@@ -36,7 +37,7 @@ public class Upgrade : MonoBehaviour
         //rect.sizeDelta = new Vector2(rect.sizeDelta.x + value * 2, rect.sizeDelta.y);
         //fillarea.right = new Vector3(fillarea.right.x + value * 2, fillarea.right.y, fillarea.right.z);
         //bg.sizeDelta = new Vector2(bg.sizeDelta.x + value * 2, bg.sizeDelta.y);
-        upgradePanel.active = false;
+        upgradePanel.isactive = false;
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
         activebuff.sprite = GetComponent<Image>().sprite;
     }
@@ -56,7 +57,7 @@ public class Upgrade : MonoBehaviour
         /*rect.sizeDelta = new Vector2(rect.sizeDelta.x + value * 2, rect.sizeDelta.y);
         fillarea.right = new Vector3(fillarea.right.x + value * 2, fillarea.right.y, fillarea.right.z);
         bg.sizeDelta = new Vector2(bg.sizeDelta.x + value * 2, bg.sizeDelta.y);*/
-        upgradePanel.active = false;
+        upgradePanel.isactive = false;
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
         activebuff.sprite = GetComponent<Image>().sprite;
     }
@@ -71,7 +72,7 @@ public class Upgrade : MonoBehaviour
             i.explodingprojectile.GetComponent<ProjectileScript>().upgraded = true;
             i.slowingprojectile.GetComponent<ProjectileScript>().upgraded = true;
         }
-        upgradePanel.active = false;
+        upgradePanel.isactive = false;
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
         activebuff.sprite = GetComponent<Image>().sprite;
     }
@@ -79,7 +80,7 @@ public class Upgrade : MonoBehaviour
         SwitchUpgrade();
         if (!switchupgrade) return;
         player.SwitchWeapon(1);
-        upgradePanel.active = false;
+        upgradePanel.isactive = false;
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
         activebuff.sprite = GetComponent<Image>().sprite;
     }
@@ -89,7 +90,7 @@ public class Upgrade : MonoBehaviour
         foreach (var i in shooting) {
             i.slow = true;
         }
-        upgradePanel.active = false;
+        upgradePanel.isactive = false;
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
         activebuff.sprite = GetComponent<Image>().sprite;
     }
@@ -99,7 +100,7 @@ public class Upgrade : MonoBehaviour
         foreach (var i in shooting) {
             i.explode = true;
         }
-        upgradePanel.active = false;
+        upgradePanel.isactive = false;
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
         activebuff.sprite = GetComponent<Image>().sprite;
     }
@@ -117,13 +118,15 @@ public class Upgrade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!upgradePanel.active) {
+        if (!upgradePanel.isactive) {
             GetComponent<Button>().interactable = false;
             GetComponent<Button>().GetComponent<Image>().color = new Color(255, 255, 255, 0);
             GetComponentInChildren<Text>().color = new Color(255, 255, 255, 0);
 
-        } else {
+        } 
+        else {
             GetComponent<Button>().interactable = true;
+            print(GetComponent<Button>().interactable);
             GetComponent<Button>().GetComponent<Image>().color = new Color(255, 255, 255, 255);
             GetComponentInChildren<Text>().color = new Color(255, 255, 255, 255);
         }

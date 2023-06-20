@@ -8,7 +8,7 @@ public class UpgradePanel : MonoBehaviour
     public List<GameObject> upgradepool;
     public List<Button> upgrades;
     Animator anim;
-    public bool active;
+    public bool isactive;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +32,6 @@ public class UpgradePanel : MonoBehaviour
         upgrade2.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
         upgrade2.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
         upgrade2.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        upgrade2.interactable = true;
 
         Button upgrade3 = Instantiate(upgrades[2]);
         upgrade3.transform.SetParent(transform);
@@ -40,11 +39,10 @@ public class UpgradePanel : MonoBehaviour
         upgrade3.GetComponent<RectTransform>().anchorMax = new Vector2(1f, 0.5f);
         upgrade3.GetComponent<RectTransform>().localPosition = new Vector3(-150, 0, 0);
         upgrade3.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        upgrade3.interactable = true;
     }
     // Update is called once per frame
     void Update()
     {
-        anim.SetBool("Active", active);
+        anim.SetBool("Active", isactive);
     }
 }

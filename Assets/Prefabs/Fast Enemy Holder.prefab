@@ -46,7 +46,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2910249494644937830}
   m_Layer: 0
-  m_Name: Enemy Holder
+  m_Name: Fast Enemy Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
