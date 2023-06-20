@@ -73,7 +73,7 @@ public class LevelManager : MonoBehaviour
             }
         }
         if(totalenemieskilled >= 1 && !currentroom.GetComponent<Room>().roomstart) {
-            panel.GetComponent<UpgradePanel>().active= true;
+            panel.GetComponent<UpgradePanel>().isactive= true;
             totalenemieskilled = 0;
         }
     }

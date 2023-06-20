@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6529858848509243838}
   - component: {fileID: 4232555422955652093}
   - component: {fileID: 8445004620843909238}
-  - component: {fileID: 1348348546881219331}
   m_Layer: 5
   m_Name: Exploding Bullets
   m_TagString: Untagged
@@ -122,7 +121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6529858848509243838}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8445004620843909238}
+        m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
+        m_MethodName: ExplodingBullets
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8445004620843909238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,35 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activebuff: {fileID: 0}
---- !u!114 &1348348546881219331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3328220233158758940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 8445004620843909238}
-          m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
-          m_MethodName: ExplodingBullets
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 10
-            m_FloatArgument: 0.2
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &8924867001267538324
 GameObject:
   m_ObjectHideFlags: 0
