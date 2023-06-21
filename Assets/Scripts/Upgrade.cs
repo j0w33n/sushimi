@@ -89,6 +89,7 @@ public class Upgrade : MonoBehaviour
         if (!switchupgrade) return;
         foreach (var i in shooting) {
             i.slow = true;
+            i.explode = false;
         }
         upgradePanel.isactive = false;
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
@@ -99,6 +100,7 @@ public class Upgrade : MonoBehaviour
         if (!switchupgrade) return;
         foreach (var i in shooting) {
             i.explode = true;
+            i.slow = false;
         }
         upgradePanel.isactive = false;
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);

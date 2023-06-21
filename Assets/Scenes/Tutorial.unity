@@ -1399,6 +1399,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialmsg: {fileID: 1972990528}
+  endscreen: {fileID: 0}
+  player: {fileID: 0}
+  levelManager: {fileID: 0}
+  fade: {fileID: 0}
+  endlevel: 0
 --- !u!61 &378882141
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9171,6 +9176,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialmsg: {fileID: 1285710141}
+  endscreen: {fileID: 0}
+  player: {fileID: 0}
+  levelManager: {fileID: 0}
+  fade: {fileID: 0}
+  endlevel: 0
 --- !u!61 &1270678385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11707,6 +11717,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialmsg: {fileID: 1898713959}
+  endscreen: {fileID: 0}
+  player: {fileID: 0}
+  levelManager: {fileID: 0}
+  fade: {fileID: 0}
+  endlevel: 0
 --- !u!61 &2041760496
 BoxCollider2D:
   m_ObjectHideFlags: 0
