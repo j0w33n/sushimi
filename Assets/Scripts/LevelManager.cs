@@ -51,7 +51,8 @@ public class LevelManager : MonoBehaviour
     {
         //print(PlayerPrefs.GetString("Current Level"));
         //print(PlayerPrefs.GetInt("Current Room"));
-        ShowTime();
+        if (!FindObjectOfType<EventTrigger>().endlevel) ShowTime();
+        else timer.GetComponent<Text>().text = "Time taken: -";
         partcount.GetComponent<Text>().text = "x " + parts.ToString();
         enemykillcount.value = totalenemieskilled;
         if (currentroom.GetComponent<Room>().roomstart) {
@@ -72,7 +73,7 @@ public class LevelManager : MonoBehaviour
                 player.arrow.gameObject.SetActive(true);
             }
         }
-        if(totalenemieskilled >= 1 && !currentroom.GetComponent<Room>().roomstart) {
+        if(totalenemieskilled >= 25 && !currentroom.GetComponent<Room>().roomstart) {
             panel.GetComponent<UpgradePanel>().isactive= true;
             totalenemieskilled = 0;
         }

@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class EventTrigger : MonoBehaviour
 {
-    public GameObject tutorialmsg;
+    public GameObject tutorialmsg,endscreen;
     Player player;
     CameraController cam;
     LevelManager levelManager;
     FadeIn fade;
+    public bool endlevel;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,8 @@ public class EventTrigger : MonoBehaviour
         cam = FindObjectOfType<CameraController>();
         levelManager = FindObjectOfType<LevelManager>();
         fade = FindObjectOfType<FadeIn>();
+        endscreen.SetActive(false);
+        endlevel = false;
     }
 
     // Update is called once per frame
@@ -37,6 +41,7 @@ public class EventTrigger : MonoBehaviour
         }
     }
     IEnumerator LevelEnd() {
+        endlevel = true;
         AudioManager.instance.StopMusic();
         player.canMove = false;
         cam.followtarget = false;
@@ -45,11 +50,15 @@ public class EventTrigger : MonoBehaviour
         player.movement = new Vector2(1, player.movement.y) * player.rb.position.normalized;
         AudioManager.instance.PlayMusic(AudioManager.instance.winSound);
         yield return new WaitForSeconds(AudioManager.instance.winSound.length - .1f);
+        endscreen.SetActive(true);
+        endscreen.GetComponentInChildren<Text>().text = levelManager.timer.GetComponent<Text>().text;
+    }
+    public void EndScreen() {
         StartCoroutine(fade.Appear());
         //yield return new WaitForSeconds(3);
         SceneManager.LoadScene(levelManager.leveltoload);
         PlayerPrefs.SetInt("Parts", levelManager.parts);
-        PlayerPrefs.SetInt("Total Enemies Killed",levelManager.totalenemieskilled);
+        PlayerPrefs.SetInt("Total Enemies Killed", levelManager.totalenemieskilled);
         PlayerPrefs.SetFloat("Max Health", player.maxhitpoints);
         PlayerPrefs.SetInt("Max Ammo (Base)", player.GetComponentsInChildren<Weapon>(true)[0].maxammo);
         PlayerPrefs.SetInt("Max Ammo (Double)", player.GetComponentsInChildren<Weapon>(true)[1].maxammo);
