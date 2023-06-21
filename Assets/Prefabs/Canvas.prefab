@@ -1721,7 +1721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1383702162248148214}
-  - component: {fileID: 5873908138483046982}
+  - component: {fileID: 5956870442202184141}
   m_Layer: 5
   m_Name: Level End Screen
   m_TagString: Untagged
@@ -1752,7 +1752,7 @@ RectTransform:
   m_AnchoredPosition: {x: -0.0025024414, y: -0.09777832}
   m_SizeDelta: {x: 0.010009766, y: -0.7000122}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5873908138483046982
+--- !u!114 &5956870442202184141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1761,11 +1761,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4191444966531775403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2821a1d21a10d3843a474873a2470309, type: 3}
+  m_Script: {fileID: 11500000, guid: 91a49ae8da12edd4689e6547dafe99e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialmsg: {fileID: 0}
-  endscreen: {fileID: 4191444966531775403}
 --- !u!1 &4213237581066778430
 GameObject:
   m_ObjectHideFlags: 0
@@ -3042,8 +3040,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5873908138483046982}
-        m_TargetAssemblyTypeName: EventTrigger, Assembly-CSharp
+      - m_Target: {fileID: 5956870442202184141}
+        m_TargetAssemblyTypeName: End, Assembly-CSharp
         m_MethodName: EndScreen
         m_Mode: 1
         m_Arguments:
