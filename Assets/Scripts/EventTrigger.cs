@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class EventTrigger : MonoBehaviour
 {
     public GameObject tutorialmsg,endscreen;
-    Player player;
+    public Player player;
     CameraController cam;
-    LevelManager levelManager;
-    FadeIn fade;
+    public LevelManager levelManager;
+    public FadeIn fade;
     public bool endlevel;
     // Start is called before the first frame update
     void Start()
@@ -52,16 +52,5 @@ public class EventTrigger : MonoBehaviour
         yield return new WaitForSeconds(AudioManager.instance.winSound.length - .1f);
         endscreen.SetActive(true);
         endscreen.GetComponentInChildren<Text>().text = levelManager.timer.GetComponent<Text>().text;
-    }
-    public void EndScreen() {
-        StartCoroutine(fade.Appear());
-        //yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(levelManager.leveltoload);
-        PlayerPrefs.SetInt("Parts", levelManager.parts);
-        PlayerPrefs.SetInt("Total Enemies Killed", levelManager.totalenemieskilled);
-        PlayerPrefs.SetFloat("Max Health", player.maxhitpoints);
-        PlayerPrefs.SetInt("Max Ammo (Base)", player.GetComponentsInChildren<Weapon>(true)[0].maxammo);
-        PlayerPrefs.SetInt("Max Ammo (Double)", player.GetComponentsInChildren<Weapon>(true)[1].maxammo);
-        PlayerPrefs.SetInt("Current Room", 0);
     }
 }

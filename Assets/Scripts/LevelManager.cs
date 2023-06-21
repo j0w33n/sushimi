@@ -51,8 +51,7 @@ public class LevelManager : MonoBehaviour
     {
         //print(PlayerPrefs.GetString("Current Level"));
         //print(PlayerPrefs.GetInt("Current Room"));
-        if (!FindObjectOfType<EventTrigger>().endlevel) ShowTime();
-        else timer.GetComponent<Text>().text = "Time taken: -";
+        if (!GameObject.Find("LevelEnd").GetComponent<EventTrigger>().endlevel) ShowTime();
         partcount.GetComponent<Text>().text = "x " + parts.ToString();
         enemykillcount.value = totalenemieskilled;
         if (currentroom.GetComponent<Room>().roomstart) {
