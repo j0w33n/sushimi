@@ -76,14 +76,14 @@ public class Upgrade : MonoBehaviour
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
         activebuff.sprite = GetComponent<Image>().sprite;
     }
-    public void DoubleBarrelGun() {
+    /*public void DoubleBarrelGun() {
         SwitchUpgrade();
         if (!switchupgrade) return;
         player.SwitchWeapon(1);
         upgradePanel.isactive = false;
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
         activebuff.sprite = GetComponent<Image>().sprite;
-    }
+    }*/
     public void SlowingBullets() {
         SwitchUpgrade();
         if (!switchupgrade) return;

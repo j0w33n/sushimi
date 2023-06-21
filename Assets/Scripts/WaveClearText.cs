@@ -26,7 +26,8 @@ public class WaveClearText : MonoBehaviour
         anim.SetFloat("Active", activetime);
         //if (!levelManager.currentroom.GetComponent<Room>().roomstart) return;
         if (levelManager.wavecomplete && levelManager.waves > 0) {
-            gameObject.GetComponent<Text>().text = "WAVE CLEAR";
+            if(levelManager.waves == 1) gameObject.GetComponent<Text>().text = levelManager.waves + " WAVE LEFT";
+            else gameObject.GetComponent<Text>().text = levelManager.waves + " WAVES LEFT";
             wave = true;
             activetime -= Time.deltaTime;
             if (activetime <= 0) {

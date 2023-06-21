@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Terresquall;
+using UnityEngine.SceneManagement;
 
 public class Player : Unit
 {
@@ -37,7 +38,7 @@ public class Player : Unit
         respawnpoint = transform.position;
         canMove = true;
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
-        SwitchWeapon(0);
+        if(SceneManager.GetActiveScene().name == "Tutorial")SwitchWeapon(0);
         rooms = FindObjectsOfType<Room>();
         arrow.gameObject.SetActive(false);
     }
@@ -80,7 +81,6 @@ public class Player : Unit
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision) {
-        print(collision.gameObject.name);
         if (collision.gameObject.GetComponent<Enemy>() && !dead && !collision.gameObject.GetComponent<Enemy>().dead) {
             TakeHit(collision.gameObject.GetComponent<Enemy>().damage);
             knockbackdir = transform.position - collision.transform.position;
