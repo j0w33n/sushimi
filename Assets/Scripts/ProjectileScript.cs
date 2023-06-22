@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
     public float speed;
     public float damage = 1;
     public float projectilelife;
@@ -13,7 +13,7 @@ public class ProjectileScript : MonoBehaviour
     //public float splashRange = 1; //we gonna add aoe as buff after clearing some stages
 
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         shootingScript = FindObjectOfType<Weapon>();

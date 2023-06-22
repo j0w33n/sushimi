@@ -19,7 +19,7 @@ public class Enemy : Unit
     Animator anim;
     public GameObject maskvfx;
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -34,7 +34,7 @@ public class Enemy : Unit
     }
 
     // Update is called once per frame
-    void Update() {
+    protected virtual void Update() {
         anim.SetBool("Death", dead);
         if (hitpoints <= 0) {
             StartCoroutine(Death());
@@ -71,15 +71,15 @@ public class Enemy : Unit
         }
     }
 
-    private void FixedUpdate() {
+    protected virtual void FixedUpdate() {
         if (canMove) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 1, 0);
     }
     private void Move(Vector2 direction) {
         rb.MovePosition((Vector2)transform.position + (direction * movespeed * Time.deltaTime));
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<SlowingProjectile>() && !dead)
+        if (collision.GetComponent<SlowingProjectile>() && !dead && collision.tag != "Enemy")
         {
             movespeed *= collision.GetComponent<SlowingProjectile>().slowfactor;
             TakeHit(collision.GetComponent<SlowingProjectile>().damage);
@@ -92,7 +92,7 @@ public class Enemy : Unit
                 floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
             }
         }
-        else if (collision.GetComponent<ExplodingProjectile>() && !dead) {
+        else if (collision.GetComponent<ExplodingProjectile>() && !dead && collision.tag != "Enemy") {
             TakeHit(collision.GetComponent<ExplodingProjectile>().damage);
             Knockback();
             audio.PlayOneShot(hitsound);
@@ -102,7 +102,7 @@ public class Enemy : Unit
                 floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
             }
         }
-        else if (collision.GetComponent<ProjectileScript>() && !dead) {
+        else if (collision.GetComponent<ProjectileScript>() && !dead && collision.tag != "Enemy") {
             
             TakeHit(collision.GetComponent<ProjectileScript>().damage);
             Knockback();
@@ -130,7 +130,7 @@ public class Enemy : Unit
             Instantiate(itemdrops[Random.Range(0, itemdrops.Length)],transform.position,transform.rotation);
         }
     }
-    void Knockback() {
+    protected void Knockback() {
         knockbackcounter = knockbacklength;
     }
 }
