@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7339923702310648704}
   - component: {fileID: 4656058408219814302}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 5134169817357666502}
   - component: {fileID: 388623067665896547}
   - component: {fileID: 1762060574659570203}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyProjectile
   m_TagString: Enemy
   m_Icon: {fileID: 0}

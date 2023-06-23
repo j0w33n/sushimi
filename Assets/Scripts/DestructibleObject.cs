@@ -29,7 +29,7 @@ public class DestructibleObject : Unit
             AudioManager.instance.PlaySFX(AudioManager.instance.impactSound);
             StartCoroutine(DamageFeedback());
         }
-        else if (collision.GetComponent<ProjectileScript>()) {
+        else if (collision.GetComponent<ProjectileScript>() && collision.tag != "Enemy") {
             TakeHit(collision.GetComponent<ProjectileScript>().damage);
             AudioManager.instance.PlaySFX(AudioManager.instance.impactSound);
             StartCoroutine(DamageFeedback());

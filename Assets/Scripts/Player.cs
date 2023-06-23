@@ -91,7 +91,7 @@ public class Player : Unit
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<Trap>() && collision.IsTouching(GetComponent<BoxCollider2D>()) && !dead) {
+        if (collision.GetComponent<Trap>() && !dead) {
             //TakeHit(collision.GetComponent<Trap>().damage);
             knockbackdir = transform.position - collision.transform.position;
             Knockback();
@@ -109,6 +109,14 @@ public class Player : Unit
             levelManager.parts += collision.GetComponent<Part>().value;
             AudioManager.instance.PlaySFX(AudioManager.instance.partSound);
             Destroy(collision.gameObject);
+        }
+        if (collision.GetComponent<EnemyProjectile>() && !dead) {
+            TakeHit(collision.gameObject.GetComponent<EnemyProjectile>().damage);
+            knockbackdir = transform.position - collision.transform.position;
+            Knockback();
+            audio.PlayOneShot(hitsound);
+            StartCoroutine(DamageFeedback());
+            StartCoroutine(Invulnerability());
         }
     }
     // For player's immunity
@@ -164,7 +172,7 @@ public class Player : Unit
             if(dist < closest) {
                 closest = dist;
             }
-            if ((i.transform.position - transform.position).magnitude == closest) {
+            if ((i.transform.position - transform.position).magnitude == closest && i.gameObject.activeSelf) {
                 target = i.transform;
             }
         }

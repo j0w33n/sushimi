@@ -9,8 +9,8 @@ public class EnemyProjectile : ProjectileScript
     // Start is called before the first frame update
     protected override void Start() {
         rb = GetComponent<Rigidbody2D>();
-        Move();
         target = FindObjectOfType<Player>().transform;
+        Move();
     }
 
     // Update is called once per frame
@@ -19,12 +19,10 @@ public class EnemyProjectile : ProjectileScript
         Destroy(gameObject, projectilelife);
     }
     public override void Move() {
-        if (target) {
-            Vector3 desiredFacing = target.position - transform.position;
-            Quaternion desiredRotation = Quaternion.LookRotation(desiredFacing);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, turnSpeed * Time.deltaTime);
-        }
-        rb.velocity = transform.right * speed;
+        Vector3 dir = target.position - transform.position;
+        rb.velocity = dir.normalized * speed;
+        float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
+        rb.rotation = angle;
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {
         if(collision.GetComponent<Player>() && !collision.GetComponent<Player>().dead) {
