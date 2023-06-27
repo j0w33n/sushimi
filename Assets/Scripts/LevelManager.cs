@@ -72,7 +72,8 @@ public class LevelManager : MonoBehaviour
                 player.arrow.gameObject.SetActive(true);
             }
         }
-        if(totalenemieskilled >= 25 && !currentroom.GetComponent<Room>().roomstart) {
+        if(totalenemieskilled >= 1 && !currentroom.GetComponent<Room>().roomstart) {
+            panel.SetActive(true);
             panel.GetComponent<UpgradePanel>().isactive= true;
             totalenemieskilled = 0;
         }

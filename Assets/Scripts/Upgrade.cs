@@ -123,14 +123,10 @@ public class Upgrade : MonoBehaviour
         if (!upgradePanel.isactive) {
             GetComponent<Button>().interactable = false;
             GetComponent<Button>().GetComponent<Image>().color = new Color(255, 255, 255, 0);
-            GetComponentInChildren<Text>().color = new Color(255, 255, 255, 0);
-
         } 
         else {
             GetComponent<Button>().interactable = true;
-            print(GetComponent<Button>().interactable);
             GetComponent<Button>().GetComponent<Image>().color = new Color(255, 255, 255, 255);
-            GetComponentInChildren<Text>().color = new Color(255, 255, 255, 255);
         }
     }
 }

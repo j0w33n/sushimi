@@ -29,6 +29,7 @@ public class Room : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<Player>() && gameObject.tag == "Safe") {
             StartCoroutine(clearText.SafeRoom());
+            gameObject.SetActive(false);
         }
         else if (collision.GetComponent<Player>() ) {
             RoomTrigger();
