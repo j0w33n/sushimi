@@ -2367,7 +2367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1895316392283688219, guid: 9cae9c84f6aa6214e8cf4eb33e1b1f19, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5991489704654557402, guid: 9cae9c84f6aa6214e8cf4eb33e1b1f19, type: 3}
       propertyPath: exit
@@ -2381,6 +2381,18 @@ PrefabInstance:
       propertyPath: roomwaves
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5991489704654557402, guid: 9cae9c84f6aa6214e8cf4eb33e1b1f19, type: 3}
+      propertyPath: exit.Array.data[0]
+      value: 
+      objectReference: {fileID: 716473721}
+    - target: {fileID: 5991489704654557402, guid: 9cae9c84f6aa6214e8cf4eb33e1b1f19, type: 3}
+      propertyPath: entrance.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991489704654557402, guid: 9cae9c84f6aa6214e8cf4eb33e1b1f19, type: 3}
+      propertyPath: entrance.Array.data[0]
+      value: 
+      objectReference: {fileID: 333021351}
     - target: {fileID: 5991489704654557402, guid: 9cae9c84f6aa6214e8cf4eb33e1b1f19, type: 3}
       propertyPath: myenemyspawns.Array.size
       value: 2
@@ -12425,12 +12437,16 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6692741346368557963, guid: 902b1e02468edee43bf86711f1be73c3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 18.524565
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692741346368557963, guid: 902b1e02468edee43bf86711f1be73c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.5
       objectReference: {fileID: 0}
     - target: {fileID: 6692741346368557963, guid: 902b1e02468edee43bf86711f1be73c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 47.5867
+      value: 47.5604
       objectReference: {fileID: 0}
     - target: {fileID: 6692741346368557963, guid: 902b1e02468edee43bf86711f1be73c3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12467,6 +12483,10 @@ PrefabInstance:
     - target: {fileID: 6692741346368557966, guid: 902b1e02468edee43bf86711f1be73c3, type: 3}
       propertyPath: m_Name
       value: Exit-Blocking Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692741346368557966, guid: 902b1e02468edee43bf86711f1be73c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 902b1e02468edee43bf86711f1be73c3, type: 3}

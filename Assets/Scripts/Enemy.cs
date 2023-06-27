@@ -16,7 +16,7 @@ public class Enemy : Unit
     public GameObject[] itemdrops;
     public int dropamt;
     private AudioSource audio;
-    Animator anim;
+    public Animator anim;
     public GameObject maskvfx;
     // Start is called before the first frame update
     protected void Start()
@@ -31,6 +31,7 @@ public class Enemy : Unit
         audio = GetComponent<AudioSource>();
         transform.parent.GetComponentInChildren<Canvas>().worldCamera = FindObjectOfType<Camera>();
         dead = false;
+        canMove = false;
     }
 
     // Update is called once per frame
@@ -72,6 +73,7 @@ public class Enemy : Unit
     }
 
     protected virtual void FixedUpdate() {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("Spawn")) canMove = true;
         if (canMove) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 1, 0);
     }
     private void Move(Vector2 direction) {
