@@ -73,13 +73,18 @@ public class LevelManager : MonoBehaviour
             }
         }
         if(totalenemieskilled >= 1 && !currentroom.GetComponent<Room>().roomstart) {
-            panel.SetActive(true);
-            panel.GetComponent<UpgradePanel>().isactive= true;
-            totalenemieskilled = 0;
+            StartCoroutine(upgradepanel());
         }
     }
     public void Respawn() {
         StartCoroutine(RespawnCo());
+    }
+    IEnumerator upgradepanel() {
+        panel.SetActive(true);
+        panel.GetComponent<UpgradePanel>().isactive = true;
+        totalenemieskilled = 0;
+        yield return new WaitForSeconds(panel.GetComponent<UpgradePanel>().anim.GetCurrentAnimatorStateInfo(0).length + panel.GetComponent<UpgradePanel>().anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        Time.timeScale = 0;
     }
     IEnumerator RespawnCo() {
         Physics2D.IgnoreLayerCollision(6, 7, false);

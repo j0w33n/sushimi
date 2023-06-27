@@ -7,7 +7,7 @@ public class UpgradePanel : MonoBehaviour
 {
     public List<GameObject> upgradepool;
     public List<Button> upgrades;
-    Animator anim;
+    public Animator anim;
     public bool isactive;
     // Start is called before the first frame update
     void Start()

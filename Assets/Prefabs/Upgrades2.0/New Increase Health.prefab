@@ -146,3 +146,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activebuff: {fileID: 0}
+  buffimage: {fileID: 21300000, guid: 80a651d5d6147fa42acf53dcf4172af1, type: 3}

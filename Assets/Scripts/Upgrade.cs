@@ -12,15 +12,14 @@ public class Upgrade : MonoBehaviour
     UpgradePanel upgradePanel;
     bool switchupgrade;
     public Image activebuff;
+    public Sprite buffimage;
     public void IncreaseFireRate(float value) {
         SwitchUpgrade();
         if (!switchupgrade) return;
         foreach(var i in shooting) {
             i.firerate -= value;
             i.reloadspeed += value;
-            upgradePanel.isactive = false;
-            activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
-            activebuff.sprite = GetComponent<Image>().sprite;
+            ClosePanel();
         }
     }
     public void IncreaseHealth(float value) {
@@ -37,9 +36,7 @@ public class Upgrade : MonoBehaviour
         //rect.sizeDelta = new Vector2(rect.sizeDelta.x + value * 2, rect.sizeDelta.y);
         //fillarea.right = new Vector3(fillarea.right.x + value * 2, fillarea.right.y, fillarea.right.z);
         //bg.sizeDelta = new Vector2(bg.sizeDelta.x + value * 2, bg.sizeDelta.y);
-        upgradePanel.isactive = false;
-        activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
-        activebuff.sprite = GetComponent<Image>().sprite;
+        ClosePanel();
     }
     public void IncreaseMaxAmmo(int value) {
         SwitchUpgrade();
@@ -57,9 +54,7 @@ public class Upgrade : MonoBehaviour
         /*rect.sizeDelta = new Vector2(rect.sizeDelta.x + value * 2, rect.sizeDelta.y);
         fillarea.right = new Vector3(fillarea.right.x + value * 2, fillarea.right.y, fillarea.right.z);
         bg.sizeDelta = new Vector2(bg.sizeDelta.x + value * 2, bg.sizeDelta.y);*/
-        upgradePanel.isactive = false;
-        activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
-        activebuff.sprite = GetComponent<Image>().sprite;
+        ClosePanel();
     }
     public void IncreaseDamage(int value) {
         SwitchUpgrade();
@@ -72,9 +67,7 @@ public class Upgrade : MonoBehaviour
             i.explodingprojectile.GetComponent<ProjectileScript>().upgraded = true;
             i.slowingprojectile.GetComponent<ProjectileScript>().upgraded = true;
         }
-        upgradePanel.isactive = false;
-        activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
-        activebuff.sprite = GetComponent<Image>().sprite;
+        ClosePanel();
     }
     /*public void DoubleBarrelGun() {
         SwitchUpgrade();
@@ -91,9 +84,7 @@ public class Upgrade : MonoBehaviour
             i.slow = true;
             i.explode = false;
         }
-        upgradePanel.isactive = false;
-        activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
-        activebuff.sprite = GetComponent<Image>().sprite;
+        ClosePanel();
     }
     public void ExplodingBullets() {
         SwitchUpgrade();
@@ -102,9 +93,7 @@ public class Upgrade : MonoBehaviour
             i.explode = true;
             i.slow = false;
         }
-        upgradePanel.isactive = false;
-        activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
-        activebuff.sprite = GetComponent<Image>().sprite;
+        ClosePanel();
     }
     // Start is called before the first frame update
     void Start()
@@ -117,6 +106,12 @@ public class Upgrade : MonoBehaviour
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 0);
     }
     public void SwitchUpgrade() { switchupgrade = !switchupgrade; }
+    void ClosePanel() {
+        upgradePanel.isactive = false;
+        activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
+        activebuff.sprite = buffimage;
+        Time.timeScale = 1;
+    }
     // Update is called once per frame
     void Update()
     {
