@@ -20,7 +20,7 @@ public class ProjectileScript : MonoBehaviour
         Move();
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<Enemy>() && !collision.GetComponent<Enemy>().dead) {
+        if (collision.GetComponent<Enemy>() && !collision.GetComponent<Enemy>().dead && !collision.GetComponent<Enemy>().anim.GetCurrentAnimatorStateInfo(0).IsTag("Spawn")) {
             Destroy(gameObject);
         }
     }
