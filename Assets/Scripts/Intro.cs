@@ -21,6 +21,7 @@ public class Intro : MonoBehaviour
             PlayerPrefs.SetInt("Max Ammo (Base)", 6);
             PlayerPrefs.SetInt("Max Ammo (Double)", 12);
             PlayerPrefs.SetInt("HasPlayedBefore", 1);
+            PlayerPrefs.SetInt("hasTranslator", 0);
         }
     }
     private void Awake() {
@@ -42,6 +43,7 @@ public class Intro : MonoBehaviour
         print("Max Health:" + PlayerPrefs.GetFloat("Max Health", 5));
         print("Max Ammo (Base):" + PlayerPrefs.GetInt("Max Ammo (Base)", 6));
         print("Max Ammo (Double):" + PlayerPrefs.GetInt("Max Ammo (Double)", 12));
+        print("Translator:" + PlayerPrefs.GetInt("hasTranslator", 0));
     }
     IEnumerator LoadScene() {
         yield return new WaitForSeconds(waittime);
