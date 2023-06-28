@@ -17,9 +17,9 @@ public class UpgradePanel : MonoBehaviour
             upgrades[i] = upgradepool[Random.Range(0, upgradepool.Count)].GetComponent<Button>();
         }
         anim = GetComponent<Animator>();
-        SetUpgrades();
+        //SetUpgrades();
     }
-    void SetUpgrades() {
+    public void SetUpgrades() {
         Button upgrade1 = Instantiate(upgrades[0]);
         upgrade1.transform.SetParent(transform);
         upgrade1.GetComponent<RectTransform>().anchorMin = new Vector2(0f,0.5f);

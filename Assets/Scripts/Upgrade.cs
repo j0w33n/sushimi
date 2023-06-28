@@ -111,6 +111,7 @@ public class Upgrade : MonoBehaviour
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
         activebuff.sprite = buffimage;
         Time.timeScale = 1;
+        upgradePanel.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()

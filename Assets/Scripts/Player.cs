@@ -27,7 +27,6 @@ public class Player : Unit
     public int currentweapon;
     public List<Weapon> weapons;
     public Transform arrow;
-    Room[] rooms;
     [SerializeField]Transform target;
     void Start() {
         hitpoints = PlayerPrefs.GetFloat("Max Health", 5);
@@ -39,7 +38,6 @@ public class Player : Unit
         canMove = true;
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         if(SceneManager.GetActiveScene().name == "Tutorial")SwitchWeapon(0);
-        rooms = FindObjectsOfType<Room>();
         arrow.gameObject.SetActive(false);
     }
     // Update is called once per frame
@@ -167,13 +165,13 @@ public class Player : Unit
     }
     void FindClosestRoom() {
         float closest = 999;
-        foreach(var i in rooms) {
-            var dist = (i.transform.position - transform.position).magnitude;
+        for(int i = 1;i < levelManager.rooms.Count;i++) {
+            var dist = (levelManager.rooms[i].transform.position - transform.position).magnitude;
             if(dist < closest) {
                 closest = dist;
             }
-            if ((i.transform.position - transform.position).magnitude == closest && i.gameObject.activeSelf) {
-                target = i.transform;
+            if ((levelManager.rooms[i].transform.position - transform.position).magnitude == closest && levelManager.rooms[i].gameObject.activeSelf) {
+                target = levelManager.rooms[i].transform;
             }
         }
     }

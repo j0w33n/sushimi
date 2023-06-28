@@ -23,6 +23,11 @@ public class SceneController : MonoBehaviour {
         PlayerPrefs.SetInt("Parts", 0);
         PlayerPrefs.SetInt("Total Enemies Killed", 0);
         PlayerPrefs.SetInt("Current Room", 0);
+        PlayerPrefs.SetFloat("Max Health", 5);
+        PlayerPrefs.SetInt("Max Ammo (Base)", 6);
+        PlayerPrefs.SetInt("Max Ammo (Double)", 12);
+        PlayerPrefs.SetInt("hasTranslator", 0);
+        AudioManager.instance.StopMusic();
     }
     public void Credits() {
        SceneManager.LoadScene("Credits");

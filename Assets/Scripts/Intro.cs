@@ -16,12 +16,7 @@ public class Intro : MonoBehaviour
             PlayerPrefs.SetFloat("SFX Volume", 1f);
             PlayerPrefs.SetFloat("Music Volume", 1f);
             PlayerPrefs.SetString("Current Level", "");
-            PlayerPrefs.SetInt("Current Room", 0);
-            PlayerPrefs.SetFloat("Max Health", 5);
-            PlayerPrefs.SetInt("Max Ammo (Base)", 6);
-            PlayerPrefs.SetInt("Max Ammo (Double)", 12);
             PlayerPrefs.SetInt("HasPlayedBefore", 1);
-            PlayerPrefs.SetInt("hasTranslator", 0);
         }
     }
     private void Awake() {

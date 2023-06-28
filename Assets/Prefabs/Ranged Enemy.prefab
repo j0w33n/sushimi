@@ -201,6 +201,7 @@ MonoBehaviour:
   itemdrops:
   - {fileID: 3587237261951397024, guid: 4fbd5160a237eef4d8630fbb4b41403f, type: 3}
   dropamt: 3
+  anim: {fileID: 0}
   maskvfx: {fileID: 5178278417980185461, guid: ea2791ea045e5dd4eb9ef0ea61eb053d, type: 3}
   projectile: {fileID: 7918848339342511285, guid: 679f9c1d94d8f24459ab31de9b4c8b8e, type: 3}
   firerate: 1.2
@@ -214,7 +215,7 @@ AudioSource:
   m_GameObject: {fileID: 8287565039749020181}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 772995181253064774, guid: a24180d1ea82aca45b8742574dc9da4e, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -309,9 +310,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8287565039749020181}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 19d5077dab8182e448a1f2b769ab2997, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -15,7 +15,7 @@ public class Enemy : Unit
     public bool spawned,dead;
     public GameObject[] itemdrops;
     public int dropamt;
-    private AudioSource audio;
+    [SerializeField]private AudioSource audio;
     public Animator anim;
     public GameObject maskvfx;
     // Start is called before the first frame update
@@ -40,7 +40,6 @@ public class Enemy : Unit
         if (hitpoints <= 0) {
             StartCoroutine(Death());
         }
-
         if (dead) // Stop movement if the enemy is dead
         {
             movement = Vector2.zero;
@@ -126,7 +125,7 @@ public class Enemy : Unit
         healthbar.gameObject.SetActive(false);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
         Destroy(Instantiate(maskvfx, transform.position, transform.rotation), 1);
-        gameObject.SetActive(false);
+        Destroy(gameObject);
         if (spawned) levelManager.enemieskilled += 1; levelManager.totalenemieskilled += 1;
         for(int i = 0; i < Random.Range(1, dropamt + 1); i++) {
             Instantiate(itemdrops[Random.Range(0, itemdrops.Length)],transform.position,transform.rotation);
