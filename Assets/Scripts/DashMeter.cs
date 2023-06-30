@@ -17,7 +17,8 @@ public class DashMeter : MonoBehaviour
     void Update() {
         if (player._isDashing) {
             dashBar.CrossFadeAlpha(0.15f, player.immunityDuration,false);
-        } else {
+        } 
+        else {
             dashBar.CrossFadeAlpha(1f, player._dashingTime, false);
         }
     }

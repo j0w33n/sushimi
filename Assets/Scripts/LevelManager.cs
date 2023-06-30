@@ -24,6 +24,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] VirtualJoystick[] joysticks;
     public List<GameObject> rooms = new List<GameObject>();
     Weapon[] weapons;
+    [SerializeField]Image line;
+    [SerializeField]int nlines;
+    [SerializeField]float ammobarwidth;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +47,9 @@ public class LevelManager : MonoBehaviour
             w.explodingprojectile.GetComponent<ProjectileScript>().damage = 1;
             w.slowingprojectile.GetComponent<ProjectileScript>().damage = 1;
         }
+        ammobarwidth = ammobar.GetComponent<RectTransform>().sizeDelta.x;
+        nlines = (int)ammobar.maxValue / 2;
+        AmmoSegments();
     }
 
     // Update is called once per frame
@@ -126,5 +132,23 @@ public class LevelManager : MonoBehaviour
         seconds = (int)Time.timeSinceLevelLoad % 60;
 
         timer.GetComponent<Text>().text = "Time taken: " + minutes + ":" + seconds;
+    }
+    void AmmoSegments() {
+        float segmentlength = ammobarwidth / (nlines + 1);
+        print(ammobar.transform.position);
+        //float offset = segmentlength;
+        //Image img = Instantiate(line);
+        //img.transform.SetParent(ammobar.transform);
+        //img.rectTransform.localScale = new Vector3(1, 1, 1);
+        //img.rectTransform.localPosition += new Vector3(segmentlength + offset * nlines, 0, 0);
+        List<Image> lines = new List<Image>();
+        for (int i = 0; i < nlines; i++) {
+            Image img = Instantiate(line,ammobar.transform.position - new Vector3(333.8f,0,0), Quaternion.identity, ammobar.transform);
+            lines.Add(img);
+        }
+        for(int i=0;i< lines.Count;i++) {
+            if (i == 0) lines[i].transform.position += new Vector3(segmentlength*2, 0, 0);
+            else lines[i].transform.position = lines[i - 1].transform.position + new Vector3(segmentlength*2, 0, 0);
+        }
     }
 }

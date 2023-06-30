@@ -27,6 +27,8 @@ public abstract class Weapon : MonoBehaviour
     {
         levelManager = FindObjectOfType<LevelManager>();
         audio = GetComponent<AudioSource>();
+        levelManager.ammobar.value = ammo;
+        levelManager.ammobar.maxValue = maxammo;
     }
 
     // Update is called once per frame
