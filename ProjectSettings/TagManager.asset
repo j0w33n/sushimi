@@ -46,23 +46,29 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: floor
+    uniqueID: 2884196101
+    locked: 0
   - name: gun
     uniqueID: 966202327
+    locked: 0
+  - name: interactables
+    uniqueID: 733815549
+    locked: 0
+  - name: back environment
+    uniqueID: 2292620733
     locked: 0
   - name: Player
     uniqueID: 745862771
     locked: 0
-  - name: environment
-    uniqueID: 1572383095
-    locked: 0
   - name: enemy
     uniqueID: 2487484345
     locked: 0
+  - name: environment
+    uniqueID: 1572383095
+    locked: 0
   - name: bullet
     uniqueID: 3225215875
-    locked: 0
-  - name: interactables
-    uniqueID: 733815549
     locked: 0
   - name: particle glow
     uniqueID: 1282311355
