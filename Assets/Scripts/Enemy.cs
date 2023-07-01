@@ -18,6 +18,8 @@ public class Enemy : Unit
     [SerializeField]private AudioSource audio;
     public Animator anim;
     public GameObject maskvfx;
+    public Transform indicator;
+    Renderer rd;
     // Start is called before the first frame update
     protected void Start()
     {
@@ -32,6 +34,7 @@ public class Enemy : Unit
         transform.parent.GetComponentInChildren<Canvas>().worldCamera = FindObjectOfType<Camera>();
         dead = false;
         canMove = false;
+        rd = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -68,6 +71,14 @@ public class Enemy : Unit
             knockbackcounter -= Time.deltaTime;
             movement = knockbackdir;
             movespeed = knockbackforce;
+        }
+        if (!rd.isVisible) {
+            if (!indicator.gameObject.activeSelf) indicator.gameObject.SetActive(true);
+            var dir = player.transform.position - transform.position;
+            RaycastHit2D ray = Physics2D.Raycast(transform.position, dir);
+            if (ray.collider != null) indicator.transform.position = ray.point;
+        } else {
+            if (indicator.gameObject.activeSelf) indicator.gameObject.SetActive(false);
         }
     }
 

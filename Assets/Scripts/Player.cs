@@ -26,8 +26,8 @@ public class Player : Unit
     public bool dead;
     public int currentweapon;
     public List<Weapon> weapons;
-    public Transform arrow;
-    [SerializeField]Transform target;
+    //public Transform arrow;
+    //[SerializeField]Transform target;
     void Start() {
         hitpoints = PlayerPrefs.GetFloat("Max Health", 5);
         originalColor = sr.color;
@@ -38,7 +38,7 @@ public class Player : Unit
         canMove = true;
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         if(SceneManager.GetActiveScene().name == "Tutorial")SwitchWeapon(0);
-        arrow.gameObject.SetActive(false);
+        //arrow.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -70,10 +70,10 @@ public class Player : Unit
             knockbackcounter -= Time.deltaTime;
             movement = knockbackdir.normalized * knockbackforce;
         }
-        FindClosestRoom();
+        /*FindClosestRoom();
         var dir = target.position - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        arrow.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        arrow.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
     }
     private void FixedUpdate() {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -163,7 +163,7 @@ public class Player : Unit
     void Knockback() {
         knockbackcounter = knockbacklength;
     }
-    void FindClosestRoom() {
+    /*void FindClosestRoom() {
         float closest = 999;
         for(int i = 1;i < levelManager.rooms.Count;i++) {
             var dist = (levelManager.rooms[i].transform.position - transform.position).magnitude;
@@ -174,5 +174,5 @@ public class Player : Unit
                 target = levelManager.rooms[i].transform;
             }
         }
-    }
+    }*/
 }

@@ -46,7 +46,7 @@ public class EventTrigger : MonoBehaviour
         player.canMove = false;
         cam.followtarget = false;
         player.movement = Vector2.zero;
-        player.arrow.gameObject.SetActive(false);
+        //player.arrow.gameObject.SetActive(false);
         yield return new WaitForSeconds(1);
         player.movement = new Vector2(1, player.movement.y) * player.rb.position.normalized;
         AudioManager.instance.PlaySFX(AudioManager.instance.winSound);

@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour
         enemykillcount.value = totalenemieskilled;
         if (currentroom.GetComponent<Room>().roomstart) {
             PlayerPrefs.SetInt("Current Room", rooms.IndexOf(currentroom));
-            player.arrow.gameObject.SetActive(false);
+            //player.arrow.gameObject.SetActive(false);
             if (enemieskilled == totalenemies) {
                 wavecomplete = true;
                 StartCoroutine(EndOfWave());
@@ -73,9 +73,8 @@ public class LevelManager : MonoBehaviour
                     i.SetActive(false);
                 }
                 AudioManager.instance.PlaySFX(AudioManager.instance.entranceSound);
-                //StopCoroutine(player.GetComponentInChildren<Weapon>().Reload());
                 player.GetComponentInChildren<Weapon>().ammo = player.GetComponentInChildren<Weapon>().maxammo;
-                player.arrow.gameObject.SetActive(true);
+                //player.arrow.gameObject.SetActive(true);
             }
         }
         if(totalenemieskilled >= 10 && !currentroom.GetComponent<Room>().roomstart) {
@@ -135,7 +134,6 @@ public class LevelManager : MonoBehaviour
     }
     void AmmoSegments() {
         float segmentlength = ammobarwidth / (nlines + 1);
-        print(ammobar.transform.position);
         //float offset = segmentlength;
         //Image img = Instantiate(line);
         //img.transform.SetParent(ammobar.transform);
