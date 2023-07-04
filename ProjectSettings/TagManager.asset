@@ -9,11 +9,14 @@ TagManager:
   - Trigger
   - Safe
   - Buff
+  - L1R7
+  - L1R6
+  - L1R8
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - CamCollider
   - Water
   - UI
   - Player
