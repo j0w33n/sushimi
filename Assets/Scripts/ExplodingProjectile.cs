@@ -25,7 +25,6 @@ public class ExplodingProjectile : ProjectileScript
                 damage = 10 * (1 - diff2.magnitude / blastradius);
             }
         }
-        print(damage);
         base.Update();
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {
