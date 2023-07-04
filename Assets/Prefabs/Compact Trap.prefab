@@ -749,6 +749,7 @@ GameObject:
   - component: {fileID: 3553696000474279750}
   - component: {fileID: 3553696000474279751}
   - component: {fileID: 3553696000474279752}
+  - component: {fileID: 5566778094807715323}
   m_Layer: 0
   m_Name: Compact Trap
   m_TagString: Untagged
@@ -852,6 +853,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &5566778094807715323
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553696000474279748}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.43249, y: 0.48789728}
+      - {x: -1.1911077, y: 0.48505256}
+      - {x: -1.2357988, y: 0.011744067}
+      - {x: -2.2379048, y: -0.10320801}
+      - {x: -2.0014086, y: -1.108307}
+      - {x: -1.747838, y: -1.2260158}
+      - {x: -1.6439986, y: -1.769212}
+      - {x: 2.2681289, y: -1.7212026}
+      - {x: 2.367066, y: -1.1201733}
+      - {x: 2.689118, y: -1.0966392}
+      - {x: 2.8394384, y: -0.507145}
 --- !u!1 &3873990425826065776
 GameObject:
   m_ObjectHideFlags: 0
