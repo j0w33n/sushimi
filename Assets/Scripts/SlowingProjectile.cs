@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlowingProjectile : ProjectileScript
 {
-    public float slowfactor;
+    public float slowfactor = 0.5f;
     // Start is called before the first frame update
     
 }
