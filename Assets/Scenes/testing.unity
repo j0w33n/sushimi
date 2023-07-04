@@ -13035,9 +13035,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
+      propertyPath: dropamt
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
       propertyPath: hitsound
       value: 
       objectReference: {fileID: 8300000, guid: 88437b80790d08e4d85bb1c202145f55, type: 3}
+    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
+      propertyPath: nextCast
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
+      propertyPath: jumpRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
+      propertyPath: movespeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
+      propertyPath: maxhitpoints
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
+      propertyPath: nextCastTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
       propertyPath: damageFeedbackColor.b
       value: 0

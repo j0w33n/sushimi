@@ -32,6 +32,13 @@ public class MiniBossStorm : MonoBehaviour
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
+            // Check if the object has an Immunity script attached
+            Immunity immunity = other.GetComponent<Immunity>();
+            if (immunity != null && immunity.IsImmuneToTornado)
+            {
+                // Object is immune to the tornado, so skip pulling it
+                return;
+            }
             // Calculate the direction from the object to the tornado
             Vector2 direction = transform.position - other.transform.position;
 

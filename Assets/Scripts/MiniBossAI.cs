@@ -111,12 +111,12 @@ public class MiniBossAI : Unit
 				transform.localScale = new Vector3(1, 1, 1); // Reset the sprite scale
 			}
 		}
-		if (knockbackcounter > 0)
-		{
-			knockbackcounter -= Time.deltaTime;
-			movement = knockbackdir;
-			movespeed = knockbackforce;
-		}
+        if (knockbackcounter > 0)
+        {
+            knockbackcounter -= Time.deltaTime;
+            movement = knockbackdir;
+            movespeed = knockbackforce;
+        }
         if (timer > nextCastTime)
         {
 
@@ -126,7 +126,6 @@ public class MiniBossAI : Unit
         }
         else if (Vector2.Distance(thePlayer.transform.position, rb.position) >= jumpRange && Vector2.Distance(thePlayer.transform.position, rb.position) > 1 && Time.time > nextJumpTime)
         {
-            print("Jump");
             myAnim.SetTrigger("JumpAttack");
             isJump = true;
 
@@ -159,8 +158,8 @@ public class MiniBossAI : Unit
 		{
 			movespeed *= collision.GetComponent<SlowingProjectile>().slowfactor;
 			TakeHit(collision.GetComponent<SlowingProjectile>().damage);
-			Knockback();
-			audio.PlayOneShot(hitsound);
+            Knockback();
+            audio.PlayOneShot(hitsound);
 			StartCoroutine(DamageFeedback());
 			if (floatingTextPrefab)
 			{
@@ -171,8 +170,8 @@ public class MiniBossAI : Unit
 		else if (collision.GetComponent<ExplodingProjectile>() && !dead && collision.tag != "Enemy")
 		{
 			TakeHit(collision.GetComponent<ExplodingProjectile>().damage);
-			Knockback();
-			audio.PlayOneShot(hitsound);
+            Knockback();
+            audio.PlayOneShot(hitsound);
 			StartCoroutine(DamageFeedback());
 			if (floatingTextPrefab)
 			{
@@ -184,8 +183,8 @@ public class MiniBossAI : Unit
 		{
 
 			TakeHit(collision.GetComponent<ProjectileScript>().damage);
-			Knockback();
-			audio.PlayOneShot(hitsound);
+            Knockback();
+            audio.PlayOneShot(hitsound);
 			StartCoroutine(DamageFeedback());
 			if (floatingTextPrefab)
 			{
@@ -213,12 +212,12 @@ public class MiniBossAI : Unit
 			Instantiate(itemdrops[Random.Range(0, itemdrops.Length)], transform.position, transform.rotation);
 		}
 	}
-	protected void Knockback()
-	{
-		knockbackcounter = knockbacklength;
-	}
+    protected void Knockback()
+    {
+        knockbackcounter = knockbacklength;
+    }
 
-	public void BossAttack()
+    public void BossAttack()
 	{
 
 		if (thePlayer._isDashing == true)
@@ -301,8 +300,15 @@ public class MiniBossAI : Unit
         Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 225));
         Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 270));
         Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 315));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 60));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 105));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 150));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 195));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 240));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 285));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 330));
 
-        yield return new WaitForSeconds(nextCast);
+		yield return new WaitForSeconds(nextCast);
 
         Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 22));
         Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 67));
@@ -312,9 +318,17 @@ public class MiniBossAI : Unit
         Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 247));
         Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 292));
         Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 337));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 37));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 82));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 127));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 172));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 217));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 262));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 307));
+		Instantiate(bullet1, bulletPos.position, Quaternion.Euler(0, 0, 352));
 
 
-    }
+	}
     public void AfterCast()
 	{
 		isCast = false;

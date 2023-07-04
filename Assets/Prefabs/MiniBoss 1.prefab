@@ -398,7 +398,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7687292968646771545}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -49.8, y: 18.14, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
@@ -415,9 +415,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 5973192239724992350}
     m_Modifications:
     - target: {fileID: 8015642939441574160, guid: c9d91bd5b870009429889efe6eff880a, type: 3}
+      propertyPath: dropamt
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015642939441574160, guid: c9d91bd5b870009429889efe6eff880a, type: 3}
+      propertyPath: hitsound
+      value: 
+      objectReference: {fileID: 8300000, guid: 88437b80790d08e4d85bb1c202145f55, type: 3}
+    - target: {fileID: 8015642939441574160, guid: c9d91bd5b870009429889efe6eff880a, type: 3}
+      propertyPath: nextCast
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015642939441574160, guid: c9d91bd5b870009429889efe6eff880a, type: 3}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 7605713874458570273}
+    - target: {fileID: 8015642939441574160, guid: c9d91bd5b870009429889efe6eff880a, type: 3}
+      propertyPath: maxhitpoints
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015642939441574160, guid: c9d91bd5b870009429889efe6eff880a, type: 3}
+      propertyPath: nextCastTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015642939441574160, guid: c9d91bd5b870009429889efe6eff880a, type: 3}
+      propertyPath: damageFeedbackColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8015642939441574165, guid: c9d91bd5b870009429889efe6eff880a, type: 3}
       propertyPath: m_RootOrder
       value: 0
