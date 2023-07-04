@@ -263,17 +263,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1460838448515769588}
     m_Modifications:
-    - target: {fileID: 4656926981030099427, guid: dfe070908e4a7b24dac1f9477efe7a03, type: 3}
-      propertyPath: m_Name
-      value: LevelEnd
-      objectReference: {fileID: 0}
-    - target: {fileID: 7429955314148434394, guid: dfe070908e4a7b24dac1f9477efe7a03, type: 3}
+    - target: {fileID: 624008204413087403, guid: dfe070908e4a7b24dac1f9477efe7a03, type: 3}
       propertyPath: endscreen
       value: 
       objectReference: {fileID: 2197526061704162311}
-    - target: {fileID: 7429955314148434394, guid: dfe070908e4a7b24dac1f9477efe7a03, type: 3}
-      propertyPath: tutorialmsg
-      value: 
+    - target: {fileID: 4656926981030099427, guid: dfe070908e4a7b24dac1f9477efe7a03, type: 3}
+      propertyPath: m_Name
+      value: LevelEnd
       objectReference: {fileID: 0}
     - target: {fileID: 7636711383133326618, guid: dfe070908e4a7b24dac1f9477efe7a03, type: 3}
       propertyPath: m_RootOrder

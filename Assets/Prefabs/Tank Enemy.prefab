@@ -31,14 +31,8 @@ Transform:
   m_GameObject: {fileID: 8287565039749020181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.91, y: 0.07, z: 0}
-<<<<<<< Updated upstream
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-=======
   m_LocalScale: {x: 2, y: 2, z: 1}
-  m_Children:
-  - {fileID: 5349842444289358707}
->>>>>>> Stashed changes
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807482951
   m_SortingLayer: 6
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8a962b4a32400b24f8aad209af495e74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.009431839, y: -0.14751649}
+  m_Offset: {x: -0.15424204, y: -0.14023316}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -117,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8603964, y: 1.6964722}
+  m_Size: {x: 1.7498465, y: 1.7220671}
   m_EdgeRadius: 0
 --- !u!50 &8287565039749020185
 Rigidbody2D:
@@ -154,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 0
   maxhitpoints: 5
-  knockbackforce: 1.5
+  knockbackforce: 3
   knockbacklength: 0.2
   knockbackcounter: 0
   knockbackdir: {x: 0, y: 0}
@@ -169,7 +163,7 @@ MonoBehaviour:
   canMove: 0
   floatingTextPrefab: {fileID: 1210272696370798234, guid: fdf23a94d32536844a912658ea6b4936, type: 3}
   movespeed: 1
-  damage: 4
+  damage: 1
   spawner: {fileID: 0}
   spawned: 0
   dead: 0
@@ -180,7 +174,6 @@ MonoBehaviour:
   audio: {fileID: 0}
   anim: {fileID: 0}
   maskvfx: {fileID: 5178278417980185461, guid: ea2791ea045e5dd4eb9ef0ea61eb053d, type: 3}
-  indicator: {fileID: 0}
 --- !u!82 &1634378599377574288
 AudioSource:
   m_ObjectHideFlags: 0

@@ -5,7 +5,8 @@ using UnityEngine;
 public class Level1End : MonoBehaviour
 {
     [SerializeField]GameObject[] room6,room7,room8;
-    bool room6clear, room7clear, room8clear;
+    [SerializeField]bool room6clear, room7clear, room8clear;
+    LevelManager levelManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,19 +16,20 @@ public class Level1End : MonoBehaviour
         room6clear = false;
         room7clear = false;
         room8clear = false;
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         foreach(var i in room6) {
-            if (!i.activeSelf && !i.GetComponent<Room>().roomstart) room6clear = true;
+            if (!i.activeSelf && !levelManager.currentroom.GetComponent<Room>().roomstart) room6clear = true;
         }
         foreach(var i in room7) {
-            if (!i.activeSelf && !i.GetComponent<Room>().roomstart) room7clear = true;
+            if (!i.activeSelf && !levelManager.currentroom.GetComponent<Room>().roomstart) room7clear = true;
         }
         foreach(var i in room8) {
-            if (!i.activeSelf && !i.GetComponent<Room>().roomstart) room8clear = true;
+            if (!i.activeSelf && !levelManager.currentroom.GetComponent<Room>().roomstart) room8clear = true;
         }
         if(room8clear && room7clear && room6clear) {
             AudioManager.instance.PlaySFX(AudioManager.instance.entranceSound);
