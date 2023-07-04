@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
     {
         //print(PlayerPrefs.GetString("Current Level"));
         //print(PlayerPrefs.GetInt("Current Room"));
-        if (!GameObject.Find("LevelEnd").GetComponent<EventTrigger>().endlevel) ShowTime();
+        if (!FindObjectOfType<End>().endlevel) ShowTime();
         partcount.GetComponent<Text>().text = "x " + parts.ToString();
         enemykillcount.value = totalenemieskilled;
         if (currentroom.GetComponent<Room>().roomstart) {

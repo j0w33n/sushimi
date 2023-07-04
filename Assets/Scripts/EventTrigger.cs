@@ -5,21 +5,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class EventTrigger : MonoBehaviour
 {
-    public GameObject tutorialmsg,endscreen;
+    [SerializeField]private GameObject tutorialmsg;
     public Player player;
-    CameraController cam;
+    public CameraController cam;
     public LevelManager levelManager;
-    public FadeIn fade;
-    public bool endlevel;
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
         cam = FindObjectOfType<CameraController>();
         levelManager = FindObjectOfType<LevelManager>();
-        fade = FindObjectOfType<FadeIn>();
-        endscreen.SetActive(false);
-        endlevel = false;
     }
 
     // Update is called once per frame
@@ -27,29 +22,14 @@ public class EventTrigger : MonoBehaviour
     {
        
     }
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.GetComponent<Player>() && gameObject.tag == "Trigger") {
-            StartCoroutine(LevelEnd());
-        }
-        else if (collision.GetComponent<Player>()) {
+    protected virtual void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.GetComponent<Player>()) {
             tutorialmsg.SetActive(true);
         }
     }
-    private void OnTriggerExit2D(Collider2D collision) {
+    protected virtual void OnTriggerExit2D(Collider2D collision) {
         if (collision.GetComponent<Player>()) {
             tutorialmsg.SetActive(false);
         }
-    }
-    IEnumerator LevelEnd() {
-        endlevel = true;
-        AudioManager.instance.StopMusic();
-        player.canMove = false;
-        cam.followtarget = false;
-        player.movement = Vector2.zero;
-        AudioManager.instance.PlaySFX(AudioManager.instance.winSound);
-        yield return new WaitForSeconds(AudioManager.instance.winSound.length - .1f);
-        AudioManager.instance.StopSFX();
-        endscreen.SetActive(true);
-        endscreen.GetComponentInChildren<Text>().text = levelManager.timer.GetComponent<Text>().text;
     }
 }

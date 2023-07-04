@@ -61,7 +61,7 @@ public class MiniBossAI : Unit
 		sr = GetComponent<SpriteRenderer>();
 		originalColor = sr.color;
 		audio = GetComponent<AudioSource>();
-		//transform.parent.GetComponentInChildren<Canvas>().worldCamera = FindObjectOfType<Camera>();
+		transform.parent.GetComponentInChildren<Canvas>().worldCamera = FindObjectOfType<Camera>();
 		dead = false;
 		canMove = true;
 	}
