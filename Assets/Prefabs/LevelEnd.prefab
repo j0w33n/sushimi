@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7636711383133326618}
   - component: {fileID: 9146392897081461246}
-  - component: {fileID: 6746826399562549033}
+  - component: {fileID: 7429955314148434394}
   m_Layer: 0
   m_Name: LevelEnd
   m_TagString: Trigger
@@ -58,7 +58,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.851144, y: 4.65856}
   m_EdgeRadius: 0
---- !u!114 &6746826399562549033
+--- !u!114 &7429955314148434394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,13 +67,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4656926981030099427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a49ae8da12edd4689e6547dafe99e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 2821a1d21a10d3843a474873a2470309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialmsg: {fileID: 0}
-  endscreen: {fileID: 0}
-  player: {fileID: 0}
-  levelManager: {fileID: 0}
-  fade: {fileID: 0}
-  endlevel: 0
-  miniboss: {fileID: 0}
