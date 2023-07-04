@@ -27,7 +27,7 @@ public class ProjectileScript : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (!upgraded && !GetComponent<ExplodingProjectile>()) damage = 1;
+        if (!upgraded) damage = 1;
         Destroy(gameObject, projectilelife);
         Vector2 joystickPosition = shootingScript.joystickposition.normalized;
         if (joystickPosition != Vector2.zero) {

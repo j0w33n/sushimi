@@ -95,6 +95,7 @@ public class Enemy : Unit
         {
             movespeed *= collision.GetComponent<SlowingProjectile>().slowfactor;
             TakeHit(collision.GetComponent<SlowingProjectile>().damage);
+            Knockback();
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
             if (floatingTextPrefab)
@@ -105,7 +106,6 @@ public class Enemy : Unit
         }
         else if (collision.GetComponent<ExplodingProjectile>() && !dead && collision.tag != "Enemy") {
             TakeHit(collision.GetComponent<ExplodingProjectile>().damage);
-            print(collision.GetComponent<ExplodingProjectile>().damage);
             Knockback();
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
