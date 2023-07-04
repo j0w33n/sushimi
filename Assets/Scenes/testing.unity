@@ -12986,10 +12986,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 986302064519407087, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5973192239724992350, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -13034,46 +13030,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: dropamt
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: hitsound
-      value: 
-      objectReference: {fileID: 8300000, guid: 88437b80790d08e4d85bb1c202145f55, type: 3}
-    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: nextCast
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: jumpRange
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: movespeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: maxhitpoints
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: nextCastTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: damageFeedbackColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: damageFeedbackColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: damageFeedbackColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7054851751742267408, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -13081,10 +13037,6 @@ PrefabInstance:
     - target: {fileID: 7687292968646771545, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
       propertyPath: m_Name
       value: MiniBoss
-      objectReference: {fileID: 0}
-    - target: {fileID: 9154036378992129848, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
