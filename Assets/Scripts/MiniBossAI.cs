@@ -117,32 +117,33 @@ public class MiniBossAI : Unit
 			movement = knockbackdir;
 			movespeed = knockbackforce;
 		}
-		if (timer > nextCastTime)
-		{
-
-			timer = 0;
-			myAnim.SetTrigger("CastStorm");
-			isCast = true;
-		}
-        if (Vector2.Distance(thePlayer.transform.position, rb.position) >= jumpRange && Vector2.Distance(thePlayer.transform.position, rb.position) > 1 && Time.time > nextJumpTime)
+        if (timer > nextCastTime)
         {
+
+            timer = 0;
+            myAnim.SetTrigger("CastStorm");
+            isCast = true;
+        }
+        else if (Vector2.Distance(thePlayer.transform.position, rb.position) >= jumpRange && Vector2.Distance(thePlayer.transform.position, rb.position) > 1 && Time.time > nextJumpTime)
+        {
+            print("Jump");
             myAnim.SetTrigger("JumpAttack");
             isJump = true;
 
             StartCoroutine("Jump");
         }
-        if (Vector2.Distance(thePlayer.transform.position, rb.position) <= attackRange && Time.time >= nextAttackTime)
-		{
-			myAnim.SetTrigger("Attack");
-			isAttack = true;
+        else if (Vector2.Distance(thePlayer.transform.position, rb.position) <= attackRange && Time.time >= nextAttackTime)
+        {
+            myAnim.SetTrigger("Attack");
+            isAttack = true;
 
-			StartCoroutine("Attacking");
-		}
-		else
-		{
-			return;
-		}
-	}
+            StartCoroutine("Attacking");
+        }
+        else
+        {
+            return;
+        }
+    }
 
 	void FixedUpdate()
 	{
@@ -244,6 +245,15 @@ public class MiniBossAI : Unit
 
     public IEnumerator Jump()
     {
+        //WaitForEndOfFrame w = new WaitForEndOfFrame();
+        //float t = 0;
+        //Vector2 dir = (thePlayer.transform.position - transform.position).normalized;
+        //while(t < 0.2f)
+        //      {
+        //          transform.position += (Vector3)dir * 10 * Time.deltaTime;
+        //          t += Time.deltaTime;
+        //          yield return w;
+        //      }
         yield return new WaitForSeconds(0.2f);
         isJump = false;
     }
