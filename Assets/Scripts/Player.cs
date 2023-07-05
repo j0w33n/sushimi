@@ -79,7 +79,6 @@ public class Player : Unit
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision) {
-        print(collision.gameObject.name);
         if (collision.gameObject.GetComponent<Enemy>() && !dead && !collision.gameObject.GetComponent<Enemy>().dead) {
             TakeHit(collision.gameObject.GetComponent<Enemy>().damage);
             knockbackdir = transform.position - collision.transform.position;
@@ -107,6 +106,10 @@ public class Player : Unit
         else if (collision.GetComponent<Part>()) {
             levelManager.parts += collision.GetComponent<Part>().value;
             AudioManager.instance.PlaySFX(AudioManager.instance.partSound);
+            Destroy(collision.gameObject);
+        }
+        if (collision.GetComponent<DoubleBarrelGun>()) {
+            SwitchWeapon(1);
             Destroy(collision.gameObject);
         }
         if (collision.GetComponent<EnemyProjectile>() && !dead) {

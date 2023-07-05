@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8015642937995781928
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8015642937995781931}
-  m_Layer: 0
-  m_Name: AttackPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8015642937995781931
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8015642937995781928}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.14, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8015642939441574165}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8015642938779731642
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8015642938192121958}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,10 +44,10 @@ GameObject:
   - component: {fileID: 8015642939441574160}
   - component: {fileID: 8015642939441574161}
   - component: {fileID: 8015642939441574174}
-  - component: {fileID: 3850180598600291715}
-  m_Layer: 0
+  - component: {fileID: 1611404726548727105}
+  m_Layer: 7
   m_Name: MiniBoss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +64,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8015642938192121958}
-  - {fileID: 8015642937995781931}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -181,47 +150,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitpoints: 0
-  maxhitpoints: 10
+  maxhitpoints: 50
   knockbackforce: 3
   knockbacklength: 0.2
   knockbackcounter: 0
   knockbackdir: {x: 0, y: 0}
   healthbar: {fileID: 0}
-  lowhealth: {r: 1, g: 0, b: 0, a: 0}
-  highhealth: {r: 0, g: 1, b: 0, a: 0}
-  damageFeedbackColor: {r: 0, g: 0, b: 0, a: 0}
+  lowhealth: {r: 1, g: 0, b: 0, a: 1}
+  highhealth: {r: 0, g: 1, b: 0, a: 1}
+  damageFeedbackColor: {r: 1, g: 0, b: 0, a: 1}
   originalColor: {r: 0, g: 0, b: 0, a: 0}
   sr: {fileID: 0}
-  hitsound: {fileID: 0}
+  hitsound: {fileID: 8300000, guid: 88437b80790d08e4d85bb1c202145f55, type: 3}
   bloodvfx: {fileID: 5417647092004821054, guid: 0b8d298c8326243468a8127ebf076912, type: 3}
   canMove: 0
   floatingTextPrefab: {fileID: 1210272696370798234, guid: fdf23a94d32536844a912658ea6b4936, type: 3}
-  movespeed: 6
+  movespeed: 12
   damage: 1
   spawner: {fileID: 0}
   spawned: 0
   dead: 0
-  itemdrops: []
-  dropamt: 30
+  itemdrops:
+  - {fileID: 3587237261951397024, guid: 4fbd5160a237eef4d8630fbb4b41403f, type: 3}
+  - {fileID: 3707441357454998247, guid: 82aa1160c94a1d94896a8710e6746419, type: 3}
+  dropamt: 6
+  audio: {fileID: 0}
+  anim: {fileID: 0}
   maskvfx: {fileID: 5178278417980185461, guid: ea2791ea045e5dd4eb9ef0ea61eb053d, type: 3}
-  attackRange: 2
-  attackRate: 1
+  attackRange: 15
   isAttack: 0
-  jumpRange: 4
-  jumpRate: 0.2
-  nextCastTime: 3
+  jumpRange: 45
+  jumpRate: 5
   isCast: 0
-  nextCast: 0.1
+  nextCast: 1
   space: 1
   attackMask:
     serializedVersion: 2
     m_Bits: 64
-  damageToGive: 1
-  attackPoint: {fileID: 8015642937995781931}
-  bullet1: {fileID: 6153936121951605319, guid: 62e0b9809df9a8e4a9a2cac30b3b21e4, type: 3}
-  bulletPos: {fileID: 8015642938192121958}
+  tornado: {fileID: 6153936121951605319, guid: 62e0b9809df9a8e4a9a2cac30b3b21e4, type: 3}
+  tornadoPos: {fileID: 8015642938192121958}
   isJump: 0
-  isDead: 0
+  doublebarrelgun: {fileID: 7075613549232923804, guid: 3ad0714c971970744903352ea299e38a, type: 3}
 --- !u!50 &8015642939441574161
 Rigidbody2D:
   serializedVersion: 4
@@ -239,9 +208,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &8015642939441574174
 BoxCollider2D:
@@ -256,7 +225,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2820015, y: 0.77080584}
+  m_Offset: {x: 0.2964927, y: 0.5969095}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -267,18 +236,101 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.021557, y: 4.021558}
+  m_Size: {x: 5.731535, y: 6.977791}
   m_EdgeRadius: 0
---- !u!114 &3850180598600291715
-MonoBehaviour:
+--- !u!82 &1611404726548727105
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8015642939441574175}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fcda928b4ecafc4ca5fc1994b589830, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsImmuneToTornado: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 772995181253064774, guid: a24180d1ea82aca45b8742574dc9da4e, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
