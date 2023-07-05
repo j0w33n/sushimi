@@ -415,6 +415,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 5973192239724992350}
     m_Modifications:
     - target: {fileID: 8015642939441574160, guid: c9d91bd5b870009429889efe6eff880a, type: 3}
+      propertyPath: tornado
+      value: 
+      objectReference: {fileID: 3353520136271162098, guid: 924d8447b5d9c224c982dda62b6a62a6, type: 3}
+    - target: {fileID: 8015642939441574160, guid: c9d91bd5b870009429889efe6eff880a, type: 3}
       propertyPath: hitsound
       value: 
       objectReference: {fileID: 8300000, guid: 88437b80790d08e4d85bb1c202145f55, type: 3}
