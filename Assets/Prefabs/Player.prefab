@@ -189,7 +189,7 @@ Transform:
   m_GameObject: {fileID: 2180945518612510622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1.25}
   m_Children:
   - {fileID: 2180945518041862330}
   - {fileID: 5727161923347076897}
@@ -296,7 +296,7 @@ MonoBehaviour:
   bloodvfx: {fileID: 5417647092004821054, guid: 0b8d298c8326243468a8127ebf076912, type: 3}
   canMove: 0
   mobileControls: 1
-  moveSpeed: 5
+  moveSpeed: 10
   rb: {fileID: 2180945518612510690}
   movement: {x: 0, y: 0}
   dashsound: {fileID: 8300000, guid: 2ecf86fb2eba76045a569e9525da7530, type: 3}
@@ -312,7 +312,6 @@ MonoBehaviour:
   weapons:
   - {fileID: 1960463331829482290}
   - {fileID: 1149598199946264184}
-  target: {fileID: 0}
 --- !u!95 &2055233126
 Animator:
   serializedVersion: 3
