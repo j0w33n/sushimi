@@ -29,8 +29,9 @@ public class CameraPan : EventTrigger {
         cam.followtarget = true;
         cam.target = target;
         yield return new WaitForSeconds(2);
-        LevelManager.SwitchMusic(AudioManager.instance.bossmusic);
+        StartCoroutine(LevelManager.SwitchMusic(AudioManager.instance.minibossmusic));
         cam.target = player.transform;
+        cam.GetComponent<Camera>().orthographicSize += 10;
         target.GetComponent<Enemy>().canMove = true;
         target.GetComponent<Enemy>().healthbar.gameObject.SetActive(true);
         player.canMove = true;

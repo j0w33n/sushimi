@@ -1728,7 +1728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1383702162248148214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1764,6 +1764,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91a49ae8da12edd4689e6547dafe99e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialmsg: {fileID: 0}
+  player: {fileID: 0}
+  cam: {fileID: 0}
+  levelManager: {fileID: 0}
+  endlevel: 0
+  endscreen: {fileID: 0}
+  fade: {fileID: 0}
 --- !u!1 &4213237581066778430
 GameObject:
   m_ObjectHideFlags: 0
