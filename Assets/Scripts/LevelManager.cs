@@ -74,8 +74,7 @@ public class LevelManager : MonoBehaviour {
                 //player.arrow.gameObject.SetActive(true);
             }
         }
-        if (totalenemieskilled >= 10 && !currentroom.GetComponent<Room>().roomstart) {
-            panel.GetComponent<UpgradePanel>().SetUpgrades();
+        if (totalenemieskilled >= 10 /*&& !currentroom.GetComponent<Room>().roomstart*/) {
             StartCoroutine(upgradepanel());
         }
     }
@@ -83,6 +82,7 @@ public class LevelManager : MonoBehaviour {
         StartCoroutine(RespawnCo());
     }
     IEnumerator upgradepanel() {
+        panel.GetComponent<UpgradePanel>().SetUpgrades();
         panel.SetActive(true);
         panel.GetComponent<UpgradePanel>().isactive = true;
         totalenemieskilled = 0;

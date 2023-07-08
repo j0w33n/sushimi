@@ -13,13 +13,12 @@ public class UpgradePanel : MonoBehaviour
     void Start()
     {
         gameObject.SetActive(false);
-        for(int i = 0; i < 3; i++) {
-            upgrades[i] = upgradepool[Random.Range(0, upgradepool.Count)].GetComponent<Button>();
-        }
         anim = GetComponent<Animator>();
-        //SetUpgrades();
     }
     public void SetUpgrades() {
+        for (int i = 0; i < 3; i++) {
+            upgrades.Insert(i,upgradepool[Random.Range(0, upgradepool.Count)].GetComponent<Button>());
+        }
         Button upgrade1 = Instantiate(upgrades[0]);
         upgrade1.transform.SetParent(transform);
         upgrade1.GetComponent<RectTransform>().anchorMin = new Vector2(0f,0.5f);
