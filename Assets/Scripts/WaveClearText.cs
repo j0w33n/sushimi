@@ -7,7 +7,7 @@ public class WaveClearText : MonoBehaviour
 {
     Animator anim;
     LevelManager levelManager;
-    [SerializeField] float activetime;
+    [SerializeField]float activetime;
     public float ogactivetime;
     public bool wave;
     // Start is called before the first frame update
@@ -34,12 +34,20 @@ public class WaveClearText : MonoBehaviour
                 StartCoroutine(WaitForAnim());
             }
         }
-        else if(!levelManager.currentroom.GetComponent<Room>().roomstart && levelManager.wavecomplete) {
+        else if(!levelManager.currentroom.GetComponent<Room>().roomstart && levelManager.wavecomplete && levelManager.currentroom.tag != "Safe") {
             gameObject.GetComponent<Text>().text = "ROOM CLEAR";
             wave = true;
             activetime -= Time.deltaTime;
             if (activetime <= 0) {
                 StartCoroutine(RoomClear());
+            }
+        }
+        else if(levelManager.currentroom.tag == "Safe") {
+            gameObject.GetComponent<Text>().text = "SAFE ROOM";
+            wave = true;
+            activetime -= Time.deltaTime;
+            if(activetime <= 0) {
+                StartCoroutine(SafeRoom());
             }
         }
     }
@@ -57,14 +65,10 @@ public class WaveClearText : MonoBehaviour
         gameObject.SetActive(false);
     }
     public IEnumerator SafeRoom() {
-        gameObject.SetActive(true);
-        gameObject.GetComponent<Text>().text = "SAFE ROOM";
-        wave = true;
-        yield return new WaitForSeconds(ogactivetime);
-        activetime = .05f;
         wave = false;
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
         activetime = ogactivetime;
+        gameObject.SetActive(false);
     }
     void PlaySound() {
         AudioManager.instance.PlaySFX(AudioManager.instance.waveClearSound);
