@@ -10,7 +10,6 @@ public class Player : Unit
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Vector2 movement;
-    private AudioSource audio;
     public AudioClip dashsound;
     public Animator anim;
     [Header("Dash")]
@@ -31,7 +30,6 @@ public class Player : Unit
     void Start() {
         hitpoints = PlayerPrefs.GetFloat("Max Health", 5);
         originalColor = sr.color;
-        audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         levelManager = FindObjectOfType<LevelManager>();
         respawnpoint = transform.position;
@@ -89,7 +87,7 @@ public class Player : Unit
             TakeHit(collision.gameObject.GetComponent<Enemy>().damage);
             knockbackdir = transform.position - collision.transform.position;
             Knockback();
-            audio.PlayOneShot(hitsound);
+            AudioManager.instance.PlaySFX(hitsound);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
@@ -99,7 +97,7 @@ public class Player : Unit
             //TakeHit(collision.GetComponent<Trap>().damage);
             knockbackdir = transform.position - collision.transform.position;
             Knockback();
-            audio.PlayOneShot(hitsound);
+            AudioManager.instance.PlaySFX(hitsound);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
@@ -126,7 +124,7 @@ public class Player : Unit
             TakeHit(collision.gameObject.GetComponent<EnemyProjectile>().damage);
             knockbackdir = transform.position - collision.transform.position;
             Knockback();
-            audio.PlayOneShot(hitsound);
+            AudioManager.instance.PlaySFX(hitsound);
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
@@ -150,12 +148,11 @@ public class Player : Unit
         dead = true;
         rb.velocity = Vector2.zero;
         Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
-        //audio.PlayOneShot(deathsound);
     }
     public void Dash() {
         if (_canDash) {
             _isDashing = true;
-            audio.PlayOneShot(dashsound);
+            AudioManager.instance.PlaySFX(dashsound);
             _canDash = false;
             _dashingDir = movement.normalized;
         }

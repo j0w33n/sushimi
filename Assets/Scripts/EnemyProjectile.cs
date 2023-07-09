@@ -9,7 +9,7 @@ public class EnemyProjectile : ProjectileScript
     // Start is called before the first frame update
     protected override void Start() {
         rb = GetComponent<Rigidbody2D>();
-        target = FindObjectOfType<Player>().transform;
+        target = FindObjectOfType<Player>(true).transform;
         Move();
     }
 
