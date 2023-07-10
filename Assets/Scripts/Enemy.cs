@@ -7,15 +7,15 @@ public class Enemy : Unit
     public GameObject floatingTextPrefab;
     public float movespeed;
     public float damage = 1;
-    protected Player player;
-    protected Rigidbody2D rb;
-    protected Vector2 movement;
-    protected LevelManager levelManager;
+    private Player player;
+    private Rigidbody2D rb;
+    private Vector2 movement;
+    LevelManager levelManager;
     public Transform spawner;
     public bool spawned,dead;
     public GameObject[] itemdrops;
     public int dropamt;
-    public AudioSource audio;
+    [SerializeField]private AudioSource audio;
     public Animator anim;
     public GameObject maskvfx;
     //public Transform indicator;
@@ -126,14 +126,14 @@ public class Enemy : Unit
             }
         }
     }
-    public virtual IEnumerator Death()
+    public IEnumerator Death()
     {
         rb.velocity = Vector2.zero;
         if (!dead) {
             Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
             dead = true;
         }
-        Destroy(healthbar.gameObject);
+        healthbar.gameObject.SetActive(false);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
         Destroy(Instantiate(maskvfx, transform.position, transform.rotation), 1);
         Destroy(gameObject);

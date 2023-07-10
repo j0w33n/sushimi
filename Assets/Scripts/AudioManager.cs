@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioMixer mixer;
     [SerializeField]AudioSource audio;
     [SerializeField]AudioSource sfxaudio;
-    public AudioClip partSound, healthSound,BGMusic,waveClearSound,reloadSound,exitSound,entranceSound,impactSound,winSound,bossmusic;
+    public AudioClip partSound, healthSound,BGMusic,waveClearSound,reloadSound,exitSound,entranceSound,impactSound,winSound;
     private void Start() {
         //PlayMusic(bgmusic);
     }

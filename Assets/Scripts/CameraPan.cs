@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraPan : EventTrigger {
     public MiniBossAI miniboss;
+    public Transform target;
     // Start is called before the first frame update
     protected override void Start() {
         miniboss = FindObjectOfType<MiniBossAI>(true);
@@ -11,28 +12,26 @@ public class CameraPan : EventTrigger {
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<Player>()) {
-            StartCoroutine(Pan(miniboss.transform));
+            target = miniboss.transform;
+            StartCoroutine(Pan());
         }
     }
     // Update is called once per frame
     void Update() {
 
     }
-    IEnumerator Pan(Transform target) {
+    IEnumerator Pan() {
         AudioManager.instance.StopMusic();
         player.canMove = false;
         cam.followtarget = false;
         player.movement = Vector2.zero;
         yield return new WaitForSeconds(2);
-        target.gameObject.SetActive(true);
-        target.GetComponent<Enemy>().healthbar.gameObject.SetActive(false);
+        miniboss.gameObject.SetActive(true);
         cam.followtarget = true;
         cam.target = target;
         yield return new WaitForSeconds(2);
-        LevelManager.SwitchMusic(AudioManager.instance.bossmusic);
         cam.target = player.transform;
-        target.GetComponent<Enemy>().canMove = true;
-        target.GetComponent<Enemy>().healthbar.gameObject.SetActive(true);
+        miniboss.canMove = true;
         player.canMove = true;
         player.respawnpoint = transform.position;
         gameObject.SetActive(false);
