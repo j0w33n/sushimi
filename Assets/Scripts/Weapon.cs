@@ -25,8 +25,9 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
-        levelManager.ammobar.value = ammo;
-        levelManager.ammobar.maxValue = maxammo;
+        //levelManager.ammobar.value = ammo;
+        //levelManager.ammobar.maxValue = maxammo;
+        levelManager.ammobar = ammo;
     }
 
     // Update is called once per frame
@@ -35,8 +36,9 @@ public abstract class Weapon : MonoBehaviour
     }
     protected void Update() {
         gunTransform.rotation = gunTransform.rotation;
-        levelManager.ammobar.value = ammo;
-        levelManager.ammobar.maxValue = maxammo;
+        //levelManager.ammobar.value = ammo;
+        //levelManager.ammobar.maxValue = maxammo;
+        levelManager.ammobar = ammo;
         joystickposition = new Vector2(VirtualJoystick.GetAxis("Horizontal", 1), VirtualJoystick.GetAxis("Vertical", 1));
         /*if (isreloading) {
             return;
