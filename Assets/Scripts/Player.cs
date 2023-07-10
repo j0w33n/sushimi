@@ -35,8 +35,7 @@ public class Player : Unit
         respawnpoint = transform.position;
         canMove = true;
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
-        if (SceneManager.GetActiveScene().name == "Level 2") SwitchWeapon(1);
-        else SwitchWeapon(0);
+        if(SceneManager.GetActiveScene().name == "Tutorial")SwitchWeapon(0);
         //arrow.gameObject.SetActive(false);
     }
     private void OnEnable() {

@@ -24,7 +24,7 @@ public class Enemy : Unit
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        player = FindObjectOfType<Player>(true);
+        player = FindObjectOfType<Player>();
         levelManager = FindObjectOfType<LevelManager>();
         hitpoints = maxhitpoints;
         sr = GetComponent<SpriteRenderer>();
