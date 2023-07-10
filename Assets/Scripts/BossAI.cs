@@ -15,6 +15,8 @@ public class BossAI : Enemy
     public AudioClip shootsound;
     public Sprite[] masksprites;
     public bool shieldup;
+    public bool phase1 = false;
+    public bool phase2 = false;
     //public bool shieldcostart = false;
     // Start is called before the first frame update
     // Update is called once per frame
@@ -39,16 +41,22 @@ public class BossAI : Enemy
            // if(enemies.Count < 5)enemies.AddRange(FindObjectsOfType<RangedEnemy>());
         }
         if (hitpoints <= maxhitpoints * .7f && hitpoints > maxhitpoints * .3f) {
-            mask.GetComponent<SpriteRenderer>().sprite = masksprites[0];
-            StartCoroutine(ShieldUp(shield.GetComponent<BossShield>()));
+            if (!phase1) {
+                phase1 = true;
+                mask.GetComponent<SpriteRenderer>().sprite = masksprites[0];
+                StartCoroutine(ShieldUp(shield.GetComponent<BossShield>()));
+            }
             //if (shield.GetComponent<BossShield>().circleCollider.enabled) StopCoroutine(ShieldUp(shield.GetComponent<BossShield>()));
             //shieldcostart = true;
             //shieldcostart = false;
             //shieldcostart = true;
         } else if (hitpoints < maxhitpoints * .3f) {
-            mask.GetComponent<SpriteRenderer>().sprite = masksprites[1];
-            //shieldcostart = true;
-            StartCoroutine(ShieldUp(shield2.GetComponent<BossShield>()));
+            if (!phase2) {
+                phase2 = true;
+                mask.GetComponent<SpriteRenderer>().sprite = masksprites[1];
+                StartCoroutine(ShieldUp(shield2.GetComponent<BossShield>()));
+            }
+            
             //if (shield2.GetComponent<BossShield>().circleCollider.enabled) StopCoroutine(ShieldUp(shield2.GetComponent<BossShield>()));
             //yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
             //shieldcostart = false;
@@ -103,7 +111,7 @@ public class BossAI : Enemy
         shield.circleCollider.enabled = true;
         isShooting = false;
         shieldup = true;
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        yield return new WaitForSeconds(1);
         isShooting = true;
         shieldup = false;
     }

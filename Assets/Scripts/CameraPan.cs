@@ -42,6 +42,7 @@ public class CameraPan : EventTrigger {
         target.GetComponent<Enemy>().canMove = true;
         target.GetComponent<Enemy>().healthbar.gameObject.SetActive(true);
         player.canMove = true;
+        boss.isShooting = true;
         player.respawnpoint = transform.position;
         gameObject.SetActive(false);
     }
