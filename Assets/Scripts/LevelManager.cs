@@ -12,6 +12,17 @@ public class LevelManager : MonoBehaviour {
     public GameObject ammo4;
     public GameObject ammo5;
     public GameObject ammo6;
+    public GameObject ammo7;
+    public GameObject ammo8;
+    public GameObject ammo9;
+    public GameObject ammo10;
+    public GameObject ammo11;
+    public GameObject ammo12;
+    public GameObject ammo13;
+    public GameObject ammo14;
+    public GameObject ammo15;
+    public GameObject ammo16;
+
     Player player;
     public List<EnemySpawner> enemyspawns;
     public float waitToRespawn;
@@ -63,49 +74,25 @@ public class LevelManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if(ammobar == 6) {
-            ammo1.SetActive(true);
-            ammo2.SetActive(true);
-            ammo3.SetActive(true);
-            ammo4.SetActive(true);
-            ammo5.SetActive(true);
-            ammo6.SetActive(true);
-        }
 
-        if (ammobar == 5) {
-            ammo1.SetActive(true);
-            ammo2.SetActive(true);
-            ammo3.SetActive(true);
-            ammo4.SetActive(true);
-            ammo5.SetActive(true);
-            ammo6.SetActive(false);
-        }
-
-        if (ammobar == 4) {
-            ammo1.SetActive(true);
-            ammo2.SetActive(true);
-            ammo3.SetActive(true);
-            ammo4.SetActive(true);
-            ammo5.SetActive(false);
-            ammo6.SetActive(false);
-        }
-
-        if (ammobar == 3) {
-            ammo1.SetActive(true);
-            ammo2.SetActive(true);
-            ammo3.SetActive(true);
-            ammo4.SetActive(false);
-            ammo5.SetActive(false);
-            ammo6.SetActive(false);
-        }
-
-        if (ammobar == 2) {
-            ammo1.SetActive(true);
-            ammo2.SetActive(true);
+        if (ammobar == 0) {
+            ammo1.SetActive(false);
+            ammo2.SetActive(false);
             ammo3.SetActive(false);
             ammo4.SetActive(false);
             ammo5.SetActive(false);
             ammo6.SetActive(false);
+            ammo7.SetActive(false);
+            ammo8.SetActive(false);
+            ammo9.SetActive(false);
+            ammo10.SetActive(false);
+            ammo11.SetActive(false);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
         }
 
         if (ammobar == 1) {
@@ -115,17 +102,320 @@ public class LevelManager : MonoBehaviour {
             ammo4.SetActive(false);
             ammo5.SetActive(false);
             ammo6.SetActive(false);
+            ammo7.SetActive(false);
+            ammo8.SetActive(false);
+            ammo9.SetActive(false);
+            ammo10.SetActive(false);
+            ammo11.SetActive(false);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
         }
 
-
-        if (ammobar == 0) {
-            ammo1.SetActive(false);
-            ammo2.SetActive(false);
+        if (ammobar == 2) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
             ammo3.SetActive(false);
             ammo4.SetActive(false);
             ammo5.SetActive(false);
             ammo6.SetActive(false);
+            ammo7.SetActive(false);
+            ammo8.SetActive(false);
+            ammo9.SetActive(false);
+            ammo10.SetActive(false);
+            ammo11.SetActive(false);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
         }
+
+        if (ammobar == 3) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(false);
+            ammo5.SetActive(false);
+            ammo6.SetActive(false);
+            ammo7.SetActive(false);
+            ammo8.SetActive(false);
+            ammo9.SetActive(false);
+            ammo10.SetActive(false);
+            ammo11.SetActive(false);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+
+        if (ammobar == 4) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(false);
+            ammo6.SetActive(false);
+            ammo7.SetActive(false);
+            ammo8.SetActive(false);
+            ammo9.SetActive(false);
+            ammo10.SetActive(false);
+            ammo11.SetActive(false);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 5) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(false);
+            ammo7.SetActive(false);
+            ammo8.SetActive(false);
+            ammo9.SetActive(false);
+            ammo10.SetActive(false);
+            ammo11.SetActive(false);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 6) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(true);
+            ammo7.SetActive(false);
+            ammo8.SetActive(false);
+            ammo9.SetActive(false);
+            ammo10.SetActive(false);
+            ammo11.SetActive(false);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 7) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(true);
+            ammo7.SetActive(true);
+            ammo8.SetActive(false);
+            ammo9.SetActive(false);
+            ammo10.SetActive(false);
+            ammo11.SetActive(false);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 8) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(true);
+            ammo7.SetActive(true);
+            ammo8.SetActive(true);
+            ammo9.SetActive(false);
+            ammo10.SetActive(false);
+            ammo11.SetActive(false);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 9) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(true);
+            ammo7.SetActive(true);
+            ammo8.SetActive(true);
+            ammo9.SetActive(true);
+            ammo10.SetActive(false);
+            ammo11.SetActive(false);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 10) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(true);
+            ammo7.SetActive(true);
+            ammo8.SetActive(true);
+            ammo9.SetActive(true);
+            ammo10.SetActive(true);
+            ammo11.SetActive(false);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 11) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(true);
+            ammo7.SetActive(true);
+            ammo8.SetActive(true);
+            ammo9.SetActive(true);
+            ammo10.SetActive(true);
+            ammo11.SetActive(true);
+            ammo12.SetActive(false);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 12) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(true);
+            ammo7.SetActive(true);
+            ammo8.SetActive(true);
+            ammo9.SetActive(true);
+            ammo10.SetActive(true);
+            ammo11.SetActive(true);
+            ammo12.SetActive(true);
+            ammo13.SetActive(false);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 13) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(true);
+            ammo7.SetActive(true);
+            ammo8.SetActive(true);
+            ammo9.SetActive(true);
+            ammo10.SetActive(true);
+            ammo11.SetActive(true);
+            ammo12.SetActive(true);
+            ammo13.SetActive(true);
+            ammo14.SetActive(false);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 14) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(true);
+            ammo7.SetActive(true);
+            ammo8.SetActive(true);
+            ammo9.SetActive(true);
+            ammo10.SetActive(true);
+            ammo11.SetActive(true);
+            ammo12.SetActive(true);
+            ammo13.SetActive(true);
+            ammo14.SetActive(true);
+            ammo15.SetActive(false);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 15) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(true);
+            ammo7.SetActive(true);
+            ammo8.SetActive(true);
+            ammo9.SetActive(true);
+            ammo10.SetActive(true);
+            ammo11.SetActive(true);
+            ammo12.SetActive(true);
+            ammo13.SetActive(true);
+            ammo14.SetActive(true);
+            ammo15.SetActive(true);
+            ammo16.SetActive(false);
+
+        }
+
+        if (ammobar == 16) {
+            ammo1.SetActive(true);
+            ammo2.SetActive(true);
+            ammo3.SetActive(true);
+            ammo4.SetActive(true);
+            ammo5.SetActive(true);
+            ammo6.SetActive(true);
+            ammo7.SetActive(true);
+            ammo8.SetActive(true);
+            ammo9.SetActive(true);
+            ammo10.SetActive(true);
+            ammo11.SetActive(true);
+            ammo12.SetActive(true);
+            ammo13.SetActive(true);
+            ammo14.SetActive(true);
+            ammo15.SetActive(true);
+            ammo16.SetActive(true);
+
+        }
+
 
         //print(PlayerPrefs.GetString("Current Level"));
         //print(PlayerPrefs.GetInt("Current Room"));
