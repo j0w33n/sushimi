@@ -535,7 +535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 45ab53751b4c8460a86d4fc742902d7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44e9d28a72e72ac46a764ae2bcda7234, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4330,7 +4330,7 @@ PrefabInstance:
     - target: {fileID: 8834734169634807594, guid: 575a6401365a1604c8aa7fa10a660bb7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f4402c3a044a1499d80642810c867336, type: 3}
+      objectReference: {fileID: 21300000, guid: 990fb4ac45558ce4a9893d679ae0e5ca, type: 3}
     - target: {fileID: 8834734170784175512, guid: 575a6401365a1604c8aa7fa10a660bb7, type: 3}
       propertyPath: m_Name
       value: Virtual Joystick
@@ -4422,7 +4422,7 @@ PrefabInstance:
     - target: {fileID: 8834734170784175524, guid: 575a6401365a1604c8aa7fa10a660bb7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bc7eda0f2abb54dd48445c14e9da170b, type: 3}
+      objectReference: {fileID: 21300000, guid: d082d04bd6f3d554d81ab808c960041b, type: 3}
     m_RemovedComponents:
     - {fileID: 8834734170784175514, guid: 575a6401365a1604c8aa7fa10a660bb7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 575a6401365a1604c8aa7fa10a660bb7, type: 3}
@@ -4489,7 +4489,7 @@ PrefabInstance:
     - target: {fileID: 8834734169634807594, guid: 575a6401365a1604c8aa7fa10a660bb7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 878807177aba54300a1c144d636eb80d, type: 3}
+      objectReference: {fileID: 21300000, guid: 58598be810d0c114fa1a00454da3c845, type: 3}
     - target: {fileID: 8834734170784175512, guid: 575a6401365a1604c8aa7fa10a660bb7, type: 3}
       propertyPath: m_Name
       value: Virtual Joystick (1)
@@ -4581,7 +4581,7 @@ PrefabInstance:
     - target: {fileID: 8834734170784175524, guid: 575a6401365a1604c8aa7fa10a660bb7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bc7eda0f2abb54dd48445c14e9da170b, type: 3}
+      objectReference: {fileID: 21300000, guid: d082d04bd6f3d554d81ab808c960041b, type: 3}
     m_RemovedComponents:
     - {fileID: 8834734170784175514, guid: 575a6401365a1604c8aa7fa10a660bb7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 575a6401365a1604c8aa7fa10a660bb7, type: 3}
