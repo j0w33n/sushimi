@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour {
         }
    }
    public void BossSpawn() {
-        if(enemiesspawned <= enemiestospawn[0] - 1) {
+        if (enemiesspawned <= enemiestospawn[0] - 1) {
             if (Time.time < nextinsttime) return;
             GameObject go = Instantiate(instprefab[Random.Range(0, instprefab.Length)], transform.position, transform.rotation);
             go.GetComponentInChildren<Enemy>().spawned = true;
@@ -51,5 +51,11 @@ public class EnemySpawner : MonoBehaviour {
             nextinsttime = Time.time + instrate;
             enemiesspawned++;
         }
-    } 
+        //foreach (var i in FindObjectOfType<BossAI>().enemies) {
+        //    if (i.dead) {
+        //        enemiesspawned = 0;
+        //        FindObjectOfType<BossAI>().enemies.Clear();
+        //    }
+        //}
+    }
 }

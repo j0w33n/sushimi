@@ -8,14 +8,20 @@ public class BossAI : Enemy
     float nextfiretime;
     public float firerate;
     public Transform firept;
-    bool isShooting;
+    public bool isShooting;
     public EnemySpawner[] spawners;
-    public GameObject shield,shield2;
+    //public List<Enemy> enemies;
+    public GameObject shield,shield2,mask;
+    public AudioClip shootsound;
+    public Sprite[] masksprites;
+    public bool shieldup;
+    //public bool shieldcostart = false;
     // Start is called before the first frame update
     // Update is called once per frame
     protected override void Start() {
         gameObject.SetActive(false);
         isShooting = false;
+        shieldup = false;
         base.Start();
     }
     protected override void FixedUpdate() {
@@ -23,21 +29,35 @@ public class BossAI : Enemy
     }
     protected override void Update() {
         anim.SetBool("Shooting", isShooting);
+        anim.SetBool("Shield", shieldup);
         if (!canMove) return;
+        //isShooting = true;
         if (shield.GetComponent<BossShield>().circleCollider.enabled || shield2.GetComponent<BossShield>().circleCollider.enabled) {
             foreach(var i in spawners) {
                 i.BossSpawn();
             }
+           // if(enemies.Count < 5)enemies.AddRange(FindObjectsOfType<RangedEnemy>());
         }
         if (hitpoints <= maxhitpoints * .7f && hitpoints > maxhitpoints * .3f) {
-            shield.GetComponent<BossShield>().sr.enabled = true;
-            shield.GetComponent<BossShield>().circleCollider.enabled = true;
-        } 
-        else if (hitpoints < maxhitpoints * .3f) {
-            shield2.GetComponent<BossShield>().sr.enabled = true;
-            shield2.GetComponent<BossShield>().circleCollider.enabled = true;
+            mask.GetComponent<SpriteRenderer>().sprite = masksprites[0];
+            StartCoroutine(ShieldUp(shield.GetComponent<BossShield>()));
+            //if (shield.GetComponent<BossShield>().circleCollider.enabled) StopCoroutine(ShieldUp(shield.GetComponent<BossShield>()));
+            //shieldcostart = true;
+            //shieldcostart = false;
+            //shieldcostart = true;
+        } else if (hitpoints < maxhitpoints * .3f) {
+            mask.GetComponent<SpriteRenderer>().sprite = masksprites[1];
+            //shieldcostart = true;
+            StartCoroutine(ShieldUp(shield2.GetComponent<BossShield>()));
+            //if (shield2.GetComponent<BossShield>().circleCollider.enabled) StopCoroutine(ShieldUp(shield2.GetComponent<BossShield>()));
+            //yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            //shieldcostart = false;
+            //shieldcostart = true;
         }
-        Fire();
+        if (hitpoints < maxhitpoints * .1f) {
+            mask.SetActive(false);
+        }
+        //Fire();
         base.Update();
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {
@@ -58,13 +78,15 @@ public class BossAI : Enemy
         rb.MovePosition((Vector2)transform.position + (direction * movespeed * Time.deltaTime));
     }
     public override IEnumerator Death() {
-        
+        //foreach(var i in enemies) {
+        //    if(!i.dead) i.hitpoints = 0;
+        //}
         return base.Death();
     }
-    void Fire() {
+    public void Fire() {
         if (Time.time < nextfiretime) return;
         Instantiate(projectile, firept.position, firept.rotation);
-        isShooting = true;
+        AudioManager.instance.PlaySFX(shootsound);
         nextfiretime = Time.time + firerate;
     }
     protected override void Damaged(Collider2D collision) {
@@ -76,4 +98,19 @@ public class BossAI : Enemy
             floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
         }
     }
+    IEnumerator ShieldUp(BossShield shield) {
+        shield.sr.enabled = true;
+        shield.circleCollider.enabled = true;
+        isShooting = false;
+        shieldup = true;
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        isShooting = true;
+        shieldup = false;
+    }
+    /*public void ResetSpawners() {
+        foreach (var i in spawners) {
+            i.canSpawn = true;
+        }
+        
+    }*/
 }

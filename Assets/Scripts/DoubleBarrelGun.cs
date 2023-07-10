@@ -14,17 +14,17 @@ public class DoubleBarrelGun : Weapon
         if (slow) {
             Instantiate(slowingprojectile, firept.position, firept.rotation);
             Instantiate(slowingprojectile, firept.position + new Vector3(0, 1, 0), firept.rotation);
-            audio.PlayOneShot(slowshootsound);
+            AudioManager.instance.PlaySFX(slowshootsound);
         } 
         else if (explode) {
             Instantiate(explodingprojectile, firept.position, firept.rotation);
             Instantiate(explodingprojectile, firept.position + new Vector3(0, 1, 0), firept.rotation);
-            audio.PlayOneShot(explodingshootsound);
+            AudioManager.instance.PlaySFX(explodingshootsound);
         } 
         else {
             Instantiate(projectileprefab, firept.position, firept.rotation);
             Instantiate(projectileprefab, firept.position + new Vector3(0, 1, 0), firept.rotation);
-            audio.PlayOneShot(normalshootsound);
+            AudioManager.instance.PlaySFX(normalshootsound);
         }
         ammo--;
         nextfiretime = Time.time + firerate;

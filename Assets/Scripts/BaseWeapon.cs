@@ -17,17 +17,17 @@ public class BaseWeapon : Weapon
         if (slow) {
             Instantiate(slowingprojectile, firept.position, firept.rotation);
             gunTransform.rotation = gunTransform.rotation;
-            audio.PlayOneShot(slowshootsound);
+            AudioManager.instance.PlaySFX(slowshootsound);
         } 
         else if (explode) {
             Instantiate(explodingprojectile, firept.position, firept.rotation);
             gunTransform.rotation = gunTransform.rotation;
-            audio.PlayOneShot(explodingshootsound);
+            AudioManager.instance.PlaySFX(explodingshootsound);
         } 
         else {
             Instantiate(projectileprefab, firept.position, firept.rotation);
             gunTransform.rotation = gunTransform.rotation;
-            audio.PlayOneShot(normalshootsound);
+            AudioManager.instance.PlaySFX(normalshootsound);
         }
         ammo--;
         nextfiretime = Time.time + firerate;

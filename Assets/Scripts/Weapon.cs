@@ -15,7 +15,6 @@ public abstract class Weapon : MonoBehaviour
     public int maxammo;
     public float reloadspeed;
     private bool isreloading = false;
-    protected AudioSource audio;
     public AudioClip normalshootsound,slowshootsound,explodingshootsound;
     public bool slow,explode;
 
@@ -26,7 +25,6 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
-        audio = GetComponent<AudioSource>();
         levelManager.ammobar.value = ammo;
         levelManager.ammobar.maxValue = maxammo;
     }

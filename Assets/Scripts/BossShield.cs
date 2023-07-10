@@ -20,6 +20,7 @@ public class BossShield : Unit
         if(hitpoints <= 0) {
             circleCollider.enabled = false;
             sr.enabled = false;
+            //GetComponentInParent<BossAI>().ResetSpawners();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
