@@ -21,7 +21,7 @@ public class Enemy : Unit
     //public Transform indicator;
     //Renderer rd;
     // Start is called before the first frame update
-    protected virtual void Start()
+    protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -133,7 +133,7 @@ public class Enemy : Unit
             Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
             dead = true;
         }
-        healthbar.gameObject.SetActive(false);
+        Destroy(healthbar.gameObject);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
         Destroy(Instantiate(maskvfx, transform.position, transform.rotation), 1);
         Destroy(gameObject);

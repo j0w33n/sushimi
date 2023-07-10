@@ -177,26 +177,20 @@ MonoBehaviour:
   audio: {fileID: 0}
   anim: {fileID: 0}
   maskvfx: {fileID: 5178278417980185461, guid: ea2791ea045e5dd4eb9ef0ea61eb053d, type: 3}
-  attackRange: 18
+  attackRange: 15
   isAttack: 0
-  attackrate: 0
-  jumpRange: 29
-  jumpspeed: 75
-  jumpRate: 3
+  jumpRange: 45
+  jumpRate: 5
   isCast: 0
   nextCast: 1
   space: 1
-  castrange: 47
   attackMask:
     serializedVersion: 2
     m_Bits: 64
-  tornado: {fileID: 3353520136271162098, guid: 924d8447b5d9c224c982dda62b6a62a6, type: 3}
+  tornado: {fileID: 6153936121951605319, guid: 62e0b9809df9a8e4a9a2cac30b3b21e4, type: 3}
   tornadoPos: {fileID: 8015642938192121958}
   isJump: 0
   doublebarrelgun: {fileID: 7075613549232923804, guid: 3ad0714c971970744903352ea299e38a, type: 3}
-  attacksound: {fileID: 8300000, guid: 77f412dde09aa1c4682c6558d57b1711, type: 3}
-  tornadosound: {fileID: 8300000, guid: b603bd6dd52c1e44a8f26eb39d192092, type: 3}
-  jumpsound: {fileID: 8300000, guid: a35e06d83c1d8c846ab49467a1d53efb, type: 3}
 --- !u!50 &8015642939441574161
 Rigidbody2D:
   serializedVersion: 4

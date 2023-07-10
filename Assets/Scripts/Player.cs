@@ -79,7 +79,7 @@ public class Player : Unit
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.GetComponent<Enemy>() && !dead && !collision.gameObject.GetComponent<Enemy>().dead && collision.gameObject.GetComponent<Enemy>().anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) {
+        if (collision.gameObject.GetComponent<Enemy>() && !dead && !collision.gameObject.GetComponent<Enemy>().dead) {
             TakeHit(collision.gameObject.GetComponent<Enemy>().damage);
             knockbackdir = transform.position - collision.transform.position;
             Knockback();
@@ -108,8 +108,7 @@ public class Player : Unit
             AudioManager.instance.PlaySFX(AudioManager.instance.partSound);
             Destroy(collision.gameObject);
         }
-        if (collision.name.Contains("Double Barrel Gun Pick Up")) {
-            AudioManager.instance.PlaySFX(AudioManager.instance.healthSound);
+        if (collision.GetComponent<DoubleBarrelGun>()) {
             SwitchWeapon(1);
             Destroy(collision.gameObject);
         }

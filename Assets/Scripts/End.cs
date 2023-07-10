@@ -10,6 +10,7 @@ public class End : EventTrigger {
     public GameObject endscreen;
     public FadeIn fade;
     protected override void Start() {
+        endscreen.SetActive(false);
         endlevel = false;
         fade = FindObjectOfType<FadeIn>();
         base.Start();
