@@ -24,11 +24,12 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<Player>() && gameObject.tag == "Safe") {
-            SafeRoomTrigger();
+            StartCoroutine(clearText.SafeRoom());
+            gameObject.SetActive(false);
         }
         else if (collision.GetComponent<Player>() ) {
             RoomTrigger();
@@ -65,17 +66,5 @@ public class Room : MonoBehaviour
         else {
             gameObject.SetActive(false);
         }
-    }
-    void SafeRoomTrigger() {
-        clearText.gameObject.SetActive(true);
-        levelManager.currentroom = gameObject;
-        foreach (var i in triggers) {
-            i.SetActive(false);
-        }
-        foreach (var i in entrance) {
-            i.SetActive(false);
-        }
-        AudioManager.instance.PlaySFX(AudioManager.instance.entranceSound);
-        gameObject.SetActive(false);
-    }
+    }  
 }

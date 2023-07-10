@@ -40,12 +40,6 @@ public class Player : Unit
         if(SceneManager.GetActiveScene().name == "Tutorial")SwitchWeapon(0);
         //arrow.gameObject.SetActive(false);
     }
-    private void OnEnable() {
-        _isDashing = false;
-        Physics2D.IgnoreLayerCollision(6, 7, false);
-        Physics2D.IgnoreLayerCollision(6, 8, false);
-        Physics2D.IgnoreLayerCollision(6, 10, false);
-    }
     // Update is called once per frame
     void Update()
     {
@@ -117,10 +111,7 @@ public class Player : Unit
         if (collision.name.Contains("Double Barrel Gun Pick Up")) {
             AudioManager.instance.PlaySFX(AudioManager.instance.healthSound);
             SwitchWeapon(1);
-            End end = FindObjectOfType<End>();
             Destroy(collision.gameObject);
-            StartCoroutine(MiniBossDefeated());
-            end.transform.position = collision.transform.position + new Vector3(0, 10, 0);
         }
         if (collision.GetComponent<EnemyProjectile>() && !dead) {
             TakeHit(collision.gameObject.GetComponent<EnemyProjectile>().damage);
@@ -130,9 +121,6 @@ public class Player : Unit
             StartCoroutine(DamageFeedback());
             StartCoroutine(Invulnerability());
         }
-    }
-    IEnumerator MiniBossDefeated() {
-        yield return new WaitForSeconds(0.5f);
     }
     // For player's immunity
     public IEnumerator Invulnerability()

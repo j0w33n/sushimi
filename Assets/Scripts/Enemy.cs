@@ -105,6 +105,7 @@ public class Enemy : Unit
         }
         else if (collision.GetComponent<ExplodingProjectile>() && !dead && collision.tag != "Enemy") {
             TakeHit(Mathf.Abs(collision.GetComponent<ExplodingProjectile>().damage));
+            print(collision.GetComponent<ExplodingProjectile>().damage);
             Knockback();
             audio.PlayOneShot(hitsound);
             StartCoroutine(DamageFeedback());
@@ -114,6 +115,7 @@ public class Enemy : Unit
             }
         }
         else if (collision.GetComponent<ProjectileScript>() && !dead && collision.tag != "Enemy") {
+            
             TakeHit(collision.GetComponent<ProjectileScript>().damage);
             Knockback();
             audio.PlayOneShot(hitsound);

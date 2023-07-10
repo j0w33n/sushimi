@@ -112,10 +112,6 @@ public class Upgrade : MonoBehaviour
         activebuff.sprite = buffimage;
         Time.timeScale = 1;
         upgradePanel.gameObject.SetActive(false);
-        foreach (Transform i in upgradePanel.GetComponentsInChildren<Transform>()) {
-            if(i != upgradePanel.transform)Destroy(i.gameObject);
-        }
-        upgradePanel.upgrades.Clear();
     }
     // Update is called once per frame
     void Update()

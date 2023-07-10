@@ -122,11 +122,14 @@ public class MiniBossAI : Enemy
 		healthbar.gameObject.SetActive(false);
 		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
 		//Destroy(Instantiate(maskvfx, transform.position, transform.rotation), 1);
+		Destroy(gameObject);
 		for (int i = 0; i < Random.Range(1, dropamt + 1); i++)
 		{
 			Instantiate(itemdrops[Random.Range(0, itemdrops.Length)], transform.position, transform.rotation);
 		}
-		Instantiate(doublebarrelgun, transform.position, transform.rotation);
-		Destroy(gameObject);
+		GameObject go = Instantiate(doublebarrelgun, transform.position, transform.rotation);
+		End end = FindObjectOfType<End>(true);
+		end.transform.position = go.transform.position + new Vector3(0, 1, 0);
+		end.gameObject.SetActive(true);
 	}
 }

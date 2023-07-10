@@ -5,22 +5,22 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class End : EventTrigger {
+    EventTrigger levelend;// Start is called before the first frame update
     public bool endlevel;
     public GameObject endscreen;
     public FadeIn fade;
-    // Start is called before the first frame update
     protected override void Start() {
         endlevel = false;
-        fade = FindObjectOfType<FadeIn>(true);
+        fade = FindObjectOfType<FadeIn>();
         base.Start();
     }
 
     // Update is called once per frame
     void Update() {
-       
+
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<Player>()) {
+        if (collision.GetComponent<Player>() && gameObject.tag == "Trigger") {
             StartCoroutine(LevelEnd());
         }
     }
@@ -39,12 +39,12 @@ public class End : EventTrigger {
     public void EndScreen() {
         StartCoroutine(fade.Appear());
         //yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(levelManager.leveltoload);
-        PlayerPrefs.SetInt("Parts", levelManager.parts);
-        PlayerPrefs.SetInt("Total Enemies Killed", levelManager.totalenemieskilled);
-        PlayerPrefs.SetFloat("Max Health", player.maxhitpoints);
-        PlayerPrefs.SetInt("Max Ammo (Base)", player.GetComponentsInChildren<Weapon>(true)[0].maxammo);
-        PlayerPrefs.SetInt("Max Ammo (Double)", player.GetComponentsInChildren<Weapon>(true)[1].maxammo);
+        SceneManager.LoadScene(levelend.levelManager.leveltoload);
+        PlayerPrefs.SetInt("Parts", levelend.levelManager.parts);
+        PlayerPrefs.SetInt("Total Enemies Killed", levelend.levelManager.totalenemieskilled);
+        PlayerPrefs.SetFloat("Max Health", levelend.player.maxhitpoints);
+        PlayerPrefs.SetInt("Max Ammo (Base)", levelend.player.GetComponentsInChildren<Weapon>(true)[0].maxammo);
+        PlayerPrefs.SetInt("Max Ammo (Double)", levelend.player.GetComponentsInChildren<Weapon>(true)[1].maxammo);
         PlayerPrefs.SetInt("Current Room", 0);
     }
 }
