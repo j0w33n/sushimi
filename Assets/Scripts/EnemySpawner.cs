@@ -40,16 +40,5 @@ public class EnemySpawner : MonoBehaviour {
             nextinsttime = Time.time + instrate;
             enemiesspawned++;
         }
-   }
-   public void BossSpawn() {
-        if(enemiesspawned <= enemiestospawn[0] - 1) {
-            if (Time.time < nextinsttime) return;
-            GameObject go = Instantiate(instprefab[Random.Range(0, instprefab.Length)], transform.position, transform.rotation);
-            go.GetComponentInChildren<Enemy>().spawned = true;
-            go.GetComponentInChildren<Enemy>().canMove = true;
-            go.GetComponentInChildren<Enemy>().spawner = transform;
-            nextinsttime = Time.time + instrate;
-            enemiesspawned++;
-        }
-    } 
+    }
 }

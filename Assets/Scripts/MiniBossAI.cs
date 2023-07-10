@@ -84,14 +84,14 @@ public class MiniBossAI : Enemy
 
 		if (Time.time < nextJumpTime) return;
 		transform.position = Vector3.Lerp(transform.position, player.transform.position, jumpspeed);
-		AudioManager.instance.PlaySFX(jumpsound);
+		audio.PlayOneShot(jumpsound);
         nextJumpTime = Time.time + jumpRate;
         return;
     }
 	public void BossAttack() {
 		attackrate = anim.GetCurrentAnimatorStateInfo(0).length;
 		nextattacktime = Time.time + attackrate;
-		AudioManager.instance.PlaySFX(attacksound);
+		audio.PlayOneShot(attacksound);
     }
     public IEnumerator BossCast() //Event in animation for MiniBossCast
     {
@@ -102,18 +102,18 @@ public class MiniBossAI : Enemy
 			anglevector += new Vector3(0, 0, 45f);
 			Quaternion angle = Quaternion.Euler(anglevector);
 			Instantiate(tornado, tornadoPos.position, angle);
-			AudioManager.instance.PlaySFX(tornadosound);
+			audio.PlayOneShot(tornadosound);
         }
 		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
 		nextCastTime = Time.time + nextCast;
 		isCast = false;
 	}
 	public void PlayDeathSound() {
-		AudioManager.instance.PlaySFX(deathsound);
+		audio.PlayOneShot(deathsound);
     }
 	public override IEnumerator Death()
 	{
-		canMove = false;
+		rb.velocity = Vector2.zero;
 		if (!dead)
 		{
 			dead = true;

@@ -15,6 +15,7 @@ public class Enemy : Unit
     public bool spawned,dead;
     public GameObject[] itemdrops;
     public int dropamt;
+    public AudioSource audio;
     public Animator anim;
     public GameObject maskvfx;
     //public Transform indicator;
@@ -29,6 +30,7 @@ public class Enemy : Unit
         hitpoints = maxhitpoints;
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
+        audio = GetComponent<AudioSource>();
         transform.parent.GetComponentInChildren<Canvas>().worldCamera = FindObjectOfType<Camera>();
         dead = false;
         canMove = false;
@@ -87,18 +89,39 @@ public class Enemy : Unit
     private void Move(Vector2 direction) {
         rb.MovePosition((Vector2)transform.position + (direction * movespeed * Time.deltaTime));
     }
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<SlowingProjectile>() && !dead && collision.tag != "Enemy")
         {
             movespeed *= collision.GetComponent<SlowingProjectile>().slowfactor;
-            Damaged(collision);
+            TakeHit(collision.GetComponent<SlowingProjectile>().damage);
+            audio.PlayOneShot(hitsound);
+            StartCoroutine(DamageFeedback());
+            if (floatingTextPrefab)
+            {
+                var floatingtext = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+                floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
+            }
         }
         else if (collision.GetComponent<ExplodingProjectile>() && !dead && collision.tag != "Enemy") {
-            Damaged(collision);
+            TakeHit(Mathf.Abs(collision.GetComponent<ExplodingProjectile>().damage));
+            Knockback();
+            audio.PlayOneShot(hitsound);
+            StartCoroutine(DamageFeedback());
+            if (floatingTextPrefab) {
+                var floatingtext = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+                floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
+            }
         }
         else if (collision.GetComponent<ProjectileScript>() && !dead && collision.tag != "Enemy") {
-            Damaged(collision);
+            TakeHit(collision.GetComponent<ProjectileScript>().damage);
+            Knockback();
+            audio.PlayOneShot(hitsound);
+            StartCoroutine(DamageFeedback());
+            if (floatingTextPrefab) {
+                var floatingtext = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+                floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
+            }
         }
     }
     public virtual IEnumerator Death()
@@ -119,15 +142,5 @@ public class Enemy : Unit
     }
     protected void Knockback() {
         knockbackcounter = knockbacklength;
-    }
-    protected virtual void Damaged(Collider2D collision) {
-        TakeHit(Mathf.Abs(collision.GetComponent<ProjectileScript>().damage));
-        Knockback();
-        AudioManager.instance.PlaySFX(hitsound);
-        StartCoroutine(DamageFeedback());
-        if (floatingTextPrefab) {
-            var floatingtext = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
-            floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
-        }
     }
 }
