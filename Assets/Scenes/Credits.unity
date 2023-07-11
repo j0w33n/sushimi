@@ -2203,7 +2203,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: funnt
+  m_Text: unluckiest fingers in the team
 --- !u!222 &1256374534
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3334,7 +3334,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: funny
+  m_Text: ???
 --- !u!222 &1756739671
 CanvasRenderer:
   m_ObjectHideFlags: 0
