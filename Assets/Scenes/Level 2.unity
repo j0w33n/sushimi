@@ -3640,7 +3640,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 7f6d4cb9544dfc84ebbec824fdb89c72, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 287086e39d47f9a43a12f0715ddd35a9, type: 2}
 --- !u!4 &169346955
 Transform:
   m_ObjectHideFlags: 0
@@ -13962,7 +13962,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.3
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000d713973973f6742c77a9b85db9ff439483e33cc0fd22bd2bbb846e4c
   m_LightCookieSprite: {fileID: 0}
@@ -23357,10 +23357,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 49891933}
     m_Modifications:
-    - target: {fileID: 1879969724331915086, guid: 41f6310a225ea0c49acfadb4687b3222, type: 3}
-      propertyPath: m_RootOrder
-      value: 144
-      objectReference: {fileID: 0}
     - target: {fileID: 8586031559958006857, guid: 72bb8dec76bee2549b300a2066c7bfd6, type: 3}
       propertyPath: m_Name
       value: Frozen Trap (9)
@@ -23420,6 +23416,10 @@ PrefabInstance:
     - target: {fileID: 8586031559958006862, guid: 72bb8dec76bee2549b300a2066c7bfd6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879969724331915086, guid: 41f6310a225ea0c49acfadb4687b3222, type: 3}
+      propertyPath: m_RootOrder
+      value: 144
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41f6310a225ea0c49acfadb4687b3222, type: 3}
