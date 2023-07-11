@@ -188,7 +188,7 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 64
-  tornado: {fileID: 3353520136271162098, guid: 924d8447b5d9c224c982dda62b6a62a6, type: 3}
+  tornado: {fileID: 1357780228557450091, guid: 588575d8a1d03fe47b73eb9ac6a6251e, type: 3}
   tornadoPos: {fileID: 8015642938192121958}
   isJump: 0
   doublebarrelgun: {fileID: 7075613549232923804, guid: 3ad0714c971970744903352ea299e38a, type: 3}
