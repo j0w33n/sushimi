@@ -520,6 +520,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 631b5aaa8d1581a488c392423aac71a7, type: 3}
   - {fileID: 21300000, guid: fb4b8da6fd9d41249aae7a31311f54a5, type: 3}
   shieldup: 0
+  phase1: 0
+  phase2: 0
 --- !u!95 &8015642939441574163
 Animator:
   serializedVersion: 3
@@ -573,18 +575,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.017525673, y: -0.31412482}
+  m_Offset: {x: 0.017525673, y: -1.145477}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.4, y: 3.6}
+    oldSize: {x: 19.2, y: 10.8}
     newSize: {x: 10, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7819371, y: 3.0390806}
+  m_Size: {x: 2.7819371, y: 8.261379}
   m_EdgeRadius: 0
 --- !u!1001 &367732236442229072
 PrefabInstance:
