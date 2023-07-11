@@ -25,7 +25,7 @@ public class CameraPan : EventTrigger {
 
     }
     IEnumerator Pan(Transform target) {
-        AudioManager.instance.StopMusic();
+        //AudioManager.instance.StopMusic();
         player.canMove = false;
         cam.followtarget = false;
         player.movement = Vector2.zero;
@@ -35,8 +35,8 @@ public class CameraPan : EventTrigger {
         cam.followtarget = true;
         cam.target = target;
         yield return new WaitForSeconds(2);
-        if(target.GetComponent<MiniBossAI>())StartCoroutine(LevelManager.SwitchMusic(AudioManager.instance.minibossmusic));
-        else if(target.GetComponent<BossAI>()) StartCoroutine(LevelManager.SwitchMusic(AudioManager.instance.bossmusic));
+        //if(target.GetComponent<MiniBossAI>())StartCoroutine(LevelManager.SwitchMusic(AudioManager.instance.minibossmusic));
+        //else if(target.GetComponent<BossAI>()) StartCoroutine(LevelManager.SwitchMusic(AudioManager.instance.bossmusic));
         cam.target = player.transform;
         cam.GetComponent<Camera>().orthographicSize += 10;
         target.GetComponent<Enemy>().canMove = true;
