@@ -110,7 +110,7 @@ public class Upgrade : MonoBehaviour
         upgradePanel.isactive = false;
         activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
         activebuff.sprite = buffimage;
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         upgradePanel.gameObject.SetActive(false);
         foreach (Transform i in upgradePanel.GetComponentsInChildren<Transform>()) {
             if(i != upgradePanel.transform)Destroy(i.gameObject);

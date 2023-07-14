@@ -10,14 +10,13 @@ public class BossAI : Enemy
     public Transform firept;
     public bool isShooting;
     public EnemySpawner[] spawners;
-    //public List<Enemy> enemies;
     public GameObject shield,shield2,mask;
     public AudioClip shootsound;
     public Sprite[] masksprites;
     public bool shieldup;
     public bool phase1 = false;
     public bool phase2 = false;
-    //public bool shieldcostart = false;
+    int bulletsfired = 0;
     // Start is called before the first frame update
     // Update is called once per frame
     protected override void Start() {
@@ -86,16 +85,23 @@ public class BossAI : Enemy
         rb.MovePosition((Vector2)transform.position + (direction * movespeed * Time.deltaTime));
     }
     public override IEnumerator Death() {
-        //foreach(var i in enemies) {
-        //    if(!i.dead) i.hitpoints = 0;
-        //}
         return base.Death();
     }
     public void Fire() {
         if (Time.time < nextfiretime) return;
         Instantiate(projectile, firept.position, firept.rotation);
+        bulletsfired++;
         AudioManager.instance.PlaySFX(shootsound);
         nextfiretime = Time.time + firerate;
+        if (bulletsfired % 3 == 0) {
+            StartCoroutine(Cooldown());
+            return;
+        }
+        print(bulletsfired);
+    }
+    IEnumerator Cooldown() {
+        yield return null;
+        yield return new WaitForSeconds(5);
     }
     protected override void Damaged(Collider2D collision) {
         TakeHit(Mathf.Abs(collision.GetComponent<ProjectileScript>().damage));

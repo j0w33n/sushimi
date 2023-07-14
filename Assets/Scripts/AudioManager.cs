@@ -38,7 +38,13 @@ public class AudioManager : MonoBehaviour
         audio.clip = music;
         audio.Play();
     }
-    public void PlaySFX(AudioClip clip) {
+    public void PlaySFX(AudioClip clip,bool varypitch = false) {
+        if (varypitch) {
+            sfxaudio.pitch = Random.Range(1, 3);
+        } 
+        else {
+            sfxaudio.pitch = 1;
+        }
         sfxaudio.PlayOneShot(clip);
     }
     public void ResumeMusic() {
