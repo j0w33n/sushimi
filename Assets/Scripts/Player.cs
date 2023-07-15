@@ -37,7 +37,6 @@ public class Player : Unit
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         if (SceneManager.GetActiveScene().name == "Level 2") SwitchWeapon(1);
         else SwitchWeapon(0);
-        //arrow.gameObject.SetActive(false);
     }
     private void OnEnable() {
         _isDashing = false;
@@ -75,10 +74,6 @@ public class Player : Unit
             knockbackcounter -= Time.deltaTime;
             movement = knockbackdir.normalized * knockbackforce;
         }
-        /*FindClosestRoom();
-        var dir = target.position - transform.position;
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        arrow.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
     }
     private void FixedUpdate() {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -172,22 +167,12 @@ public class Player : Unit
         currentweapon = weaponnum;
         foreach(var i in weapons) {
             i.gameObject.SetActive(false);
+            i.transform.parent.gameObject.SetActive(false);
             weapons[currentweapon].gameObject.SetActive(true);
+            weapons[currentweapon].transform.parent.gameObject.SetActive(true);
         }
     }
     void Knockback() {
         knockbackcounter = knockbacklength;
     }
-    /*void FindClosestRoom() {
-        float closest = 999;
-        for(int i = 1;i < levelManager.rooms.Count;i++) {
-            var dist = (levelManager.rooms[i].transform.position - transform.position).magnitude;
-            if(dist < closest) {
-                closest = dist;
-            }
-            if ((levelManager.rooms[i].transform.position - transform.position).magnitude == closest && levelManager.rooms[i].gameObject.activeSelf) {
-                target = levelManager.rooms[i].transform;
-            }
-        }
-    }*/
 }

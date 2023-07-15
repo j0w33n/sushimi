@@ -45,15 +45,7 @@ public class Upgrade : MonoBehaviour
             i.maxammo += value;
             i.ammo = i.maxammo;
         }
-        /*RectTransform rect = levelManager.ammobar.fillRect.GetComponent<RectTransform>();
-        RectTransform fillarea = levelManager.ammobar.fillRect.GetComponentInParent<RectTransform>();
-        RectTransform bg = levelManager.ammobar.fillRect.GetComponentInChildren<Image>().GetComponent<RectTransform>();
-        rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, value);
-        fillarea.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, value);
-        bg.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, value);*/
-        /*rect.sizeDelta = new Vector2(rect.sizeDelta.x + value * 2, rect.sizeDelta.y);
-        fillarea.right = new Vector3(fillarea.right.x + value * 2, fillarea.right.y, fillarea.right.z);
-        bg.sizeDelta = new Vector2(bg.sizeDelta.x + value * 2, bg.sizeDelta.y);*/
+        levelManager.ammoimg.sprite = levelManager.ammosprites[0];
         ClosePanel();
     }
     public void IncreaseDamage(int value) {

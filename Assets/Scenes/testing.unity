@@ -10354,6 +10354,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -22.8
       objectReference: {fileID: 0}
+    - target: {fileID: 902369466643267719, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121842892365014493, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1460838448515769588, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -10398,6 +10406,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2093346096006517258, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2096848503433835686, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -10405,6 +10417,10 @@ PrefabInstance:
     - target: {fileID: 2438027404557208117, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: m_Name
       value: Level Starter Pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727163758059636311, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3398194196843193157, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10428,7 +10444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5444086565911455080, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: explode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5444086565911455080, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: gunTransform

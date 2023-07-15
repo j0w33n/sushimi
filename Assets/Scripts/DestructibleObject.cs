@@ -9,6 +9,7 @@ public class DestructibleObject : Unit
     // Start is called before the first frame update
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
         hitpoints = maxhitpoints;
     }

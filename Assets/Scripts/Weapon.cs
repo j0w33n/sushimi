@@ -25,9 +25,9 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
-        //levelManager.ammobar.value = ammo;
-        //levelManager.ammobar.maxValue = maxammo;
-        levelManager.ammobar = ammo;
+        levelManager.ammobar.value = ammo;
+        levelManager.ammobar.maxValue = maxammo;
+        //levelManager.ammobar = ammo;
     }
 
     // Update is called once per frame
@@ -36,9 +36,9 @@ public abstract class Weapon : MonoBehaviour
     }
     protected void Update() {
         gunTransform.rotation = gunTransform.rotation;
-        //levelManager.ammobar.value = ammo;
-        //levelManager.ammobar.maxValue = maxammo;
-        levelManager.ammobar = ammo;
+        levelManager.ammobar.value = ammo;
+        levelManager.ammobar.maxValue = maxammo;
+        //levelManager.ammobar = ammo;
         joystickposition = new Vector2(VirtualJoystick.GetAxis("Horizontal", 1), VirtualJoystick.GetAxis("Vertical", 1));
         /*if (isreloading) {
             return;
@@ -51,26 +51,27 @@ public abstract class Weapon : MonoBehaviour
            if((isreloading && ammo > 0) || ammo > 0) {
                 Fire();
            }
-        }
-
-        Vector2 joystickPosition = new Vector2(VirtualJoystick.GetAxis("Horizontal", 1), VirtualJoystick.GetAxis("Vertical", 1));
-
-        if (joystickPosition.magnitude > 0.5f) {
-            float targetAngle = Mathf.Atan2(joystickPosition.y, joystickPosition.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.Euler(0f, 0f, targetAngle);
-            gunTransform.rotation = Quaternion.Slerp(gunTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+           float targetAngle = Mathf.Atan2(joystickposition.y, joystickposition.x) * Mathf.Rad2Deg;
+           Quaternion targetRotation = Quaternion.Euler(0f, 0f, targetAngle);
+           gunTransform.rotation = Quaternion.Slerp(gunTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             // Flip the gun sprite when facing left
-            if (joystickPosition.x < 0) {
-                Vector3 localScale = gunTransform.localScale;
-                localScale.y = -Mathf.Abs(localScale.y);
-                gunTransform.localScale = localScale;
-            } 
-            else {
-                Vector3 localScale = gunTransform.localScale;
-                localScale.y = Mathf.Abs(localScale.y);
-                gunTransform.localScale = localScale;
-            }
+           if (joystickposition.x < 0) {
+               Vector3 localScale = gunTransform.localScale;
+               localScale.y = -Mathf.Abs(localScale.y);
+               gunTransform.localScale = localScale;
+           } 
+           else {
+               Vector3 localScale = gunTransform.localScale;
+               localScale.y = Mathf.Abs(localScale.y);
+               gunTransform.localScale = localScale;
+           }
+        }
+
+        //Vector2 joystickPosition = new Vector2(VirtualJoystick.GetAxis("Horizontal", 1), VirtualJoystick.GetAxis("Vertical", 1));
+
+        if (joystickposition.magnitude > 0.5f) {
+           
         }
         }
     public abstract void Fire();

@@ -33,11 +33,11 @@ public class BossAI : Enemy
         anim.SetBool("Shield", shieldup);
         if (!canMove) return;
         //isShooting = true;
+        firerate = anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).length * anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
         if (shield.GetComponent<BossShield>().circleCollider.enabled || shield2.GetComponent<BossShield>().circleCollider.enabled) {
             foreach(var i in spawners) {
                 i.BossSpawn();
             }
-           // if(enemies.Count < 5)enemies.AddRange(FindObjectsOfType<RangedEnemy>());
         }
         if (hitpoints <= maxhitpoints * .7f && hitpoints > maxhitpoints * .3f) {
             if (!phase1) {
@@ -45,21 +45,12 @@ public class BossAI : Enemy
                 mask.GetComponent<SpriteRenderer>().sprite = masksprites[0];
                 StartCoroutine(ShieldUp(shield.GetComponent<BossShield>()));
             }
-            //if (shield.GetComponent<BossShield>().circleCollider.enabled) StopCoroutine(ShieldUp(shield.GetComponent<BossShield>()));
-            //shieldcostart = true;
-            //shieldcostart = false;
-            //shieldcostart = true;
         } else if (hitpoints < maxhitpoints * .3f) {
             if (!phase2) {
                 phase2 = true;
                 mask.GetComponent<SpriteRenderer>().sprite = masksprites[1];
                 StartCoroutine(ShieldUp(shield2.GetComponent<BossShield>()));
             }
-            
-            //if (shield2.GetComponent<BossShield>().circleCollider.enabled) StopCoroutine(ShieldUp(shield2.GetComponent<BossShield>()));
-            //yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-            //shieldcostart = false;
-            //shieldcostart = true;
         }
         if (hitpoints < maxhitpoints * .1f) {
             mask.SetActive(false);
@@ -85,7 +76,9 @@ public class BossAI : Enemy
         rb.MovePosition((Vector2)transform.position + (direction * movespeed * Time.deltaTime));
     }
     public override IEnumerator Death() {
-        return base.Death();
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        FindObjectOfType<End>().transform.position = player.transform.position;
+        yield return base.Death();
     }
     public void Fire() {
         if (Time.time < nextfiretime) return;
@@ -93,15 +86,15 @@ public class BossAI : Enemy
         bulletsfired++;
         AudioManager.instance.PlaySFX(shootsound);
         nextfiretime = Time.time + firerate;
+        print(bulletsfired);
         if (bulletsfired % 3 == 0) {
             StartCoroutine(Cooldown());
-            return;
         }
-        print(bulletsfired);
     }
     IEnumerator Cooldown() {
-        yield return null;
-        yield return new WaitForSeconds(5);
+        isShooting = false;
+        yield return new WaitForSeconds(1f);
+        isShooting = true;
     }
     protected override void Damaged(Collider2D collision) {
         TakeHit(Mathf.Abs(collision.GetComponent<ProjectileScript>().damage));
@@ -117,7 +110,7 @@ public class BossAI : Enemy
         shield.circleCollider.enabled = true;
         isShooting = false;
         shieldup = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         isShooting = true;
         shieldup = false;
     }
