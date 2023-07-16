@@ -10444,7 +10444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5444086565911455080, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: explode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5444086565911455080, guid: 771f50fb329be5d40bee32b2b015c9ab, type: 3}
       propertyPath: gunTransform

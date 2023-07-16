@@ -48,6 +48,7 @@ public class BossAI : Enemy
         } else if (hitpoints < maxhitpoints * .3f) {
             if (!phase2) {
                 phase2 = true;
+                ResetSpawners();
                 mask.GetComponent<SpriteRenderer>().sprite = masksprites[1];
                 StartCoroutine(ShieldUp(shield2.GetComponent<BossShield>()));
             }
@@ -114,10 +115,9 @@ public class BossAI : Enemy
         isShooting = true;
         shieldup = false;
     }
-    /*public void ResetSpawners() {
+    public void ResetSpawners() {
         foreach (var i in spawners) {
-            i.canSpawn = true;
+            i.enemiesspawned = 0;
         }
-        
-    }*/
+    }
 }
