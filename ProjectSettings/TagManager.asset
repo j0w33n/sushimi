@@ -12,6 +12,7 @@ TagManager:
   - L1R7
   - L1R6
   - L1R8
+  - Slow
   layers:
   - Default
   - TransparentFX
