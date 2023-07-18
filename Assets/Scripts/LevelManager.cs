@@ -68,7 +68,7 @@ public class LevelManager : MonoBehaviour {
                 player.GetComponentInChildren<Weapon>().ammo = player.GetComponentInChildren<Weapon>().maxammo;
             }
         }
-        if (totalenemieskilled >= 10 /*&& !currentroom.GetComponent<Room>().roomstart*/) {
+        if (totalenemieskilled >= 10 && !currentroom.GetComponent<Room>().roomstart) {
             StartCoroutine(upgradepanel());
         }
     }

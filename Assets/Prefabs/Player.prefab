@@ -200,6 +200,7 @@ MonoBehaviour:
   canMove: 0
   mobileControls: 1
   moveSpeed: 10
+  ogmovespeed: 10
   rb: {fileID: 2180945518612510690}
   movement: {x: 0, y: 0}
   dashsound: {fileID: 8300000, guid: 2ecf86fb2eba76045a569e9525da7530, type: 3}

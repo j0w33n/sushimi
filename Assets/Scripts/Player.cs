@@ -8,6 +8,7 @@ public class Player : Unit
 {
     public bool mobileControls;
     public float moveSpeed = 5f;
+    public float ogmovespeed;
     public Rigidbody2D rb;
     public Vector2 movement;
     public AudioClip dashsound;
@@ -35,6 +36,7 @@ public class Player : Unit
         respawnpoint = transform.position;
         canMove = true;
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
+        moveSpeed = ogmovespeed;
         //if (SceneManager.GetActiveScene().name == "Level 2") SwitchWeapon(1);
         //else SwitchWeapon(0);
     }
@@ -88,6 +90,12 @@ public class Player : Unit
             StartCoroutine(Invulnerability());
         }
     }
+    private void OnTriggerStay2D(Collider2D collision) {
+        if (collision.tag == "Slow") {
+            moveSpeed = Mathf.Lerp(moveSpeed, moveSpeed - 1, 1f * Time.deltaTime);
+            if (moveSpeed < 0) moveSpeed = 1;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<Trap>() && !dead) {
             //TakeHit(collision.GetComponent<Trap>().damage);
@@ -127,6 +135,11 @@ public class Player : Unit
     }
     IEnumerator MiniBossDefeated() {
         yield return new WaitForSeconds(0.5f);
+    }
+    private void OnTriggerExit2D(Collider2D collision) {
+        if(collision.tag == "Slow") {
+            moveSpeed = ogmovespeed;
+        }
     }
     // For player's immunity
     public IEnumerator Invulnerability()
