@@ -43,6 +43,7 @@ public class Upgrade : MonoBehaviour
         if (!switchupgrade) return;
         foreach (var i in shooting) {
             i.maxammo += value;
+            if (i.maxammo > i.absmaxammo) i.maxammo = i.absmaxammo;
             i.ammo = i.maxammo;
         }
         levelManager.ammoimg.sprite = levelManager.ammosprites[0];
@@ -61,14 +62,6 @@ public class Upgrade : MonoBehaviour
         }
         ClosePanel();
     }
-    /*public void DoubleBarrelGun() {
-        SwitchUpgrade();
-        if (!switchupgrade) return;
-        player.SwitchWeapon(1);
-        upgradePanel.isactive = false;
-        activebuff.color = new Color(activebuff.color.r, activebuff.color.g, activebuff.color.b, 1);
-        activebuff.sprite = GetComponent<Image>().sprite;
-    }*/
     public void SlowingBullets() {
         SwitchUpgrade();
         if (!switchupgrade) return;

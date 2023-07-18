@@ -26,7 +26,7 @@ public class DoubleBarrelGun : Weapon
             Instantiate(projectileprefab, firept.position + new Vector3(0, 1, 0), firept.rotation);
             AudioManager.instance.PlaySFX(normalshootsound,true);
         }
-        ammo--;
+        ammo-=2;
         nextfiretime = Time.time + firerate;
     }
     // Update is called once per frame

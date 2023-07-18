@@ -21,7 +21,7 @@ public abstract class Weapon : MonoBehaviour
     public Transform gunTransform;
     public VirtualJoystick joystick;
     public float rotationSpeed = 30f;
-
+    public int absmaxammo;
     protected virtual void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();

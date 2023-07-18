@@ -60,6 +60,7 @@ MonoBehaviour:
   gunTransform: {fileID: 3282636569283770841}
   joystick: {fileID: 0}
   rotationSpeed: 30
+  absmaxammo: 26
 --- !u!1 &2180945518612510622
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,6 +604,7 @@ MonoBehaviour:
   gunTransform: {fileID: 1391051460786572734}
   joystick: {fileID: 0}
   rotationSpeed: 30
+  absmaxammo: 32
 --- !u!1 &6856773085496230791
 GameObject:
   m_ObjectHideFlags: 0
