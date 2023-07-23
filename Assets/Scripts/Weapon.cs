@@ -67,12 +67,6 @@ public abstract class Weapon : MonoBehaviour
                gunTransform.localScale = localScale;
            }
         }
-
-        //Vector2 joystickPosition = new Vector2(VirtualJoystick.GetAxis("Horizontal", 1), VirtualJoystick.GetAxis("Vertical", 1));
-
-        if (joystickposition.magnitude > 0.5f) {
-           
-        }
         }
     public abstract void Fire();
     public IEnumerator Reload() {

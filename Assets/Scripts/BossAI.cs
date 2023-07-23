@@ -14,15 +14,16 @@ public class BossAI : Enemy
     public AudioClip shootsound;
     public Sprite[] masksprites;
     public bool shieldup;
-    public bool phase1 = false;
-    public bool phase2 = false;
+    public Phases phase;
     int bulletsfired = 0;
+    public enum Phases { start,shield1,shield2}
     // Start is called before the first frame update
     // Update is called once per frame
     protected override void Start() {
         gameObject.SetActive(false);
         isShooting = false;
         shieldup = false;
+        phase = Phases.start;
         base.Start();
     }
     protected override void FixedUpdate() {
@@ -39,19 +40,17 @@ public class BossAI : Enemy
                 i.BossSpawn();
             }
         }
-        if (hitpoints <= maxhitpoints * .7f && hitpoints > maxhitpoints * .3f) {
-            if (!phase1) {
-                phase1 = true;
-                mask.GetComponent<SpriteRenderer>().sprite = masksprites[0];
-                StartCoroutine(ShieldUp(shield.GetComponent<BossShield>()));
-            }
-        } else if (hitpoints < maxhitpoints * .3f) {
-            if (!phase2) {
-                phase2 = true;
-                ResetSpawners();
-                mask.GetComponent<SpriteRenderer>().sprite = masksprites[1];
-                StartCoroutine(ShieldUp(shield2.GetComponent<BossShield>()));
-            }
+        switch (phase) {
+            case Phases.start:
+                if (hitpoints <= maxhitpoints * .7f && hitpoints > maxhitpoints * .3f) {
+                    PhaseChange();
+                }
+                break;
+            case Phases.shield1:
+                if (hitpoints < maxhitpoints * .3f) {
+                    PhaseChange();
+                }
+                break;
         }
         if (hitpoints < maxhitpoints * .1f) {
             mask.SetActive(false);
@@ -87,7 +86,6 @@ public class BossAI : Enemy
         bulletsfired++;
         AudioManager.instance.PlaySFX(shootsound);
         nextfiretime = Time.time + firerate;
-        print(bulletsfired);
         if (bulletsfired % 3 == 0) {
             StartCoroutine(Cooldown());
         }
@@ -119,5 +117,21 @@ public class BossAI : Enemy
         foreach (var i in spawners) {
             i.enemiesspawned = 0;
         }
+    }
+    Phases PhaseChange() {
+        switch (phase) {
+            case Phases.start:
+                phase = Phases.shield1;
+                mask.GetComponent<SpriteRenderer>().sprite = masksprites[0];
+                StartCoroutine(ShieldUp(shield.GetComponent<BossShield>()));
+                break;
+            case Phases.shield1:
+                phase = Phases.shield2;
+                ResetSpawners();
+                mask.GetComponent<SpriteRenderer>().sprite = masksprites[1];
+                StartCoroutine(ShieldUp(shield2.GetComponent<BossShield>()));
+                break;
+        }
+        return phase;
     }
 }
