@@ -148,7 +148,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1069751421
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: f7d9f11a8dc1e0f479fbd0b2177aa52c, type: 3}
   m_Color: {r: 1, g: 0.09677844, b: 0, a: 1}
@@ -253,7 +253,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7918848339342511285}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -284,7 +284,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1069751421
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Time: 1
   m_Parameters:
@@ -295,7 +295,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.06172189
+        value: 0.31372488
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -316,8 +316,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.4669811, g: 0.903961, b: 1, a: 0.39607844}
-      key1: {r: 0, g: 0.79581356, b: 1, a: 0}
+      key0: {r: 0.9960785, g: 0.09411766, b: 0, a: 0.39607844}
+      key1: {r: 1, g: 0.3818222, b: 0.30817604, a: 0}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

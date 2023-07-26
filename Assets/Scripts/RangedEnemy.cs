@@ -27,6 +27,7 @@ public class RangedEnemy : Enemy
     public void Fire() {
         if (Time.time < nextfiretime) return;
         if (dead) return;
+        if (FindObjectOfType<BossAI>(true).phasechangeimg.gameObject.activeSelf) return;
         Instantiate(projectile, firept.position, firept.rotation);
         AudioManager.instance.PlaySFX(shootsound);
         nextfiretime = Time.time + firerate;

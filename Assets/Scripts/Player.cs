@@ -78,6 +78,7 @@ public class Player : Unit
         }
     }
     private void FixedUpdate() {
+        if (FindObjectOfType<BossAI>(true).phasechangeimg.gameObject.activeSelf) return;
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision) {

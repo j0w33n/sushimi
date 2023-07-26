@@ -16,7 +16,7 @@ public class Enemy : Unit
     public GameObject[] itemdrops;
     public int dropamt;
     public Animator anim;
-    public GameObject maskvfx;
+    public GameObject deathvfx;
     //public Transform indicator;
     //Renderer rd;
     // Start is called before the first frame update
@@ -110,7 +110,7 @@ public class Enemy : Unit
         }
         healthbar.gameObject.SetActive(false);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-        Destroy(Instantiate(maskvfx, transform.position, transform.rotation), 1);
+        Destroy(Instantiate(deathvfx, transform.position, transform.rotation), 1);
         Destroy(gameObject);
         if (spawned) levelManager.enemieskilled += 1; levelManager.totalenemieskilled += 1;
         for(int i = 0; i < Random.Range(1, dropamt + 1); i++) {

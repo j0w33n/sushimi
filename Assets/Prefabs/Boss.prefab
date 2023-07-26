@@ -501,7 +501,7 @@ MonoBehaviour:
   - {fileID: 3587237261951397024, guid: 4fbd5160a237eef4d8630fbb4b41403f, type: 3}
   dropamt: 12
   anim: {fileID: 0}
-  maskvfx: {fileID: 5178278417980185461, guid: ea2791ea045e5dd4eb9ef0ea61eb053d, type: 3}
+  deathvfx: {fileID: 7267077632595923375, guid: 31a7821587f404b43bd86e55bed5282e, type: 3}
   projectile: {fileID: 7918848339342511285, guid: 18b51724e58f29f438ae2f3d3cba93e2, type: 3}
   firerate: 1.5
   firept: {fileID: 8015642938192121958}
@@ -520,8 +520,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 631b5aaa8d1581a488c392423aac71a7, type: 3}
   - {fileID: 21300000, guid: fb4b8da6fd9d41249aae7a31311f54a5, type: 3}
   shieldup: 0
-  phase1: 0
-  phase2: 0
+  phase: 0
 --- !u!95 &8015642939441574163
 Animator:
   serializedVersion: 3

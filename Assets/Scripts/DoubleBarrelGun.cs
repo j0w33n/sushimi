@@ -11,6 +11,7 @@ public class DoubleBarrelGun : Weapon
     }
     public override void Fire() {
         if (Time.time < nextfiretime) return;
+        if (FindObjectOfType<BossAI>().phasechangeimg.gameObject.activeSelf) return;
         if (slow) {
             Instantiate(slowingprojectile, firept.position, firept.rotation);
             Instantiate(slowingprojectile, firept.position + new Vector3(0, 1, 0), firept.rotation);

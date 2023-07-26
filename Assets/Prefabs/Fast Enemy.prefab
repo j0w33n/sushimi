@@ -171,7 +171,7 @@ MonoBehaviour:
   - {fileID: 3587237261951397024, guid: 4fbd5160a237eef4d8630fbb4b41403f, type: 3}
   dropamt: 3
   anim: {fileID: 0}
-  maskvfx: {fileID: 5178278417980185461, guid: ea2791ea045e5dd4eb9ef0ea61eb053d, type: 3}
+  deathvfx: {fileID: 5178278417980185461, guid: ea2791ea045e5dd4eb9ef0ea61eb053d, type: 3}
 --- !u!95 &9121781301676812041
 Animator:
   serializedVersion: 3
