@@ -85,19 +85,19 @@ public class Enemy : Unit
         if (canMove) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 1, 0);
     }
     private void Move(Vector2 direction) {
-        rb.MovePosition((Vector2)transform.position + (direction * movespeed * Time.deltaTime));
+        rb.MovePosition((Vector2)transform.position + (movespeed * Time.deltaTime * direction));
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<SlowingProjectile>() && !dead && collision.tag != "Enemy")
+        if (collision.GetComponent<SlowingProjectile>() && !dead && !collision.CompareTag("Enemy"))
         {
             movespeed *= collision.GetComponent<SlowingProjectile>().slowfactor;
             Damaged(collision);
         }
-        else if (collision.GetComponent<ExplodingProjectile>() && !dead && collision.tag != "Enemy") {
+        else if (collision.GetComponent<ExplodingProjectile>() && !dead && !collision.CompareTag("Enemy")) {
             Damaged(collision);
         }
-        else if (collision.GetComponent<ProjectileScript>() && !dead && collision.tag != "Enemy") {
+        else if (collision.GetComponent<ProjectileScript>() && !dead && !collision.CompareTag("Enemy")) {
             Damaged(collision);
         }
     }

@@ -28,6 +28,7 @@ public class MiniBossAI : Enemy
     public bool isJump = false;
 	public GameObject doublebarrelgun;
 	public AudioClip attacksound,tornadosound,jumpsound,deathsound;
+	public GameObject dust;
     protected override void Start() {
 		gameObject.SetActive(false);
 		base.Start();
@@ -84,6 +85,7 @@ public class MiniBossAI : Enemy
 
 		if (Time.time < nextJumpTime) return;
 		transform.position = Vector3.Lerp(transform.position, player.transform.position, jumpspeed);
+		Destroy(Instantiate(dust, transform.position, transform.rotation), 1f);
 		AudioManager.instance.PlaySFX(jumpsound);
         nextJumpTime = Time.time + jumpRate;
         return;

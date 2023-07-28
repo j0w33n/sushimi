@@ -174,7 +174,7 @@ MonoBehaviour:
   - {fileID: 3707441357454998247, guid: 82aa1160c94a1d94896a8710e6746419, type: 3}
   dropamt: 6
   anim: {fileID: 0}
-  maskvfx: {fileID: 5178278417980185461, guid: ea2791ea045e5dd4eb9ef0ea61eb053d, type: 3}
+  deathvfx: {fileID: 0}
   attackRange: 18
   isAttack: 0
   attackrate: 0
@@ -196,6 +196,7 @@ MonoBehaviour:
   tornadosound: {fileID: 8300000, guid: b603bd6dd52c1e44a8f26eb39d192092, type: 3}
   jumpsound: {fileID: 8300000, guid: a35e06d83c1d8c846ab49467a1d53efb, type: 3}
   deathsound: {fileID: 0}
+  dust: {fileID: 38527119452937924, guid: bbff17d38a8a1f34ca39b98880a01471, type: 3}
 --- !u!50 &8015642939441574161
 Rigidbody2D:
   serializedVersion: 4
