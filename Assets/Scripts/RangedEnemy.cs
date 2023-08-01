@@ -19,9 +19,6 @@ public class RangedEnemy : Enemy
     }
     protected override void Update() {
         anim.SetBool("Shooting", isShooting);
-        if(FindObjectOfType<BossAI>() != null) {
-            if (FindObjectOfType<BossAI>().dead) hitpoints = 0;
-        }
         base.Update();
     }
     public void Fire() {

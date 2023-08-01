@@ -10,8 +10,6 @@ public class ProjectileScript : MonoBehaviour
     public float projectilelife;
     private Weapon shootingScript;
     public bool upgraded;
-    //public float splashRange = 1; //we gonna add aoe as buff after clearing some stages
-
     // Start is called before the first frame update
     protected virtual void Start()
     {

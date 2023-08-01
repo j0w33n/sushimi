@@ -815,7 +815,9 @@ MonoBehaviour:
   canMove: 0
   itemdrops:
   - {fileID: 3707441357454998247, guid: 425016bbd9db25c43af314f32e44a9ff, type: 3}
-  - {fileID: 3707441357454998247, guid: 425016bbd9db25c43af314f32e44a9ff, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   dropamt: 0
 --- !u!1 &3150006465267122343
 GameObject:

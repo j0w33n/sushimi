@@ -20,7 +20,8 @@ public class DestructibleObject : Unit
         if (hitpoints <= 0) {
             Destroy(gameObject);
             for (int i = 0; i < Random.Range(1, dropamt + 1); i++) {
-                Instantiate(itemdrops[Random.Range(0, itemdrops.Length)], transform.position, transform.rotation);
+                if (itemdrops[Random.Range(0, itemdrops.Length)] == null) return;
+                Instantiate(itemdrops[Random.Range(0,itemdrops.Length)], transform.position, transform.rotation);
             }
         }
     }
@@ -30,7 +31,7 @@ public class DestructibleObject : Unit
             AudioManager.instance.PlaySFX(AudioManager.instance.impactSound);
             StartCoroutine(DamageFeedback());
         }
-        else if (collision.GetComponent<ProjectileScript>() && collision.tag != "Enemy") {
+        else if (collision.GetComponent<ProjectileScript>() && !collision.CompareTag("Enemy")) {
             TakeHit(collision.GetComponent<ProjectileScript>().damage);
             AudioManager.instance.PlaySFX(AudioManager.instance.impactSound);
             StartCoroutine(DamageFeedback());

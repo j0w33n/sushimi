@@ -154,7 +154,7 @@ MonoBehaviour:
   impactSound: {fileID: 8300000, guid: bfe293d6430f08041aa7b391db6afe11, type: 3}
   winSound: {fileID: 8300000, guid: 293f84da2ad7d8f479dcbd88a7eb03e9, type: 3}
   minibossmusic: {fileID: 0}
-  bossmusic: {fileID: 0}
+  bossmusic: {fileID: 8300000, guid: 0b01d155ef4b9564a98d8ed8241361b9, type: 3}
 --- !u!1 &7315256001631186733
 GameObject:
   m_ObjectHideFlags: 0

@@ -70,14 +70,9 @@ public class Enemy : Unit
             movement = knockbackdir;
             movespeed = knockbackforce;
         }
-        /*if (!rd.isVisible) {
-            if (!indicator.gameObject.activeSelf) indicator.gameObject.SetActive(true);
-            var dir = player.transform.position - transform.position;
-            RaycastHit2D ray = Physics2D.Raycast(transform.position, dir);
-            if (ray.collider.gameObject.layer == 3) indicator.transform.position = ray.point;
-        } else {
-            if (indicator.gameObject.activeSelf) indicator.gameObject.SetActive(false);
-        }*/
+        if (FindObjectOfType<BossAI>() != null) {
+            if (FindObjectOfType<BossAI>().dead) hitpoints = 0;
+        }
     }
 
     protected virtual void FixedUpdate() {

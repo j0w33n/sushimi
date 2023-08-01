@@ -25,6 +25,9 @@ public class EnemyProjectile : ProjectileScript
         rb.rotation = angle;
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {
+        if(!collision.GetComponent<Enemy>()) {
+            Destroy(gameObject);
+        }
         if(collision.GetComponent<Player>() && !collision.GetComponent<Player>().dead) {
             Destroy(gameObject);
         }

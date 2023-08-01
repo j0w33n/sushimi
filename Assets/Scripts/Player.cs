@@ -26,8 +26,6 @@ public class Player : Unit
     public bool dead;
     public int currentweapon;
     public List<Weapon> weapons;
-    //public Transform arrow;
-    //[SerializeField]Transform target;
     void Start() {
         hitpoints = PlayerPrefs.GetFloat("Max Health", 5);
         originalColor = sr.color;
@@ -71,6 +69,7 @@ public class Player : Unit
             Death();
             levelManager.Respawn();
             hitpoints = maxhitpoints;
+            levelManager.continues -= 1;
         }
         if (knockbackcounter > 0) {
             knockbackcounter -= Time.deltaTime;

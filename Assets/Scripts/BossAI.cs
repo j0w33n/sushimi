@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BossAI : Enemy
 {
-    public GameObject projectile;
+    public GameObject[] projectile;
     float nextfiretime;
     public float firerate;
     public Transform firept;
@@ -16,7 +16,7 @@ public class BossAI : Enemy
     public Sprite[] masksprites,phaseimgs;
     public bool shieldup;
     public Phases phase;
-    int bulletsfired = 0;
+    int bulletsfired = 0,projectileindex=0;
     public Image phasechangeimg;
     public enum Phases { start,shield1,shield2}
     // Start is called before the first frame update
@@ -101,7 +101,7 @@ public class BossAI : Enemy
     public void Fire() {
         if (Time.time < nextfiretime) return;
         if (phasechangeimg.gameObject.activeSelf) return;
-        Instantiate(projectile, firept.position, firept.rotation);
+        Instantiate(projectile[projectileindex], firept.position, firept.rotation);
         bulletsfired++;
         AudioManager.instance.PlaySFX(shootsound);
         nextfiretime = Time.time + firerate;
@@ -135,6 +135,7 @@ public class BossAI : Enemy
     public void ResetSpawners() {
         foreach (var i in spawners) {
             i.enemiesspawned = 0;
+            i.iter += 1;
         }
     }
     Phases PhaseChange() {
@@ -145,6 +146,7 @@ public class BossAI : Enemy
                 phasechangeimg.sprite = phaseimgs[0];
                 StartCoroutine(PhaseImg());
                 StartCoroutine(ShieldUp(shield.GetComponent<BossShield>()));
+                projectileindex += 1;
                 break;
             case Phases.shield1:
                 phase = Phases.shield2;

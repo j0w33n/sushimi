@@ -502,7 +502,9 @@ MonoBehaviour:
   dropamt: 12
   anim: {fileID: 0}
   deathvfx: {fileID: 7267077632595923375, guid: 31a7821587f404b43bd86e55bed5282e, type: 3}
-  projectile: {fileID: 7918848339342511285, guid: 18b51724e58f29f438ae2f3d3cba93e2, type: 3}
+  projectile:
+  - {fileID: 7918848339342511285, guid: 18b51724e58f29f438ae2f3d3cba93e2, type: 3}
+  - {fileID: 7918848339342511285, guid: 0911713ed406b71439d2cb9d78f5dfaf, type: 3}
   firerate: 1.5
   firept: {fileID: 8015642938192121958}
   isShooting: 0
@@ -519,8 +521,10 @@ MonoBehaviour:
   masksprites:
   - {fileID: 21300000, guid: 631b5aaa8d1581a488c392423aac71a7, type: 3}
   - {fileID: 21300000, guid: fb4b8da6fd9d41249aae7a31311f54a5, type: 3}
+  phaseimgs: []
   shieldup: 0
   phase: 0
+  phasechangeimg: {fileID: 0}
 --- !u!95 &8015642939441574163
 Animator:
   serializedVersion: 3
@@ -644,19 +648,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: instprefab.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: instprefab.Array.data[0]
       value: 
       objectReference: {fileID: 2179498244207394342, guid: 595744d48b994174ea5634b74edd1db6, type: 3}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: instprefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 2179498244207394342, guid: 3fbd3b369145add4a8edc6c7f58085d8, type: 3}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: instprefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 2179498244207394342, guid: 7bd6457d0d2ada5429377aa2feedad79, type: 3}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: enemiestospawn.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: enemiestospawn.Array.data[0]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: enemiestospawn.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: enemiestospawn.Array.data[2]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
@@ -733,19 +753,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: instprefab.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: instprefab.Array.data[0]
       value: 
       objectReference: {fileID: 2179498244207394342, guid: 595744d48b994174ea5634b74edd1db6, type: 3}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: instprefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 2179498244207394342, guid: 3fbd3b369145add4a8edc6c7f58085d8, type: 3}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: instprefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 2179498244207394342, guid: 7bd6457d0d2ada5429377aa2feedad79, type: 3}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: enemiestospawn.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: enemiestospawn.Array.data[0]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: enemiestospawn.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: enemiestospawn.Array.data[2]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
@@ -822,19 +858,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: instprefab.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: instprefab.Array.data[0]
       value: 
       objectReference: {fileID: 2179498244207394342, guid: 595744d48b994174ea5634b74edd1db6, type: 3}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: instprefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 2179498244207394342, guid: 3fbd3b369145add4a8edc6c7f58085d8, type: 3}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: instprefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 2179498244207394342, guid: 7bd6457d0d2ada5429377aa2feedad79, type: 3}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: enemiestospawn.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: enemiestospawn.Array.data[0]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: enemiestospawn.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: enemiestospawn.Array.data[2]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
@@ -911,19 +963,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: instprefab.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: instprefab.Array.data[0]
       value: 
       objectReference: {fileID: 2179498244207394342, guid: 595744d48b994174ea5634b74edd1db6, type: 3}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: instprefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 2179498244207394342, guid: 3fbd3b369145add4a8edc6c7f58085d8, type: 3}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: instprefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 2179498244207394342, guid: 7bd6457d0d2ada5429377aa2feedad79, type: 3}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: enemiestospawn.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: enemiestospawn.Array.data[0]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: enemiestospawn.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: enemiestospawn.Array.data[2]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
@@ -1000,19 +1068,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: instprefab.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: instprefab.Array.data[0]
       value: 
       objectReference: {fileID: 2179498244207394342, guid: 595744d48b994174ea5634b74edd1db6, type: 3}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: instprefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 2179498244207394342, guid: 3fbd3b369145add4a8edc6c7f58085d8, type: 3}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: instprefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 2179498244207394342, guid: 7bd6457d0d2ada5429377aa2feedad79, type: 3}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: enemiestospawn.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
       propertyPath: enemiestospawn.Array.data[0]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: enemiestospawn.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+      propertyPath: enemiestospawn.Array.data[2]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}

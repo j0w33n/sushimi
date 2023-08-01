@@ -290,6 +290,7 @@ MonoBehaviour:
   firept: {fileID: 5332741975154710039}
   shootsound: {fileID: 8300000, guid: 27e618f21323b7446a06ad3ac049a93f, type: 3}
   isShooting: 0
+  aggrorange: 5
 --- !u!95 &9121781301676812041
 Animator:
   serializedVersion: 3

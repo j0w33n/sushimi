@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour {
     Weapon[] weapons;
     public Sprite[] ammosprites;
     public Image ammoimg;
+    public int continues;
     // Start is called before the first frame update
     void Start() {
         parts = PlayerPrefs.GetInt("Parts", 0);
@@ -45,6 +46,7 @@ public class LevelManager : MonoBehaviour {
             w.explodingprojectile.GetComponent<ProjectileScript>().damage = 1;
             w.slowingprojectile.GetComponent<ProjectileScript>().damage = 1;
         }
+        continues = 10;
     }
     // Update is called once per frame
     void Update() {
@@ -70,6 +72,10 @@ public class LevelManager : MonoBehaviour {
         }
         if (totalenemieskilled >= 10 && !currentroom.GetComponent<Room>().roomstart) {
             StartCoroutine(upgradepanel());
+        }
+        if(continues == 0) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            continues = 10;
         }
     }
     public void Respawn() {
