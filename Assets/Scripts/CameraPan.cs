@@ -13,7 +13,7 @@ public class CameraPan : EventTrigger {
         base.Start();
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<Player>() && SceneManager.GetActiveScene().name == "Level 1") {
+        if (collision.GetComponent<Player>() /*&& SceneManager.GetActiveScene().name == "Level 1"*/) {
             StartCoroutine(Pan(miniboss.transform));
         }
         else if(collision.GetComponent<Player>() /*&& SceneManager.GetActiveScene().name == "Level 2"*/) {

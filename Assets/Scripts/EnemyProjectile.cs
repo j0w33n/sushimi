@@ -21,6 +21,7 @@ public class EnemyProjectile : ProjectileScript
     public override void Move() {
         Vector3 dir = target.position - transform.position;
         rb.velocity = dir.normalized * speed;
+        if (gameObject.name.Contains("Dust")) return;
         float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
     }

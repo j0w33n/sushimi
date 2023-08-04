@@ -9,110 +9,91 @@ public class MiniBossAI : Enemy
 	public bool isAttack = false;
 	float nextattacktime;
 	public float attackrate;
-	//Jump
-    public float jumpRange = 10f;
-	public float jumpspeed = 1f;
-    public float jumpRate = 3f;
-    float nextJumpTime = 0f;
-	//Cast
-	float nextCastTime;
-	public bool isCast = false;
-	public float nextCast = 0.2f;
-	public float space = 5f;
-	public float castrange;
-	//Attack
-	public LayerMask attackMask;
-	//Cast
-    public GameObject tornado;
-    public Transform tornadoPos;
-    public bool isJump = false;
+    //Charge
+    public float chargerange = 10f;
+    public float chargespeed = 1f;
+    public float chargerate = 3f;
+    float nextchargetime = 0f;
+	public bool isCharging = false;
+	// Smash
+    public GameObject dustwave;
+    public Transform dustPos;
+
 	public GameObject doublebarrelgun;
-	public AudioClip attacksound,tornadosound,jumpsound,deathsound;
-	public GameObject dust;
-    protected override void Start() {
+	public AudioClip attacksound,smashsound,chargesound,deathsound,dustsound;
+	//public GameObject dust;
+	protected override void Start() {
 		gameObject.SetActive(false);
+		isCharging = false;
+		isAttack = false;
 		base.Start();
     }
     protected override void Update()
 	{
-		anim.SetBool("Jump", isJump);
+		anim.SetBool("Charge", isCharging);
         anim.SetBool("Attacking", isAttack);
-		anim.SetBool("Cast", isCast);
 		anim.SetBool("Death", dead);
 		if (!canMove) return;
-		Collider2D attackdist = Physics2D.OverlapCircle(transform.position, attackRange, attackMask); // Detect player in range of attack
-		Collider2D jumpdist = Physics2D.OverlapCircle(transform.position, jumpRange, attackMask);
-		Collider2D castdist = Physics2D.OverlapCircle(transform.position, castrange, attackMask);
-		if (castdist && !jumpdist){
-			isCast = true;
+		float dist = (transform.position - player.transform.position).magnitude;
+        
+        if (dist <= chargerange && dist > attackRange && Time.time >= nextchargetime)
+        {
+			StartCoroutine(BossCharge());
+		}
+		if (dist <= attackRange && Time.time >= nextattacktime) {
+            isAttack = true;
         } 
 		else {
-			isCast = false;
+            isAttack = false;
         }
-		if (jumpdist && !attackdist && Time.time >= nextJumpTime) //Condition for Jump
-		{
-			movement = Vector2.zero;
-			isJump = true;
-        } 
-		else {
-			isJump = false;
-        }
-		if (attackdist && Time.time >= nextattacktime) // Condition for attack
-	    {
-			isAttack = true;
-        } 
-		else {
-			isAttack = false;
-        }
-		base.Update();
+        base.Update();
     }
 	protected override void FixedUpdate()
 	{
-		if (canMove && !isJump) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 9, 0);
+		if (canMove) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 9, 0);
 	}
 	private void Move(Vector2 direction)
 	{
-		rb.MovePosition((Vector2)transform.position + (direction * movespeed * Time.deltaTime));
+		rb.MovePosition((Vector2)transform.position + (movespeed * Time.deltaTime * direction));
 	}
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
 	{
 		Gizmos.DrawWireSphere(transform.position, attackRange);
-		Gizmos.DrawWireSphere(transform.position, jumpRange);
-		Gizmos.DrawWireSphere(transform.position, castrange);
+		Gizmos.DrawWireSphere(transform.position, chargerange);
+		//Gizmos.DrawWireSphere(transform.position, smashrange);
 	}
-    public void BossJump() //Event in animation for MiniBossJump
+    IEnumerator BossCharge() 
     {
-
-		if (Time.time < nextJumpTime) return;
-		transform.position = Vector3.Lerp(transform.position, player.transform.position, jumpspeed);
-		Destroy(Instantiate(dust, transform.position, transform.rotation), 1f);
-		AudioManager.instance.PlaySFX(jumpsound);
-        nextJumpTime = Time.time + jumpRate;
-        return;
-    }
-	public void BossAttack() {
+		Vector2 dir = (player.transform.position - transform.position).normalized;
+        if (Time.time < nextchargetime) yield return null;
+		isCharging = true;
+		movement = Vector2.zero;
+		yield return new WaitForSeconds(0.5f);
+		movement = chargespeed * dir;
+		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length - .2f);
+		isCharging = false;
+		//Destroy(Instantiate(dust, transform.position, transform.rotation), 1f);
+		AudioManager.instance.PlaySFX(chargesound);
+		nextchargetime = Time.time + chargerate;
+	}
+    public void BossAttack() {
 		attackrate = anim.GetCurrentAnimatorStateInfo(0).length;
 		nextattacktime = Time.time + attackrate;
 		AudioManager.instance.PlaySFX(attacksound);
     }
-    public IEnumerator BossCast() //Event in animation for MiniBossCast
+    void BossSmash()
     {
-		if (Time.time < nextCastTime) yield return null;
-		isCast = true;
-		Vector3 anglevector = Vector3.zero;
-		for (int i = 0; i < 10; i++) {
-			anglevector += new Vector3(0, 0, 45f);
-			Quaternion angle = Quaternion.Euler(anglevector);
-			Instantiate(tornado, tornadoPos.position, angle);
-			AudioManager.instance.PlaySFX(tornadosound);
-        }
-		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-		nextCastTime = Time.time + nextCast;
-		isCast = false;
+		movement = Vector2.zero;
+		anim.SetTrigger("Smash");
+		Instantiate(dustwave, dustPos.position, Quaternion.identity);
+		//nextsmashtime = Time.time + smashrate;
 	}
-	public void PlayDeathSound() {
+    public void PlayDeathSound() {
 		AudioManager.instance.PlaySFX(deathsound);
     }
+	public void PlaySmashSound() {
+		AudioManager.instance.PlaySFX(smashsound);
+	}
 	public override IEnumerator Death()
 	{
 		canMove = false;

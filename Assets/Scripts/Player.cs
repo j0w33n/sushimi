@@ -91,7 +91,7 @@ public class Player : Unit
         }
     }
     private void OnTriggerStay2D(Collider2D collision) {
-        if (collision.tag == "Slow") {
+        if (collision.CompareTag("Slow")) {
             moveSpeed = Mathf.Lerp(moveSpeed, moveSpeed - 1, 1f * Time.deltaTime);
             if (moveSpeed < 0) moveSpeed = 1;
         }

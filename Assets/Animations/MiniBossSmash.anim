@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MiniBossCast
+  m_Name: MiniBossSmash
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -90,8 +90,8 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.6666667
-    functionName: BossCast
+  - time: 0.41666666
+    functionName: PlaySmashSound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
