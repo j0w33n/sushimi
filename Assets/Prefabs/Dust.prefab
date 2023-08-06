@@ -55,8 +55,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
-  damage: 1
-  projectilelife: 1
+  damage: 3
+  projectilelife: 5
   upgraded: 0
   target: {fileID: 0}
   turnSpeed: 40

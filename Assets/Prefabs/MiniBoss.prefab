@@ -184,10 +184,12 @@ MonoBehaviour:
   isCharging: 0
   dustwave: {fileID: 38527119452937924, guid: bbff17d38a8a1f34ca39b98880a01471, type: 3}
   dustPos: {fileID: 8015642938192121958}
+  smashrate: 3
+  smashrange: 30
   doublebarrelgun: {fileID: 7075613549232923804, guid: 3ad0714c971970744903352ea299e38a, type: 3}
   attacksound: {fileID: 8300000, guid: 77f412dde09aa1c4682c6558d57b1711, type: 3}
   smashsound: {fileID: 8300000, guid: a35e06d83c1d8c846ab49467a1d53efb, type: 3}
-  chargesound: {fileID: 0}
+  chargesound: {fileID: 8300000, guid: ea2025f602ff7184b8ef6f65752838f7, type: 3}
   deathsound: {fileID: 0}
   dustsound: {fileID: 8300000, guid: b603bd6dd52c1e44a8f26eb39d192092, type: 3}
 --- !u!50 &8015642939441574161

@@ -18,10 +18,14 @@ public class MiniBossAI : Enemy
 	// Smash
     public GameObject dustwave;
     public Transform dustPos;
+	float nextsmashtime;
+	public float smashrate;
+	public float smashrange;
 
 	public GameObject doublebarrelgun;
 	public AudioClip attacksound,smashsound,chargesound,deathsound,dustsound;
 	//public GameObject dust;
+	Coroutine charge;
 	protected override void Start() {
 		gameObject.SetActive(false);
 		isCharging = false;
@@ -36,9 +40,12 @@ public class MiniBossAI : Enemy
 		if (!canMove) return;
 		float dist = (transform.position - player.transform.position).magnitude;
         
-        if (dist <= chargerange && dist > attackRange && Time.time >= nextchargetime)
+        if (dist <= chargerange && dist > smashrange && Time.time >= nextchargetime)
         {
-			StartCoroutine(BossCharge());
+			charge = StartCoroutine(BossCharge());
+		}
+		if (charge == null && dist <= smashrange && dist > attackRange && Time.time >= nextsmashtime) {
+			BossSmash();
 		}
 		if (dist <= attackRange && Time.time >= nextattacktime) {
             isAttack = true;
@@ -56,11 +63,21 @@ public class MiniBossAI : Enemy
 	{
 		rb.MovePosition((Vector2)transform.position + (movespeed * Time.deltaTime * direction));
 	}
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.GetComponent<Player>() && anim.GetCurrentAnimatorStateInfo(0).IsName("MiniBossCharge")) {
+			collision.gameObject.GetComponent<Player>().knockbackforce = 12;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision) {
+        if (collision.gameObject.GetComponent<Player>() && !anim.GetCurrentAnimatorStateInfo(0).IsName("MiniBossCharge")) {
+            collision.gameObject.GetComponent<Player>().knockbackforce = 3;
+        }
+    }
     private void OnDrawGizmos()
 	{
 		Gizmos.DrawWireSphere(transform.position, attackRange);
 		Gizmos.DrawWireSphere(transform.position, chargerange);
-		//Gizmos.DrawWireSphere(transform.position, smashrange);
+		Gizmos.DrawWireSphere(transform.position, smashrange);
 	}
     IEnumerator BossCharge() 
     {
@@ -73,8 +90,8 @@ public class MiniBossAI : Enemy
 		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length - .2f);
 		isCharging = false;
 		//Destroy(Instantiate(dust, transform.position, transform.rotation), 1f);
-		AudioManager.instance.PlaySFX(chargesound);
 		nextchargetime = Time.time + chargerate;
+		charge = null;
 	}
     public void BossAttack() {
 		attackrate = anim.GetCurrentAnimatorStateInfo(0).length;
@@ -86,13 +103,16 @@ public class MiniBossAI : Enemy
 		movement = Vector2.zero;
 		anim.SetTrigger("Smash");
 		Instantiate(dustwave, dustPos.position, Quaternion.identity);
-		//nextsmashtime = Time.time + smashrate;
+		nextsmashtime = Time.time + smashrate;
 	}
     public void PlayDeathSound() {
 		AudioManager.instance.PlaySFX(deathsound);
     }
 	public void PlaySmashSound() {
 		AudioManager.instance.PlaySFX(smashsound);
+	}
+	public void PlayChargeSound() {
+		AudioManager.instance.PlaySFX(chargesound);
 	}
 	public override IEnumerator Death()
 	{
