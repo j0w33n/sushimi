@@ -153,7 +153,7 @@ MonoBehaviour:
   entranceSound: {fileID: 8300000, guid: 1675c7122a7f1534494b069b3b3affc0, type: 3}
   impactSound: {fileID: 8300000, guid: bfe293d6430f08041aa7b391db6afe11, type: 3}
   winSound: {fileID: 8300000, guid: 293f84da2ad7d8f479dcbd88a7eb03e9, type: 3}
-  minibossmusic: {fileID: 0}
+  minibossmusic: {fileID: 8300000, guid: f7e975c4b8612fd43a58623c57c4c7b8, type: 3}
   bossmusic: {fileID: 8300000, guid: 0b01d155ef4b9564a98d8ed8241361b9, type: 3}
 --- !u!1 &7315256001631186733
 GameObject:

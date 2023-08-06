@@ -6,6 +6,7 @@ public class EnemyProjectile : ProjectileScript
 {
     public Transform target;
     public float turnSpeed = 40f;
+    public bool canbedestroyed;
     // Start is called before the first frame update
     protected override void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -26,7 +27,7 @@ public class EnemyProjectile : ProjectileScript
         rb.rotation = angle;
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {
-        if(!collision.GetComponent<Enemy>()) {
+        if(!collision.GetComponent<Enemy>() && canbedestroyed) {
             Destroy(gameObject);
         }
         if(collision.GetComponent<Player>() && !collision.GetComponent<Player>().dead) {
