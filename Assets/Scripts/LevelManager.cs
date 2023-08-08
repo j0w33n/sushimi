@@ -47,13 +47,16 @@ public class LevelManager : MonoBehaviour {
             w.slowingprojectile.GetComponent<ProjectileScript>().damage = 1;
         }
         continues = 10;
-        ammoiter = 0;
+        if (SceneManager.GetActiveScene().name == "Level 2") ammoiter = 3;
+        else ammoiter = 0;
         healthiter = 0;
     }
     // Update is called once per frame
     void Update() {
         //print(PlayerPrefs.GetString("Current Level"));
         //print(PlayerPrefs.GetInt("Current Room"));
+        healthimg.sprite = healthsprites[healthiter];
+        ammoimg.sprite = ammosprites[ammoiter];
         if (!FindObjectOfType<End>(true).endlevel) ShowTime();
         partcount.GetComponent<Text>().text = "x " + parts.ToString();
         enemykillcount.value = totalenemieskilled;

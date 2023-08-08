@@ -62,14 +62,17 @@ MonoBehaviour:
   joysticks: []
   rooms: []
   ammosprites:
-  - {fileID: 21300000, guid: 8126cfdd6fba04f63bb21eb4278ab703, type: 3}
+  - {fileID: 21300000, guid: 2415532150d184077bb9bbf22a37da04, type: 3}
   - {fileID: 21300000, guid: f7f915f2456714007adb70f4e279210f, type: 3}
+  - {fileID: 21300000, guid: 8cb28829885ab46c0ad7873dab0f7a49, type: 3}
+  - {fileID: 21300000, guid: fa6c0f39207924b8eacaff243bfd4f65, type: 3}
   healthsprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 4010594468d154a9e8b8173f7107f6d2, type: 3}
+  - {fileID: 21300000, guid: b9ff842078ce94e6dbb35f03e3c31e35, type: 3}
+  - {fileID: 21300000, guid: 2c24a486e8ca4427d8ef9d3806318a1c, type: 3}
+  - {fileID: 21300000, guid: fc16cdc1564624d0b8ef9657ca0ed7d8, type: 3}
+  - {fileID: 21300000, guid: da369b0bd452644fe9ad6f7c87ed3a9b, type: 3}
+  - {fileID: 21300000, guid: a6a7cb3c4618a4670ac46bef009d4922, type: 3}
   ammoimg: {fileID: 0}
   healthimg: {fileID: 0}
   continues: 0
