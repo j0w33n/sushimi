@@ -96,6 +96,8 @@ public class LevelManager : MonoBehaviour {
         player.gameObject.SetActive(false); // deactivates player
         yield return new WaitForSeconds(waitToRespawn); // how long to wait before respawning player
         player.gameObject.SetActive(true); // reactivates player
+        StartCoroutine(FindObjectOfType<FadeIn>(true).Appear());
+        StartCoroutine(FindObjectOfType<FadeIn>(true).Disappear());
         player.transform.position = player.respawnpoint; // moves player to respawn point
         player.dead = false;
     }
