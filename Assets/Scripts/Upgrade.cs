@@ -29,7 +29,6 @@ public class Upgrade : MonoBehaviour
         if (player.maxhitpoints > player.absmaxhealth) player.maxhitpoints = player.absmaxhealth;
         player.hitpoints = player.maxhitpoints;
         if (player.maxhitpoints != player.absmaxhealth && levelManager.healthiter != levelManager.healthsprites.Length) levelManager.healthiter += 1;
-        levelManager.healthimg.sprite = levelManager.healthsprites[levelManager.healthiter];
         ClosePanel();
     }
     public void IncreaseMaxAmmo(int value) {
@@ -41,7 +40,6 @@ public class Upgrade : MonoBehaviour
             if(i.maxammo != i.absmaxammo && levelManager.ammoiter != levelManager.ammosprites.Length) levelManager.ammoiter += 1;
             i.ammo = i.maxammo;
         }
-        levelManager.ammoimg.sprite = levelManager.ammosprites[levelManager.ammoiter];
         ClosePanel();
     }
     public void IncreaseDamage(int value) {
