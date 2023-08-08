@@ -26,16 +26,10 @@ public class Upgrade : MonoBehaviour
         SwitchUpgrade();
         if (!switchupgrade) return;
         player.maxhitpoints += value;
+        if (player.maxhitpoints > player.absmaxhealth) player.maxhitpoints = player.absmaxhealth;
         player.hitpoints = player.maxhitpoints;
-        RectTransform rect = player.healthbar.fillRect.GetComponent<RectTransform>();
-        RectTransform fillarea = player.healthbar.fillRect.GetComponentInParent<RectTransform>();
-        RectTransform bg = player.healthbar.GetComponentInChildren<Image>().GetComponent<RectTransform>();
-        rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, value);
-        fillarea.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, value);
-        bg.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, value);
-        //rect.sizeDelta = new Vector2(rect.sizeDelta.x + value * 2, rect.sizeDelta.y);
-        //fillarea.right = new Vector3(fillarea.right.x + value * 2, fillarea.right.y, fillarea.right.z);
-        //bg.sizeDelta = new Vector2(bg.sizeDelta.x + value * 2, bg.sizeDelta.y);
+        if (player.maxhitpoints != player.absmaxhealth && levelManager.healthiter != levelManager.healthsprites.Length) levelManager.healthiter += 1;
+        levelManager.healthimg.sprite = levelManager.healthsprites[levelManager.healthiter];
         ClosePanel();
     }
     public void IncreaseMaxAmmo(int value) {
@@ -44,9 +38,10 @@ public class Upgrade : MonoBehaviour
         foreach (var i in shooting) {
             i.maxammo += value;
             if (i.maxammo > i.absmaxammo) i.maxammo = i.absmaxammo;
+            if(i.maxammo != i.absmaxammo && levelManager.ammoiter != levelManager.ammosprites.Length) levelManager.ammoiter += 1;
             i.ammo = i.maxammo;
         }
-        levelManager.ammoimg.sprite = levelManager.ammosprites[0];
+        levelManager.ammoimg.sprite = levelManager.ammosprites[levelManager.ammoiter];
         ClosePanel();
     }
     public void IncreaseDamage(int value) {

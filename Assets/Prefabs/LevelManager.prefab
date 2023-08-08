@@ -64,5 +64,14 @@ MonoBehaviour:
   ammosprites:
   - {fileID: 21300000, guid: 8126cfdd6fba04f63bb21eb4278ab703, type: 3}
   - {fileID: 21300000, guid: f7f915f2456714007adb70f4e279210f, type: 3}
+  healthsprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ammoimg: {fileID: 0}
+  healthimg: {fileID: 0}
   continues: 0
+  ammoiter: 0
+  healthiter: 0

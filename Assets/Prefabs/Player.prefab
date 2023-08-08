@@ -216,6 +216,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 1960463331829482290}
   - {fileID: 1149598199946264184}
+  absmaxhealth: 15
 --- !u!95 &2055233126
 Animator:
   serializedVersion: 3

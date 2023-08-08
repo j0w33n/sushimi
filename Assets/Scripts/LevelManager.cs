@@ -24,9 +24,9 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] VirtualJoystick[] joysticks;
     public List<GameObject> rooms = new List<GameObject>();
     Weapon[] weapons;
-    public Sprite[] ammosprites;
-    public Image ammoimg;
-    public int continues;
+    public Sprite[] ammosprites,healthsprites;
+    public Image ammoimg,healthimg;
+    public int continues,ammoiter,healthiter;
     // Start is called before the first frame update
     void Start() {
         parts = PlayerPrefs.GetInt("Parts", 0);
@@ -47,6 +47,8 @@ public class LevelManager : MonoBehaviour {
             w.slowingprojectile.GetComponent<ProjectileScript>().damage = 1;
         }
         continues = 10;
+        ammoiter = 0;
+        healthiter = 0;
     }
     // Update is called once per frame
     void Update() {

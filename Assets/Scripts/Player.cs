@@ -26,6 +26,7 @@ public class Player : Unit
     public bool dead;
     public int currentweapon;
     public List<Weapon> weapons;
+    public int absmaxhealth;
     void Start() {
         hitpoints = PlayerPrefs.GetFloat("Max Health", 5);
         originalColor = sr.color;
@@ -99,7 +100,7 @@ public class Player : Unit
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<Trap>() && !dead) {
-            //TakeHit(collision.GetComponent<Trap>().damage);
+            TakeHit(collision.GetComponent<Trap>().damage);
             knockbackdir = transform.position - collision.transform.position;
             Knockback();
             AudioManager.instance.PlaySFX(hitsound);
