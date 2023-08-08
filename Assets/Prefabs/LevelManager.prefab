@@ -65,6 +65,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2415532150d184077bb9bbf22a37da04, type: 3}
   - {fileID: 21300000, guid: f7f915f2456714007adb70f4e279210f, type: 3}
   - {fileID: 21300000, guid: 8cb28829885ab46c0ad7873dab0f7a49, type: 3}
+  - {fileID: 21300000, guid: 1bac0ed0f3d104a20aceb38289f41e22, type: 3}
+  - {fileID: 21300000, guid: 72580bacc08dd4b81bbed2e0235ac0b0, type: 3}
   - {fileID: 21300000, guid: fa6c0f39207924b8eacaff243bfd4f65, type: 3}
   healthsprites:
   - {fileID: 21300000, guid: 4010594468d154a9e8b8173f7107f6d2, type: 3}
