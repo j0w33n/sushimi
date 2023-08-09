@@ -34,7 +34,7 @@ public class CameraPan : EventTrigger {
         target.GetComponent<Enemy>().healthbar.gameObject.SetActive(false);
         cam.followtarget = true;
         cam.target = target;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         if (target.GetComponent<MiniBossAI>()) {
             AudioManager.instance.PlayMusic(AudioManager.instance.minibossmusic);
         } 
