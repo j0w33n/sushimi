@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502497459131743550}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.132, y: -0.192, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.1, y: -0.35, z: 0}
+  m_LocalScale: {x: 1, y: 1.0428693, z: 1}
   m_Children: []
   m_Father: {fileID: 8287565039749020186}
   m_RootOrder: 1
@@ -290,7 +290,6 @@ MonoBehaviour:
   firept: {fileID: 5332741975154710039}
   shootsound: {fileID: 8300000, guid: 27e618f21323b7446a06ad3ac049a93f, type: 3}
   isShooting: 0
-  aggrorange: 5
 --- !u!95 &9121781301676812041
 Animator:
   serializedVersion: 3
