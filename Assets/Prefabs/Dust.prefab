@@ -55,11 +55,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
-  damage: 3
+  damage: 2
   projectilelife: 5
   upgraded: 0
   target: {fileID: 0}
   turnSpeed: 40
+  canbedestroyed: 0
 --- !u!50 &-6408386752302680938
 Rigidbody2D:
   serializedVersion: 4

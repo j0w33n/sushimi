@@ -80,7 +80,7 @@ public class Player : Unit
     private void FixedUpdate() {
         BossAI boss = FindObjectOfType<BossAI>(true);
         if (boss != null && boss.phasechangeimg.gameObject.activeSelf) return;
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movement);
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.GetComponent<Enemy>() && !dead && !collision.gameObject.GetComponent<Enemy>().dead && collision.gameObject.GetComponent<Enemy>().anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) {

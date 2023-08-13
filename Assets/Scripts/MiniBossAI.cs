@@ -45,7 +45,7 @@ public class MiniBossAI : Enemy
 			charge = StartCoroutine(BossCharge());
 		}
 		if (charge == null && dist <= smashrange && dist > attackRange && Time.time >= nextsmashtime) {
-			BossSmash();
+			anim.SetTrigger("Smash");
 		}
 		if (dist <= attackRange && Time.time >= nextattacktime) {
             isAttack = true;
@@ -87,8 +87,10 @@ public class MiniBossAI : Enemy
 		movement = Vector2.zero;
 		yield return new WaitForSeconds(0.5f);
 		movement = chargespeed * dir;
+		damage = 3;
 		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length - .2f);
 		isCharging = false;
+		damage = 1;
 		//Destroy(Instantiate(dust, transform.position, transform.rotation), 1f);
 		nextchargetime = Time.time + chargerate;
 		charge = null;
@@ -98,19 +100,17 @@ public class MiniBossAI : Enemy
 		nextattacktime = Time.time + attackrate;
 		AudioManager.instance.PlaySFX(attacksound);
     }
-    void BossSmash()
+    public void BossSmash()
     {
 		movement = Vector2.zero;
-		anim.SetTrigger("Smash");
 		Instantiate(dustwave, dustPos.position, Quaternion.identity);
+		AudioManager.instance.PlaySFX(smashsound);
 		nextsmashtime = Time.time + smashrate;
 	}
     public void PlayDeathSound() {
+		AudioManager.instance.StopMusic();
 		AudioManager.instance.PlaySFX(deathsound);
     }
-	public void PlaySmashSound() {
-		AudioManager.instance.PlaySFX(smashsound);
-	}
 	public void PlayChargeSound() {
 		AudioManager.instance.PlaySFX(chargesound);
 	}

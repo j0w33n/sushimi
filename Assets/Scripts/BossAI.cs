@@ -12,7 +12,7 @@ public class BossAI : Enemy
     public bool isShooting;
     public EnemySpawner[] spawners;
     public GameObject shield,shield2,mask;
-    public AudioClip shootsound;
+    public AudioClip shootsound,deathsound;
     public Sprite[] masksprites,phaseimgs;
     public bool shieldup;
     public Phases phase;
@@ -97,6 +97,10 @@ public class BossAI : Enemy
 
        // FindObjectOfType<End>().transform.position = player.transform.position;
         //yield return base.Death();
+    }
+    public void PlayDeathSound() {
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlaySFX(deathsound);
     }
     public void Fire() {
         if (Time.time < nextfiretime) return;

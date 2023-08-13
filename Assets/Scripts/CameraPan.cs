@@ -34,12 +34,11 @@ public class CameraPan : EventTrigger {
         target.GetComponent<Enemy>().healthbar.gameObject.SetActive(false);
         cam.followtarget = true;
         cam.target = target;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(target.GetComponent<Enemy>().anim.GetCurrentAnimatorStateInfo(0).length);
         if (target.GetComponent<MiniBossAI>()) {
             AudioManager.instance.PlayMusic(AudioManager.instance.minibossmusic);
         } 
         else if (target.GetComponent<BossAI>()) {
-            //StartCoroutine(LevelManager.SwitchMusic(AudioManager.instance.bossmusic));
             AudioManager.instance.PlayMusic(AudioManager.instance.bossmusic);
         }
         cam.target = player.transform;
