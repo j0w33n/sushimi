@@ -57,7 +57,7 @@ public class MiniBossAI : Enemy
     }
 	protected override void FixedUpdate()
 	{
-		if (canMove) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 9, 0);
+		if (canMove && !anim.GetCurrentAnimatorStateInfo(0).IsTag("Smash")) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 9, 0);
 	}
 	private void Move(Vector2 direction)
 	{
@@ -85,7 +85,7 @@ public class MiniBossAI : Enemy
         if (Time.time < nextchargetime) yield return null;
 		isCharging = true;
 		movement = Vector2.zero;
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.72f);
 		movement = chargespeed * dir;
 		damage = 3;
 		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length - .2f);
