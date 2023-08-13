@@ -31,27 +31,27 @@ AnimationClip:
       value: {fileID: 21300000, guid: ed6c75f1598d68743afdefb5b35d87b7, type: 3}
     - time: 0.41666666
       value: {fileID: 21300000, guid: b4ed633974cbb4043a4df2aeeebb5c80, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: ce890a7099f547545b2511a3f69c05c8, type: 3}
     - time: 0.75
-      value: {fileID: 21300000, guid: 2177b18b0f8aacb498875fd0d2a872e3, type: 3}
+      value: {fileID: 21300000, guid: ce890a7099f547545b2511a3f69c05c8, type: 3}
     - time: 0.8333333
-      value: {fileID: 21300000, guid: a106eb4cf6c3232468eee4827b3e8988, type: 3}
+      value: {fileID: 21300000, guid: 2177b18b0f8aacb498875fd0d2a872e3, type: 3}
     - time: 0.9166667
-      value: {fileID: 21300000, guid: 53d4f2d8d778ba540a4a92e3197ec623, type: 3}
+      value: {fileID: 21300000, guid: a106eb4cf6c3232468eee4827b3e8988, type: 3}
     - time: 1
-      value: {fileID: 21300000, guid: 98f17124e9bb6f44a96385edf8890d86, type: 3}
+      value: {fileID: 21300000, guid: 53d4f2d8d778ba540a4a92e3197ec623, type: 3}
     - time: 1.0833334
-      value: {fileID: 21300000, guid: 14ddc37c06f1bfc46ae1ed1d982cdd9e, type: 3}
+      value: {fileID: 21300000, guid: 98f17124e9bb6f44a96385edf8890d86, type: 3}
     - time: 1.1666666
-      value: {fileID: 21300000, guid: 238fb9ac88f447d4383b5072166b1865, type: 3}
+      value: {fileID: 21300000, guid: 14ddc37c06f1bfc46ae1ed1d982cdd9e, type: 3}
     - time: 1.25
-      value: {fileID: 21300000, guid: 1bc6be0c759b9294b9a16008f380a7e1, type: 3}
+      value: {fileID: 21300000, guid: 238fb9ac88f447d4383b5072166b1865, type: 3}
     - time: 1.3333334
-      value: {fileID: 21300000, guid: f8544dc9ca4855f469a52e25f7ccfee5, type: 3}
+      value: {fileID: 21300000, guid: 1bc6be0c759b9294b9a16008f380a7e1, type: 3}
     - time: 1.4166666
-      value: {fileID: 21300000, guid: e0ff7e50ddc576343aa85b5a68343e9b, type: 3}
+      value: {fileID: 21300000, guid: f8544dc9ca4855f469a52e25f7ccfee5, type: 3}
     - time: 1.5
+      value: {fileID: 21300000, guid: e0ff7e50ddc576343aa85b5a68343e9b, type: 3}
+    - time: 1.5833334
       value: {fileID: 21300000, guid: 41255a9cd1427164ea51edc2e659435d, type: 3}
     attribute: m_Sprite
     path: 
@@ -94,7 +94,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.5833334
+    m_StopTime: 1.6666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -114,7 +114,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.75
+  - time: 0.8333333
     functionName: PlayChargeSound
     data: 
     objectReferenceParameter: {fileID: 0}
