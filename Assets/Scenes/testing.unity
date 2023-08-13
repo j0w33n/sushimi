@@ -325,10 +325,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6633027539988987585, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
-      propertyPath: ogdowntime
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6633027539988987588, guid: f7ab99cf93fa5904ba60cbb686f53310, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
