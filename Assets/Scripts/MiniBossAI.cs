@@ -21,15 +21,19 @@ public class MiniBossAI : Enemy
 	float nextsmashtime;
 	public float smashrate;
 	public float smashrange;
-
+	[SerializeField]bool downed;
 	public GameObject doublebarrelgun;
 	public AudioClip attacksound,smashsound,chargesound,deathsound,dustsound;
 	//public GameObject dust;
 	Coroutine charge;
+	public float ogdowntime;
+	[SerializeField]float downtime;
 	protected override void Start() {
 		gameObject.SetActive(false);
 		isCharging = false;
 		isAttack = false;
+		downed = false;
+		downtime = ogdowntime;
 		base.Start();
     }
     protected override void Update()
@@ -39,25 +43,35 @@ public class MiniBossAI : Enemy
 		anim.SetBool("Death", dead);
 		if (!canMove) return;
 		float dist = (transform.position - player.transform.position).magnitude;
-        
-        if (dist <= chargerange && dist > smashrange && Time.time >= nextchargetime)
-        {
-			charge = StartCoroutine(BossCharge());
+		if (((hitpoints / maxhitpoints) * 100) % 20 == 0 && hitpoints < maxhitpoints && downtime > 0) { 
+			downed = true; 
 		}
-		if (charge == null && dist <= smashrange && dist > attackRange && Time.time >= nextsmashtime) {
-			anim.SetTrigger("Smash");
+		if (downed) {
+			downtime -= Time.deltaTime;
 		}
-		if (dist <= attackRange && Time.time >= nextattacktime) {
-            isAttack = true;
-        } 
-		else {
-            isAttack = false;
+		if(downtime <= 0) {
+			downed = false;
+			downtime = ogdowntime;
         }
+        if (!downed) {
+			if (dist <= chargerange && dist > smashrange && Time.time >= nextchargetime) {
+				charge = StartCoroutine(BossCharge());
+			}
+			if (charge == null && dist <= smashrange && dist > attackRange && Time.time >= nextsmashtime) {
+				anim.SetTrigger("Smash");
+			}
+			if (dist <= attackRange && Time.time >= nextattacktime) {
+				isAttack = true;
+			} 
+			else {
+				isAttack = false;
+			}
+		}
         base.Update();
     }
 	protected override void FixedUpdate()
 	{
-		if (canMove && !anim.GetCurrentAnimatorStateInfo(0).IsTag("Smash")) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 9, 0);
+		if (canMove && !anim.GetCurrentAnimatorStateInfo(0).IsTag("Smash") && !downed) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 9, 0);
 	}
 	private void Move(Vector2 direction)
 	{
