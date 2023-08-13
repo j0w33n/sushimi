@@ -23,7 +23,7 @@ public class MiniBossAI : Enemy
 	public float smashrange;
 	[SerializeField]bool downed;
 	public GameObject doublebarrelgun;
-	public AudioClip attacksound,smashsound,chargesound,deathsound,dustsound;
+	public AudioClip attacksound, smashsound, chargesound, deathsound;
 	//public GameObject dust;
 	Coroutine charge;
 	public float ogdowntime;
@@ -41,6 +41,7 @@ public class MiniBossAI : Enemy
 		anim.SetBool("Charge", isCharging);
         anim.SetBool("Attacking", isAttack);
 		anim.SetBool("Death", dead);
+		anim.SetBool("Downed", downed);
 		if (!canMove) return;
 		float dist = (transform.position - player.transform.position).magnitude;
 		if (((hitpoints / maxhitpoints) * 100) % 20 == 0 && hitpoints < maxhitpoints && downtime > 0) { 
@@ -102,7 +103,7 @@ public class MiniBossAI : Enemy
 		yield return new WaitForSeconds(0.72f);
 		movement = chargespeed * dir;
 		damage = 3;
-		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length - .2f);
+		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
 		isCharging = false;
 		damage = 1;
 		//Destroy(Instantiate(dust, transform.position, transform.rotation), 1f);
@@ -131,13 +132,10 @@ public class MiniBossAI : Enemy
 	public override IEnumerator Death()
 	{
 		canMove = false;
-		if (!dead)
-		{
-			dead = true;
-			Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
-		}
+		if (!dead) dead = true;
 		healthbar.gameObject.SetActive(false);
-		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+		Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
 		//Destroy(Instantiate(maskvfx, transform.position, transform.rotation), 1);
 		for (int i = 0; i < Random.Range(1, dropamt + 1); i++)
 		{
@@ -145,5 +143,9 @@ public class MiniBossAI : Enemy
 		}
 		Instantiate(doublebarrelgun, transform.position, transform.rotation);
 		Destroy(gameObject);
+	}
+	public void WhiteScreen() {
+		StartCoroutine(FindObjectOfType<FadeIn>(true).Appear(true));
+		StartCoroutine(FindObjectOfType<FadeIn>(true).Disappear());
 	}
 }

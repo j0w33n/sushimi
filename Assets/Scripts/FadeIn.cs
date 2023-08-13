@@ -20,9 +20,10 @@ public class FadeIn : MonoBehaviour {
         yield return new WaitForSeconds(fadetime);
         gameObject.SetActive(false);
     }
-    public IEnumerator Appear() {
+    public IEnumerator Appear(bool white = false) {
         gameObject.SetActive(true);
         yield return new WaitForSeconds(2);
+        if (white) blackscreen.color = Color.white;
         blackscreen.CrossFadeAlpha(1f, 3, false);
     }
 }

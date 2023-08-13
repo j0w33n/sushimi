@@ -191,9 +191,8 @@ MonoBehaviour:
   attacksound: {fileID: 8300000, guid: 77f412dde09aa1c4682c6558d57b1711, type: 3}
   smashsound: {fileID: 8300000, guid: a35e06d83c1d8c846ab49467a1d53efb, type: 3}
   chargesound: {fileID: 8300000, guid: ea2025f602ff7184b8ef6f65752838f7, type: 3}
-  deathsound: {fileID: 0}
-  dustsound: {fileID: 8300000, guid: b603bd6dd52c1e44a8f26eb39d192092, type: 3}
-  ogdowntime: 5
+  deathsound: {fileID: 8300000, guid: 6080d5f25bc2cb64b8e313517f07a9e8, type: 3}
+  ogdowntime: 3
   downtime: 0
 --- !u!50 &8015642939441574161
 Rigidbody2D:
