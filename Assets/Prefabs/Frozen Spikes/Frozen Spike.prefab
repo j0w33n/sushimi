@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5641514338094980499}
   - component: {fileID: 2996228584108571588}
   - component: {fileID: 2996228584108571591}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bigger Frozen Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3326544448999941710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Frozen Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3326544449343713873}
   - component: {fileID: 3326544449343713872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 3326544449479870751}
   - component: {fileID: 3326544449479870745}
   - component: {fileID: 3326544449479870750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ice Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5193,7 +5193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3326544450047602441}
   - component: {fileID: 3326544450047602440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5266,7 +5266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3326544450087369066}
   - component: {fileID: 3326544450087369077}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
