@@ -12,7 +12,7 @@ public class BossAI : Enemy
     public bool isShooting;
     public EnemySpawner[] spawners;
     public GameObject shield,shield2,mask;
-    public AudioClip shootsound,deathsound,phasechangesound;
+    public AudioClip shootsound,shootmetalsound,deathsound,phasechangesound;
     public Sprite[] masksprites,phaseimgs;
     public bool shieldup;
     public Phases phase;
@@ -102,7 +102,12 @@ public class BossAI : Enemy
         if (phasechangeimg.gameObject.activeSelf) return;
         Instantiate(projectile[projectileindex], firept.position, firept.rotation);
         bulletsfired++;
-        AudioManager.instance.PlaySFX(shootsound);
+        if (projectileindex == 0) {
+            AudioManager.instance.PlaySFX(shootsound);
+        } else {
+            AudioManager.instance.PlaySFX(shootmetalsound);
+        }
+        
         nextfiretime = Time.time + firerate;
         if (bulletsfired % 3 == 0) {
             StartCoroutine(Cooldown());
