@@ -9,15 +9,15 @@ public class CameraPan : EventTrigger {
     public GameObject[] exits;
     // Start is called before the first frame update
     protected override void Start() {
-        miniboss = FindObjectOfType<MiniBossAI>(true);
+        miniboss = FindObjectOfType<MiniBossAI>();
         boss = FindObjectOfType<BossAI>(true);
         base.Start();
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<Player>() /*&& SceneManager.GetActiveScene().name == "Level 1"*/) {
+        if (collision.GetComponent<Player>() && miniboss != null) {
             StartCoroutine(Pan(miniboss.transform));
         }
-        else if(collision.GetComponent<Player>() /*&& SceneManager.GetActiveScene().name == "Level 2"*/) {
+        else if(collision.GetComponent<Player>() && boss != null) {
             StartCoroutine(Pan(boss.transform));
         }
     }

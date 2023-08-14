@@ -46,7 +46,7 @@ public class EnemySpawner : MonoBehaviour {
         if (enemiesspawned <= enemiestospawn[iter] - 1) {
             if (Time.time < nextinsttime) return;
             GameObject go = Instantiate(instprefab[Random.Range(0, instprefab.Length)], transform.position, transform.rotation);
-            go.GetComponentInChildren<Enemy>().spawned = true;
+            //go.GetComponentInChildren<Enemy>().spawned = true;
             go.GetComponentInChildren<Enemy>().canMove = true;
             go.GetComponentInChildren<Enemy>().spawner = transform;
             nextinsttime = Time.time + instrate;

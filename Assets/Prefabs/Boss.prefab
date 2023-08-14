@@ -518,10 +518,13 @@ MonoBehaviour:
   shield2: {fileID: 1951104150532488752}
   mask: {fileID: 3820751125375181740}
   shootsound: {fileID: 8300000, guid: 606026302df7ef14cae14652e7a801a5, type: 3}
+  deathsound: {fileID: 8300000, guid: b300cadf13fe0c440b15f07f73c1279e, type: 3}
   masksprites:
   - {fileID: 21300000, guid: 631b5aaa8d1581a488c392423aac71a7, type: 3}
   - {fileID: 21300000, guid: fb4b8da6fd9d41249aae7a31311f54a5, type: 3}
-  phaseimgs: []
+  phaseimgs:
+  - {fileID: 21300000, guid: e7cf204ec778df444829ec381c17bcaa, type: 3}
+  - {fileID: 21300000, guid: 3d99b21cb1df7084f82c4d7a8b4eda8b, type: 3}
   shieldup: 0
   phase: 0
   phasechangeimg: {fileID: 0}
