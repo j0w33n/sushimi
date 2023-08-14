@@ -117,7 +117,7 @@ public class Enemy : Unit
     }
     protected virtual void Damaged(Collider2D collision) {
         TakeHit(Mathf.Abs(collision.GetComponent<ProjectileScript>().damage));
-        Knockback();
+        if(!collision.GetComponent<SlowingProjectile>())Knockback();
         AudioManager.instance.PlaySFX(hitsound);
         StartCoroutine(DamageFeedback());
         if (floatingTextPrefab) {

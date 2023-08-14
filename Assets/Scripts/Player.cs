@@ -161,6 +161,10 @@ public class Player : Unit
         Destroy(Instantiate(bloodvfx, transform.position, transform.rotation), 1);
     }
     public void Dash() {
+        if (!dead && Time.time >= nextdashtime) {
+            _canDash = true;
+            nextdashtime = Time.time + _dashingTime;
+        }
         if (_canDash) {
             _isDashing = true;
             AudioManager.instance.PlaySFX(dashsound);
@@ -171,11 +175,6 @@ public class Player : Unit
             movement = _dashingDir.normalized * _dashingVelocity;
             StartCoroutine(Invulnerability());
             return;
-        }
-
-        if (!dead && Time.time >= nextdashtime) { // checks if player is moving
-            _canDash = true;
-            nextdashtime = Time.time + _dashingTime;
         }
     }
     public void SwitchWeapon(int weaponnum) {

@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 8015642939441574175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8015642938192121958}
   m_Father: {fileID: 0}
@@ -193,6 +193,7 @@ MonoBehaviour:
   smashsound: {fileID: 8300000, guid: a35e06d83c1d8c846ab49467a1d53efb, type: 3}
   chargesound: {fileID: 8300000, guid: ea2025f602ff7184b8ef6f65752838f7, type: 3}
   deathsound: {fileID: 8300000, guid: 6080d5f25bc2cb64b8e313517f07a9e8, type: 3}
+  downedsound: {fileID: 8300000, guid: c97c39fd5be189a49b4322e63bbb7742, type: 3}
   dust: {fileID: 38527119452937924, guid: f92e0c8a419675f40934366a2c768707, type: 3}
   ogdowntime: 3
   downtime: 0

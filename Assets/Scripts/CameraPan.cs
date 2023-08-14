@@ -13,7 +13,7 @@ public class CameraPan : EventTrigger {
         base.Start();
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<Player>() /*&& SceneManager.GetActiveScene().name == "Level 1"*/) {
+        if (collision.GetComponent<Player>() && SceneManager.GetActiveScene().name == "Level 1") {
             StartCoroutine(Pan(miniboss.transform));
         }
         else if(collision.GetComponent<Player>() && SceneManager.GetActiveScene().name == "Level 2") {
@@ -46,7 +46,7 @@ public class CameraPan : EventTrigger {
         target.GetComponent<Enemy>().canMove = true;
         target.GetComponent<Enemy>().healthbar.gameObject.SetActive(true);
         player.canMove = true;
-        boss.isShooting = true;
+        if(boss != null)boss.isShooting = true;
         player.respawnpoint = transform.position;
         gameObject.SetActive(false);
     }
