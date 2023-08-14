@@ -47,7 +47,7 @@ public class MiniBossAI : Enemy
 		anim.SetBool("Downed", downed);
 		if (!canMove) return;
 		float dist = (transform.position - player.transform.position).magnitude;
-		if (((hitpoints / maxhitpoints) * 100) % 20 == 0 && hitpoints < maxhitpoints && downtime > 0) { 
+		if (((hitpoints / maxhitpoints) * 100) % 20 == 0 && hitpoints < maxhitpoints && downtime > 0 && !dead) { 
 			downed = true; 
 		}
 		if (downed) {
