@@ -24,6 +24,7 @@ public class FadeIn : MonoBehaviour {
         gameObject.SetActive(true);
         yield return new WaitForSeconds(2);
         if (white) blackscreen.color = Color.white;
+        else blackscreen.color = Color.black;
         blackscreen.CrossFadeAlpha(1f, 3, false);
     }
 }

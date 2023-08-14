@@ -16,7 +16,7 @@ public class CameraPan : EventTrigger {
         if (collision.GetComponent<Player>() /*&& SceneManager.GetActiveScene().name == "Level 1"*/) {
             StartCoroutine(Pan(miniboss.transform));
         }
-        else if(collision.GetComponent<Player>() /*&& SceneManager.GetActiveScene().name == "Level 2"*/) {
+        else if(collision.GetComponent<Player>() && SceneManager.GetActiveScene().name == "Level 2") {
             StartCoroutine(Pan(boss.transform));
         }
     }

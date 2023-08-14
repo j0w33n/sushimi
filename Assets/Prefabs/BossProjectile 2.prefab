@@ -103,8 +103,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7918848339342511285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.888, y: 0.4485, z: 0}
-  m_LocalScale: {x: 2.1642, y: 0.60381186, z: 2.1642}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7339923702310648704}
   m_Father: {fileID: 0}
@@ -150,8 +150,8 @@ SpriteRenderer:
   m_SortingLayerID: -1069751421
   m_SortingLayer: 8
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: f7d9f11a8dc1e0f479fbd0b2177aa52c, type: 3}
-  m_Color: {r: 0.990566, g: 0.78841656, b: 0.04360973, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a659656059f312f48b34e251830b7c46, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -214,18 +214,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00067174435, y: -0.028526098}
+  m_Offset: {x: 0.0822044, y: -0.0056637228}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.8, y: 1.2}
     newSize: {x: 0.35, y: 0.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0001175, y: 0.9743231}
+  m_Size: {x: 1.4973742, y: 0.6428186}
   m_EdgeRadius: 0
 --- !u!95 &388623067665896547
 Animator:
@@ -235,9 +235,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7918848339342511285}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2519d99aba4b75a448aee3bc2adaf9e3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 65fbdd64e6078004fb7c6d1ee3b06647, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -317,8 +317,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.8431373, g: 0.70980394, b: 0.043137256, a: 0.39607844}
-      key1: {r: 0.6320754, g: 0.13890938, b: 0.0397531, a: 0}
+      key0: {r: 0.7960785, g: 0.69803923, b: 0.69803923, a: 0.39607844}
+      key1: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 0}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

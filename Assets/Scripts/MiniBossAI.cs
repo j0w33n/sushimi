@@ -23,17 +23,20 @@ public class MiniBossAI : Enemy
 	public float smashrange;
 	[SerializeField]bool downed;
 	public GameObject doublebarrelgun;
-	public AudioClip attacksound, smashsound, chargesound, deathsound;
-	//public GameObject dust;
+	public AudioClip attacksound, smashsound, chargesound, deathsound,downedsound;
+	public GameObject dust;
 	Coroutine charge;
 	public float ogdowntime;
 	[SerializeField]float downtime;
+	TrailRenderer tr;
 	protected override void Start() {
 		gameObject.SetActive(false);
 		isCharging = false;
 		isAttack = false;
 		downed = false;
 		downtime = ogdowntime;
+		tr = GetComponent<TrailRenderer>();
+		tr.emitting = false;
 		base.Start();
     }
     protected override void Update()
@@ -103,7 +106,9 @@ public class MiniBossAI : Enemy
 		yield return new WaitForSeconds(0.72f);
 		movement = chargespeed * dir;
 		damage = 3;
+		tr.emitting = true;
 		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+		tr.emitting = false;
 		isCharging = false;
 		damage = 1;
 		//Destroy(Instantiate(dust, transform.position, transform.rotation), 1f);
@@ -119,6 +124,7 @@ public class MiniBossAI : Enemy
     {
 		movement = Vector2.zero;
 		Instantiate(dustwave, dustPos.position, Quaternion.identity);
+		Destroy(Instantiate(dust, transform.position - new Vector3(0,10,0), Quaternion.identity),1);
 		AudioManager.instance.PlaySFX(smashsound);
 		nextsmashtime = Time.time + smashrate;
 	}
@@ -129,6 +135,9 @@ public class MiniBossAI : Enemy
 	public void PlayChargeSound() {
 		AudioManager.instance.PlaySFX(chargesound);
 	}
+	public void PlayDownedSound() {
+		AudioManager.instance.PlaySFX(downedsound);
+    }
 	public override IEnumerator Death()
 	{
 		canMove = false;
