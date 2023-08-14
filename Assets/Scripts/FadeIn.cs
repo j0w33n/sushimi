@@ -14,8 +14,10 @@ public class FadeIn : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (FindObjectOfType<End>() != null) gameObject.SetActive(false);
     }
     public IEnumerator Disappear() {
+        gameObject.SetActive(true);
         blackscreen.CrossFadeAlpha(0f, fadetime, false);
         yield return new WaitForSeconds(fadetime);
         gameObject.SetActive(false);

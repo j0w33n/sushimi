@@ -25,7 +25,7 @@ public class EventTrigger : MonoBehaviour {
         }
     }
     protected virtual void OnTriggerExit2D(Collider2D collision) {
-        if (collision.GetComponent<Player>()) {
+        if (collision.GetComponent<Player>() && tutorialmsg != null) {
             tutorialmsg.SetActive(false);
         }
     }
