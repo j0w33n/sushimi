@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7784443095403110542}
   - component: {fileID: 4366310911752687171}
   - component: {fileID: 3068250261332484695}
+  - component: {fileID: 7789806287746877788}
   m_Layer: 7
   m_Name: Shield (1)
   m_TagString: Enemy
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -1807482951
   m_SortingLayer: 6
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3dc63d8f29d0ed1479dae2de8f266d5d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.4627451}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,9 +98,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.019518226, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.67008483
 --- !u!114 &3068250261332484695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,25 @@ MonoBehaviour:
   bloodvfx: {fileID: 0}
   canMove: 0
   circleCollider: {fileID: 0}
+--- !u!95 &7789806287746877788
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951104150532488752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f0a4127a6424ea488a4f46e960fbf74, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3820751125375181740
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +242,7 @@ GameObject:
   - component: {fileID: 5849205339079565823}
   - component: {fileID: 7905014398145633254}
   - component: {fileID: 940771978091157924}
+  - component: {fileID: 3531847982986254310}
   m_Layer: 7
   m_Name: Shield
   m_TagString: Enemy
@@ -283,7 +304,7 @@ SpriteRenderer:
   m_SortingLayerID: -1807482951
   m_SortingLayer: 6
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3dc63d8f29d0ed1479dae2de8f266d5d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.4627451}
   m_FlipX: 0
   m_FlipY: 0
@@ -307,9 +328,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.013302284, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.61085343
 --- !u!114 &940771978091157924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,6 +359,25 @@ MonoBehaviour:
   bloodvfx: {fileID: 0}
   canMove: 0
   circleCollider: {fileID: 0}
+--- !u!95 &3531847982986254310
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291905850523144787}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f0a4127a6424ea488a4f46e960fbf74, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8015642938779731642
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8015642938779731642}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.17, y: -0.85, z: 0}
+  m_LocalPosition: {x: -3.55, y: -2.56, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 8015642939441574165}
@@ -519,6 +559,7 @@ MonoBehaviour:
   mask: {fileID: 3820751125375181740}
   shootsound: {fileID: 8300000, guid: 606026302df7ef14cae14652e7a801a5, type: 3}
   deathsound: {fileID: 8300000, guid: b300cadf13fe0c440b15f07f73c1279e, type: 3}
+  phasechangesound: {fileID: 0}
   masksprites:
   - {fileID: 21300000, guid: 631b5aaa8d1581a488c392423aac71a7, type: 3}
   - {fileID: 21300000, guid: fb4b8da6fd9d41249aae7a31311f54a5, type: 3}
@@ -528,6 +569,7 @@ MonoBehaviour:
   shieldup: 0
   phase: 0
   phasechangeimg: {fileID: 0}
+  death: 0
 --- !u!95 &8015642939441574163
 Animator:
   serializedVersion: 3
@@ -683,11 +725,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
---- !u!4 &7323305467879403060 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6970421036898187108, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
-  m_PrefabInstance: {fileID: 367732236442229072}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7323305467879403067 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
@@ -699,6 +736,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9f8181c4322fe48af258a697b0bceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7323305467879403060 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6970421036898187108, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+  m_PrefabInstance: {fileID: 367732236442229072}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1156354929110724192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -788,11 +830,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
---- !u!4 &8122201997128718596 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6970421036898187108, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
-  m_PrefabInstance: {fileID: 1156354929110724192}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8122201997128718603 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6970421036898187115, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
@@ -804,6 +841,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9f8181c4322fe48af258a697b0bceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &8122201997128718596 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6970421036898187108, guid: a1a95d2019961c145a15ec2e9ee28654, type: 3}
+  m_PrefabInstance: {fileID: 1156354929110724192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3807220845383382173
 PrefabInstance:
   m_ObjectHideFlags: 0

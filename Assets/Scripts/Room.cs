@@ -13,6 +13,7 @@ public class Room : MonoBehaviour
     LevelManager levelManager;
     WaveClearText clearText;
     [SerializeField] GameObject[] triggers;
+    public GameObject particle;
     // Start is called before the first frame update
     void Start()
     {

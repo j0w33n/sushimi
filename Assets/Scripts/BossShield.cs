@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossShield : Unit
 {
     public CircleCollider2D circleCollider;
+    Animator anim;
+    BossAI boss;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,23 +14,26 @@ public class BossShield : Unit
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
         circleCollider = GetComponent<CircleCollider2D>();
+        anim = GetComponent<Animator>();
+        boss = GetComponentInParent<BossAI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hitpoints <= 0) {
+        anim.SetBool("Shield", boss.shieldup);
+        if (hitpoints <= 0) {
             circleCollider.enabled = false;
             sr.enabled = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.GetComponent<ExplodingProjectile>() && collision.tag != "Enemy") {
+        if(collision.GetComponent<ExplodingProjectile>() && !collision.CompareTag("Enemy")) {
             TakeHit(Mathf.Abs(collision.GetComponent<ProjectileScript>().damage) * 2);
             AudioManager.instance.PlaySFX(hitsound);
             StartCoroutine(DamageFeedback());
         }
-        else if(collision.GetComponent<ProjectileScript>() && collision.tag != "Enemy") {
+        else if(collision.GetComponent<ProjectileScript>() && !collision.CompareTag("Enemy")) {
             TakeHit(Mathf.Abs(collision.GetComponent<ProjectileScript>().damage));
             AudioManager.instance.PlaySFX(hitsound);
             StartCoroutine(DamageFeedback());

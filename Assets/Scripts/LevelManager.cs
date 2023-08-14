@@ -70,6 +70,7 @@ public class LevelManager : MonoBehaviour {
                 currentroom.GetComponent<Room>().roomstart = false;
                 foreach (var i in currentroom.GetComponent<Room>().entrance) {
                     i.SetActive(false);
+                    Destroy(Instantiate(currentroom.GetComponent<Room>().particle,i.transform.position,Quaternion.identity),1);
                 }
                 AudioManager.instance.PlaySFX(AudioManager.instance.entranceSound);
                 player.GetComponentInChildren<Weapon>().ammo = player.GetComponentInChildren<Weapon>().maxammo;

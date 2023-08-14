@@ -109,7 +109,6 @@ public class BossAI : Enemy
     public void Fire() {
         if (Time.time < nextfiretime) return;
         if (phasechangeimg.gameObject.activeSelf) return;
-        if (!isShooting) return;
         Instantiate(projectile[projectileindex], firept.position, firept.rotation);
         bulletsfired++;
         AudioManager.instance.PlaySFX(shootsound);
@@ -119,6 +118,7 @@ public class BossAI : Enemy
         }
     }
     IEnumerator Cooldown() {
+        yield return new WaitForSeconds(.25f);
         isShooting = false;
         yield return new WaitForSeconds(1f);
         isShooting = true;
@@ -175,10 +175,7 @@ public class BossAI : Enemy
     }
     IEnumerator PhaseImg() {
         phasechangeimg.gameObject.SetActive(true);
-        AudioManager.instance.PauseMusic();
-        AudioManager.instance.PlaySFX(phasechangesound);
         yield return new WaitForSeconds(1.5f);
         phasechangeimg.gameObject.SetActive(false);
-        AudioManager.instance.ResumeMusic();
     }
 }
