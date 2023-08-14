@@ -65,12 +65,11 @@ public class Enemy : Unit
             movement = knockbackdir;
             movespeed = knockbackforce;
         }
-        if (FindObjectOfType<BossAI>() != null) {
+        if (FindObjectOfType<BossAI>() != null && !GetComponent<BossAI>()) {
             if (FindObjectOfType<BossAI>().dead) hitpoints = 0;
             if (FindObjectOfType<BossAI>().phasechangeimg.gameObject.activeSelf) {
                 canMove = false;
-            } 
-            else {
+            } else {
                 canMove = true;
             }
         }
