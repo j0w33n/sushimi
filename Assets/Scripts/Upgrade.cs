@@ -15,7 +15,7 @@ public class Upgrade : MonoBehaviour
     public Sprite buffimage;
     public void IncreaseFireRate(float value) {
         SwitchUpgrade();
-        if (!switchupgrade) return;
+        if (!switchupgrade || player.dead) return;
         foreach(var i in shooting) {
             i.firerate -= value;
             i.reloadspeed += value;
@@ -24,7 +24,7 @@ public class Upgrade : MonoBehaviour
     }
     public void IncreaseHealth(float value) {
         SwitchUpgrade();
-        if (!switchupgrade) return;
+        if (!switchupgrade || player.dead) return;
         player.maxhitpoints += value;
         if (player.maxhitpoints > player.absmaxhealth) player.maxhitpoints = player.absmaxhealth;
         player.hitpoints = player.maxhitpoints;
@@ -33,7 +33,7 @@ public class Upgrade : MonoBehaviour
     }
     public void IncreaseMaxAmmo(int value) {
         SwitchUpgrade();
-        if (!switchupgrade) return;
+        if (!switchupgrade || player.dead) return;
         bool caniterate = false;
         foreach (var i in shooting) {
             i.maxammo += value;
@@ -46,7 +46,7 @@ public class Upgrade : MonoBehaviour
     }
     public void IncreaseDamage(int value) {
         SwitchUpgrade();
-        if (!switchupgrade) return;
+        if (!switchupgrade || player.dead) return;
         foreach (var i in shooting) {
             i.projectileprefab.GetComponent<ProjectileScript>().damage += value;
             i.explodingprojectile.GetComponent<ProjectileScript>().damage += value;
@@ -59,7 +59,7 @@ public class Upgrade : MonoBehaviour
     }
     public void SlowingBullets() {
         SwitchUpgrade();
-        if (!switchupgrade) return;
+        if (!switchupgrade || player.dead) return;
         foreach (var i in shooting) {
             i.slow = true;
             i.explode = false;
@@ -68,7 +68,7 @@ public class Upgrade : MonoBehaviour
     }
     public void ExplodingBullets() {
         SwitchUpgrade();
-        if (!switchupgrade) return;
+        if (!switchupgrade || player.dead) return;
         foreach (var i in shooting) {
             i.explode = true;
             i.slow = false;
