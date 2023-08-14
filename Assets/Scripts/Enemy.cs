@@ -67,15 +67,20 @@ public class Enemy : Unit
         }
         if (FindObjectOfType<BossAI>() != null) {
             if (FindObjectOfType<BossAI>().dead) hitpoints = 0;
+            if (FindObjectOfType<BossAI>().phasechangeimg.gameObject.activeSelf) {
+                canMove = false;
+            } 
+            else {
+                canMove = true;
+            }
         }
     }
     protected virtual void CheckDeath() {
         if (hitpoints <= 0) StartCoroutine(Death());
     }
     protected virtual void FixedUpdate() {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("Spawn") && (!FindObjectOfType<BossAI>(true).phasechangeimg.gameObject.activeSelf && FindObjectOfType<BossAI>(true) != null)) 
-            canMove = true;
-        if (canMove) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 1, 0);
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("Spawn")) canMove = true; 
+        if(canMove)Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 1, 0);
     }
     private void Move(Vector2 direction) {
         rb.MovePosition((Vector2)transform.position + (movespeed * Time.deltaTime * direction));

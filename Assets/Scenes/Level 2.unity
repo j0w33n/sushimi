@@ -1364,8 +1364,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 594822728}
   - {fileID: 99958075}
+  - {fileID: 594822728}
   - {fileID: 423533354}
   - {fileID: 489479454}
   - {fileID: 159346812}
@@ -1410,6 +1410,7 @@ Transform:
   - {fileID: 1878689594}
   - {fileID: 56343086}
   - {fileID: 2046511964}
+  - {fileID: 606969910}
   - {fileID: 507514338}
   - {fileID: 1647338013}
   - {fileID: 687763496}
@@ -1421,21 +1422,20 @@ Transform:
   - {fileID: 872719568}
   - {fileID: 62852319}
   - {fileID: 426711492}
-  - {fileID: 1652244719}
-  - {fileID: 606969910}
-  - {fileID: 1800921553}
   - {fileID: 176058966}
-  - {fileID: 1451524885}
-  - {fileID: 1528327475}
-  - {fileID: 939853106}
-  - {fileID: 636147583}
+  - {fileID: 1652244719}
   - {fileID: 1669063840}
+  - {fileID: 1094112861}
+  - {fileID: 1800921553}
   - {fileID: 146792710}
   - {fileID: 1028418394}
+  - {fileID: 1451524885}
   - {fileID: 1069397833}
-  - {fileID: 1094112861}
+  - {fileID: 1528327475}
   - {fileID: 831462512}
+  - {fileID: 939853106}
   - {fileID: 402997865}
+  - {fileID: 636147583}
   - {fileID: 1891781233}
   - {fileID: 1755301924}
   - {fileID: 1470444594}
@@ -3174,7 +3174,7 @@ Transform:
   m_LocalScale: {x: 1, y: 6.307239, z: 1}
   m_Children: []
   m_Father: {fileID: 49891933}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &100796252
 GameObject:
@@ -8716,11 +8716,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692741346368557963, guid: 902b1e02468edee43bf86711f1be73c3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 30.384542
+      value: 59.997314
       objectReference: {fileID: 0}
     - target: {fileID: 6692741346368557963, guid: 902b1e02468edee43bf86711f1be73c3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.8616
+      value: -63.2942
       objectReference: {fileID: 0}
     - target: {fileID: 6692741346368557963, guid: 902b1e02468edee43bf86711f1be73c3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31486,6 +31486,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 49891933}
     m_Modifications:
+    - target: {fileID: 1879969724331915086, guid: 41f6310a225ea0c49acfadb4687b3222, type: 3}
+      propertyPath: m_RootOrder
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 8586031559958006857, guid: 72bb8dec76bee2549b300a2066c7bfd6, type: 3}
       propertyPath: m_Name
       value: Frozen Trap (9)
@@ -31545,10 +31549,6 @@ PrefabInstance:
     - target: {fileID: 8586031559958006862, guid: 72bb8dec76bee2549b300a2066c7bfd6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1879969724331915086, guid: 41f6310a225ea0c49acfadb4687b3222, type: 3}
-      propertyPath: m_RootOrder
-      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41f6310a225ea0c49acfadb4687b3222, type: 3}
