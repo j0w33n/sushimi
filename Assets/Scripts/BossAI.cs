@@ -73,15 +73,6 @@ public class BossAI : Enemy
     protected override void OnTriggerEnter2D(Collider2D collision) {
         if (shield.GetComponent<BossShield>().circleCollider.enabled) return;
         if (shield2.GetComponent<BossShield>().circleCollider.enabled) return;
-        if (collision.GetComponent<ExplodingProjectile>() && !dead && collision.tag != "Enemy") {
-            TakeHit(Mathf.Abs(collision.GetComponent<ExplodingProjectile>().damage) * 2);
-            AudioManager.instance.PlaySFX(hitsound);
-            StartCoroutine(DamageFeedback());
-            if (floatingTextPrefab) {
-                var floatingtext = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
-                floatingtext.GetComponent<TMPro.TextMeshPro>().text = collision.GetComponent<ProjectileScript>().damage.ToString();
-            }
-        }
         if (dead && collision.GetComponent<Player>()) print("cutscene");
         base.OnTriggerEnter2D(collision);
     }
