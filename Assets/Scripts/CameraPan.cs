@@ -9,7 +9,7 @@ public class CameraPan : EventTrigger {
     public GameObject[] exits;
     // Start is called before the first frame update
     protected override void Start() {
-        miniboss = FindObjectOfType<MiniBossAI>();
+        miniboss = FindObjectOfType<MiniBossAI>(true);
         boss = FindObjectOfType<BossAI>(true);
         base.Start();
     }
