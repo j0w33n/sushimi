@@ -18,7 +18,7 @@ public class BossAI : Enemy
     public Phases phase;
     int bulletsfired = 0,projectileindex=0;
     public Image phasechangeimg;
-    bool death;
+    [SerializeField]bool death;
     public enum Phases { start,shield1,shield2}
     // Start is called before the first frame update
     // Update is called once per frame
@@ -27,6 +27,7 @@ public class BossAI : Enemy
         isShooting = false;
         shieldup = false;
         phase = Phases.start;
+        death = false;
         base.Start();
     }
     protected override void FixedUpdate() {
