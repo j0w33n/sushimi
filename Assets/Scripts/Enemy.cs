@@ -17,8 +17,6 @@ public class Enemy : Unit
     public int dropamt;
     public Animator anim;
     public GameObject deathvfx;
-    //public Transform indicator;
-    //Renderer rd;
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -32,15 +30,12 @@ public class Enemy : Unit
         transform.parent.GetComponentInChildren<Canvas>().worldCamera = FindObjectOfType<Camera>();
         dead = false;
         canMove = false;
-        //rd = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
     protected virtual void Update() {
         anim.SetBool("Death", dead);
-        if (hitpoints <= 0) {
-            StartCoroutine(Death());
-        }
+        CheckDeath();
         if (dead) // Stop movement if the enemy is dead
         {
             movement = Vector2.zero;
@@ -74,9 +69,12 @@ public class Enemy : Unit
             if (FindObjectOfType<BossAI>().dead) hitpoints = 0;
         }
     }
-
+    protected virtual void CheckDeath() {
+        if (hitpoints <= 0) StartCoroutine(Death());
+    }
     protected virtual void FixedUpdate() {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("Spawn")) canMove = true;
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("Spawn") && (!FindObjectOfType<BossAI>(true).phasechangeimg.gameObject.activeSelf && FindObjectOfType<BossAI>(true) != null)) 
+            canMove = true;
         if (canMove) Move(movement); healthbar.gameObject.transform.position = transform.position + new Vector3(0, 1, 0);
     }
     private void Move(Vector2 direction) {

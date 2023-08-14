@@ -599,18 +599,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4315113975787464884}
     - target: {fileID: 5869794707476474529, guid: 4c07329ee48c5f148a27339c9d3ce813, type: 3}
-      propertyPath: phaseimgs.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869794707476474529, guid: 4c07329ee48c5f148a27339c9d3ce813, type: 3}
-      propertyPath: phaseimgs.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 520e4f8d9e81034478ad004697d92eff, type: 3}
-    - target: {fileID: 5869794707476474529, guid: 4c07329ee48c5f148a27339c9d3ce813, type: 3}
-      propertyPath: phaseimgs.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 528c06b05832d744fbb9361090148cd3, type: 3}
-    - target: {fileID: 5869794707476474529, guid: 4c07329ee48c5f148a27339c9d3ce813, type: 3}
       propertyPath: phaseimgs.Array.data[2]
       value: 
       objectReference: {fileID: 21300000, guid: 466577d0e0b2aa24a98dd480bdaef17a, type: 3}
