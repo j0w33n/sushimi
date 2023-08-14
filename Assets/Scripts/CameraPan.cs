@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CameraPan : EventTrigger {
     public MiniBossAI miniboss;
     public BossAI boss;
+    public GameObject[] exits;
     // Start is called before the first frame update
     protected override void Start() {
         miniboss = FindObjectOfType<MiniBossAI>(true);
@@ -13,10 +14,10 @@ public class CameraPan : EventTrigger {
         base.Start();
     }
     protected override void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<Player>() && SceneManager.GetActiveScene().name == "Level 1") {
+        if (collision.GetComponent<Player>() /*&& SceneManager.GetActiveScene().name == "Level 1"*/) {
             StartCoroutine(Pan(miniboss.transform));
         }
-        else if(collision.GetComponent<Player>() && SceneManager.GetActiveScene().name == "Level 2") {
+        else if(collision.GetComponent<Player>() /*&& SceneManager.GetActiveScene().name == "Level 2"*/) {
             StartCoroutine(Pan(boss.transform));
         }
     }
@@ -48,6 +49,7 @@ public class CameraPan : EventTrigger {
         player.canMove = true;
         if(boss != null)boss.isShooting = true;
         player.respawnpoint = transform.position;
+        foreach (GameObject i in exits) i.SetActive(true);
         gameObject.SetActive(false);
     }
 }

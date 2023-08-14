@@ -31,7 +31,7 @@ public class Level1End : MonoBehaviour
         foreach(var i in room8) {
             if (!i.activeSelf && !levelManager.currentroom.GetComponent<Room>().roomstart) room8clear = true;
         }
-        if(room8clear && room7clear && room6clear) {
+        if(room8clear && room7clear && room6clear && FindObjectOfType<MiniBossAI>() == null) {
             AudioManager.instance.PlaySFX(AudioManager.instance.entranceSound);
             gameObject.SetActive(false);
         }

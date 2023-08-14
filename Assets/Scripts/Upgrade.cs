@@ -28,18 +28,20 @@ public class Upgrade : MonoBehaviour
         player.maxhitpoints += value;
         if (player.maxhitpoints > player.absmaxhealth) player.maxhitpoints = player.absmaxhealth;
         player.hitpoints = player.maxhitpoints;
-        if (player.maxhitpoints != player.absmaxhealth && levelManager.healthiter != levelManager.healthsprites.Length) levelManager.healthiter += 1;
+        if (player.maxhitpoints <= player.absmaxhealth && levelManager.healthiter != levelManager.healthsprites.Length) levelManager.healthiter += 1;
         ClosePanel();
     }
     public void IncreaseMaxAmmo(int value) {
         SwitchUpgrade();
         if (!switchupgrade) return;
+        bool caniterate = false;
         foreach (var i in shooting) {
             i.maxammo += value;
             if (i.maxammo > i.absmaxammo) i.maxammo = i.absmaxammo;
-            if(i.maxammo != i.absmaxammo && levelManager.ammoiter != levelManager.ammosprites.Length) levelManager.ammoiter += 1;
+            if (i.maxammo <= i.absmaxammo && levelManager.ammoiter != levelManager.ammosprites.Length) caniterate = true;
             i.ammo = i.maxammo;
         }
+        if(caniterate) levelManager.ammoiter += 1;
         ClosePanel();
     }
     public void IncreaseDamage(int value) {

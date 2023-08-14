@@ -36675,7 +36675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8849212624709548161, guid: 73717a4ad79733340b8d103dfddfe436, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 162.85
+      value: 166.7
       objectReference: {fileID: 0}
     - target: {fileID: 8849212624709548161, guid: 73717a4ad79733340b8d103dfddfe436, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36713,6 +36713,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Trigger
       objectReference: {fileID: 0}
+    - target: {fileID: 8849212624709548174, guid: 73717a4ad79733340b8d103dfddfe436, type: 3}
+      propertyPath: exits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849212624709548174, guid: 73717a4ad79733340b8d103dfddfe436, type: 3}
+      propertyPath: exits.Array.data[0]
+      value: 
+      objectReference: {fileID: 520460247}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73717a4ad79733340b8d103dfddfe436, type: 3}
 --- !u!4 &9079304059392352955

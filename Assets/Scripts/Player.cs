@@ -36,8 +36,8 @@ public class Player : Unit
         canMove = true;
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         moveSpeed = ogmovespeed;
-        if (SceneManager.GetActiveScene().name == "Level 2") SwitchWeapon(1);
-        else SwitchWeapon(0);
+        //if (SceneManager.GetActiveScene().name == "Level 2") SwitchWeapon(1);
+        //else SwitchWeapon(0);
     }
     private void OnEnable() {
         _isDashing = false;

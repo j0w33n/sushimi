@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour {
             w.slowingprojectile.GetComponent<ProjectileScript>().damage = 1;
         }
         continues = 10;
-        if (SceneManager.GetActiveScene().name == "Level 2") ammoiter = 3;
+        if (player.GetComponentInChildren<DoubleBarrelGun>() != null) ammoiter = 3;
         else ammoiter = 0;
         healthiter = 0;
     }
