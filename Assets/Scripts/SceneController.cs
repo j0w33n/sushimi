@@ -5,12 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
 
+    public GameObject object1, object2, object3;
     public AudioClip menumusic;
     // Start is called before the first frame update
     void Start() {
        // var var = FindObjectOfType<AudioManager>();
        // if (var.GetComponent<AudioSource>().isPlaying) return;
        // StartCoroutine(LevelManager.SwitchMusic(menumusic));
+
+    
+
+        if(SceneManager.GetActiveScene().name == "MainMenu") {
+            if(PlayerPrefs.GetInt("Level0Completed") == 1) {
+                object1.SetActive(true);
+                object2.SetActive(false);
+                object3.SetActive(false);
+            }
+            if (PlayerPrefs.GetInt("Level1Completed") == 1) {
+                object1.SetActive(true);
+                object2.SetActive(true);
+                object3.SetActive(false);
+            }
+            if (PlayerPrefs.GetInt("Level2Completed") == 1) {
+                object1.SetActive(true);
+                object2.SetActive(true);
+                object3.SetActive(true);
+            }
+        }
     }
 
     // Update is called once per frame
