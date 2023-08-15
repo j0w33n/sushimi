@@ -5069,7 +5069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 889289149704217067}
   - component: {fileID: -7788067930208494143}
-  - component: {fileID: 281677160634016167}
+  - component: {fileID: 636147584}
   m_Layer: 0
   m_Name: vertical wall
   m_TagString: Untagged
@@ -5086,7 +5086,7 @@ Transform:
   m_GameObject: {fileID: 889289149704217066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.746, y: 69.128, z: 0}
-  m_LocalScale: {x: 1.1006, y: 1.1006, z: 1.1006}
+  m_LocalScale: {x: 0.6732591, y: 0.6732591, z: 0.6732591}
   m_Children:
   - {fileID: 8355004305577063364}
   m_Father: {fileID: 0}
@@ -5123,7 +5123,7 @@ MonoBehaviour:
   - {fileID: 3707441357454998247, guid: 425016bbd9db25c43af314f32e44a9ff, type: 3}
   - {fileID: 3707441357454998247, guid: 425016bbd9db25c43af314f32e44a9ff, type: 3}
   dropamt: 0
---- !u!212 &281677160634016167
+--- !u!212 &636147584
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6093,7 +6093,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3506408991353040274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.37, y: 3.4, z: 0.8338083}
+  m_LocalPosition: {x: -0.11, y: 3.66, z: 0.8338083}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 8355004305577063364}
@@ -6115,7 +6115,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 0.5707547, g: 0.9068849, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.8
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 000000000557e9abd7139739fd22bd2bbd9da68873f6742cb9ff439477a9b85d83e33cc0bb846e4c
   m_LightCookieSprite: {fileID: 0}
