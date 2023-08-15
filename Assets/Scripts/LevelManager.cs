@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour {
     public Sprite[] ammosprites,healthsprites;
     public Image ammoimg,healthimg;
     public int continues,ammoiter,healthiter;
+    public GameObject deathcount;
     // Start is called before the first frame update
     void Start() {
         parts = PlayerPrefs.GetInt("Parts", 0);
@@ -57,6 +58,7 @@ public class LevelManager : MonoBehaviour {
         //print(PlayerPrefs.GetInt("Current Room"));
         healthimg.sprite = healthsprites[healthiter];
         ammoimg.sprite = ammosprites[ammoiter];
+        deathcount.GetComponent<Text>().text = continues.ToString();
         if (!FindObjectOfType<End>(true).endlevel) ShowTime();
         partcount.GetComponent<Text>().text = "x " + parts.ToString();
         enemykillcount.value = totalenemieskilled;
