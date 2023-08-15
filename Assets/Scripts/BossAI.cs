@@ -61,7 +61,14 @@ public class BossAI : Enemy
                 }
                 break;
         }
-        //Fire();
+        if (levelManager.continues <= 0) {
+            hitpoints = maxhitpoints;
+            canMove = false;
+            AudioManager.instance.StopMusic();
+            AudioManager.instance.PlayMusic(levelManager.levelmusic);
+            FindObjectOfType<Camera>().orthographicSize -= 10;
+            gameObject.SetActive(false);
+        }
         base.Update();
     }
     protected override void CheckDeath() {

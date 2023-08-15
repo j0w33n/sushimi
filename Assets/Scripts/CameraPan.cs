@@ -23,7 +23,7 @@ public class CameraPan : EventTrigger {
     }
     // Update is called once per frame
     void Update() {
-
+        if (levelManager.continues <= 0) gameObject.SetActive(true);
     }
     IEnumerator Pan(Transform target) {
         AudioManager.instance.StopMusic();

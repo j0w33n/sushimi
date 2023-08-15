@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour {
         enemykillcount.value = totalenemieskilled;
         if (currentroom.GetComponent<Room>().roomstart) {
             PlayerPrefs.SetInt("Current Room", rooms.IndexOf(currentroom));
-            if (enemieskilled == totalenemies) {
+            if (enemieskilled >= totalenemies) {
                 wavecomplete = true;
                 StartCoroutine(EndOfWave());
             }

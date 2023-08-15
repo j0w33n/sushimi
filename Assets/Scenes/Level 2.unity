@@ -1396,8 +1396,8 @@ Transform:
   - {fileID: 780980062}
   - {fileID: 1002634153}
   - {fileID: 1184567403}
-  - {fileID: 890527066}
   - {fileID: 344334792}
+  - {fileID: 890527066}
   - {fileID: 1200700712}
   - {fileID: 1129628267}
   - {fileID: 1562968918}
@@ -6592,7 +6592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8849212624709548161, guid: 73717a4ad79733340b8d103dfddfe436, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -37.4
+      value: -40.8
       objectReference: {fileID: 0}
     - target: {fileID: 8849212624709548161, guid: 73717a4ad79733340b8d103dfddfe436, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31980,6 +31980,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 49891933}
     m_Modifications:
+    - target: {fileID: 1879969724331915086, guid: 41f6310a225ea0c49acfadb4687b3222, type: 3}
+      propertyPath: m_RootOrder
+      value: 52
+      objectReference: {fileID: 0}
     - target: {fileID: 8586031559958006857, guid: 72bb8dec76bee2549b300a2066c7bfd6, type: 3}
       propertyPath: m_Name
       value: Frozen Trap (9)
@@ -32039,10 +32043,6 @@ PrefabInstance:
     - target: {fileID: 8586031559958006862, guid: 72bb8dec76bee2549b300a2066c7bfd6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1879969724331915086, guid: 41f6310a225ea0c49acfadb4687b3222, type: 3}
-      propertyPath: m_RootOrder
-      value: 52
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41f6310a225ea0c49acfadb4687b3222, type: 3}

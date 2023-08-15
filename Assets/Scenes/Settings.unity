@@ -166,6 +166,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: defcd2d8c4fa9e1498da113f7261c0b7, type: 3}
+    - target: {fileID: 1099911098315228359, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.022460938
+      objectReference: {fileID: 0}
     - target: {fileID: 1110567150015258037, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -176,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1543375815225164457, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.5000067
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1756220080027213318, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_IsActive
@@ -261,6 +265,10 @@ PrefabInstance:
     - target: {fileID: 4256068402321301902, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347072105453692024, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4510456874330448503, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_IsActive
@@ -435,6 +443,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8466992037661618245, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745955793087657661, guid: 0bc172a7081db4d4babd8693bc9e8eb6, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

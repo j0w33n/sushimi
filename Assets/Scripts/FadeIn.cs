@@ -18,7 +18,6 @@ public class FadeIn : MonoBehaviour {
         if (FindObjectOfType<End>() != null) gameObject.SetActive(false);
     }
     public IEnumerator Appear(bool white = false) {
-        print("yuh");
         gameObject.SetActive(true);
         yield return new WaitForSeconds(2);
         if (white) blackscreen.color = Color.white;
@@ -26,7 +25,6 @@ public class FadeIn : MonoBehaviour {
         blackscreen.CrossFadeAlpha(1f, 3, false);
     }
     public IEnumerator Disappear() {
-        print("yum");
         gameObject.SetActive(true);
         if (blackscreen != null) { blackscreen.CrossFadeAlpha(0f, fadetime, false); }
         yield return new WaitForSeconds(fadetime);
