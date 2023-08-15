@@ -79,9 +79,8 @@ public class LevelManager : MonoBehaviour {
         if (totalenemieskilled >= 10 && !currentroom.GetComponent<Room>().roomstart) {
             StartCoroutine(upgradepanel());
         }
-        if(continues == 0) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            continues = 10;
+        if (continues == 0) {
+            StartCoroutine(SpecialRespawn());
         }
     }
     public void Respawn() {
@@ -102,10 +101,28 @@ public class LevelManager : MonoBehaviour {
         player.gameObject.SetActive(false); // deactivates player
         yield return new WaitForSeconds(waitToRespawn); // how long to wait before respawning player
         player.gameObject.SetActive(true); // reactivates player
-        StartCoroutine(FindObjectOfType<FadeIn>(true).Appear());
-        StartCoroutine(FindObjectOfType<FadeIn>(true).Disappear());
+        FadeIn screen = FindObjectOfType<FadeIn>(true);
+        if(screen != null) {
+            //screen.gameObject.SetActive(true);
+            StartCoroutine(screen.Appear());
+            StartCoroutine(screen.Disappear());
+        }
         player.transform.position = player.respawnpoint; // moves player to respawn point
         player.dead = false;
+    }
+   public IEnumerator SpecialRespawn() {
+        PlayerPrefs.SetInt("Current Room", 0);
+        Physics2D.IgnoreLayerCollision(6, 7, false);
+        Physics2D.IgnoreLayerCollision(6, 8, false);
+        yield return new WaitForSeconds(0.25f);
+        player.gameObject.SetActive(false); // deactivates player
+        yield return new WaitForSeconds(waitToRespawn); // how long to wait before respawning player
+        player.gameObject.SetActive(true); // reactivates player
+        //StartCoroutine(FindObjectOfType<FadeIn>(true).Appear());
+        //StartCoroutine(FindObjectOfType<FadeIn>(true).Disappear());
+        player.transform.position = rooms[0].transform.position; // moves player to respawn point
+        player.dead = false;
+        continues = 10;
     }
     IEnumerator EndOfWave() {
         if (waves > 0) {

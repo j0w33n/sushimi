@@ -68,7 +68,7 @@ public class Player : Unit
         if (hitpoints <= 0) {
             dead = true;
             Death();
-            levelManager.Respawn();
+            if(levelManager.continues != 0)levelManager.Respawn();
             hitpoints = maxhitpoints;
             levelManager.continues -= 1;
         }
@@ -139,7 +139,7 @@ public class Player : Unit
         yield return new WaitForSeconds(0.5f);
     }
     private void OnTriggerExit2D(Collider2D collision) {
-        if(collision.tag == "Slow") {
+        if(collision.CompareTag("Slow")) {
             moveSpeed = ogmovespeed;
         }
     }
