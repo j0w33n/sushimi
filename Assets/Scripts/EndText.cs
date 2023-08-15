@@ -18,7 +18,6 @@ public class EndText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(video.isPlaying);
         if (!video.isPlaying) holder.SetActive(true);
         timetext.text = PlayerPrefs.GetFloat("TotalTime").ToString();
         parttext.text = PlayerPrefs.GetFloat("TotalParts").ToString();
