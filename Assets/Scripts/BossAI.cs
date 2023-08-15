@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BossAI : Enemy
 {
@@ -80,7 +81,10 @@ public class BossAI : Enemy
     protected override void OnTriggerEnter2D(Collider2D collision) {
         if (shield.GetComponent<BossShield>().circleCollider.enabled) return;
         if (shield2.GetComponent<BossShield>().circleCollider.enabled) return;
-        if (dead && collision.GetComponent<Player>()) print("cutscene");
+        if (dead && collision.GetComponent<Player>()) {
+            SceneManager.LoadScene("Ending");
+
+        }
         base.OnTriggerEnter2D(collision);
     }
     private void Move(Vector2 direction) {

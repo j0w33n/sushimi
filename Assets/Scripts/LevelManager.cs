@@ -82,6 +82,31 @@ public class LevelManager : MonoBehaviour {
         if (continues == 0) {
             StartCoroutine(SpecialRespawn());
         }
+
+        if (FindObjectOfType<End>(true).endlevel) {
+            string scenename;
+
+            scenename = SceneManager.GetActiveScene().name;
+            //Total
+            PlayerPrefs.SetFloat("TotalParts", PlayerPrefs.GetFloat("TotalParts") + parts);
+            PlayerPrefs.SetFloat("TotalTime", PlayerPrefs.GetFloat("TotalTime") + Time.timeSinceLevelLoad);
+
+
+            //Per Level
+            if (scenename == "Tutorial") {
+                PlayerPrefs.SetFloat("Level0Parts", parts);
+                PlayerPrefs.SetFloat("Level0Time", Time.timeSinceLevelLoad);
+                PlayerPrefs.SetInt("Level0Completed", 1);
+            } else if (scenename == "Level 1") {
+                PlayerPrefs.SetFloat("Level1Parts", parts);
+                PlayerPrefs.SetFloat("Level1Time", Time.timeSinceLevelLoad);
+                PlayerPrefs.SetInt("Level1Completed", 1);
+            } else if (scenename == "Level 2") {
+                PlayerPrefs.SetFloat("Level2Parts", parts);
+                PlayerPrefs.SetFloat("Level2Time", Time.timeSinceLevelLoad);
+                PlayerPrefs.SetInt("Level2Completed", 1);
+            }
+        }
     }
     public void Respawn() {
         StartCoroutine(RespawnCo());
@@ -153,5 +178,33 @@ public class LevelManager : MonoBehaviour {
         seconds = (int)Time.timeSinceLevelLoad % 60;
         if(seconds < 10)timer.GetComponent<Text>().text = "Time taken: " + minutes + ":" + "0" + seconds;
         else timer.GetComponent<Text>().text = "Time taken: " + minutes + ":" + seconds;
+        
+    }
+
+    public void GameWin() {
+        string scenename;
+
+        scenename = SceneManager.GetActiveScene().name;
+        //Total
+        PlayerPrefs.SetFloat("TotalParts", PlayerPrefs.GetFloat("TotalParts") + parts);
+        PlayerPrefs.SetFloat("TotalTime", PlayerPrefs.GetFloat("TotalTime") + Time.timeSinceLevelLoad);
+
+
+        //Per Level
+        if (scenename == "Tutorial") {
+            PlayerPrefs.SetFloat("Level0Parts", parts);
+            PlayerPrefs.SetFloat("Level0Time", Time.timeSinceLevelLoad);
+            PlayerPrefs.SetInt("Level0Completed", 1);
+        } else if (scenename == "Level 1") {
+            PlayerPrefs.SetFloat("Level1Parts", parts);
+            PlayerPrefs.SetFloat("Level1Time", Time.timeSinceLevelLoad);
+            PlayerPrefs.SetInt("Level1Completed", 1);
+        } else if (scenename == "Level 2") {
+            PlayerPrefs.SetFloat("Level2Parts", parts);
+            PlayerPrefs.SetFloat("Level2Time", Time.timeSinceLevelLoad);
+            PlayerPrefs.SetInt("Level2Completed", 1);
+        }
+
+
     }
 }
